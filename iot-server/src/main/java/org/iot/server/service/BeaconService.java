@@ -11,4 +11,5 @@ public interface BeaconService {
 	
 	void registerStatus(BeaconStatusTo status);
 
+	List<BeaconStatusTo> getAllBeaconsStatuses();
 }

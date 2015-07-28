@@ -25,6 +25,15 @@ public class BeaconServiceImpl implements BeaconService {
 	}
 	
 	@Override
+	public List<BeaconStatusTo> getAllBeaconsStatuses(){
+		List<BeaconStatusTo> beaconsStatuses = new ArrayList<>();
+		
+		beaconsStatuses.addAll(0, beaconStatuses);
+		
+		return beaconsStatuses;
+	}
+	
+	@Override
 	public void registerStatus(BeaconStatusTo status) {
 		beaconStatuses.add(status);
 	}

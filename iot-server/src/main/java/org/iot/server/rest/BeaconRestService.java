@@ -31,5 +31,8 @@ public class BeaconRestService {
 		beaconService.registerStatus(beaconStatus);
 	}
 	
-	// TODO add method to list all statuses
+	@RequestMapping(value = "/beacons-statuses", method = RequestMethod.GET)
+	public List<BeaconStatusTo> getAllBeaconsStatuses() {
+		return beaconService.getAllBeaconsStatuses();
+	}
 }
