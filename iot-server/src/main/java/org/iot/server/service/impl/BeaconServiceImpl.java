@@ -2,30 +2,33 @@ package org.iot.server.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.iot.server.service.BeaconService;
+import org.iot.server.to.BeaconStatusTo;
 import org.iot.server.to.BeaconTo;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BeaconServiceImpl implements BeaconService {
 
+	private final List<BeaconStatusTo> beaconStatuses = new CopyOnWriteArrayList<>();
+	
 	@Override
 	public List<BeaconTo> getAllBeacons() {
 		List<BeaconTo> beacons = new ArrayList<>();
-		
-		BeaconTo beacon = createExampleBeacon();
-		BeaconTo beacon1 = createExampleBeacon1();
-		BeaconTo beacon2 = createExampleBeacon2();
-		
-		beacons.add(beacon);
-		beacons.add(beacon1);
-		beacons.add(beacon2);
+		beacons.add(createExampleBeacon());
+		beacons.add(createExampleBeacon1());
+		beacons.add(createExampleBeacon2());
 		
 		return beacons;
 	}
 	
-
+	@Override
+	public void registerStatus(BeaconStatusTo status) {
+		beaconStatuses.add(status);
+	}
+		
 	private BeaconTo createExampleBeacon() {
 		BeaconTo beacon = new BeaconTo();		
 		beacon.setName("MT II 7.p 12.pokój (pokój Jacka)");
