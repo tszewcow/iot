@@ -4,17 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.iot.server.entity.BeaconStatus;
+import org.iot.server.repository.BeaconStatusRepository;
 import org.iot.server.service.BeaconService;
 import org.iot.server.to.BeaconStatusTo;
 import org.iot.server.to.BeaconTo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @Service
 public class BeaconServiceImpl implements BeaconService {
 
 	private final List<BeaconStatusTo> beaconStatuses = new CopyOnWriteArrayList<>();
-	
-	@Override
+
+    private final BeaconStatusRepository beaconStatusRepository;
+
+    @Autowired
+    public BeaconServiceImpl(BeaconStatusRepository beaconStatusRepository) {
+        this.beaconStatusRepository = beaconStatusRepository;
+    }
+
+    @Override
 	public List<BeaconTo> getAllBeacons() {
 		List<BeaconTo> beacons = new ArrayList<>();
 		beacons.add(createExampleBeacon());
@@ -36,6 +48,9 @@ public class BeaconServiceImpl implements BeaconService {
 	@Override
 	public void registerStatus(BeaconStatusTo status) {
 		beaconStatuses.add(status);
+        BeaconStatus beaconStatus = new BeaconStatus();
+        beaconStatus.setPosition(status.getUuidNor());
+        beaconStatusRepository.save(beaconStatus);
 	}
 		
 	private BeaconTo createExampleBeacon() {
