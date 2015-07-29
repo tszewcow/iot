@@ -31,11 +31,11 @@ public class BeaconServiceImpl implements BeaconService {
 		return beaconStatusMapper.mapDocuments2Tos(beaconStatuses);
 	}
 	
-	public void registerStatus(BeaconStatusTo statusTo) {			
-        BeaconStatus beaconStatus = beaconStatusMapper.mapTo2Document(statusTo);
+	public void registerStatus(BeaconStatusTo statusTo) {
+		BeaconStatus beaconStatus = beaconStatusMapper.mapTo2Document(statusTo);
         beaconStatusRepository.save(beaconStatus);
-	}	
-	
+	}
+
 	public List<BeaconTo> getAllBeacons() {
 		List<BeaconTo> beacons = new ArrayList<>();
 		beacons.add(createExampleBeacon());
