@@ -4,12 +4,17 @@ public class BeaconStatusTo {
 	
 	private int major;
 	private int minor;
-	private String uuidNor;
-	private String uuidSec;
-	private String uuidSer;
+	private String uuid;
 	private int rssi;
-	private int battery;
+	private String mac;
+	private int txPower;
 
+	public int getTxPower() {
+		return txPower;
+	}
+	public void setTxPower(int txPower) {
+		this.txPower = txPower;
+	}
 	public int getMajor() {
 		return major;
 	}
@@ -22,34 +27,23 @@ public class BeaconStatusTo {
 	public void setMinor(int minor) {
 		this.minor = minor;
 	}
-	public String getUuidNor() {
-		return uuidNor;
+	public String getUuid() {
+		return uuid;
 	}
-	public void setUuidNor(String uuidNor) {
-		this.uuidNor = uuidNor;
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
-	public String getUuidSec() {
-		return uuidSec;
-	}
-	public void setUuidSec(String uuidSec) {
-		this.uuidSec = uuidSec;
-	}
-	public String getUuidSer() {
-		return uuidSer;
-	}
-	public void setUuidSer(String uuidSer) {
-		this.uuidSer = uuidSer;
-	}
+	
 	public int getRssi() {
 		return rssi;
 	}
 	public void setRssi(int rssi) {
 		this.rssi = rssi;
 	}
-	public int getBattery() {
-		return battery;
+	public String getMac() {
+		return mac;
 	}
-	public void setBattery(int battery) {
-		this.battery = battery;
+	public void setMac(String mac) {
+		this.mac = mac;
 	}	
 }

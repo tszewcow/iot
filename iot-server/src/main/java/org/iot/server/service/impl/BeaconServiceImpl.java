@@ -2,7 +2,6 @@ package org.iot.server.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.iot.server.document.BeaconStatus;
 import org.iot.server.mapper.BeaconStatusMapper;
@@ -17,47 +16,33 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Service
 public class BeaconServiceImpl implements BeaconService {
-
-	private final List<BeaconStatusTo> beaconStatuses = new CopyOnWriteArrayList<>();
-
+	
     private final BeaconStatusRepository beaconStatusRepository;
     private final BeaconStatusMapper beaconStatusMapper;
-
     @Autowired
     public BeaconServiceImpl(BeaconStatusRepository beaconStatusRepository, BeaconStatusMapper beaconStatusMapper) {
         this.beaconStatusRepository = beaconStatusRepository;
         this.beaconStatusMapper = beaconStatusMapper;
     }
-
-    @Override
+	
+	@Override
+	public List<BeaconStatusTo> getAllBeaconsStatuses(){		
+		List<BeaconStatus> beaconStatuses = beaconStatusRepository.findAll();
+		return beaconStatusMapper.mapDocuments2Tos(beaconStatuses);
+	}
+	
+	public void registerStatus(BeaconStatusTo statusTo) {			
+        BeaconStatus beaconStatus = beaconStatusMapper.mapTo2Document(statusTo);
+        beaconStatusRepository.save(beaconStatus);
+	}	
+	
 	public List<BeaconTo> getAllBeacons() {
 		List<BeaconTo> beacons = new ArrayList<>();
 		beacons.add(createExampleBeacon());
 		beacons.add(createExampleBeacon1());
-		beacons.add(createExampleBeacon2());
-		
+		beacons.add(createExampleBeacon2());		
 		return beacons;
-	}
-	
-	@Override
-	public List<BeaconStatusTo> getAllBeaconsStatuses(){
-		
-		List<BeaconStatus> beaconStautuses = beaconStatusRepository.findAll();
-		
-		List<BeaconStatusTo> beaconsStatuses = new ArrayList<>();
-		
-		beaconsStatuses.addAll(0, beaconStatuses);
-		
-		return beaconsStatuses;
-	}
-	
-	@Override
-	public void registerStatus(BeaconStatusTo statusTo) {
-		beaconStatuses.add(statusTo);
-        BeaconStatus beaconStatus = beaconStatusMapper.mapTo2Document(statusTo);
-        beaconStatusRepository.save(beaconStatus);
-	}
-		
+		}
 	private BeaconTo createExampleBeacon() {
 		BeaconTo beacon = new BeaconTo();		
 		beacon.setName("MT II 7.p 12.pokój (pokój Jacka)");
@@ -97,4 +82,6 @@ public class BeaconServiceImpl implements BeaconService {
 		beacon2.setCoordinates("145x15");
 		return beacon2;		
 	}
+
+
 }
