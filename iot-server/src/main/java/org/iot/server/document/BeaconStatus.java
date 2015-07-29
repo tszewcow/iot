@@ -1,4 +1,4 @@
-package org.iot.server.entity;
+package org.iot.server.document;
 
 import org.springframework.data.annotation.Id;
 
@@ -24,4 +24,6 @@ public class BeaconStatus {
     public void setId(String id) {
         this.id = id;
     }
+    
+    //TODO prepare data
 }

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.iot.server.entity.BeaconStatus;
+import org.iot.server.document.BeaconStatus;
+import org.iot.server.mapper.BeaconStatusMapper;
 import org.iot.server.repository.BeaconStatusRepository;
 import org.iot.server.service.BeaconService;
 import org.iot.server.to.BeaconStatusTo;
@@ -20,10 +21,12 @@ public class BeaconServiceImpl implements BeaconService {
 	private final List<BeaconStatusTo> beaconStatuses = new CopyOnWriteArrayList<>();
 
     private final BeaconStatusRepository beaconStatusRepository;
+    private final BeaconStatusMapper beaconStatusMapper;
 
     @Autowired
-    public BeaconServiceImpl(BeaconStatusRepository beaconStatusRepository) {
+    public BeaconServiceImpl(BeaconStatusRepository beaconStatusRepository, BeaconStatusMapper beaconStatusMapper) {
         this.beaconStatusRepository = beaconStatusRepository;
+        this.beaconStatusMapper = beaconStatusMapper;
     }
 
     @Override
@@ -38,6 +41,9 @@ public class BeaconServiceImpl implements BeaconService {
 	
 	@Override
 	public List<BeaconStatusTo> getAllBeaconsStatuses(){
+		
+		List<BeaconStatus> beaconStautuses = beaconStatusRepository.findAll();
+		
 		List<BeaconStatusTo> beaconsStatuses = new ArrayList<>();
 		
 		beaconsStatuses.addAll(0, beaconStatuses);
@@ -46,10 +52,9 @@ public class BeaconServiceImpl implements BeaconService {
 	}
 	
 	@Override
-	public void registerStatus(BeaconStatusTo status) {
-		beaconStatuses.add(status);
-        BeaconStatus beaconStatus = new BeaconStatus();
-        beaconStatus.setPosition(status.getUuidNor());
+	public void registerStatus(BeaconStatusTo statusTo) {
+		beaconStatuses.add(statusTo);
+        BeaconStatus beaconStatus = beaconStatusMapper.mapTo2Document(statusTo);
         beaconStatusRepository.save(beaconStatus);
 	}
 		
