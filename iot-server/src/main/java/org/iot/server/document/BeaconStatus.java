@@ -4,17 +4,26 @@ import org.springframework.data.annotation.Id;
 
 public class BeaconStatus {
 
-    @Id
-    private String id;
+	@Id
+	private String id;
 	private String uuid;
-    private int measuredStrenght;
-    private String mac;
-    private int rssi;
-    private int minor;    
+	private int measuredStrenght;
+	private String mac;
+	private int rssi;
+	private int minor;
+	private double distance;
 
+	public double getDistance() {
+		return distance;
+	}
 
-    private int major;
-    public int getMajor() {
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
+
+	private int major;
+
+	public int getMajor() {
 		return major;
 	}
 
@@ -62,11 +71,11 @@ public class BeaconStatus {
 		this.minor = minor;
 	}
 
-    public String getId() {
-        return id;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 }
