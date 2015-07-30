@@ -7,7 +7,7 @@ public class BeaconStatus {
     @Id
     private String id;
 	private String uuid;
-    private int txPower;
+    private int measuredStrenght;
     private String mac;
     private int rssi;
     private int minor;    
@@ -30,12 +30,12 @@ public class BeaconStatus {
 		this.uuid = uuid;
 	}
 
-	public int getTxPower() {
-		return txPower;
+	public int getMeasuredStrenght() {
+		return measuredStrenght;
 	}
 
-	public void setTxPower(int txPower) {
-		this.txPower = txPower;
+	public void setMeasuredStrenght(int measuredStrenght) {
+		this.measuredStrenght = measuredStrenght;
 	}
 
 	public String getMac() {

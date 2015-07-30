@@ -17,7 +17,7 @@ public class BeaconStatusMapper {
 		beaconStatusTo.setMajor(beaconStatus.getMajor());
 		beaconStatusTo.setMinor(beaconStatus.getMinor());
 		beaconStatusTo.setRssi(beaconStatus.getRssi());
-		beaconStatusTo.setTxPower(beaconStatus.getTxPower());
+		beaconStatusTo.setMeasuredStrenght(beaconStatus.getMeasuredStrenght());
 		beaconStatusTo.setUuid(beaconStatus.getUuid());
 		
 		return beaconStatusTo;
@@ -47,14 +47,10 @@ public class BeaconStatusMapper {
         beaconStatus.setMajor(beaconStatusTo.getMajor());
         beaconStatus.setMinor(beaconStatusTo.getMinor());
         beaconStatus.setRssi(beaconStatusTo.getRssi());
-        beaconStatus.setTxPower(beaconStatusTo.getTxPower());
+        beaconStatus.setMeasuredStrenght(beaconStatusTo.getMeasuredStrenght());
         beaconStatus.setUuid(beaconStatusTo.getUuid());
         
         return beaconStatus;
     }
 	
-	public List<BeaconStatus> mapTos2Documents(List<BeaconStatus> beaconStatus) {			
-		return null;
-	}
-
 }

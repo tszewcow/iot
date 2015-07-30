@@ -7,13 +7,13 @@ public class BeaconStatusTo {
 	private String uuid;
 	private int rssi;
 	private String mac;
-	private int txPower;
+	private int measuredStrenght;
 
-	public int getTxPower() {
-		return txPower;
+	public int getMeasuredStrenght() {
+		return measuredStrenght;
 	}
-	public void setTxPower(int txPower) {
-		this.txPower = txPower;
+	public void setMeasuredStrenght(int measuredStrenght) {
+		this.measuredStrenght = measuredStrenght;
 	}
 	public int getMajor() {
 		return major;
