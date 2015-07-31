@@ -1,4 +1,4 @@
-package server;
+package org.iot.server;
 
 import org.iot.server.IoTServerApplication;
 import org.junit.Test;

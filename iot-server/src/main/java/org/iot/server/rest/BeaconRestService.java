@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class BeaconRestService {
 
 	private final BeaconService beaconService;
+	private final RequestToBeaconStatusToConverter requestToBeaconStatusToConverter;
 
 	@Autowired
-	public BeaconRestService(BeaconService beaconService) {
+	public BeaconRestService(BeaconService beaconService,
+			RequestToBeaconStatusToConverter requestToBeaconStatusToConverter) {
 		this.beaconService = beaconService;
+		this.requestToBeaconStatusToConverter = requestToBeaconStatusToConverter;
 	}
 
 	@RequestMapping(value = "/beacons", method = RequestMethod.GET)
@@ -27,42 +30,10 @@ public class BeaconRestService {
 	}
 
 	@RequestMapping(value = "/beacon-status", method = RequestMethod.POST)
-	public void reportStatus(@RequestBody Object request) {
-
-		String req = (String) request;
-		String[] tokens = req.split("&");
-		tokens[0] = tokens[0].substring(6, 11); // major
-		tokens[1] = tokens[1].substring(5, 37); // uuid
-		tokens[1] = tokens[1].replace("%3A", ":");
-		tokens[2] = tokens[2].substring(4, 31); // mac
-		tokens[2] = tokens[2].replace("%3A", ":");
-		tokens[3] = tokens[3].substring(5, 8); // rssi
-		tokens[4] = tokens[4].substring(6, 11); // minor
-		tokens[5] = tokens[5].substring(17, 20); // measuredstrenght
-
-		double distance = Math.pow(10d, (Double.parseDouble(tokens[5]) - Double.parseDouble(tokens[3])) / (10 * 2));
-
-		BeaconStatusTo beaconStatusTo = new BeaconStatusTo();
-
-		beaconStatusTo.setMac(tokens[2]);
-		beaconStatusTo.setMajor(Integer.parseInt(tokens[0]));
-		beaconStatusTo.setMinor(Integer.parseInt(tokens[4]));
-		beaconStatusTo.setUuid(tokens[1]);
-		beaconStatusTo.setRssi(Integer.parseInt(tokens[3]));
-		beaconStatusTo.setMeasuredStrenght(Integer.parseInt(tokens[5]));
-		beaconStatusTo.setDistance(distance);
-
+	public void reportStatus(@RequestBody String request) {
+		BeaconStatusTo beaconStatusTo = requestToBeaconStatusToConverter.convert(request);
 		beaconService.registerStatus(beaconStatusTo);
 	}
-
-	// application/x-www-form-urlencoded
-	// @RequestMapping(value = "/beacon-status", method = RequestMethod.POST,
-	// headers="Accept=*")
-	// public void reportStatus(@RequestBody Object requestBody, ServletRequest
-	// request) {
-	// BeaconStatusTo beaconStatus = new BeaconStatusTo();
-	// beaconService.registerStatus(beaconStatus);
-	// }
 
 	@RequestMapping(value = "/beacons-statuses", method = RequestMethod.GET)
 	public List<BeaconStatusTo> getAllBeaconsStatuses() {

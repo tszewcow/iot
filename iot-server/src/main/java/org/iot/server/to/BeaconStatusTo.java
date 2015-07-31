@@ -1,5 +1,10 @@
 package org.iot.server.to;
 
+/**
+ * It represents data sent from automatic mobile set collected from a single
+ * beacon.
+ *
+ */
 public class BeaconStatusTo {
 
 	private int major;
