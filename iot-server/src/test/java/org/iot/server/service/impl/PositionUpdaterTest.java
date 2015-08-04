@@ -1,0 +1,102 @@
+package org.iot.server.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.iot.server.to.AutomaticMobileSetTo;
+import org.iot.server.to.BeaconStatusTo;
+import org.iot.server.to.BeaconTo;
+import org.junit.Test;
+
+public class PositionUpdaterTest {
+
+	private static PositionUpdater positionUpdater = new PositionUpdater();
+
+	@Test
+	public void updateAutomaticMobileSetPositionsShouldCalculateCorrectCoordinatesForSimpleData() {
+		// given
+		List<BeaconTo> beacons = new ArrayList<>();
+		beacons.add(createExampleBeacon());
+
+		List<BeaconStatusTo> beaconStatuses = new ArrayList<>();
+		beaconStatuses.add(createExampleBeaconStatuses());
+		beaconStatuses.add(createExampleBeaconStatuses1());
+		beaconStatuses.add(createExampleBeaconStatuses2());
+
+		List<AutomaticMobileSetTo> automaticMobileSets = new ArrayList<>();
+		automaticMobileSets.add(createExampleAutomaticMobileSet());
+
+		// when
+		positionUpdater.updateAutomaticMobileSetPositions(beacons, beaconStatuses, automaticMobileSets);
+		// then
+		// TODO Add assertions on automatic mobile sets coordinates
+
+	}
+
+	private BeaconTo createExampleBeacon() {
+		BeaconTo beacons = new BeaconTo();
+		beacons.setName("MT II 7.p 12.pokój (pokój Jacka)");
+		beacons.setMac("D6:90:A8:08:F0:E4");
+		beacons.setUuidnor("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidsec("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidser("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setBuilding("MT II");
+		beacons.setFloor(7);
+		beacons.setRoom(7.5);
+		beacons.setxBeacon(115);
+		beacons.setyBeacon(75);
+		return beacons;
+	}
+
+	private BeaconStatusTo createExampleBeaconStatuses() {
+		BeaconStatusTo beaconStatus = new BeaconStatusTo();
+		beaconStatus.setMajor(65535);
+		beaconStatus.setMinor(189);
+		beaconStatus.setMac("20:fa:bb:01:77:e0");
+		beaconStatus.setRssi(-50);
+		beaconStatus.setMeasuredStrenght(-61);
+		beaconStatus.setUuid("a271b5f0092c01333a737a1048141ee1");
+		beaconStatus.setMacAutomaticMobileSet("20:sd:sd:sd:23:sd");
+		beaconStatus.setDistance(3);
+		return beaconStatus;
+	}
+
+	private BeaconStatusTo createExampleBeaconStatuses2() {
+		BeaconStatusTo beaconStatus = new BeaconStatusTo();
+		beaconStatus.setMajor(65535);
+		beaconStatus.setMinor(190);
+		beaconStatus.setMac("20:fa:bb:01:77:e1");
+		beaconStatus.setRssi(-50);
+		beaconStatus.setMeasuredStrenght(-61);
+		beaconStatus.setUuid("a271b5f0092c01333a737a1048141ee2");
+		beaconStatus.setMacAutomaticMobileSet("20:sd:sd:sd:23:sd");
+		beaconStatus.setDistance(5);
+		return beaconStatus;
+	}
+
+	private BeaconStatusTo createExampleBeaconStatuses1() {
+		BeaconStatusTo beaconStatus = new BeaconStatusTo();
+		beaconStatus.setMajor(65535);
+		beaconStatus.setMinor(189);
+		beaconStatus.setMac("20:fa:bb:01:77:e2");
+		beaconStatus.setRssi(-50);
+		beaconStatus.setMeasuredStrenght(-61);
+		beaconStatus.setUuid("a271b5f0092c01333a737a1048141ee2");
+		beaconStatus.setMacAutomaticMobileSet("20:sd:sd:sd:23:sd");
+		beaconStatus.setDistance(1.5);
+		return beaconStatus;
+	}
+
+	private AutomaticMobileSetTo createExampleAutomaticMobileSet() {
+		AutomaticMobileSetTo automaticMobileSet = new AutomaticMobileSetTo();
+		automaticMobileSet.setBuilding("MT II");
+		automaticMobileSet.setX(150);
+		automaticMobileSet.setY(150);
+		automaticMobileSet.setFloor(7);
+		automaticMobileSet.setGuardian("Mirek");
+		automaticMobileSet.setProject("projekt");
+		automaticMobileSet.setMacAutomaticMobileSet("20:00:11:23:23:32");
+		automaticMobileSet.setRoom(7.6);
+		return automaticMobileSet;
+	}
+}

@@ -7,63 +7,88 @@ public class BeaconTo {
 	private String uuidsec;
 	private String uuidser;
 	private String building;
-	private String floor;
-	private String room;
-	private String coordinates;
+	private int floor;
+	private double room;
+	private int xBeacon;
+	private int yBeacon;
 
-	
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getMac() {
 		return mac;
 	}
+
 	public void setMac(String mac) {
 		this.mac = mac;
 	}
+
 	public String getUuidnor() {
 		return uuidnor;
 	}
+
 	public void setUuidnor(String uuidnor) {
 		this.uuidnor = uuidnor;
 	}
+
 	public String getUuidsec() {
 		return uuidsec;
 	}
+
 	public void setUuidsec(String uuidsec) {
 		this.uuidsec = uuidsec;
 	}
+
 	public String getUuidser() {
 		return uuidser;
 	}
+
 	public void setUuidser(String uuidser) {
 		this.uuidser = uuidser;
 	}
+
 	public String getBuilding() {
 		return building;
 	}
+
 	public void setBuilding(String building) {
 		this.building = building;
 	}
-	public String getFloor() {
+
+	public int getFloor() {
 		return floor;
 	}
-	public void setFloor(String floor) {
+
+	public void setFloor(int floor) {
 		this.floor = floor;
 	}
-	public String getRoom() {
+
+	public double getRoom() {
 		return room;
 	}
-	public void setRoom(String room) {
+
+	public void setRoom(double room) {
 		this.room = room;
 	}
-	public String getCoordinates() {
-		return coordinates;
+
+	public int getxBeacon() {
+		return xBeacon;
 	}
-	public void setCoordinates(String coordinates) {
-		this.coordinates = coordinates;
+
+	public void setxBeacon(int xBeacon) {
+		this.xBeacon = xBeacon;
+	}
+
+	public int getyBeacon() {
+		return yBeacon;
+	}
+
+	public void setyBeacon(int yBeacon) {
+		this.yBeacon = yBeacon;
 	}
 }

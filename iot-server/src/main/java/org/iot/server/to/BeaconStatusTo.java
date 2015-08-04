@@ -14,6 +14,15 @@ public class BeaconStatusTo {
 	private String mac;
 	private int measuredStrenght;
 	private double distance;
+	private String macAutomaticMobileSet;
+
+	public String getMacAutomaticMobileSet() {
+		return macAutomaticMobileSet;
+	}
+
+	public void setMacAutomaticMobileSet(String macAutomaticMobileSet) {
+		this.macAutomaticMobileSet = macAutomaticMobileSet;
+	}
 
 	public double getDistance() {
 		return distance;

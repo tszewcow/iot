@@ -16,47 +16,53 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Service
 public class BeaconServiceImpl implements BeaconService {
-	
-    private final BeaconStatusRepository beaconStatusRepository;
-    private final BeaconStatusMapper beaconStatusMapper;
-    @Autowired
-    public BeaconServiceImpl(BeaconStatusRepository beaconStatusRepository, BeaconStatusMapper beaconStatusMapper) {
-        this.beaconStatusRepository = beaconStatusRepository;
-        this.beaconStatusMapper = beaconStatusMapper;
-    }
-	
+
+	private final BeaconStatusRepository beaconStatusRepository;
+	private final BeaconStatusMapper beaconStatusMapper;
+
+	@Autowired
+	public BeaconServiceImpl(BeaconStatusRepository beaconStatusRepository, BeaconStatusMapper beaconStatusMapper) {
+		this.beaconStatusRepository = beaconStatusRepository;
+		this.beaconStatusMapper = beaconStatusMapper;
+	}
+
 	@Override
-	public List<BeaconStatusTo> getAllBeaconsStatuses(){		
+	public List<BeaconStatusTo> getAllBeaconsStatuses() {
 		List<BeaconStatus> beaconStatuses = beaconStatusRepository.findAll();
 		return beaconStatusMapper.mapDocuments2Tos(beaconStatuses);
 	}
-	
+
+	@Override
 	public void registerStatus(BeaconStatusTo statusTo) {
 		BeaconStatus beaconStatus = beaconStatusMapper.mapTo2Document(statusTo);
-        beaconStatusRepository.save(beaconStatus);
+		beaconStatusRepository.save(beaconStatus);
 	}
 
+	@Override
 	public List<BeaconTo> getAllBeacons() {
 		List<BeaconTo> beacons = new ArrayList<>();
 		beacons.add(createExampleBeacon());
 		beacons.add(createExampleBeacon1());
-		beacons.add(createExampleBeacon2());		
+		beacons.add(createExampleBeacon2());
 		return beacons;
-		}
+	}
+
 	private BeaconTo createExampleBeacon() {
-		BeaconTo beacon = new BeaconTo();		
+		BeaconTo beacon = new BeaconTo();
 		beacon.setName("MT II 7.p 12.pokój (pokój Jacka)");
 		beacon.setMac("D6:90:A8:08:F0:E4");
 		beacon.setUuidnor("00001800-0000-1000-8000-00805f9b34fb");
 		beacon.setUuidsec("00001800-0000-1000-8000-00805f9b34fb");
 		beacon.setUuidser("00001800-0000-1000-8000-00805f9b34fb");
 		beacon.setBuilding("MT II");
-		beacon.setFloor("7");
-		beacon.setRoom("7.5");
-		beacon.setCoordinates("145x45");
+		beacon.setFloor(7);
+		beacon.setRoom(7.5);
+		beacon.setxBeacon(150);
+		beacon.setyBeacon(80);
 		return beacon;
 	}
-	private BeaconTo createExampleBeacon1(){
+
+	private BeaconTo createExampleBeacon1() {
 		BeaconTo beacon1 = new BeaconTo();
 		beacon1.setName("n/a");
 		beacon1.setMac("n/a");
@@ -64,24 +70,26 @@ public class BeaconServiceImpl implements BeaconService {
 		beacon1.setUuidsec("n/a");
 		beacon1.setUuidser("n/a");
 		beacon1.setBuilding("MT II");
-		beacon1.setFloor("11");
-		beacon1.setRoom("11.2");
-		beacon1.setCoordinates("12x231");
+		beacon1.setFloor(11);
+		beacon1.setRoom(11.2);
+		beacon1.setxBeacon(100);
+		beacon1.setyBeacon(80);
 		return beacon1;
 	}
+
 	private BeaconTo createExampleBeacon2() {
-		BeaconTo beacon2 = new BeaconTo();		
+		BeaconTo beacon2 = new BeaconTo();
 		beacon2.setName("MT II 8.p 132.pokój");
 		beacon2.setMac("D6:90:A8:08:F0:E4");
 		beacon2.setUuidnor("00001800-0000-1000-1231-00805f9b34fb");
 		beacon2.setUuidsec("00001800-0000-4553-8000-00805f9b34fb");
 		beacon2.setUuidser("00001800-0000-3456-8000-00805f9b34fb");
 		beacon2.setBuilding("MT II");
-		beacon2.setFloor("8");
-		beacon2.setRoom("8.132");
-		beacon2.setCoordinates("145x15");
-		return beacon2;		
+		beacon2.setFloor(8);
+		beacon2.setRoom(8.132);
+		beacon2.setxBeacon(200);
+		beacon2.setyBeacon(80);
+		return beacon2;
 	}
-
 
 }

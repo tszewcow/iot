@@ -1,48 +1,88 @@
 package org.iot.server.to;
 
-public class AutomaticMobileSetTo {	
+public class AutomaticMobileSetTo {
 
 	private String project;
 	private String guardian;
 	private String building;
-	private String floor;
-	private String room;
-	private String coordinates;
-	
+	private int floor;
+	private double room;
+	private int xAutomaticMobileSet;
+	private int yAutomaticMobileSet;
+	private String macAutomaticMobileSet;
+	private String position;
+
+	// TODO maybe better int x, int y
+
+	public String getMacAutomaticMobileSet() {
+		return macAutomaticMobileSet;
+	}
+
+	public void setMacAutomaticMobileSet(String macAutomaticMobileSet) {
+		this.macAutomaticMobileSet = macAutomaticMobileSet;
+	}
+
 	public String getProject() {
 		return project;
 	}
+
 	public void setProject(String project) {
 		this.project = project;
 	}
+
 	public String getGuardian() {
 		return guardian;
 	}
+
 	public void setGuardian(String guardian) {
 		this.guardian = guardian;
 	}
+
 	public String getBuilding() {
 		return building;
 	}
+
 	public void setBuilding(String building) {
 		this.building = building;
 	}
-	public String getFloor() {
+
+	public int getFloor() {
 		return floor;
 	}
-	public void setFloor(String floor) {
+
+	public void setFloor(int floor) {
 		this.floor = floor;
 	}
-	public String getRoom() {
+
+	public double getRoom() {
 		return room;
 	}
-	public void setRoom(String room) {
+
+	public void setRoom(double room) {
 		this.room = room;
 	}
-	public String getCoordinates() {
-		return coordinates;
+
+	public int getX() {
+		return xAutomaticMobileSet;
 	}
-	public void setCoordinates(String coordinates) {
-		this.coordinates = coordinates;
+
+	public void setX(int x) {
+		this.xAutomaticMobileSet = x;
+	}
+
+	public int getY() {
+		return yAutomaticMobileSet;
+	}
+
+	public void setY(int y) {
+		this.yAutomaticMobileSet = y;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
 	}
 }
