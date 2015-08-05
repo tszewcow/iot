@@ -30,8 +30,8 @@ public class AutomaticMobileSetServiceImpl implements AutomaticMobileSetService 
 		automaticMobileSet.setBuilding("MT II");
 		automaticMobileSet.setFloor(8);
 		automaticMobileSet.setRoom(8.132);
-		automaticMobileSet.setX(145);
-		automaticMobileSet.setY(100);
+		automaticMobileSet.setxAutomaticMobileSet(145);
+		automaticMobileSet.setyAutomaticMobileSet(100);
 
 		return automaticMobileSet;
 	}
@@ -43,8 +43,8 @@ public class AutomaticMobileSetServiceImpl implements AutomaticMobileSetService 
 		automaticMobileSet1.setBuilding("MT II");
 		automaticMobileSet1.setFloor(11);
 		automaticMobileSet1.setRoom(11.12);
-		automaticMobileSet1.setX(100);
-		automaticMobileSet1.setY(50);
+		automaticMobileSet1.setxAutomaticMobileSet(100);
+		automaticMobileSet1.setyAutomaticMobileSet(50);
 
 		return automaticMobileSet1;
 	}

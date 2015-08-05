@@ -17,6 +17,8 @@ public class PositionUpdaterTest {
 		// given
 		List<BeaconTo> beacons = new ArrayList<>();
 		beacons.add(createExampleBeacon());
+		beacons.add(createExampleBeacon1());
+		beacons.add(createExampleBeacon2());
 
 		List<BeaconStatusTo> beaconStatuses = new ArrayList<>();
 		beaconStatuses.add(createExampleBeaconStatuses());
@@ -36,7 +38,7 @@ public class PositionUpdaterTest {
 	private BeaconTo createExampleBeacon() {
 		BeaconTo beacons = new BeaconTo();
 		beacons.setName("MT II 7.p 12.pokój (pokój Jacka)");
-		beacons.setMac("D6:90:A8:08:F0:E4");
+		beacons.setMac("D6:90:A8:08:F0:E0");
 		beacons.setUuidnor("00001800-0000-1000-8000-00805f9b34fb");
 		beacons.setUuidsec("00001800-0000-1000-8000-00805f9b34fb");
 		beacons.setUuidser("00001800-0000-1000-8000-00805f9b34fb");
@@ -48,11 +50,41 @@ public class PositionUpdaterTest {
 		return beacons;
 	}
 
+	private BeaconTo createExampleBeacon1() {
+		BeaconTo beacons = new BeaconTo();
+		beacons.setName("MT II 7.p 12.pokój (pokój Jacka)");
+		beacons.setMac("D6:90:A8:08:F0:E1");
+		beacons.setUuidnor("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidsec("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidser("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setBuilding("MT II");
+		beacons.setFloor(7);
+		beacons.setRoom(7.5);
+		beacons.setxBeacon(140);
+		beacons.setyBeacon(130);
+		return beacons;
+	}
+
+	private BeaconTo createExampleBeacon2() {
+		BeaconTo beacons = new BeaconTo();
+		beacons.setName("MT II 7.p 12.pokój (pokój Jacka)");
+		beacons.setMac("D6:90:A8:08:F0:E2");
+		beacons.setUuidnor("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidsec("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidser("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setBuilding("MT II");
+		beacons.setFloor(7);
+		beacons.setRoom(7.5);
+		beacons.setxBeacon(150);
+		beacons.setyBeacon(160);
+		return beacons;
+	}
+
 	private BeaconStatusTo createExampleBeaconStatuses() {
 		BeaconStatusTo beaconStatus = new BeaconStatusTo();
 		beaconStatus.setMajor(65535);
 		beaconStatus.setMinor(189);
-		beaconStatus.setMac("20:fa:bb:01:77:e0");
+		beaconStatus.setMac("D6:90:A8:08:F0:E0");
 		beaconStatus.setRssi(-50);
 		beaconStatus.setMeasuredStrenght(-61);
 		beaconStatus.setUuid("a271b5f0092c01333a737a1048141ee1");
@@ -65,7 +97,7 @@ public class PositionUpdaterTest {
 		BeaconStatusTo beaconStatus = new BeaconStatusTo();
 		beaconStatus.setMajor(65535);
 		beaconStatus.setMinor(190);
-		beaconStatus.setMac("20:fa:bb:01:77:e1");
+		beaconStatus.setMac("D6:90:A8:08:F0:E1");
 		beaconStatus.setRssi(-50);
 		beaconStatus.setMeasuredStrenght(-61);
 		beaconStatus.setUuid("a271b5f0092c01333a737a1048141ee2");
@@ -78,7 +110,7 @@ public class PositionUpdaterTest {
 		BeaconStatusTo beaconStatus = new BeaconStatusTo();
 		beaconStatus.setMajor(65535);
 		beaconStatus.setMinor(189);
-		beaconStatus.setMac("20:fa:bb:01:77:e2");
+		beaconStatus.setMac("D6:90:A8:08:F0:E2");
 		beaconStatus.setRssi(-50);
 		beaconStatus.setMeasuredStrenght(-61);
 		beaconStatus.setUuid("a271b5f0092c01333a737a1048141ee2");
@@ -90,13 +122,13 @@ public class PositionUpdaterTest {
 	private AutomaticMobileSetTo createExampleAutomaticMobileSet() {
 		AutomaticMobileSetTo automaticMobileSet = new AutomaticMobileSetTo();
 		automaticMobileSet.setBuilding("MT II");
-		automaticMobileSet.setX(150);
-		automaticMobileSet.setY(150);
+		automaticMobileSet.setxAutomaticMobileSet(150);
+		automaticMobileSet.setyAutomaticMobileSet(150);
 		automaticMobileSet.setFloor(7);
 		automaticMobileSet.setGuardian("Mirek");
 		automaticMobileSet.setProject("projekt");
 		automaticMobileSet.setMacAutomaticMobileSet("20:00:11:23:23:32");
-		automaticMobileSet.setRoom(7.6);
+		automaticMobileSet.setRoom(7.12);
 		return automaticMobileSet;
 	}
 }

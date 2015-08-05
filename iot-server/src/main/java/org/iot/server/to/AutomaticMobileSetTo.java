@@ -12,8 +12,6 @@ public class AutomaticMobileSetTo {
 	private String macAutomaticMobileSet;
 	private String position;
 
-	// TODO maybe better int x, int y
-
 	public String getMacAutomaticMobileSet() {
 		return macAutomaticMobileSet;
 	}
@@ -62,19 +60,19 @@ public class AutomaticMobileSetTo {
 		this.room = room;
 	}
 
-	public int getX() {
+	public int getxAutomaticMobileSet() {
 		return xAutomaticMobileSet;
 	}
 
-	public void setX(int x) {
+	public void setxAutomaticMobileSet(int x) {
 		this.xAutomaticMobileSet = x;
 	}
 
-	public int getY() {
+	public int getyAutomaticMobileSet() {
 		return yAutomaticMobileSet;
 	}
 
-	public void setY(int y) {
+	public void setyAutomaticMobileSet(int y) {
 		this.yAutomaticMobileSet = y;
 	}
 
@@ -85,4 +83,5 @@ public class AutomaticMobileSetTo {
 	public void setPosition(String position) {
 		this.position = position;
 	}
+
 }
