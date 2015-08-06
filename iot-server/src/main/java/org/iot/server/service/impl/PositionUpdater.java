@@ -8,7 +8,9 @@ import java.util.Map;
 import org.iot.server.to.AutomaticMobileSetTo;
 import org.iot.server.to.BeaconStatusTo;
 import org.iot.server.to.BeaconTo;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PositionUpdater {
 
 	public void updateAutomaticMobileSetPositions(List<BeaconTo> beacons, List<BeaconStatusTo> beaconStatuses,
@@ -21,7 +23,7 @@ public class PositionUpdater {
 			Map<String, List<BeaconStatusTo>> beaconToBeaconStatuses = groupStatusesByBeacon(beaconStatuses);
 			Map<String, Float> beaconToDistance = calculateDistance(beaconToBeaconStatuses);
 			String mac = entry.getKey();
-			AutomaticMobileSetTo automaticMobileSet = findAutomaticMobileSetByMac(automaticMobileSets, mac);
+			AutomaticMobileSetTo automaticMobileSet = getAutomaticMobileSetByMac(automaticMobileSets, mac);
 			String coordinates = calculateCoordinates(beaconToDistance, beacons);
 			// TODO set x, y from coordinates
 			automaticMobileSet.setxAutomaticMobileSet(0);
@@ -59,28 +61,39 @@ public class PositionUpdater {
 		return map;
 	}
 
-	private AutomaticMobileSetTo findAutomaticMobileSetByMac(List<AutomaticMobileSetTo> automaticMobileSets,
+	private AutomaticMobileSetTo getAutomaticMobileSetByMac(List<AutomaticMobileSetTo> automaticMobileSets,
 			String mac) {
-
-		AutomaticMobileSetTo automaticMobileSetMacIden = new AutomaticMobileSetTo();
-		// for (AutomaticMobileSetTo automaticMobileSet : automaticMobileSets)
-
-		// TODO Auto-generated method stub
-
-		return null;
+		for (AutomaticMobileSetTo automaticMobileSet : automaticMobileSets) {
+			String currentMac = automaticMobileSet.getMacAutomaticMobileSet();
+			if (currentMac.equals(mac)) {
+				return automaticMobileSet;
+			}
+		}
+		throw new IllegalStateException("automaticMobileSet with mac " + mac + " has not been found.");
 	}
 
 	private Map<String, Float> calculateDistance(Map<String, List<BeaconStatusTo>> beaconMacToBeaconStatuses) {
 		Map<String, Float> map = new HashMap<>();
 		for (Map.Entry<String, List<BeaconStatusTo>> entry : beaconMacToBeaconStatuses.entrySet()) {
-			map.put(entry.getKey(), calculateDistance(entry.getValue()));
+			map.put(entry.getKey(), calculateAverageDistance(entry.getValue()));
 		}
 		return map;
 	}
 
-	private Float calculateDistance(List<BeaconStatusTo> value) {
-		// TODO Auto-generated method stub
-		return null;
+	private Float calculateAverageDistance(List<BeaconStatusTo> value) {
+
+		// TODO Average distance
+
+		float distance = 0;
+		float avarageDistance = 0;
+		int counter = 0;
+
+		for (BeaconStatusTo beaconData : value) {
+			distance = (float) (Math.pow(10d, beaconData.getMeasuredStrenght() - beaconData.getRssi()) / (10 * 2));
+			avarageDistance = +distance;
+			counter++;
+		}
+		return avarageDistance / counter;
 	}
 
 	private String calculateCoordinates(Map<String, Float> beaconToDistance, List<BeaconTo> beacons) {

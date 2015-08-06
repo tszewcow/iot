@@ -24,6 +24,7 @@ public class PositionUpdaterTest {
 		beaconStatuses.add(createExampleBeaconStatuses());
 		beaconStatuses.add(createExampleBeaconStatuses1());
 		beaconStatuses.add(createExampleBeaconStatuses2());
+		beaconStatuses.add(createExampleBeaconStatuses3());
 
 		List<AutomaticMobileSetTo> automaticMobileSets = new ArrayList<>();
 		automaticMobileSets.add(createExampleAutomaticMobileSet());
@@ -119,6 +120,19 @@ public class PositionUpdaterTest {
 		return beaconStatus;
 	}
 
+	private BeaconStatusTo createExampleBeaconStatuses3() {
+		BeaconStatusTo beaconStatus = new BeaconStatusTo();
+		beaconStatus.setMajor(65535);
+		beaconStatus.setMinor(189);
+		beaconStatus.setMac("D6:90:A8:08:F0:E0");
+		beaconStatus.setRssi(-50);
+		beaconStatus.setMeasuredStrenght(-61);
+		beaconStatus.setUuid("a271b5f0092c01333a737a1048141ee1");
+		beaconStatus.setMacAutomaticMobileSet("20:sd:sd:sd:23:sd");
+		beaconStatus.setDistance(10);
+		return beaconStatus;
+	}
+
 	private AutomaticMobileSetTo createExampleAutomaticMobileSet() {
 		AutomaticMobileSetTo automaticMobileSet = new AutomaticMobileSetTo();
 		automaticMobileSet.setBuilding("MT II");
@@ -127,7 +141,7 @@ public class PositionUpdaterTest {
 		automaticMobileSet.setFloor(7);
 		automaticMobileSet.setGuardian("Mirek");
 		automaticMobileSet.setProject("projekt");
-		automaticMobileSet.setMacAutomaticMobileSet("20:00:11:23:23:32");
+		automaticMobileSet.setMacAutomaticMobileSet("20:sd:sd:sd:23:sd");
 		automaticMobileSet.setRoom(7.12);
 		return automaticMobileSet;
 	}
