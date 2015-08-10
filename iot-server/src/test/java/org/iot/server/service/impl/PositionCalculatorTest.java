@@ -8,14 +8,12 @@ import java.util.List;
 
 import org.iot.server.service.impl.PositionCalculator.Pair;
 import org.iot.server.to.PositionTo;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class PositionCalculatorTest {
 
 	private final PositionCalculator positionCalculator = new PositionCalculator();
 
-	@Ignore
 	@Test
 	public void calculatePositionShouldreturnNotNullResult() {
 		// given
@@ -28,9 +26,8 @@ public class PositionCalculatorTest {
 		assertNotNull(result);
 	}
 
-	// @Ignore
 	@Test
-	public void shouldCalculatePositionCorrectly() {
+	public void shouldCalculatePositionCorrectlyFor3Circles() {
 		// given
 		List<Pair<PositionTo, Float>> points = new ArrayList<>();
 		points.add(new Pair<>(new PositionTo(5f, 0f), 5f));
@@ -39,8 +36,32 @@ public class PositionCalculatorTest {
 		// when
 		PositionTo result = positionCalculator.calculatePosition(points);
 		// then
-		assertEquals(1f, result.getX(), 0);
-		assertEquals(2f, result.getY(), 0);
+		assertEquals(3.60, result.getX(), 0.1);
+		assertEquals(4.60, result.getY(), 0.1);
 	}
 
+	@Test
+	public void shouldCalculatePositionCorrectlyFor2Circles() {
+		// given
+		List<Pair<PositionTo, Float>> points = new ArrayList<>();
+		points.add(new Pair<>(new PositionTo(5f, 0f), 5f));
+		points.add(new Pair<>(new PositionTo(0f, 5f), 4f));
+		// when
+		PositionTo result = positionCalculator.calculatePosition(points);
+		// then
+		assertEquals(2.04, result.getX(), 0.1);
+		assertEquals(2.94, result.getY(), 0.1);
+	}
+
+	@Test
+	public void shouldCalculatePositionCorrectlyForCircle() {
+		// given
+		List<Pair<PositionTo, Float>> points = new ArrayList<>();
+		points.add(new Pair<>(new PositionTo(5f, 0f), 5f));
+		// when
+		PositionTo result = positionCalculator.calculatePosition(points);
+		// then
+		assertEquals(Double.NaN, result.getX(), 0);
+		assertEquals(Double.NaN, result.getY(), 0);
+	}
 }

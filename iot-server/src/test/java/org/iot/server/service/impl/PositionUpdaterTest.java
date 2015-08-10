@@ -6,11 +6,18 @@ import java.util.List;
 import org.iot.server.to.AutomaticMobileSetTo;
 import org.iot.server.to.BeaconStatusTo;
 import org.iot.server.to.BeaconTo;
+import org.junit.Before;
 import org.junit.Test;
 
 public class PositionUpdaterTest {
 
-	private static PositionUpdater positionUpdater = new PositionUpdater();
+	private PositionUpdater positionUpdater;
+
+	@Before
+	public void setUp() {
+		PositionCalculator positionCalculator = new PositionCalculator();
+		positionUpdater = new PositionUpdater(positionCalculator);
+	}
 
 	@Test
 	public void updateAutomaticMobileSetPositionsShouldCalculateCorrectCoordinatesForSimpleData() {

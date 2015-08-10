@@ -35,6 +35,13 @@ public class BeaconRestService {
 		beaconService.registerStatus(beaconStatusTo);
 	}
 
+	// POPRAW
+
+	@RequestMapping(value = "/beacon-add", method = RequestMethod.POST)
+	public void addBeacon(@RequestBody String request) {
+		beaconService.addBeacon(beaconTo);
+	}
+
 	@RequestMapping(value = "/beacons-statuses", method = RequestMethod.GET)
 	public List<BeaconStatusTo> getAllBeaconsStatuses() {
 		return beaconService.getAllBeaconsStatuses();

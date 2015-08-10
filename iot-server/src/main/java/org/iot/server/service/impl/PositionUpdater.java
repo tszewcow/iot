@@ -5,13 +5,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.iot.server.service.impl.PositionCalculator.Pair;
 import org.iot.server.to.AutomaticMobileSetTo;
 import org.iot.server.to.BeaconStatusTo;
 import org.iot.server.to.BeaconTo;
+import org.iot.server.to.PositionTo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PositionUpdater {
+
+	private final PositionCalculator positionCalculator;
+
+	@Autowired
+	public PositionUpdater(PositionCalculator positionCalculator) {
+		this.positionCalculator = positionCalculator;
+	}
 
 	public void updateAutomaticMobileSetPositions(List<BeaconTo> beacons, List<BeaconStatusTo> beaconStatuses,
 			List<AutomaticMobileSetTo> automaticMobileSets) {
@@ -25,7 +35,6 @@ public class PositionUpdater {
 			String mac = entry.getKey();
 			AutomaticMobileSetTo automaticMobileSet = getAutomaticMobileSetByMac(automaticMobileSets, mac);
 			String coordinates = calculateCoordinates(beaconToDistance, beacons);
-			// TODO set x, y from coordinates
 			automaticMobileSet.setxAutomaticMobileSet(0);
 		}
 	}
@@ -82,8 +91,6 @@ public class PositionUpdater {
 
 	private Float calculateAverageDistance(List<BeaconStatusTo> value) {
 
-		// TODO Average distance
-
 		float distance = 0;
 		float avarageDistance = 0;
 		int counter = 0;
@@ -97,7 +104,22 @@ public class PositionUpdater {
 	}
 
 	private String calculateCoordinates(Map<String, Float> beaconToDistance, List<BeaconTo> beacons) {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<Pair<PositionTo, Float>> coordinates = new ArrayList<>();
+		Map<String, Float> map = new HashMap<>(beaconToDistance);
+
+		for (Map.Entry<String, Float> entry : map.entrySet())
+			for (BeaconTo beacon : beacons) {
+				String key = entry.getKey();
+				Float value = entry.getValue();
+
+				if (beacon.getMac().equals(key)) {
+					coordinates.add(new Pair<>(new PositionTo(beacon.getxBeacon(), beacon.getyBeacon()), value));
+				}
+			}
+
+		PositionTo automaticMobileSetPosition = positionCalculator.calculatePosition(coordinates);
+
+		return automaticMobileSetPosition.toString();
 	}
 }

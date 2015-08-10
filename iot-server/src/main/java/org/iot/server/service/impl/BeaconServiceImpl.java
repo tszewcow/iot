@@ -47,6 +47,11 @@ public class BeaconServiceImpl implements BeaconService {
 		return beacons;
 	}
 
+	@Override
+	public void addBeacon(BeaconTo beacon) {
+
+	}
+
 	private BeaconTo createExampleBeacon() {
 		BeaconTo beacon = new BeaconTo();
 		beacon.setName("MT II 7.p 12.pokój (pokój Jacka)");
@@ -91,5 +96,4 @@ public class BeaconServiceImpl implements BeaconService {
 		beacon2.setyBeacon(80);
 		return beacon2;
 	}
-
 }

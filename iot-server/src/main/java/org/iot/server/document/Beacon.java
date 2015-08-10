@@ -1,6 +1,11 @@
-package org.iot.server.to;
+package org.iot.server.document;
 
-public class BeaconTo {
+import org.springframework.data.annotation.Id;
+
+public class Beacon {
+
+	@Id
+	private String id;
 	private String name;
 	private String mac;
 	private String uuidnor;
@@ -92,29 +97,12 @@ public class BeaconTo {
 		this.yBeacon = yBeacon;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((mac == null) ? 0 : mac.hashCode());
-		return result;
+	public String getId() {
+		return id;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		BeaconTo other = (BeaconTo) obj;
-		if (mac == null) {
-			if (other.mac != null)
-				return false;
-		} else if (!mac.equals(other.mac))
-			return false;
-		return true;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

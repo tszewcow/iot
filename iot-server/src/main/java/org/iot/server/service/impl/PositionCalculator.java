@@ -1,16 +1,56 @@
 package org.iot.server.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.iot.server.to.PositionTo;
 import org.springframework.stereotype.Component;
 
+import math.geom2d.Point2D;
+import math.geom2d.conic.Circle2D;
+
 @Component
 class PositionCalculator {
 
-	public PositionTo calculatePosition(List<Pair<PositionTo, Float>> points) {
+	public PositionTo calculatePosition(List<Pair<PositionTo, Float>> circles) {
 
-		return new PositionTo();
+		List<Circle2D> circles2d = new ArrayList<>(circles.size());
+		List<Point2D> intersectionPoints = new ArrayList<>();
+
+		GetCircles2d(circles, circles2d);
+		GetIntersectiosnPoints(intersectionPoints, circles2d);
+
+		Point2D centroid = Point2D.centroid(intersectionPoints);
+
+		return new PositionTo((float) centroid.x(), (float) centroid.y());
+	}
+
+	protected List<Circle2D> GetCircles2d(List<Pair<PositionTo, Float>> circles, List<Circle2D> circles2d) {
+
+		for (Pair<PositionTo, Float> circle : circles) {
+			PositionTo ab = circle.getA();
+			Float r = circle.getB();
+			Circle2D circle2d = new Circle2D(ab.getX(), ab.getY(), r);
+			circles2d.add(circle2d);
+		}
+		return circles2d;
+	}
+
+	protected List<Point2D> GetIntersectiosnPoints(List<Point2D> intersectionPoints, List<Circle2D> circles2d) {
+
+		if (circles2d.size() < 1) {
+			for (int i = 0; i < circles2d.size(); i++) {
+				for (int j = i + 1; j < circles2d.size(); j++) {
+					Collection<Point2D> cirlesIntersectionPoints = circles2d.get(i).intersections(circles2d.get(j));
+					intersectionPoints.addAll(cirlesIntersectionPoints);
+				}
+			}
+		} else {
+			// DOPISAC
+		}
+
+		return intersectionPoints;
 	}
 
 	public static class Pair<A, B> {

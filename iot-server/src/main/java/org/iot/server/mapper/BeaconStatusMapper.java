@@ -27,18 +27,7 @@ public class BeaconStatusMapper {
 
 	public List<BeaconStatusTo> mapDocuments2Tos(List<BeaconStatus> beaconStatuses) {
 
-		/*
-		 * TO LEARN
-		 * 
-		 * List<BeaconStatusTo> beaconStatusTos = new
-		 * ArrayList<>(beaconStatuses.size());
-		 * 
-		 * for (BeaconStatus beaconStatus : beaconStatuses) {
-		 * beaconStatusTos.add(mapDocument2To(beaconStatus)); }
-		 */
-
 		return beaconStatuses.stream().map(this::mapDocument2To).collect(Collectors.toList());
-
 	}
 
 	public BeaconStatus mapTo2Document(BeaconStatusTo beaconStatusTo) {
