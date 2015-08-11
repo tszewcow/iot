@@ -15,10 +15,9 @@ public class UpdateJobRunner {
 		this.positionUpdateService = positionUpdateService;
 	}
 
-	@Scheduled(fixedDelay = 2000)
+	@Scheduled(fixedDelay = 1000)
 	public void runUpdateJob() {
 		positionUpdateService.updatePositions();
-		System.out.println("Test");
+		System.out.println("1 sec\n");
 	}
-
 }

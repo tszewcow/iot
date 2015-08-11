@@ -11,17 +11,25 @@ public class BeaconStatus {
 	private String mac;
 	private int rssi;
 	private int minor;
+	private int major;
+	private String macAutomaticMobileSet;
 	private double distance;
 
 	public double getDistance() {
 		return distance;
 	}
 
+	public String getMacAutomaticMobileSet() {
+		return macAutomaticMobileSet;
+	}
+
+	public void setMacAutomaticMobileSet(String macAutomaticMobileSet) {
+		this.macAutomaticMobileSet = macAutomaticMobileSet;
+	}
+
 	public void setDistance(double distance) {
 		this.distance = distance;
 	}
-
-	private int major;
 
 	public int getMajor() {
 		return major;

@@ -11,8 +11,8 @@ public class AutomaticMobileSet {
 	private String building;
 	private int floor;
 	private double room;
-	private int xAutomaticMobileSet;
-	private int yAutomaticMobileSet;
+	private float xAutomaticMobileSet;
+	private float yAutomaticMobileSet;
 	private String macAutomaticMobileSet;
 	private String position;
 
@@ -64,20 +64,20 @@ public class AutomaticMobileSet {
 		this.room = room;
 	}
 
-	public int getxAutomaticMobileSet() {
+	public float getxAutomaticMobileSet() {
 		return xAutomaticMobileSet;
 	}
 
-	public void setxAutomaticMobileSet(int x) {
-		this.xAutomaticMobileSet = x;
+	public void setxAutomaticMobileSet(float xAutomaticMobileSet) {
+		this.xAutomaticMobileSet = xAutomaticMobileSet;
 	}
 
-	public int getyAutomaticMobileSet() {
+	public float getyAutomaticMobileSet() {
 		return yAutomaticMobileSet;
 	}
 
-	public void setyAutomaticMobileSet(int y) {
-		this.yAutomaticMobileSet = y;
+	public void setyAutomaticMobileSet(float yAutomaticMobileSet) {
+		this.yAutomaticMobileSet = yAutomaticMobileSet;
 	}
 
 	public String getPosition() {

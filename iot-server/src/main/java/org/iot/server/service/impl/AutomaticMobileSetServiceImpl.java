@@ -1,51 +1,37 @@
 package org.iot.server.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.iot.server.document.AutomaticMobileSet;
+import org.iot.server.mapper.AutomaticMobileSetMapper;
+import org.iot.server.repository.AutomaticMobileSetRepository;
 import org.iot.server.service.AutomaticMobileSetService;
 import org.iot.server.to.AutomaticMobileSetTo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AutomaticMobileSetServiceImpl implements AutomaticMobileSetService {
 
+	private final AutomaticMobileSetRepository automaticMobileSetRepository;
+	private final AutomaticMobileSetMapper automaticMobileSetMapper;
+
+	@Autowired
+	public AutomaticMobileSetServiceImpl(AutomaticMobileSetRepository automaticMobileSetRepository,
+			AutomaticMobileSetMapper automaticMobileSetMapper) {
+		this.automaticMobileSetRepository = automaticMobileSetRepository;
+		this.automaticMobileSetMapper = automaticMobileSetMapper;
+	}
+
 	@Override
 	public List<AutomaticMobileSetTo> getAllAutomaticMobileSets() {
-		List<AutomaticMobileSetTo> automaticMobileSets = new ArrayList<>();
-
-		AutomaticMobileSetTo automaticMobileSet = createExampleAutomaticMobileSet();
-		AutomaticMobileSetTo automaticMobileSet1 = createExampleAutomaticMobileSet1();
-
-		automaticMobileSets.add(automaticMobileSet);
-		automaticMobileSets.add(automaticMobileSet1);
-
-		return automaticMobileSets;
+		List<AutomaticMobileSet> automaticMobileSetTo = automaticMobileSetRepository.findAll();
+		return automaticMobileSetMapper.mapDocuments2Tos(automaticMobileSetTo);
 	}
 
-	private AutomaticMobileSetTo createExampleAutomaticMobileSet() {
-		AutomaticMobileSetTo automaticMobileSet = new AutomaticMobileSetTo();
-		automaticMobileSet.setProject("Hermes");
-		automaticMobileSet.setGuardian("Janusz Janusz");
-		automaticMobileSet.setBuilding("MT II");
-		automaticMobileSet.setFloor(8);
-		automaticMobileSet.setRoom(8.132);
-		automaticMobileSet.setxAutomaticMobileSet(145);
-		automaticMobileSet.setyAutomaticMobileSet(100);
-
-		return automaticMobileSet;
-	}
-
-	private AutomaticMobileSetTo createExampleAutomaticMobileSet1() {
-		AutomaticMobileSetTo automaticMobileSet1 = new AutomaticMobileSetTo();
-		automaticMobileSet1.setProject("Ikar");
-		automaticMobileSet1.setGuardian("Mirek Mirek");
-		automaticMobileSet1.setBuilding("MT II");
-		automaticMobileSet1.setFloor(11);
-		automaticMobileSet1.setRoom(11.12);
-		automaticMobileSet1.setxAutomaticMobileSet(100);
-		automaticMobileSet1.setyAutomaticMobileSet(50);
-
-		return automaticMobileSet1;
+	@Override
+	public void addautomaticMobileSet(AutomaticMobileSetTo automaticMobileSetTo) {
+		AutomaticMobileSet automaticMobileSet = automaticMobileSetMapper.mapTo2Document(automaticMobileSetTo);
+		automaticMobileSetRepository.save(automaticMobileSet);
 	}
 }

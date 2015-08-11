@@ -89,15 +89,15 @@ public class PositionUpdater {
 		return map;
 	}
 
-	private Float calculateAverageDistance(List<BeaconStatusTo> value) {
+	private float calculateAverageDistance(List<BeaconStatusTo> value) {
 
 		float distance = 0;
 		float avarageDistance = 0;
 		int counter = 0;
 
 		for (BeaconStatusTo beaconData : value) {
-			distance = (float) (Math.pow(10d, beaconData.getMeasuredStrenght() - beaconData.getRssi()) / (10 * 2));
-			avarageDistance = +distance;
+			distance = (float) beaconData.getDistance();
+			avarageDistance = avarageDistance + distance;
 			counter++;
 		}
 		return avarageDistance / counter;
@@ -120,6 +120,8 @@ public class PositionUpdater {
 
 		PositionTo automaticMobileSetPosition = positionCalculator.calculatePosition(coordinates);
 
+		System.out.println(automaticMobileSetPosition.getX());
+		System.out.println(automaticMobileSetPosition.getY());
 		return automaticMobileSetPosition.toString();
 	}
 }

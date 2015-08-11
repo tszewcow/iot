@@ -39,7 +39,7 @@ class PositionCalculator {
 
 	protected List<Point2D> GetIntersectiosnPoints(List<Point2D> intersectionPoints, List<Circle2D> circles2d) {
 
-		if (circles2d.size() < 1) {
+		if (circles2d.size() > 1) {
 			for (int i = 0; i < circles2d.size(); i++) {
 				for (int j = i + 1; j < circles2d.size(); j++) {
 					Collection<Point2D> cirlesIntersectionPoints = circles2d.get(i).intersections(circles2d.get(j));
@@ -47,7 +47,7 @@ class PositionCalculator {
 				}
 			}
 		} else {
-			// DOPISAC
+			throw new IllegalArgumentException("Should more beacons than only one");
 		}
 
 		return intersectionPoints;

@@ -7,4 +7,6 @@ import org.iot.server.to.AutomaticMobileSetTo;
 public interface AutomaticMobileSetService {
 
 	List<AutomaticMobileSetTo> getAllAutomaticMobileSets();
+
+	void addautomaticMobileSet(AutomaticMobileSetTo request);
 }

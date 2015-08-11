@@ -53,8 +53,8 @@ public class PositionUpdaterTest {
 		beacons.setBuilding("MT II");
 		beacons.setFloor(7);
 		beacons.setRoom(7.5);
-		beacons.setxBeacon(115);
-		beacons.setyBeacon(75);
+		beacons.setxBeacon(5);
+		beacons.setyBeacon(0);
 		return beacons;
 	}
 
