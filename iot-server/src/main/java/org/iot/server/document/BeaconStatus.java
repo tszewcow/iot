@@ -10,7 +10,7 @@ public class BeaconStatus {
 	private int measuredStrenght;
 	private String mac;
 	private int rssi;
-	private int minor;
+	private String minor;
 	private int major;
 	private String macAutomaticMobileSet;
 	private double distance;
@@ -71,11 +71,11 @@ public class BeaconStatus {
 		this.rssi = rssi;
 	}
 
-	public int getMinor() {
+	public String getMinor() {
 		return minor;
 	}
 
-	public void setMinor(int minor) {
+	public void setMinor(String minor) {
 		this.minor = minor;
 	}
 

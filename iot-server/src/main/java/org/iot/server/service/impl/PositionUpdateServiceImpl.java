@@ -44,24 +44,27 @@ public class PositionUpdateServiceImpl implements PositionUpdateService {
 		List<BeaconStatusTo> BeaconStatusToList = new ArrayList<>();
 		List<AutomaticMobileSetTo> AutomaticMobileSetToList = new ArrayList<>();
 
-		for (Beacon beacons : beaconList) {
+		for (Beacon beacons : beaconList)
+			for (BeaconStatus beaconStatus : beaconStatusList) {
 
-			BeaconTo beaconTo = new BeaconTo();
+				if (beacons.getMinor().equals(beaconStatus.getMinor())) {
 
-			beaconTo.setName(beacons.getMac());
-			beaconTo.setMac(beacons.getMac());
-			beaconTo.setUuidnor(beacons.getUuidnor());
-			beaconTo.setUuidsec(beacons.getUuidsec());
-			beaconTo.setUuidser(beacons.getUuidser());
-			beaconTo.setBuilding(beacons.getBuilding());
-			beaconTo.setFloor(beacons.getFloor());
-			beaconTo.setRoom(beacons.getRoom());
-			beaconTo.setxBeacon(beacons.getxBeacon());
-			beaconTo.setyBeacon(beacons.getyBeacon());
+					BeaconTo beaconTo = new BeaconTo();
+					beaconTo.setName(beacons.getName());
+					beaconTo.setMac(beacons.getMac());
+					beaconTo.setMinor(beaconStatus.getMinor());
+					beaconTo.setUuidnor(beacons.getUuidnor());
+					beaconTo.setUuidsec(beacons.getUuidsec());
+					beaconTo.setUuidser(beacons.getUuidser());
+					beaconTo.setBuilding(beacons.getBuilding());
+					beaconTo.setFloor(beacons.getFloor());
+					beaconTo.setRoom(beacons.getRoom());
+					beaconTo.setxBeacon(beacons.getxBeacon());
+					beaconTo.setyBeacon(beacons.getyBeacon());
 
-			beaconToList.add(beaconTo);
-		}
-
+					beaconToList.add(beaconTo);
+				}
+			}
 		for (BeaconStatus beaconStatus : beaconStatusList) {
 
 			BeaconStatusTo beaconStatusTo = new BeaconStatusTo();

@@ -91,7 +91,7 @@ public class PositionUpdaterTest {
 	private BeaconStatusTo createExampleBeaconStatuses() {
 		BeaconStatusTo beaconStatus = new BeaconStatusTo();
 		beaconStatus.setMajor(65535);
-		beaconStatus.setMinor(189);
+		beaconStatus.setMinor("189");
 		beaconStatus.setMac("D6:90:A8:08:F0:E0");
 		beaconStatus.setRssi(-50);
 		beaconStatus.setMeasuredStrenght(-61);
@@ -104,7 +104,7 @@ public class PositionUpdaterTest {
 	private BeaconStatusTo createExampleBeaconStatuses2() {
 		BeaconStatusTo beaconStatus = new BeaconStatusTo();
 		beaconStatus.setMajor(65535);
-		beaconStatus.setMinor(190);
+		beaconStatus.setMinor("190");
 		beaconStatus.setMac("D6:90:A8:08:F0:E1");
 		beaconStatus.setRssi(-50);
 		beaconStatus.setMeasuredStrenght(-61);
@@ -117,7 +117,7 @@ public class PositionUpdaterTest {
 	private BeaconStatusTo createExampleBeaconStatuses1() {
 		BeaconStatusTo beaconStatus = new BeaconStatusTo();
 		beaconStatus.setMajor(65535);
-		beaconStatus.setMinor(189);
+		beaconStatus.setMinor("189");
 		beaconStatus.setMac("D6:90:A8:08:F0:E2");
 		beaconStatus.setRssi(-50);
 		beaconStatus.setMeasuredStrenght(-61);
@@ -130,7 +130,7 @@ public class PositionUpdaterTest {
 	private BeaconStatusTo createExampleBeaconStatuses3() {
 		BeaconStatusTo beaconStatus = new BeaconStatusTo();
 		beaconStatus.setMajor(65535);
-		beaconStatus.setMinor(189);
+		beaconStatus.setMinor("189");
 		beaconStatus.setMac("D6:90:A8:08:F0:E0");
 		beaconStatus.setRssi(-50);
 		beaconStatus.setMeasuredStrenght(-61);

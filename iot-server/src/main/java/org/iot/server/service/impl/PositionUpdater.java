@@ -59,11 +59,11 @@ public class PositionUpdater {
 		Map<String, List<BeaconStatusTo>> map = new HashMap<>();
 
 		for (BeaconStatusTo beaconStatusTo : beaconStatuses) {
-			String beaconMac = beaconStatusTo.getMac();
-			List<BeaconStatusTo> beaconStatusesForBeacon = map.get(beaconMac);
+			String beaconMinor = beaconStatusTo.getMinor();
+			List<BeaconStatusTo> beaconStatusesForBeacon = map.get(beaconMinor);
 			if (beaconStatusesForBeacon == null) {
 				beaconStatusesForBeacon = new ArrayList<>();
-				map.put(beaconMac, beaconStatusesForBeacon);
+				map.put(beaconMinor, beaconStatusesForBeacon);
 			}
 			beaconStatusesForBeacon.add(beaconStatusTo);
 		}
@@ -95,10 +95,18 @@ public class PositionUpdater {
 		float avarageDistance = 0;
 		int counter = 0;
 
-		for (BeaconStatusTo beaconData : value) {
-			distance = (float) beaconData.getDistance();
-			avarageDistance = avarageDistance + distance;
-			counter++;
+		if (value.size() > 9) {
+			for (BeaconStatusTo beaconData : value.subList(value.size() - 10, value.size())) {
+				distance = (float) beaconData.getDistance();
+				avarageDistance = avarageDistance + distance;
+				counter++;
+			}
+		} else {
+			for (BeaconStatusTo beaconData : value) {
+				distance = (float) beaconData.getDistance();
+				avarageDistance = avarageDistance + distance;
+				counter++;
+			}
 		}
 		return avarageDistance / counter;
 	}
@@ -113,7 +121,7 @@ public class PositionUpdater {
 				String key = entry.getKey();
 				Float value = entry.getValue();
 
-				if (beacon.getMac().equals(key)) {
+				if (beacon.getMinor() == key) {
 					coordinates.add(new Pair<>(new PositionTo(beacon.getxBeacon(), beacon.getyBeacon()), value));
 				}
 			}

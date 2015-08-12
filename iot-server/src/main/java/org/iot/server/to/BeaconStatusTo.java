@@ -8,7 +8,7 @@ package org.iot.server.to;
 public class BeaconStatusTo {
 
 	private int major;
-	private int minor;
+	private String minor;
 	private String uuid;
 	private int rssi;
 	private String mac;
@@ -48,11 +48,11 @@ public class BeaconStatusTo {
 		this.major = major;
 	}
 
-	public int getMinor() {
+	public String getMinor() {
 		return minor;
 	}
 
-	public void setMinor(int minor) {
+	public void setMinor(String minor) {
 		this.minor = minor;
 	}
 

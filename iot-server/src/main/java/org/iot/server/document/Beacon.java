@@ -8,6 +8,7 @@ public class Beacon {
 	private String id;
 	private String name;
 	private String mac;
+	private String minor;
 	private String uuidnor;
 	private String uuidsec;
 	private String uuidser;
@@ -16,6 +17,14 @@ public class Beacon {
 	private double room;
 	private float xBeacon;
 	private float yBeacon;
+
+	public String getMinor() {
+		return minor;
+	}
+
+	public void setMinor(String minor) {
+		this.minor = minor;
+	}
 
 	public String getName() {
 		return name;
