@@ -4,3 +4,8 @@
 .project
 .idea
 **/*.iml
+iot-client/node_modules
+iot-client/app/bower_components
+iot-client/dist
+iot-client/.tmp
+iot-client/test

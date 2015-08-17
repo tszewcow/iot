@@ -1,0 +1,17 @@
+{
+    "paths": {
+        "tmp": ".tmp",
+        "dist": "dist",
+        "app": "app",
+        "test": "test"
+    },
+    "modules": [
+        "main",
+        "component-1",
+        "component-2",
+		"component-3"
+    ],
+    "appBuild": true,
+    "proxy": "http://localhost:8081",
+    "proxyContext": "/oasp4j-example-application"
+}
