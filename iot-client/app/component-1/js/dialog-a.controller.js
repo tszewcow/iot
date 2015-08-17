@@ -1,4 +1,4 @@
-angular.module('app.component1').controller('dialogACntl', function ($scope) {
+angular.module('app.component1').controller('dialogACntl', function ($scope, $modal) {
     'use strict';
 
 
@@ -41,15 +41,33 @@ angular.module('app.component1').controller('dialogACntl', function ($scope) {
     };
 
     $scope.mySelectedItems = [];
-    $scope.$watchCollection('mySelectedItems', function () {
-
-    });
+    $scope.$watchCollection('mySelectedItems', function () {});
 
     $scope.deleteBeacon = function () {
+
         $scope.model.splice($scope.mySelectedItems[0].number - 1, 1);
     };
 
     $scope.deleteButtonDisabled = function () {
+
         return $scope.mySelectedItems.length === 0;
+    };
+    
+    $scope.dataFromParentDialog = 'tralalala';
+
+    $scope.editBeacon = function () {
+
+        var modalInstance = $modal.open({
+            templateUrl: '/component-1/html/edit-beacon.html',
+            controller: 'editBeaconCntl',
+            animation: true,
+            resolve: {
+                testData: function () {
+                    return $scope.dataFromParentDialog;
+                }
+            }
+        });
+
+        modalInstance.result.then(function () {});
     };
 });
