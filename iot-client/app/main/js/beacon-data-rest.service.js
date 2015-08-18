@@ -1,8 +1,10 @@
 angular.module('app.main').factory('beaconDataRestService', function ($http) {
     'use strict';
 
-
     var helper;
+
+
+
 
     return {
         getBeaconsData: function () {

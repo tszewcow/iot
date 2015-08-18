@@ -16,7 +16,7 @@ class RequestToBeaconStatusToConverter {
 		String[] tokens = requestString.split("&");
 		tokens[0] = tokens[0].substring(7, 12); // major
 		tokens[1] = tokens[1].substring(5, 37); // uuid
-		tokens[2] = tokens[2].substring(4, 21); // mac
+		tokens[2] = tokens[2].substring(4, 31); // mac
 		tokens[2] = tokens[2].replace("%3A", ":");
 		tokens[3] = tokens[3].substring(5, 8); // rssi
 		tokens[4] = tokens[4].substring(6, 9); // minor

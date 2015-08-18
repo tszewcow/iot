@@ -59,11 +59,11 @@ public class PositionUpdater {
 		Map<String, List<BeaconStatusTo>> map = new HashMap<>();
 
 		for (BeaconStatusTo beaconStatusTo : beaconStatuses) {
-			String beaconMinor = beaconStatusTo.getMinor();
-			List<BeaconStatusTo> beaconStatusesForBeacon = map.get(beaconMinor);
+			String beaconMac = beaconStatusTo.getMac();
+			List<BeaconStatusTo> beaconStatusesForBeacon = map.get(beaconMac);
 			if (beaconStatusesForBeacon == null) {
 				beaconStatusesForBeacon = new ArrayList<>();
-				map.put(beaconMinor, beaconStatusesForBeacon);
+				map.put(beaconMac, beaconStatusesForBeacon);
 			}
 			beaconStatusesForBeacon.add(beaconStatusTo);
 		}
@@ -121,7 +121,7 @@ public class PositionUpdater {
 				String key = entry.getKey();
 				Float value = entry.getValue();
 
-				if (beacon.getMinor() == key) {
+				if (beacon.getMac().equals(key)) {
 					coordinates.add(new Pair<>(new PositionTo(beacon.getxBeacon(), beacon.getyBeacon()), value));
 				}
 			}
