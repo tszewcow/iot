@@ -1,0 +1,77 @@
+<style>
+    input {
+        display: block;
+        width: 100%;
+    }
+</style>
+
+<div class="modal-dialog">
+    <div class="modal-header">
+        <div class="modal-title">
+            <h3>Edit AMS</h3>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Number</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.number" data-ng-disabled="true" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Project</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.project" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Guardian</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.guardian" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Building</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.building" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Stock</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.stock" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Room</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.room" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Coordinates</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.coordinates" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

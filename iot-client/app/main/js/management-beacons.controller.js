@@ -1,8 +1,13 @@
-angular.module('app.component1').controller('dialogACntl', function ($scope, $modal) {
+angular.module('app.main').controller('managementBeaconCntl', function ($scope, $modal, beaconDataRestService) {
     'use strict';
 
+    beaconDataRestService.getBeaconsData().then(function (response) {
+        $scope.test = response;
+    }, function () {
+        alert('something went wrong');
+    });
 
-    $scope.model = [{
+    $scope.beaconmodel = [{
         number: 1,
         name: 'some name 1',
         uuidNormal: 'normal uuid 1',
@@ -26,8 +31,8 @@ angular.module('app.component1').controller('dialogACntl', function ($scope, $mo
 
 
     $scope.addBeacon = function () {
-        var currentBeaconNumber = $scope.model.length + 1;
-        $scope.model.push({
+        var currentBeaconNumber = $scope.beaconmodel.length + 1;
+        $scope.beaconmodel.push({
             number: currentBeaconNumber,
             name: 'some name ' + currentBeaconNumber,
             uuidNormal: 'normal uuid ' + currentBeaconNumber,
@@ -45,7 +50,7 @@ angular.module('app.component1').controller('dialogACntl', function ($scope, $mo
 
     $scope.deleteBeacon = function () {
 
-        $scope.model.splice($scope.mySelectedItems[0].number - 1, 1);
+        $scope.beaconmodel.splice($scope.mySelectedItems[0].number - 1, 1);
     };
 
     $scope.deleteButtonDisabled = function () {
@@ -60,7 +65,7 @@ angular.module('app.component1').controller('dialogACntl', function ($scope, $mo
     $scope.editBeacon = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: '/component-1/html/edit-beacon.html',
+            templateUrl: '/main/html/edit-beacon.html',
             controller: 'editBeaconCntl',
             animation: true,
             resolve: {
@@ -71,9 +76,9 @@ angular.module('app.component1').controller('dialogACntl', function ($scope, $mo
         });
 
         modalInstance.result.then(function (beacon) {
-            for (var index = 0; index < $scope.model.length; index = index + 1) {
-                if (beacon.number === $scope.model[index].number) {
-                    $scope.model[index] = beacon;
+            for (var index = 0; index < $scope.beaconmodel.length; index = index + 1) {
+                if (beacon.number === $scope.beaconmodel[index].number) {
+                    $scope.beaconmodel[index] = beacon;
                 }
             }
         });

@@ -1,4 +1,4 @@
-angular.module('app.component1').controller('editBeaconCntl', function ($scope, $modalInstance, beacon) {
+angular.module('app.main').controller('editlistOfAmsCntl', function ($scope, $modalInstance, ams) {
     'use strict';
 
     $scope.ok = function () {
@@ -10,5 +10,5 @@ angular.module('app.component1').controller('editBeaconCntl', function ($scope, 
     };
 
 
-    $scope.data = angular.copy(beacon);
+    $scope.data = angular.copy(ams);
 });
