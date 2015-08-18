@@ -1,9 +1,93 @@
-<div>
+<style>
+    input {
+        display: block;
+        width: 100%;
+    }
+</style>
 
-    <p>sad asdasdasd</p>
+<div class="modal-dialog">
+    <div class="modal-header">
+        <div class="modal-title">
+            <h3>Edytuj Beacon</h3>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Numer</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.number" data-ng-disabled="true" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Nazwa</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.name" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Uuid Normal</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.uuidNormal" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Uuid Secure</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.uuidSecure" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Uuid Service</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.uuidService" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Budynek</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.building" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Piętro</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.stock" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Pokój</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.room" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Współrzędne</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.coordinates" class="form-control" />
+            </div>
+        </div>
+    </div>
 
-    <p data-ng-bind="data"></p>
-
-    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
 </div>

@@ -1,14 +1,14 @@
-angular.module('app.component1').controller('editBeaconCntl', function ($scope, $modalInstance, testData) {
+angular.module('app.component1').controller('editBeaconCntl', function ($scope, $modalInstance, beacon) {
     'use strict';
 
     $scope.ok = function () {
-        $modalInstance.close();
+        $modalInstance.close($scope.data);
     };
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
 
-    $scope.data = testData;
 
+    $scope.data = angular.copy(beacon);
 });

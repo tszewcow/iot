@@ -52,8 +52,10 @@ angular.module('app.component1').controller('dialogACntl', function ($scope, $mo
 
         return $scope.mySelectedItems.length === 0;
     };
-    
-    $scope.dataFromParentDialog = 'tralalala';
+
+    $scope.editButtonDisabled = function () {
+        return $scope.mySelectedItems.length === 0;
+    };
 
     $scope.editBeacon = function () {
 
@@ -62,12 +64,18 @@ angular.module('app.component1').controller('dialogACntl', function ($scope, $mo
             controller: 'editBeaconCntl',
             animation: true,
             resolve: {
-                testData: function () {
-                    return $scope.dataFromParentDialog;
+                beacon: function () {
+                    return $scope.mySelectedItems[0];
                 }
             }
         });
 
-        modalInstance.result.then(function () {});
+        modalInstance.result.then(function (beacon) {
+            for (var index = 0; index < $scope.model.length; index = index + 1) {
+                if (beacon.number === $scope.model[index].number) {
+                    $scope.model[index] = beacon;
+                }
+            }
+        });
     };
 });
