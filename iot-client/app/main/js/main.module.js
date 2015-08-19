@@ -8,11 +8,11 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
             .when('/main/welcome', {
                 templateUrl: 'main/html/welcome.html'
             })
-            .when('/main/management-beacons', {
-                templateUrl: 'main/html/management-beacons.html'
+            .when('/main/beacons-management', {
+                templateUrl: 'main/html/beacons-management.html'
             })
-            .when('/main/list-of-ams', {
-                templateUrl: 'main/html/list-of-ams.html'
+            .when('/main/ams-management', {
+                templateUrl: 'main/html/ams-management.html'
             })
             .when('/main/location-map', {
                 templateUrl: 'main/html/location-map.html'
