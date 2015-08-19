@@ -3,7 +3,6 @@ package org.iot.server.to;
 public class BeaconTo {
 	private String name;
 	private String mac;
-	private String minor;
 	private String uuidnor;
 	private String uuidsec;
 	private String uuidser;
@@ -27,14 +26,6 @@ public class BeaconTo {
 
 	public void setMac(String mac) {
 		this.mac = mac;
-	}
-
-	public String getMinor() {
-		return minor;
-	}
-
-	public void setMinor(String minor) {
-		this.minor = minor;
 	}
 
 	public String getUuidnor() {
