@@ -14,7 +14,7 @@ var createKarmaTask = function (options) {
             throw err;
         });
 };
-gulp.task('test', ['lint', 'ngTemplates'], function () {
+gulp.task('test', ['ngTemplates'], function () {
     return createKarmaTask({
         configFile: 'karma.conf.js',
         action: 'run'

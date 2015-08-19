@@ -1,4 +1,4 @@
-angular.module('app.main').controller('listOfAmsCntl', function ($scope, $modal) {
+angular.module('app.main').controller('amsManagementCntl', function ($scope, $modal) {
     'use strict';
 
 
@@ -35,7 +35,6 @@ angular.module('app.main').controller('listOfAmsCntl', function ($scope, $modal)
     };
 
     $scope.mySelectedItems = [];
-    $scope.$watchCollection('mySelectedItems', function () {});
 
     $scope.deleteAms = function () {
 

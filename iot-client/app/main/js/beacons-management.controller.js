@@ -1,13 +1,13 @@
-angular.module('app.main').controller('managementBeaconCntl', function ($scope, $modal, beaconDataRestService) {
+angular.module('app.main').controller('beaconsManagementCntl', function ($scope, $modal, beaconDataRestService) {
     'use strict';
 
-    beaconDataRestService.getBeaconsData().then(function (response) {
-        $scope.test = response;
-    }, function () {
-        alert('something went wrong');
-    });
+//    beaconDataRestService.getBeaconsData().then(function (response) {
+//        $scope.test = response;
+//    }, function () {
+//        alert('something went wrong');
+//    });
 
-    $scope.beaconmodel = [{
+    $scope.beaconModel = [{
         number: 1,
         name: 'some name 1',
         minor: 189,
@@ -35,9 +35,11 @@ angular.module('app.main').controller('managementBeaconCntl', function ($scope, 
         yBeacon: 'y2'
     }];
 
+    $scope.mySelectedItems = [];
+
     $scope.addBeacon = function () {
-        var currentBeaconNumber = $scope.beaconmodel.length + 1;
-        $scope.beaconmodel.push({
+        var currentBeaconNumber = $scope.beaconModel.length + 1;
+        $scope.beaconModel.push({
             number: currentBeaconNumber,
             name: 'some name ' + currentBeaconNumber,
             minor: '19' + currentBeaconNumber,
@@ -53,20 +55,12 @@ angular.module('app.main').controller('managementBeaconCntl', function ($scope, 
         });
     };
 
-    $scope.mySelectedItems = [];
-    $scope.$watchCollection('mySelectedItems', function () {});
 
     $scope.deleteBeacon = function () {
-
-        $scope.beaconmodel.splice($scope.mySelectedItems[0].number - 1, 1);
+        $scope.beaconModel.splice($scope.mySelectedItems[0].number - 1, 1);
     };
 
-    $scope.deleteButtonDisabled = function () {
-
-        return $scope.mySelectedItems.length === 0;
-    };
-
-    $scope.editButtonDisabled = function () {
+    $scope.controlButtonDisabled = function () {
         return $scope.mySelectedItems.length === 0;
     };
 
@@ -84,9 +78,9 @@ angular.module('app.main').controller('managementBeaconCntl', function ($scope, 
         });
 
         modalInstance.result.then(function (beacon) {
-            for (var index = 0; index < $scope.beaconmodel.length; index = index + 1) {
-                if (beacon.number === $scope.beaconmodel[index].number) {
-                    $scope.beaconmodel[index] = beacon;
+            for (var index = 0; index < $scope.beaconModel.length; index = index + 1) {
+                if (beacon.number === $scope.beaconModel[index].number) {
+                    $scope.beaconModel[index] = beacon;
                 }
             }
         });
