@@ -24,7 +24,7 @@ public class BeaconRestService {
 		this.requestToBeaconStatusToConverter = requestToBeaconStatusToConverter;
 	}
 
-	@RequestMapping(value = "/beacons", method = RequestMethod.GET)
+	@RequestMapping(value = "/services/beacons", method = RequestMethod.GET)
 	public List<BeaconTo> getAllBeacons() {
 		return beaconService.getAllBeacons();
 	}
@@ -40,7 +40,7 @@ public class BeaconRestService {
 		return beaconService.getAllBeaconsStatuses();
 	}
 
-	@RequestMapping(value = "/beacon-add", method = RequestMethod.POST)
+	@RequestMapping(value = "/services/beacon-add", method = RequestMethod.POST)
 	public void addBeacon(@RequestBody BeaconTo request) {
 		beaconService.addBeacon(request);
 	}

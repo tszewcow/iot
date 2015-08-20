@@ -49,9 +49,9 @@ public class PositionUpdateServiceImpl implements PositionUpdateService {
 			BeaconTo beaconTo = new BeaconTo();
 			beaconTo.setName(beacons.getName());
 			beaconTo.setMac(beacons.getMac());
-			beaconTo.setUuidnor(beacons.getUuidnor());
-			beaconTo.setUuidsec(beacons.getUuidsec());
-			beaconTo.setUuidser(beacons.getUuidser());
+			beaconTo.setUuidNormal(beacons.getUuidNormal());
+			beaconTo.setUuidSecure(beacons.getUuidSecure());
+			beaconTo.setUuidService(beacons.getUuidService());
 			beaconTo.setBuilding(beacons.getBuilding());
 			beaconTo.setFloor(beacons.getFloor());
 			beaconTo.setRoom(beacons.getRoom());

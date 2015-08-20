@@ -2,7 +2,7 @@ angular.module('app.main').controller('amsManagementCntl', function ($scope, $mo
     'use strict';
 
 
-    $scope.amsmodel = [{
+    $scope.amsModel = [{
         number: 1,
         project: 'some project 1',
         guardian: 'normal guardian 1',
@@ -22,8 +22,8 @@ angular.module('app.main').controller('amsManagementCntl', function ($scope, $mo
 
 
     $scope.addAms = function () {
-        var currentAmsNumber = $scope.amsmodel.length + 1;
-        $scope.amsmodel.push({
+        var currentAmsNumber = $scope.amsModel.length + 1;
+        $scope.amsModel.push({
             number: currentAmsNumber,
             project: 'some project ' + currentAmsNumber,
             guardian: 'some guardian' + currentAmsNumber,
@@ -38,15 +38,11 @@ angular.module('app.main').controller('amsManagementCntl', function ($scope, $mo
 
     $scope.deleteAms = function () {
 
-        $scope.amsmodel.splice($scope.mySelectedItems[0].number - 1, 1);
+        $scope.amsModel.splice($scope.mySelectedItems[0].number - 1, 1);
     };
 
-    $scope.deleteButtonDisabled = function () {
+    $scope.controlButtonDisabled = function () {
 
-        return $scope.mySelectedItems.length === 0;
-    };
-
-    $scope.editButtonDisabled = function () {
         return $scope.mySelectedItems.length === 0;
     };
 
@@ -64,9 +60,9 @@ angular.module('app.main').controller('amsManagementCntl', function ($scope, $mo
         });
 
         modalInstance.result.then(function (ams) {
-            for (var index = 0; index < $scope.amsmodel.length; index = index + 1) {
-                if (ams.number === $scope.amsmodel[index].number) {
-                    $scope.amsmodel[index] = ams;
+            for (var index = 0; index < $scope.amsModel.length; index = index + 1) {
+                if (ams.number === $scope.amsModel[index].number) {
+                    $scope.amsModel[index] = ams;
                 }
             }
         });

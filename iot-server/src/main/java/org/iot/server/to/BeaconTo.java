@@ -3,9 +3,9 @@ package org.iot.server.to;
 public class BeaconTo {
 	private String name;
 	private String mac;
-	private String uuidnor;
-	private String uuidsec;
-	private String uuidser;
+	private String uuidNormal;
+	private String uuidSecure;
+	private String uuidService;
 	private String building;
 	private int floor;
 	private double room;
@@ -28,28 +28,28 @@ public class BeaconTo {
 		this.mac = mac;
 	}
 
-	public String getUuidnor() {
-		return uuidnor;
+	public String getUuidNormal() {
+		return uuidNormal;
 	}
 
-	public void setUuidnor(String uuidnor) {
-		this.uuidnor = uuidnor;
+	public void setUuidNormal(String uuidNormal) {
+		this.uuidNormal = uuidNormal;
 	}
 
-	public String getUuidsec() {
-		return uuidsec;
+	public String getUuidSecure() {
+		return uuidSecure;
 	}
 
-	public void setUuidsec(String uuidsec) {
-		this.uuidsec = uuidsec;
+	public void setUuidSecure(String uuidSecure) {
+		this.uuidSecure = uuidSecure;
 	}
 
-	public String getUuidser() {
-		return uuidser;
+	public String getUuidService() {
+		return uuidService;
 	}
 
-	public void setUuidser(String uuidser) {
-		this.uuidser = uuidser;
+	public void setUuidService(String uuidService) {
+		this.uuidService = uuidService;
 	}
 
 	public String getBuilding() {

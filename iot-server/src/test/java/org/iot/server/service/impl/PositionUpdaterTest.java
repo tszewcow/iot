@@ -49,9 +49,9 @@ public class PositionUpdaterTest {
 		BeaconTo beacons = new BeaconTo();
 		beacons.setName("MT II 7.p 12.pokój (pokój Jacka)");
 		beacons.setMac("D6:90:A8:08:F0:E0");
-		beacons.setUuidnor("00001800-0000-1000-8000-00805f9b34fb");
-		beacons.setUuidsec("00001800-0000-1000-8000-00805f9b34fb");
-		beacons.setUuidser("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidNormal("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidSecure("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidService("00001800-0000-1000-8000-00805f9b34fb");
 		beacons.setBuilding("MT II");
 		beacons.setFloor(7);
 		beacons.setRoom(7.5);
@@ -64,9 +64,9 @@ public class PositionUpdaterTest {
 		BeaconTo beacons = new BeaconTo();
 		beacons.setName("MT II 7.p 12.pokój (pokój Jacka)");
 		beacons.setMac("D6:90:A8:08:F0:E1");
-		beacons.setUuidnor("00001800-0000-1000-8000-00805f9b34fb");
-		beacons.setUuidsec("00001800-0000-1000-8000-00805f9b34fb");
-		beacons.setUuidser("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidNormal("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidSecure("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidService("00001800-0000-1000-8000-00805f9b34fb");
 		beacons.setBuilding("MT II");
 		beacons.setFloor(7);
 		beacons.setRoom(7.5);
@@ -79,9 +79,9 @@ public class PositionUpdaterTest {
 		BeaconTo beacons = new BeaconTo();
 		beacons.setName("MT II 7.p 12.pokój (pokój Jacka)");
 		beacons.setMac("D6:90:A8:08:F0:E2");
-		beacons.setUuidnor("00001800-0000-1000-8000-00805f9b34fb");
-		beacons.setUuidsec("00001800-0000-1000-8000-00805f9b34fb");
-		beacons.setUuidser("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidNormal("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidSecure("00001800-0000-1000-8000-00805f9b34fb");
+		beacons.setUuidService("00001800-0000-1000-8000-00805f9b34fb");
 		beacons.setBuilding("MT II");
 		beacons.setFloor(7);
 		beacons.setRoom(7.5);

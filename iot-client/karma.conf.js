@@ -59,9 +59,9 @@ module.exports = function (config) {
         // coverage reporter generates the coverage
         reporters: ['progress', 'coverage'],
 
-        preprocessors: {
-            'app/!(bower_components)/**/!(*spec|*mock).js': ['coverage']
-        },
+//        preprocessors: {
+        //            'app/!(bower_components)/**/!(*spec|*mock).js': ['coverage']
+        //        },
 
         // optionally, configure the reporter
         coverageReporter: {
