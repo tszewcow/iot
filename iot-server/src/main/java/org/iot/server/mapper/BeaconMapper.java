@@ -14,6 +14,7 @@ public class BeaconMapper {
 
 		BeaconTo beaconTo = new BeaconTo();
 
+		beaconTo.setId(beacon.getId());
 		beaconTo.setName(beacon.getName());
 		beaconTo.setMac(beacon.getMac());
 		beaconTo.setUuidNormal(beacon.getUuidNormal());
@@ -37,6 +38,7 @@ public class BeaconMapper {
 
 		Beacon beacon = new Beacon();
 
+		beacon.setId(beaconTo.getId());
 		beacon.setName(beaconTo.getName());
 		beacon.setMac(beaconTo.getMac());
 		beacon.setUuidNormal(beaconTo.getUuidNormal());

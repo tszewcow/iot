@@ -8,56 +8,24 @@
 <div class="modal-dialog">
     <div class="modal-header">
         <div class="modal-title">
-            <h3>Edit beacon</h3>
+            <h3>Edit AMS</h3>
         </div>
     </div>
     <div class="modal-body">
         <div class="row">
             <div class="form-group col-md-2">
-                <label>Number</label>
+                <label>Project</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.number" data-ng-disabled="true" class="form-control" />
+                <input data-ng-model="data.project" class="form-control" />
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-2">
-                <label>Name</label>
+                <label>Guardian</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.name" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>MAC</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input data-ng-model="data.mac" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Uuid Normal</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input data-ng-model="data.uuidNormal" class="form-control">
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Uuid Secure</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input data-ng-model="data.uuidSecure" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Uuid Service</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input data-ng-model="data.uuidService" class="form-control" />
+                <input data-ng-model="data.guardian" class="form-control" />
             </div>
         </div>
         <div class="row">
@@ -73,7 +41,7 @@
                 <label>Floor</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.floor" class="form-control" />
+                <input type="number" data-ng-model="data.floor" class="form-control" />
             </div>
         </div>
         <div class="row">
@@ -81,7 +49,7 @@
                 <label>Room</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.room" class="form-control" />
+                <input type="number" data-ng-model="data.room" class="form-control" />
             </div>
         </div>
         <div class="row">
@@ -89,7 +57,7 @@
                 <label>Coordinate X</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.xBeacon" class="form-control" />
+                <input type="number" data-ng-model="data.xAutomaticMobileSet" class="form-control" />
             </div>
         </div>
         <div class="row">
@@ -97,12 +65,18 @@
                 <label>Coordinate Y</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.yBeacon" class="form-control" />
+                <input type="number" data-ng-model="data.yAutomaticMobileSet" class="form-control" />
             </div>
         </div>
-
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>MAC</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.macAutomaticMobileSet" class="form-control" />
+            </div>
+        </div>
     </div>
-
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>

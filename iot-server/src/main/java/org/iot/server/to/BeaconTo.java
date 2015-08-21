@@ -1,6 +1,7 @@
 package org.iot.server.to;
 
 public class BeaconTo {
+	private String id;
 	private String name;
 	private String mac;
 	private String uuidNormal;
@@ -11,6 +12,14 @@ public class BeaconTo {
 	private double room;
 	private float xBeacon;
 	private float yBeacon;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;

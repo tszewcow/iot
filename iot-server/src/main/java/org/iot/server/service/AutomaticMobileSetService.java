@@ -8,5 +8,9 @@ public interface AutomaticMobileSetService {
 
 	List<AutomaticMobileSetTo> getAllAutomaticMobileSets();
 
-	void addautomaticMobileSet(AutomaticMobileSetTo request);
+	AutomaticMobileSetTo addAutomaticMobileSet(AutomaticMobileSetTo automaticMobileSetTo);
+
+	void deleteAutomaticMobileSet(String id);
+
+	AutomaticMobileSetTo updateAutomaticMobileSet(AutomaticMobileSetTo request);
 }

@@ -7,7 +7,13 @@ angular.module('app.main').factory('beaconDataRestService', function ($http, cur
 
         },
         addBeaconData: function (data) {
-            return $http.post(currentContextPath.get() + 'services/beacon-add', data);
+            return $http.post(currentContextPath.get() + 'services/beacon', data);
+        },
+        deleteBeaconData: function (id) {
+            return $http.delete(currentContextPath.get() + 'services/beacon/' + id);
+        },
+        updateBeaconData: function (data) {
+            return $http.put(currentContextPath.get() + 'services/beacon', data);
         }
     };
 });

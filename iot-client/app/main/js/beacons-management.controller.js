@@ -7,54 +7,15 @@ angular.module('app.main').controller('beaconsManagementCntl', function ($scope,
         $scope.beaconModel = angular.copy(response.data);
     });
 
-    /*    $scope.beaconModel = [{
-            number: 1,
-            name: 'some name 1',
-            mac: 'D6:90:A8:08:F0:E0',
-            uuidNormal: 'normal uuid 1',
-            uuidSecure: 'secure uuid 1',
-            uuidService: 'service uuid 1',
-            building: 'some building number 1',
-            floor: 'floor number 1',
-            room: 'room number 1',
-            xBeacon: 'x1',
-            yBeacon: 'y1'
-        }, {
-            number: 2,
-            name: 'some name 2',
-            mac: 'D6:90:A8:08:F0:E0',
-            uuidNormal: 'normal uuid 2',
-            uuidSecure: 'secure uuid 2',
-            uuidService: 'service uuid 2',
-            building: 'some building number 2',
-            floor: 'floor number 2',
-            room: 'room number 2',
-            xBeacon: 'x2',
-            yBeacon: 'y2'
-        }];*/
-
     $scope.mySelectedItems = [];
 
-    /* $scope.addBeacon = function () {
-          var currentBeaconNumber = $scope.beaconModel.length + 1;
-          $scope.beaconModel.push({
-              number: currentBeaconNumber,
-              name: 'some name ' + currentBeaconNumber,
-              mac: 'D6:90:A8:08:F0:E0',
-              uuidNormal: 'normal uuid ' + currentBeaconNumber,
-              uuidSecure: 'secure uuid ' + currentBeaconNumber,
-              uuidService: 'service uuid ' + currentBeaconNumber,
-              building: 'some building number ' + currentBeaconNumber,
-              floor: 'stock number ' + currentBeaconNumber,
-              room: 'room number ' + currentBeaconNumber,
-              xBeacon: 'x' + currentBeaconNumber,
-              yBeacon: 'y' + currentBeaconNumber
-          });
-      };*/
-
-
     $scope.deleteBeacon = function () {
-        $scope.beaconModel.splice($scope.mySelectedItems[0].number - 1, 1);
+        beaconDataRestService.deleteBeaconData($scope.mySelectedItems[0].id);
+        for (var index = 0; index < $scope.beaconModel.length; index = index + 1) {
+            if ($scope.mySelectedItems[0].id === $scope.beaconModel[index].id) {
+                $scope.beaconModel.splice(index, 1);
+            }
+        }
     };
 
     $scope.controlButtonDisabled = function () {
@@ -64,7 +25,7 @@ angular.module('app.main').controller('beaconsManagementCntl', function ($scope,
     $scope.editBeacon = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: '/main/html/edit-beacon.html',
+            templateUrl: '/main/html/beacon-edit.html',
             controller: 'editBeaconCntl',
             animation: true,
             resolve: {
@@ -75,25 +36,27 @@ angular.module('app.main').controller('beaconsManagementCntl', function ($scope,
         });
 
         modalInstance.result.then(function (beacon) {
-            for (var index = 0; index < $scope.beaconModel.length; index = index + 1) {
-                if (beacon.name === $scope.beaconModel[index].number) {
-                    $scope.beaconModel[index] = beacon;
+            beaconDataRestService.updateBeaconData(beacon).then(function (response) {
+                for (var index = 0; index < $scope.beaconModel.length; index = index + 1) {
+                    if (beacon.id === $scope.beaconModel[index].id) {
+                        $scope.beaconModel[index] = beacon;
+                    }
                 }
-            }
+            });
         });
     };
 
     $scope.addBeacon = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: '/main/html/add-beacon.html',
+            templateUrl: '/main/html/beacon-add.html',
             controller: 'addBeaconCntl',
             animation: true
         });
 
         modalInstance.result.then(function (beacon) {
             beaconDataRestService.addBeaconData(beacon).then(function (response) {
-                $scope.beaconModel.push(beacon);
+                $scope.beaconModel.push(response.data);
             });
         });
     };

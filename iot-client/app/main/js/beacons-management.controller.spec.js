@@ -74,7 +74,7 @@ describe('Beacons management tests', function () {
             $scope.editBeacon();
             // then
             expect($modal.open).toHaveBeenCalledWith({
-                templateUrl: '/main/html/edit-beacon.html',
+                templateUrl: '/main/html/beacon-edit.html',
                 controller: 'editBeaconCntl',
                 animation: true,
                 resolve: {

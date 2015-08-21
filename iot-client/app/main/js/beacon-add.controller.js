@@ -2,7 +2,7 @@ angular.module('app.main').controller('addBeaconCntl', function ($scope, $modalI
     'use strict';
 
     $scope.newBeacon = {
-        number: '',
+        id: null,
         name: '',
         mac: '',
         uuidNormal: '',

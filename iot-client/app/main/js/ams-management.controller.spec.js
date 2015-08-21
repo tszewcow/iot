@@ -16,7 +16,7 @@ describe('Ams management tests', function () {
     describe('scope model initialization', function () {
         it('should initialize model', function () {
             // given when then
-            expect($scope.amsModel.length).toEqual(2);
+            expect($scope.amsModel.length).toEqual(0);
             expect(angular.isDefined($scope.mySelectedItems)).toBeTruthy();
         });
 
@@ -66,8 +66,8 @@ describe('Ams management tests', function () {
             $scope.editAms();
             // then
             expect($modal.open).toHaveBeenCalledWith({
-                templateUrl: '/main/html/edit-list-of-ams.html',
-                controller: 'editlistOfAmsCntl',
+                templateUrl: '/main/html/ams-edit.html',
+                controller: 'editAmsCntl',
                 animation: true,
                 resolve: {
                     ams: jasmine.any(Function)

@@ -15,12 +15,13 @@ describe('Edit ams tests', function () {
         building: 'some building number 2',
         stock: 'stock number 2',
         room: 'room number 2',
-        coordinates: 'x y 2'
+        coordinateX: '32',
+        coordinateY: "2"
     };
 
     beforeEach(inject(function ($controller, $rootScope) {
         $scope = $rootScope.$new();
-        $controller('editlistOfAmsCntl', {
+        $controller('editAmsCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock,
             ams: amsMock

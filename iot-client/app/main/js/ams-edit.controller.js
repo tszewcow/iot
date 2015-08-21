@@ -1,4 +1,4 @@
-angular.module('app.main').controller('editlistOfAmsCntl', function ($scope, $modalInstance, ams) {
+angular.module('app.main').controller('editAmsCntl', function ($scope, $modalInstance, ams) {
     'use strict';
 
     $scope.ok = function () {
@@ -8,7 +8,6 @@ angular.module('app.main').controller('editlistOfAmsCntl', function ($scope, $mo
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
-
 
     $scope.data = angular.copy(ams);
 });
