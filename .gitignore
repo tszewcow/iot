@@ -9,3 +9,9 @@ iot-client/app/bower_components
 iot-client/dist
 iot-client/.tmp
 iot-client/test
+
+iot-server/src/main/client/node_modules
+iot-server/src/main/client/bower_components
+iot-server/src/main/client/dist
+iot-server/src/main/client/.tmp
+iot-server/src/main/client/test
