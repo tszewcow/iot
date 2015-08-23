@@ -5,6 +5,7 @@ import java.util.List;
 import org.iot.server.service.AutomaticMobileSetService;
 import org.iot.server.to.AutomaticMobileSetTo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,13 +21,23 @@ public class AutomaticMobileSetRestService {
 		this.automaticMobileSetService = automaticMobileSetService;
 	}
 
-	@RequestMapping(value = "/automaticmobilesets", method = RequestMethod.GET)
+	@RequestMapping(value = "/services/automaticmobileset", method = RequestMethod.GET)
 	public List<AutomaticMobileSetTo> getAllAutomaticMobileSets() {
 		return automaticMobileSetService.getAllAutomaticMobileSets();
 	}
 
-	@RequestMapping(value = "/automaticmobileset-add", method = RequestMethod.POST)
-	public void addAutomaticmobileset(@RequestBody AutomaticMobileSetTo request) {
-		automaticMobileSetService.addautomaticMobileSet(request);
+	@RequestMapping(value = "/services/automaticmobileset", method = RequestMethod.POST)
+	public AutomaticMobileSetTo addAutomaticMobileSet(@RequestBody AutomaticMobileSetTo request) {
+		return automaticMobileSetService.addAutomaticMobileSet(request);
+	}
+
+	@RequestMapping(value = "/services/automaticmobileset/{id}", method = RequestMethod.DELETE)
+	public void deleteAutomaticMobileSet(@PathVariable("id") String id) {
+		automaticMobileSetService.deleteAutomaticMobileSet(id);
+	}
+
+	@RequestMapping(value = "/services/automaticmobileset", method = RequestMethod.PUT)
+	public AutomaticMobileSetTo updateAutomaticMobileSet(@RequestBody AutomaticMobileSetTo request) {
+		return automaticMobileSetService.updateAutomaticMobileSet(request);
 	}
 }

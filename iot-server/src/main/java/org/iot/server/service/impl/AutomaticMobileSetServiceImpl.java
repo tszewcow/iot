@@ -30,8 +30,21 @@ public class AutomaticMobileSetServiceImpl implements AutomaticMobileSetService 
 	}
 
 	@Override
-	public void addautomaticMobileSet(AutomaticMobileSetTo automaticMobileSetTo) {
+	public AutomaticMobileSetTo addAutomaticMobileSet(AutomaticMobileSetTo automaticMobileSetTo) {
 		AutomaticMobileSet automaticMobileSet = automaticMobileSetMapper.mapTo2Document(automaticMobileSetTo);
 		automaticMobileSetRepository.save(automaticMobileSet);
+		return automaticMobileSetMapper.mapDocument2To(automaticMobileSet);
+	}
+
+	@Override
+	public void deleteAutomaticMobileSet(String id) {
+		automaticMobileSetRepository.delete(id);
+	}
+
+	@Override
+	public AutomaticMobileSetTo updateAutomaticMobileSet(AutomaticMobileSetTo automaticMobileSetTo) {
+		AutomaticMobileSet automaticMobileSet = automaticMobileSetMapper.mapTo2Document(automaticMobileSetTo);
+		automaticMobileSetRepository.save(automaticMobileSet);
+		return automaticMobileSetMapper.mapDocument2To(automaticMobileSet);
 	}
 }

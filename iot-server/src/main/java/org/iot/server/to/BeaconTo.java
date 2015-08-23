@@ -1,17 +1,25 @@
 package org.iot.server.to;
 
 public class BeaconTo {
+	private String id;
 	private String name;
 	private String mac;
-	private String minor;
-	private String uuidnor;
-	private String uuidsec;
-	private String uuidser;
+	private String uuidNormal;
+	private String uuidSecure;
+	private String uuidService;
 	private String building;
 	private int floor;
 	private double room;
 	private float xBeacon;
 	private float yBeacon;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -29,36 +37,28 @@ public class BeaconTo {
 		this.mac = mac;
 	}
 
-	public String getMinor() {
-		return minor;
+	public String getUuidNormal() {
+		return uuidNormal;
 	}
 
-	public void setMinor(String minor) {
-		this.minor = minor;
+	public void setUuidNormal(String uuidNormal) {
+		this.uuidNormal = uuidNormal;
 	}
 
-	public String getUuidnor() {
-		return uuidnor;
+	public String getUuidSecure() {
+		return uuidSecure;
 	}
 
-	public void setUuidnor(String uuidnor) {
-		this.uuidnor = uuidnor;
+	public void setUuidSecure(String uuidSecure) {
+		this.uuidSecure = uuidSecure;
 	}
 
-	public String getUuidsec() {
-		return uuidsec;
+	public String getUuidService() {
+		return uuidService;
 	}
 
-	public void setUuidsec(String uuidsec) {
-		this.uuidsec = uuidsec;
-	}
-
-	public String getUuidser() {
-		return uuidser;
-	}
-
-	public void setUuidser(String uuidser) {
-		this.uuidser = uuidser;
+	public void setUuidService(String uuidService) {
+		this.uuidService = uuidService;
 	}
 
 	public String getBuilding() {

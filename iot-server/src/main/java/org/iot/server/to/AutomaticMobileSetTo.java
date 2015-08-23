@@ -2,6 +2,7 @@ package org.iot.server.to;
 
 public class AutomaticMobileSetTo {
 
+	private String id;
 	private String project;
 	private String guardian;
 	private String building;
@@ -11,6 +12,14 @@ public class AutomaticMobileSetTo {
 	private float yAutomaticMobileSet;
 	private String macAutomaticMobileSet;
 	private String position;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getMacAutomaticMobileSet() {
 		return macAutomaticMobileSet;

@@ -14,11 +14,12 @@ public class BeaconMapper {
 
 		BeaconTo beaconTo = new BeaconTo();
 
+		beaconTo.setId(beacon.getId());
 		beaconTo.setName(beacon.getName());
 		beaconTo.setMac(beacon.getMac());
-		beaconTo.setUuidnor(beacon.getUuidnor());
-		beaconTo.setUuidsec(beacon.getUuidsec());
-		beaconTo.setUuidser(beacon.getUuidser());
+		beaconTo.setUuidNormal(beacon.getUuidNormal());
+		beaconTo.setUuidSecure(beacon.getUuidSecure());
+		beaconTo.setUuidService(beacon.getUuidService());
 		beaconTo.setBuilding(beacon.getBuilding());
 		beaconTo.setFloor(beacon.getFloor());
 		beaconTo.setRoom(beacon.getRoom());
@@ -37,11 +38,12 @@ public class BeaconMapper {
 
 		Beacon beacon = new Beacon();
 
+		beacon.setId(beaconTo.getId());
 		beacon.setName(beaconTo.getName());
 		beacon.setMac(beaconTo.getMac());
-		beacon.setUuidnor(beaconTo.getUuidnor());
-		beacon.setUuidsec(beaconTo.getUuidsec());
-		beacon.setUuidser(beaconTo.getUuidser());
+		beacon.setUuidNormal(beaconTo.getUuidNormal());
+		beacon.setUuidSecure(beaconTo.getUuidSecure());
+		beacon.setUuidService(beaconTo.getUuidService());
 		beacon.setBuilding(beaconTo.getBuilding());
 		beacon.setFloor(beaconTo.getFloor());
 		beacon.setRoom(beaconTo.getRoom());

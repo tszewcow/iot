@@ -6,6 +6,7 @@ import org.iot.server.service.BeaconService;
 import org.iot.server.to.BeaconStatusTo;
 import org.iot.server.to.BeaconTo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +25,7 @@ public class BeaconRestService {
 		this.requestToBeaconStatusToConverter = requestToBeaconStatusToConverter;
 	}
 
-	@RequestMapping(value = "/beacons", method = RequestMethod.GET)
+	@RequestMapping(value = "/services/beacons", method = RequestMethod.GET)
 	public List<BeaconTo> getAllBeacons() {
 		return beaconService.getAllBeacons();
 	}
@@ -40,9 +41,18 @@ public class BeaconRestService {
 		return beaconService.getAllBeaconsStatuses();
 	}
 
-	@RequestMapping(value = "/beacon-add", method = RequestMethod.POST)
-	public void addBeacon(@RequestBody BeaconTo request) {
-		beaconService.addBeacon(request);
+	@RequestMapping(value = "/services/beacon", method = RequestMethod.POST)
+	public BeaconTo addBeacon(@RequestBody BeaconTo request) {
+		return beaconService.addBeacon(request);
 	}
 
+	@RequestMapping(value = "/services/beacon/{id}", method = RequestMethod.DELETE)
+	public void deleteBeacon(@PathVariable("id") String id) {
+		beaconService.deleteBeacon(id);
+	}
+
+	@RequestMapping(value = "/services/beacon", method = RequestMethod.PUT)
+	public BeaconTo updateBeacon(@RequestBody BeaconTo request) {
+		return beaconService.updateBeacon(request);
+	}
 }

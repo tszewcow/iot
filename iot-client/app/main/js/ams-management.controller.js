@@ -1,60 +1,32 @@
-angular.module('app.main').controller('amsManagementCntl', function ($scope, $modal) {
+angular.module('app.main').controller('amsManagementCntl', function ($scope, $modal, amsDataRestService) {
     'use strict';
 
+    $scope.amsModel = [];
 
-    $scope.amsmodel = [{
-        number: 1,
-        project: 'some project 1',
-        guardian: 'normal guardian 1',
-        building: 'some building number 1',
-        stock: 'stock number 1',
-        room: 'room number 1',
-        coordinates: 'x y 1'
-    }, {
-        number: 2,
-        project: 'some project 2',
-        guardian: 'normal guardian 2',
-        building: 'some building number 2',
-        stock: 'stock number 2',
-        room: 'room number 2',
-        coordinates: 'x y 2'
-    }];
-
-
-    $scope.addAms = function () {
-        var currentAmsNumber = $scope.amsmodel.length + 1;
-        $scope.amsmodel.push({
-            number: currentAmsNumber,
-            project: 'some project ' + currentAmsNumber,
-            guardian: 'some guardian' + currentAmsNumber,
-            building: 'some building number ' + currentAmsNumber,
-            stock: 'stock number ' + currentAmsNumber,
-            room: 'room number ' + currentAmsNumber,
-            coordinates: 'x y ' + currentAmsNumber
-        });
-    };
+    amsDataRestService.getAmsData().then(function (response) {
+        $scope.amsModel = angular.copy(response.data);
+    });
 
     $scope.mySelectedItems = [];
 
     $scope.deleteAms = function () {
-
-        $scope.amsmodel.splice($scope.mySelectedItems[0].number - 1, 1);
+        amsDataRestService.deleteAmsData($scope.mySelectedItems[0].id);
+        for (var index = 0; index < $scope.amsModel.length; index = index + 1) {
+            if ($scope.mySelectedItems[0].id === $scope.amsModel[index].id) {
+                $scope.amsModel.splice(index, 1);
+            }
+        }
     };
 
-    $scope.deleteButtonDisabled = function () {
-
-        return $scope.mySelectedItems.length === 0;
-    };
-
-    $scope.editButtonDisabled = function () {
+    $scope.controlButtonDisabled = function () {
         return $scope.mySelectedItems.length === 0;
     };
 
     $scope.editAms = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: '/main/html/edit-list-of-ams.html',
-            controller: 'editlistOfAmsCntl',
+            templateUrl: '/main/html/ams-edit.html',
+            controller: 'editAmsCntl',
             animation: true,
             resolve: {
                 ams: function () {
@@ -64,11 +36,28 @@ angular.module('app.main').controller('amsManagementCntl', function ($scope, $mo
         });
 
         modalInstance.result.then(function (ams) {
-            for (var index = 0; index < $scope.amsmodel.length; index = index + 1) {
-                if (ams.number === $scope.amsmodel[index].number) {
-                    $scope.amsmodel[index] = ams;
+            amsDataRestService.updateAmsData(ams).then(function (response) {
+                for (var index = 0; index < $scope.amsModel.length; index = index + 1) {
+                    if (ams.id === $scope.amsModel[index].id) {
+                        $scope.amsModel[index] = ams;
+                    }
                 }
-            }
+            });
+        });
+    };
+
+    $scope.addAms = function () {
+
+        var modalInstance = $modal.open({
+            templateUrl: '/main/html/ams-add.html',
+            controller: 'addAmsCntl',
+            animation: true
+        });
+
+        modalInstance.result.then(function (ams) {
+            amsDataRestService.addAmsData(ams).then(function (response) {
+                $scope.amsModel.push(response.data);
+            });
         });
     };
 });

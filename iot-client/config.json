@@ -9,6 +9,6 @@
         "main"
     ],
     "appBuild": true,
-    "proxy": "http://localhost:8081",
-    "proxyContext": "/oasp4j-example-application"
+    "proxy": "http://localhost:8888",
+    "proxyContext": "/iot"
 }

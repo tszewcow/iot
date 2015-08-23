@@ -19,8 +19,8 @@ public class RequestToBeaconStatusToConverterTest {
 		assertEquals(65535, beaconStatusTo.getMajor());
 		assertEquals("7e1c699dd541dd5ee61ea67d9479c28c", beaconStatusTo.getUuid());
 		assertEquals("20:fa:bb:01:77:e0", beaconStatusTo.getMac());
-		assertEquals(-52, beaconStatusTo.getRssi());
-		assertEquals(189, beaconStatusTo.getMinor());
+		assertEquals(-50, beaconStatusTo.getRssi());
+		assertEquals("189", beaconStatusTo.getMinor());
 		assertEquals(-61, beaconStatusTo.getMeasuredStrenght());
 	}
 

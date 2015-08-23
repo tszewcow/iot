@@ -18,15 +18,15 @@ class PositionCalculator {
 		List<Circle2D> circles2d = new ArrayList<>(circles.size());
 		List<Point2D> intersectionPoints = new ArrayList<>();
 
-		GetCircles2d(circles, circles2d);
-		GetIntersectiosnPoints(intersectionPoints, circles2d);
+		getCircles2d(circles, circles2d);
+		getIntersectiosnPoints(intersectionPoints, circles2d);
 
 		Point2D centroid = Point2D.centroid(intersectionPoints);
 
 		return new PositionTo((float) centroid.x(), (float) centroid.y());
 	}
 
-	protected List<Circle2D> GetCircles2d(List<Pair<PositionTo, Float>> circles, List<Circle2D> circles2d) {
+	protected List<Circle2D> getCircles2d(List<Pair<PositionTo, Float>> circles, List<Circle2D> circles2d) {
 
 		for (Pair<PositionTo, Float> circle : circles) {
 			PositionTo ab = circle.getA();
@@ -37,7 +37,7 @@ class PositionCalculator {
 		return circles2d;
 	}
 
-	protected List<Point2D> GetIntersectiosnPoints(List<Point2D> intersectionPoints, List<Circle2D> circles2d) {
+	protected List<Point2D> getIntersectiosnPoints(List<Point2D> intersectionPoints, List<Circle2D> circles2d) {
 
 		if (circles2d.size() > 1) {
 			for (int i = 0; i < circles2d.size(); i++) {

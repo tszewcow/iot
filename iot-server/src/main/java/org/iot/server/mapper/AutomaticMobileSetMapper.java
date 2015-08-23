@@ -14,6 +14,7 @@ public class AutomaticMobileSetMapper {
 
 		AutomaticMobileSetTo automaticMobileSetTo = new AutomaticMobileSetTo();
 
+		automaticMobileSetTo.setId(automaticMobileSet.getId());
 		automaticMobileSetTo.setProject(automaticMobileSet.getProject());
 		automaticMobileSetTo.setGuardian(automaticMobileSet.getGuardian());
 		automaticMobileSetTo.setBuilding(automaticMobileSet.getBuilding());
@@ -36,6 +37,7 @@ public class AutomaticMobileSetMapper {
 
 		AutomaticMobileSet automaticMobileSet = new AutomaticMobileSet();
 
+		automaticMobileSet.setId(automaticMobileSetTo.getId());
 		automaticMobileSet.setProject(automaticMobileSetTo.getProject());
 		automaticMobileSet.setGuardian(automaticMobileSetTo.getGuardian());
 		automaticMobileSet.setBuilding(automaticMobileSetTo.getBuilding());

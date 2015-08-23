@@ -8,40 +8,24 @@
 <div class="modal-dialog">
     <div class="modal-header">
         <div class="modal-title">
-            <h3>Edytuj Beacon</h3>
+            <h3>Add beacon</h3>
         </div>
     </div>
     <div class="modal-body">
         <div class="row">
             <div class="form-group col-md-2">
-                <label>Numer</label>
+                <label>Name</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.number" data-ng-disabled="true" class="form-control" />
+                <input data-ng-model="newBeacon.name" class="form-control" />
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-2">
-                <label>Nazwa</label>
+                <label>MAC</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.name" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Minor</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input data-ng-model="data.minor" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Mac</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input data-ng-model="data.mac" class="form-control" />
+                <input data-ng-model="newBeacon.mac" class="form-control" />
             </div>
         </div>
         <div class="row">
@@ -49,7 +33,7 @@
                 <label>Uuid Normal</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.uuidNormal" class="form-control">
+                <input data-ng-model="newBeacon.uuidNormal" class="form-control">
             </div>
         </div>
         <div class="row">
@@ -57,7 +41,7 @@
                 <label>Uuid Secure</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.uuidSecure" class="form-control" />
+                <input data-ng-model="newBeacon.uuidSecure" class="form-control" />
             </div>
         </div>
         <div class="row">
@@ -65,47 +49,47 @@
                 <label>Uuid Service</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.uuidService" class="form-control" />
+                <input data-ng-model="newBeacon.uuidService" class="form-control" />
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-2">
-                <label>Budynek</label>
+                <label>Building</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.building" class="form-control" />
+                <input data-ng-model="newBeacon.building" class="form-control" />
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-2">
-                <label>Piętro</label>
+                <label>Floor</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.floor" class="form-control" />
+                <input type="number" data-ng-model="newBeacon.floor" class="form-control" />
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-2">
-                <label>Pokój</label>
+                <label>Room</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.room" class="form-control" />
+                <input type="number" data-ng-model="newBeacon.room" class="form-control" />
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-2">
-                <label>Współrzędne X</label>
+                <label>Coordinate X</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.xBeacon" class="form-control" />
+                <input type="number" data-ng-model="newBeacon.xBeacon" class="form-control" />
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-2">
-                <label>Współrzędne Y</label>
+                <label>Coordinate Y</label>
             </div>
             <div class="form-group col-md-10">
-                <input data-ng-model="data.yBeacon" class="form-control" />
+                <input type="number" data-ng-model="newBeacon.yBeacon" class="form-control" />
             </div>
         </div>
 

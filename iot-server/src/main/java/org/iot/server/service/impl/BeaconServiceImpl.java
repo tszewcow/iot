@@ -52,8 +52,21 @@ public class BeaconServiceImpl implements BeaconService {
 	}
 
 	@Override
-	public void addBeacon(BeaconTo beaconTo) {
+	public BeaconTo addBeacon(BeaconTo beaconTo) {
 		Beacon beacon = beaconMapper.mapTo2Document(beaconTo);
 		beaconRepository.save(beacon);
+		return beaconMapper.mapDocument2To(beacon);
+	}
+
+	@Override
+	public void deleteBeacon(String id) {
+		beaconRepository.delete(id);
+	}
+
+	@Override
+	public BeaconTo updateBeacon(BeaconTo beaconTo) {
+		Beacon beacon = beaconMapper.mapTo2Document(beaconTo);
+		beaconRepository.save(beacon);
+		return beaconMapper.mapDocument2To(beacon);
 	}
 }

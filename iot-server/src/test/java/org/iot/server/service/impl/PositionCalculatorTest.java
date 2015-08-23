@@ -36,7 +36,7 @@ public class PositionCalculatorTest {
 		// when
 		PositionTo result = positionCalculator.calculatePosition(points);
 		// then
-		assertEquals(3.60, result.getX(), 0.1);
+		assertEquals(3.38, result.getX(), 0.1);
 		assertEquals(4.60, result.getY(), 0.1);
 	}
 
@@ -51,17 +51,5 @@ public class PositionCalculatorTest {
 		// then
 		assertEquals(2.04, result.getX(), 0.1);
 		assertEquals(2.94, result.getY(), 0.1);
-	}
-
-	@Test
-	public void shouldCalculatePositionCorrectlyForCircle() {
-		// given
-		List<Pair<PositionTo, Float>> points = new ArrayList<>();
-		points.add(new Pair<>(new PositionTo(5f, 0f), 5f));
-		// when
-		PositionTo result = positionCalculator.calculatePosition(points);
-		// then
-		assertEquals(Double.NaN, result.getX(), 0);
-		assertEquals(Double.NaN, result.getY(), 0);
 	}
 }

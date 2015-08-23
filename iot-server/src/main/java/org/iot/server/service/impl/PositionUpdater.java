@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 public class PositionUpdater {
 
 	private final PositionCalculator positionCalculator;
+	// FileWriter writer;
 
 	@Autowired
 	public PositionUpdater(PositionCalculator positionCalculator) {
@@ -108,7 +109,8 @@ public class PositionUpdater {
 				counter++;
 			}
 		}
-		return avarageDistance / counter;
+
+		return avarageDistance / counter * 25;
 	}
 
 	private String calculateCoordinates(Map<String, Float> beaconToDistance, List<BeaconTo> beacons) {
@@ -130,6 +132,22 @@ public class PositionUpdater {
 
 		System.out.println(automaticMobileSetPosition.getX());
 		System.out.println(automaticMobileSetPosition.getY());
+
+		// SaveDataPostitionToCsv(automaticMobileSetPosition.getX(),
+		// automaticMobileSetPosition.getY());
+
 		return automaticMobileSetPosition.toString();
 	}
+
+	/*
+	 * private void SaveDataPostitionToCsv(float x, float y) {
+	 * 
+	 * Path path = Paths.get("C://Users/tokepa/Desktop/DataFromServer.csv"); try
+	 * { if (Files.exists(path)) { writer.write(String.valueOf(x));
+	 * writer.write(","); writer.write(String.valueOf(y));
+	 * writer.write(System.lineSeparator()); writer.flush(); } else { writer =
+	 * new FileWriter("C://Users/tokepa/Desktop/DataFromServer.csv"); }
+	 * 
+	 * } catch (IOException e) { e.printStackTrace(); } }
+	 */
 }

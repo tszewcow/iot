@@ -1,14 +1,14 @@
-<title>Zarzadzanie beaconami</title>
+<title>Beacons Management</title>
 
 <div class="container" data-ng-controller="beaconsManagementCntl">
 
     <header>
-        <h1>Zarzadzanie Beaconami</h1>
+        <h1>Beacons Management</h1>
     </header>
 
     <table class="raw-table" data-tr-ng-grid data-items="beaconModel" enable-filtering="false" selected-items="mySelectedItems" selection-mode="SingleRow"></table>
 
-    <button class="btn btn-default" data-ng-click="addBeacon()">Dodaj beacon</button>
-    <button class="btn btn-default" data-ng-click="deleteBeacon()" data-ng-disabled="controlButtonDisabled()">Usuń beacon</button>
-    <button class="btn btn-default" data-ng-click="editBeacon()" data-ng-disabled="controlButtonDisabled()">Edytuj beacon</button>
+    <button class="btn btn-default" data-ng-click="addBeacon()">Add beacon</button>
+    <button class="btn btn-default" data-ng-click="deleteBeacon()" data-ng-disabled="controlButtonDisabled()">Delete beacon</button>
+    <button class="btn btn-default" data-ng-click="editBeacon()" data-ng-disabled="controlButtonDisabled()">Edit beacon</button>
 </div>

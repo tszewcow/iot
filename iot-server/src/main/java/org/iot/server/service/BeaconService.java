@@ -13,5 +13,9 @@ public interface BeaconService {
 
 	List<BeaconStatusTo> getAllBeaconsStatuses();
 
-	void addBeacon(BeaconTo beacon);
+	BeaconTo addBeacon(BeaconTo beacon);
+
+	void deleteBeacon(String id);
+
+	BeaconTo updateBeacon(BeaconTo request);
 }
