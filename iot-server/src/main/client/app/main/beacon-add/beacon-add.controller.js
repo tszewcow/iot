@@ -1,4 +1,4 @@
-angular.module('app.main').controller('AddBeaconCntl', function ($scope, $modalInstance) {
+angular.module('app.main').controller('BeaconAddCntl', function ($scope, $modalInstance) {
     'use strict';
 
     $scope.newBeacon = {

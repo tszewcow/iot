@@ -5,7 +5,7 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
             .when('/', {redirectTo: '/main/welcome'})
             .when('/main/welcome', {templateUrl: 'main/welcome/welcome.html'})
             .when('/main/beacons-management', {
-                templateUrl: 'main/beacons-management.html'
+                templateUrl: 'main/beacons-management/beacons-management.html'
             })
             .when('/main/ams-management', {
                 templateUrl: 'main/ams-management.html'

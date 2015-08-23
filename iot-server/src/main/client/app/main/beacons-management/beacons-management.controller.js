@@ -25,8 +25,8 @@ angular.module('app.main').controller('BeaconsManagementCntl', function ($scope,
     $scope.editBeacon = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: '/main/beacon-edit.html',
-            controller: 'EditBeaconCntl',
+            templateUrl: '/main/beacon-edit/beacon-edit.tpl.html',
+            controller: 'BeaconEditCntl',
             animation: true,
             resolve: {
                 beacon: function () {
@@ -49,8 +49,8 @@ angular.module('app.main').controller('BeaconsManagementCntl', function ($scope,
     $scope.addBeacon = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: '/main/beacon-add.html',
-            controller: 'AddBeaconCntl',
+            templateUrl: '/main/beacon-add/beacon-add.tpl.html',
+            controller: 'BeaconAddCntl',
             animation: true
         });
 

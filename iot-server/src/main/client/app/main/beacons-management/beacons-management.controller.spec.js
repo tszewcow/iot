@@ -50,8 +50,8 @@ describe('Beacons management tests', function () {
             $scope.$digest();
             // then
             expect($modal.open).toHaveBeenCalledWith({
-                templateUrl: '/main/beacon-add.html',
-                controller: 'AddBeaconCntl',
+                templateUrl: '/main/beacon-add/beacon-add.tpl.html',
+                controller: 'BeaconAddCntl',
                 animation: true
             });
             expect($scope.beacons.length).toEqual(3);
@@ -95,8 +95,8 @@ describe('Beacons management tests', function () {
             $scope.editBeacon();
             // then
             expect($modal.open).toHaveBeenCalledWith({
-                templateUrl: '/main/beacon-edit.html',
-                controller: 'EditBeaconCntl',
+                templateUrl: '/main/beacon-edit/beacon-edit.tpl.html',
+                controller: 'BeaconEditCntl',
                 animation: true,
                 resolve: {
                     beacon: jasmine.any(Function)

@@ -24,7 +24,7 @@ describe('Edit beacon tests', function () {
 
     beforeEach(inject(function ($controller, $rootScope) {
         $scope = $rootScope.$new();
-        $controller('EditBeaconCntl', {
+        $controller('BeaconEditCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock,
             beacon: beaconMock
