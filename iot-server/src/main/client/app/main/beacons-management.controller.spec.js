@@ -17,7 +17,7 @@ describe('Beacons management tests', function () {
             ]
         });
         // when
-        $controller('beaconsManagementCntl', {
+        $controller('BeaconsManagementCntl', {
             $scope: $scope
         });
         $scope.$digest();
@@ -50,8 +50,8 @@ describe('Beacons management tests', function () {
             $scope.$digest();
             // then
             expect($modal.open).toHaveBeenCalledWith({
-                templateUrl: '/main/html/beacon-add.html',
-                controller: 'addBeaconCntl',
+                templateUrl: '/main/beacon-add.html',
+                controller: 'AddBeaconCntl',
                 animation: true
             });
             expect($scope.beacons.length).toEqual(3);

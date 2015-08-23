@@ -1,0 +1,14 @@
+<title>AMS Management</title>
+
+<div class="container" data-ng-controller="AmsManagementCntl">
+
+    <header>
+        <h1>AMS Management</h1>
+    </header>
+
+    <table class="raw-table" data-tr-ng-grid data-items="amsModel" enable-filtering="false" selected-items="mySelectedItems" selection-mode="SingleRow"></table>
+
+    <button class="btn btn-default" data-ng-click="addAms()">Add AMS</button>
+    <button class="btn btn-default" data-ng-click="deleteAms()" data-ng-disabled="controlButtonDisabled()">Delete AMS</button>
+    <button class="btn btn-default" data-ng-click="editAms()" data-ng-disabled="controlButtonDisabled()">Edit AMS</button>
+</div>

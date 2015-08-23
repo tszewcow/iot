@@ -1,0 +1,102 @@
+<style>
+    input {
+        display: block;
+        width: 100%;
+    }
+</style>
+
+<div class="modal-dialog">
+    <div class="modal-header">
+        <div class="modal-title">
+            <h3>Edit beacon</h3>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Name</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.name" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>MAC</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.mac" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Uuid Normal</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.uuidNormal" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Uuid Secure</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.uuidSecure" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Uuid Service</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.uuidService" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Building</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input data-ng-model="data.building" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Floor</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input type="number" data-ng-model="data.floor" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Room</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input type="number" data-ng-model="data.room" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Coordinate X</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input type="number" data-ng-model="data.xBeacon" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Coordinate Y</label>
+            </div>
+            <div class="form-group col-md-10">
+                <input type="number" data-ng-model="data.yBeacon" class="form-control" />
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" data-ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" data-ng-click="cancel()">Cancel</button>
+    </div>
+</div>
