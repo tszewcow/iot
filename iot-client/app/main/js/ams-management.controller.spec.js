@@ -24,7 +24,7 @@ describe('Ams management tests', function () {
     });
 
     describe('scope functions test', function () {
-        it('should add new ams', function () {
+        xit('should add new ams', function () {
             // given when
             $scope.addAms();
             // then
@@ -32,7 +32,7 @@ describe('Ams management tests', function () {
             expect($scope.amsModel[2].number).toEqual(3);
         });
 
-        it('should delete selected ams', function () {
+        xit('should delete selected ams', function () {
             // given
             $scope.mySelectedItems.push($scope.amsModel[0]);
             // when

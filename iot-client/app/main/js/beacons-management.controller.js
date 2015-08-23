@@ -1,19 +1,19 @@
 angular.module('app.main').controller('beaconsManagementCntl', function ($scope, $modal, beaconDataRestService) {
     'use strict';
 
-    $scope.beaconModel = [];
+    $scope.beacons = [];
 
     beaconDataRestService.getBeaconsData().then(function (response) {
-        $scope.beaconModel = angular.copy(response.data);
+        $scope.beacons = angular.copy(response.data);
     });
 
     $scope.mySelectedItems = [];
 
     $scope.deleteBeacon = function () {
         beaconDataRestService.deleteBeaconData($scope.mySelectedItems[0].id);
-        for (var index = 0; index < $scope.beaconModel.length; index = index + 1) {
-            if ($scope.mySelectedItems[0].id === $scope.beaconModel[index].id) {
-                $scope.beaconModel.splice(index, 1);
+        for (var index = 0; index < $scope.beacons.length; index = index + 1) {
+            if ($scope.mySelectedItems[0].id === $scope.beacons[index].id) {
+                $scope.beacons.splice(index, 1);
             }
         }
     };
@@ -37,9 +37,9 @@ angular.module('app.main').controller('beaconsManagementCntl', function ($scope,
 
         modalInstance.result.then(function (beacon) {
             beaconDataRestService.updateBeaconData(beacon).then(function (response) {
-                for (var index = 0; index < $scope.beaconModel.length; index = index + 1) {
-                    if (beacon.id === $scope.beaconModel[index].id) {
-                        $scope.beaconModel[index] = beacon;
+                for (var index = 0; index < $scope.beacons.length; index = index + 1) {
+                    if (beacon.id === $scope.beacons[index].id) {
+                        $scope.beacons[index] = beacon;
                     }
                 }
             });
@@ -56,7 +56,7 @@ angular.module('app.main').controller('beaconsManagementCntl', function ($scope,
 
         modalInstance.result.then(function (beacon) {
             beaconDataRestService.addBeaconData(beacon).then(function (response) {
-                $scope.beaconModel.push(response.data);
+                $scope.beacons.push(response.data);
             });
         });
     };

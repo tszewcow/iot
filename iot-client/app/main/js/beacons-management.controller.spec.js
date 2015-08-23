@@ -5,50 +5,71 @@ describe('Beacons management tests', function () {
 
     beforeEach(module('app.main'));
 
-    beforeEach(inject(function ($controller, $rootScope) {
+    beforeEach(inject(function ($controller, $rootScope, beaconDataRestService, $q) {
+        // given
+        var deferred = $q.defer();
         $scope = $rootScope.$new();
+        spyOn(beaconDataRestService, 'getBeaconsData').and.returnValue(deferred.promise);
+        deferred.resolve({
+            data: [
+                {name: 'beacon-1', id: 1},
+                {name: 'beacon-2', id: 2}
+            ]
+        });
+        // when
         $controller('beaconsManagementCntl', {
             $scope: $scope
         });
+        $scope.$digest();
     }));
 
 
     describe('scope model initialization', function () {
-        xit('should initialize model', inject(function ($q, beaconDataRestService) {
-            var deferred = $q.defer();
-            spyOn(beaconDataRestService, 'getBeaconsData').and.callFake(function () {
-                return deferred.promise;
-            });
-            deferred.resolve({
-                data: [1, 2]
-            });
-            $scope.$digest();
-
+        it('should initialize model', inject(function ($q, beaconDataRestService) {
+            // given when then
             expect(beaconDataRestService.getBeaconsData).toHaveBeenCalled();
+            expect($scope.beacons.length).toEqual(2);
+            expect($scope.beacons[0].name).toEqual('beacon-1');
+            expect($scope.beacons[1].name).toEqual('beacon-2');
+            expect($scope.mySelectedItems.length).toEqual(0);
         }));
-
-
-
     });
 
     describe('scope functions test', function () {
-        xit('should add new beacon', function () {
-            // given when
-            $scope.addBeacon();
-            // then
-            expect($scope.beaconModel.length).toEqual(3);
-            expect($scope.beaconModel[2].number).toEqual(3);
-        });
-
-        xit('should delete selected beacon', function () {
+        it('should call modal on addBeacon function call and add beacon on success', inject(function ($modal, $q, beaconDataRestService) {
             // given
-            $scope.mySelectedItems.push($scope.beaconModel[0]);
+            var modalDeferred = $q.defer(), beaconDataServiceDeferred = $q.defer();
+            spyOn($modal, 'open').and.returnValue({
+                result: modalDeferred.promise
+            });
+            spyOn(beaconDataRestService, 'addBeaconData').and.returnValue(beaconDataServiceDeferred.promise);
+            // when
+            $scope.addBeacon();
+            modalDeferred.resolve();
+            beaconDataServiceDeferred.resolve({data: {name: 'new beacon'}});
+            $scope.$digest();
+            // then
+            expect($modal.open).toHaveBeenCalledWith({
+                templateUrl: '/main/html/beacon-add.html',
+                controller: 'addBeaconCntl',
+                animation: true
+            });
+            expect($scope.beacons.length).toEqual(3);
+            expect($scope.beacons[2].name).toEqual('new beacon');
+        }));
+
+        it('should delete selected beacon', inject(function (beaconDataRestService) {
+            // given
+            spyOn(beaconDataRestService, 'deleteBeaconData');
+            $scope.mySelectedItems.push($scope.beacons[0]);
             // when
             $scope.deleteBeacon();
             // then
-            expect($scope.beaconModel.length).toEqual(1);
-            expect($scope.beaconModel[0].number).toEqual(2);
-        });
+            expect(beaconDataRestService.deleteBeaconData).toHaveBeenCalledWith($scope.mySelectedItems[0].id);
+            expect($scope.beacons.length).toEqual(1);
+            expect($scope.beacons[0]).toEqual({name: 'beacon-2', id: 2});
+
+        }));
 
         it('should disable button controls when there are no items selected', function () {
             // given when then
