@@ -25,7 +25,7 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
     $scope.editAms = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: '/main/ams-edit.html',
+            templateUrl: '/main/ams-edit/ams-edit.tpl.html',
             controller: 'EditAmsCntl',
             animation: true,
             resolve: {
@@ -49,7 +49,7 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
     $scope.addAms = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: '/main/ams-add.html',
+            templateUrl: '/main/ams-add/ams-add.tpl.html',
             controller: 'AddAmsCntl',
             animation: true
         });

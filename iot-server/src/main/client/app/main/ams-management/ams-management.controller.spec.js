@@ -66,7 +66,7 @@ describe('Ams management tests', function () {
             $scope.editAms();
             // then
             expect($modal.open).toHaveBeenCalledWith({
-                templateUrl: '/main/ams-edit.html',
+                templateUrl: '/main/ams-edit/ams-edit.tpl.html',
                 controller: 'EditAmsCntl',
                 animation: true,
                 resolve: {

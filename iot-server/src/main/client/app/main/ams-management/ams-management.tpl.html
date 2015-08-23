@@ -6,7 +6,11 @@
         <h1>AMS Management</h1>
     </header>
 
-    <table class="raw-table" data-tr-ng-grid data-items="amsModel" enable-filtering="false" selected-items="mySelectedItems" selection-mode="SingleRow"></table>
+    <table class="raw-table"
+           data-tr-ng-grid data-items="amsModel"
+           data-enable-filtering="false"
+           data-selected-items="mySelectedItems"
+           data-selection-mode="SingleRow"></table>
 
     <button class="btn btn-default" data-ng-click="addAms()">Add AMS</button>
     <button class="btn btn-default" data-ng-click="deleteAms()" data-ng-disabled="controlButtonDisabled()">Delete AMS</button>
