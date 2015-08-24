@@ -7,7 +7,7 @@ describe('Ams management tests', function () {
 
     beforeEach(inject(function ($controller, $rootScope) {
         $scope = $rootScope.$new();
-        $controller('amsManagementCntl', {
+        $controller('AmsManagementCntl', {
             $scope: $scope
         });
     }));
@@ -66,8 +66,8 @@ describe('Ams management tests', function () {
             $scope.editAms();
             // then
             expect($modal.open).toHaveBeenCalledWith({
-                templateUrl: '/main/html/ams-edit.html',
-                controller: 'editAmsCntl',
+                templateUrl: '/main/ams-edit/ams-edit.tpl.html',
+                controller: 'EditAmsCntl',
                 animation: true,
                 resolve: {
                     ams: jasmine.any(Function)

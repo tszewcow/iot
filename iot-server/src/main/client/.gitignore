@@ -1,8 +1,8 @@
 node_modules
-app/bower_components
-dist
+bower_components
 .tmp
-test
+dist
+test-output
 .idea/
 *.iml
 java/target

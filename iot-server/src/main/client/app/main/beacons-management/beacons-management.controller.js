@@ -1,4 +1,4 @@
-angular.module('app.main').controller('beaconsManagementCntl', function ($scope, $modal, beaconDataRestService) {
+angular.module('app.main').controller('BeaconsManagementCntl', function ($scope, $modal, beaconDataRestService) {
     'use strict';
 
     $scope.beacons = [];
@@ -25,8 +25,8 @@ angular.module('app.main').controller('beaconsManagementCntl', function ($scope,
     $scope.editBeacon = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: '/main/html/beacon-edit.html',
-            controller: 'editBeaconCntl',
+            templateUrl: '/main/beacon-edit/beacon-edit.tpl.html',
+            controller: 'BeaconEditCntl',
             animation: true,
             resolve: {
                 beacon: function () {
@@ -49,8 +49,8 @@ angular.module('app.main').controller('beaconsManagementCntl', function ($scope,
     $scope.addBeacon = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: '/main/html/beacon-add.html',
-            controller: 'addBeaconCntl',
+            templateUrl: '/main/beacon-add/beacon-add.tpl.html',
+            controller: 'BeaconAddCntl',
             animation: true
         });
 
