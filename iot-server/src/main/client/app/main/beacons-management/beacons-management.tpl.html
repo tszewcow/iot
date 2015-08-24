@@ -6,11 +6,7 @@
         <h1>Beacons Management</h1>
     </header>
 
-    <table class="raw-table"
-           data-tr-ng-grid data-items="beacons"
-           data-enable-filtering="false"
-           data-selected-items="mySelectedItems"
-           data-selection-mode="SingleRow"></table>
+    <table class="raw-table" data-tr-ng-grid data-items="beacons" data-enable-filtering="false" data-selected-items="mySelectedItems" data-selection-mode="SingleRow" data-fields="['name','mac','uuidNormal','uuidSecure', 'uuidService', 'building', 'floor', 'room', 'xBeacon', 'yBeacon']"></table>
 
     <button class="btn btn-default" data-ng-click="addBeacon()">Add beacon</button>
     <button class="btn btn-default" data-ng-click="deleteBeacon()" data-ng-disabled="controlButtonDisabled()">Delete beacon</button>

@@ -22,4 +22,5 @@ angular.module('app.main').controller('addAmsCntl', function ($scope, $modalInst
         $modalInstance.dismiss('cancel');
     };
 
+
 });

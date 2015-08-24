@@ -38,8 +38,8 @@ angular.module('app.main').controller('BeaconsManagementCntl', function ($scope,
         modalInstance.result.then(function (beacon) {
             beaconDataRestService.updateBeaconData(beacon).then(function (response) {
                 for (var index = 0; index < $scope.beacons.length; index = index + 1) {
-                    if (beacon.id === $scope.beacons[index].id) {
-                        $scope.beacons[index] = beacon;
+                    if (response.data.id === $scope.beacons[index].id) {
+                        $scope.beacons[index] = reponse.data;
                     }
                 }
             });
