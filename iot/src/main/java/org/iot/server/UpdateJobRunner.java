@@ -18,6 +18,6 @@ public class UpdateJobRunner {
 	@Scheduled(fixedDelay = 500)
 	public void runUpdateJob() {
 		positionUpdateService.updatePositions();
-		// System.out.println("0,5 sec\n");
+		System.out.println("0,5 sec\n");
 	}
 }

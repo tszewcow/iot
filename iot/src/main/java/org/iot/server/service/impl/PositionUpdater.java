@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.iot.server.document.AutomaticMobileSet;
+import org.iot.server.repository.AutomaticMobileSetRepository;
 import org.iot.server.service.impl.PositionCalculator.Pair;
 import org.iot.server.to.AutomaticMobileSetTo;
 import org.iot.server.to.BeaconStatusTo;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Component;
 public class PositionUpdater {
 
 	private final PositionCalculator positionCalculator;
+
 	// FileWriter writer;
 
 	@Autowired
@@ -34,10 +37,13 @@ public class PositionUpdater {
 			Map<String, List<BeaconStatusTo>> beaconToBeaconStatuses = groupStatusesByBeacon(beaconStatuses);
 			Map<String, Float> beaconToDistance = calculateDistance(beaconToBeaconStatuses);
 			String mac = entry.getKey();
-			AutomaticMobileSetTo automaticMobileSet = getAutomaticMobileSetByMac(automaticMobileSets, mac);
-			String coordinates = calculateCoordinates(beaconToDistance, beacons);
-			automaticMobileSet.setxAutomaticMobileSet(0);
-		}
+			AutomaticMobileSetTo automaticMobileSetTo = getAutomaticMobileSetByMac(automaticMobileSets, mac);
+			PositionTo coordinates = calculateCoordinates(beaconToDistance, beacons);	
+			automaticMobileSetTo.setxAutomaticMobileSet(coordinates.getX());
+			automaticMobileSetTo.setyAutomaticMobileSet(coordinates.getY());
+			
+			//TODO update in database
+		}		
 	}
 
 	private Map<String, List<BeaconStatusTo>> groupStatusesByAutomaticMobileSet(List<BeaconStatusTo> beaconStatuses) {
@@ -113,7 +119,7 @@ public class PositionUpdater {
 		return avarageDistance / counter * 25;
 	}
 
-	private String calculateCoordinates(Map<String, Float> beaconToDistance, List<BeaconTo> beacons) {
+	private PositionTo calculateCoordinates(Map<String, Float> beaconToDistance, List<BeaconTo> beacons) {
 
 		List<Pair<PositionTo, Float>> coordinates = new ArrayList<>();
 		Map<String, Float> map = new HashMap<>(beaconToDistance);
@@ -132,11 +138,13 @@ public class PositionUpdater {
 
 		System.out.println(automaticMobileSetPosition.getX());
 		System.out.println(automaticMobileSetPosition.getY());
+		
+		
 
 		// SaveDataPostitionToCsv(automaticMobileSetPosition.getX(),
 		// automaticMobileSetPosition.getY());
 
-		return automaticMobileSetPosition.toString();
+		return automaticMobileSetPosition;
 	}
 
 	/*

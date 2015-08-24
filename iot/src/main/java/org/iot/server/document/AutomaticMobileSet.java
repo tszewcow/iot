@@ -13,8 +13,7 @@ public class AutomaticMobileSet {
 	private double room;
 	private float xAutomaticMobileSet;
 	private float yAutomaticMobileSet;
-	private String macAutomaticMobileSet;
-	private String position;
+	private String macAutomaticMobileSet;	
 
 	public String getMacAutomaticMobileSet() {
 		return macAutomaticMobileSet;
@@ -78,14 +77,6 @@ public class AutomaticMobileSet {
 
 	public void setyAutomaticMobileSet(float yAutomaticMobileSet) {
 		this.yAutomaticMobileSet = yAutomaticMobileSet;
-	}
-
-	public String getPosition() {
-		return position;
-	}
-
-	public void setPosition(String position) {
-		this.position = position;
 	}
 
 	public String getId() {

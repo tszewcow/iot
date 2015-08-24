@@ -38,8 +38,8 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
         modalInstance.result.then(function (ams) {
             amsDataRestService.updateAmsData(ams).then(function (response) {
                 for (var index = 0; index < $scope.amsModel.length; index = index + 1) {
-                    if (ams.id === $scope.amsModel[index].id) {
-                        $scope.amsModel[index] = ams;
+                    if (response.data.id === $scope.amsModel[index].id) {
+                        $scope.amsModel[index] = response.data;
                     }
                 }
             });

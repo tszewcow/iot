@@ -12,8 +12,14 @@ describe('Beacons management tests', function () {
         spyOn(beaconDataRestService, 'getBeaconsData').and.returnValue(deferred.promise);
         deferred.resolve({
             data: [
-                {name: 'beacon-1', id: 1},
-                {name: 'beacon-2', id: 2}
+                {
+                    name: 'beacon-1',
+                    id: 1
+                },
+                {
+                    name: 'beacon-2',
+                    id: 2
+                }
             ]
         });
         // when
@@ -38,7 +44,8 @@ describe('Beacons management tests', function () {
     describe('scope functions test', function () {
         it('should call modal on addBeacon function call and add beacon on success', inject(function ($modal, $q, beaconDataRestService) {
             // given
-            var modalDeferred = $q.defer(), beaconDataServiceDeferred = $q.defer();
+            var modalDeferred = $q.defer(),
+                beaconDataServiceDeferred = $q.defer();
             spyOn($modal, 'open').and.returnValue({
                 result: modalDeferred.promise
             });
@@ -46,7 +53,11 @@ describe('Beacons management tests', function () {
             // when
             $scope.addBeacon();
             modalDeferred.resolve();
-            beaconDataServiceDeferred.resolve({data: {name: 'new beacon'}});
+            beaconDataServiceDeferred.resolve({
+                data: {
+                    name: 'new beacon'
+                }
+            });
             $scope.$digest();
             // then
             expect($modal.open).toHaveBeenCalledWith({
@@ -67,7 +78,10 @@ describe('Beacons management tests', function () {
             // then
             expect(beaconDataRestService.deleteBeaconData).toHaveBeenCalledWith($scope.mySelectedItems[0].id);
             expect($scope.beacons.length).toEqual(1);
-            expect($scope.beacons[0]).toEqual({name: 'beacon-2', id: 2});
+            expect($scope.beacons[0]).toEqual({
+                name: 'beacon-2',
+                id: 2
+            });
 
         }));
 
@@ -103,6 +117,35 @@ describe('Beacons management tests', function () {
                 }
             });
             expect($modal.open.calls.argsFor(0)[0].resolve.beacon()).toEqual('some entry');
+        }));
+
+        it('should call $modal.show when add beacon function is called', inject(function ($modal, $q, beaconDataRestService) {
+            // given
+            var modalDeferred = $q.defer(),
+                beaconDataRestServiceDeferred = $q.defer();
+            spyOn($modal, 'open').and.returnValue({
+                result: modalDeferred.promise
+            });
+            spyOn(beaconDataRestService, 'addBeaconData').and.returnValue(beaconDataRestServiceDeferred.promise);
+            // when
+            $scope.addBeacon();
+            modalDeferred.resolve('some modal response');
+            beaconDataRestServiceDeferred.resolve({
+                data: 'added beacon'
+            });
+            $scope.$digest();
+            // then
+            expect($modal.open).toHaveBeenCalledWith({
+                templateUrl: '/main/beacon-add/beacon-add.tpl.html',
+                controller: 'BeaconAddCntl',
+                animation: true
+            });
+            expect(beaconDataRestService.addBeaconData).toHaveBeenCalledWith('some modal response');
+            expect($scope.beacons.length).toEqual(3);
+            expect($scope.beacons[0]).toEqual({
+                name: 'beacon-1',
+                id: 1
+            });
         }));
     });
 });

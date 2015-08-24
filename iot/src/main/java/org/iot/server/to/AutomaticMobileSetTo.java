@@ -11,7 +11,7 @@ public class AutomaticMobileSetTo {
 	private float xAutomaticMobileSet;
 	private float yAutomaticMobileSet;
 	private String macAutomaticMobileSet;
-	private String position;
+
 
 	public String getId() {
 		return id;
@@ -84,13 +84,4 @@ public class AutomaticMobileSetTo {
 	public void setyAutomaticMobileSet(float y) {
 		this.yAutomaticMobileSet = y;
 	}
-
-	public String getPosition() {
-		return position;
-	}
-
-	public void setPosition(String position) {
-		this.position = position;
-	}
-
 }

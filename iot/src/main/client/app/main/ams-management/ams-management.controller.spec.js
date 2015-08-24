@@ -1,11 +1,16 @@
 describe('Ams management tests', function () {
     'use strict';
 
-    var $scope;
-
     beforeEach(module('app.main'));
 
-    beforeEach(inject(function ($controller, $rootScope) {
+    var $scope;
+
+    beforeEach(inject(function ($controller, $rootScope, amsDataRestService) {
+        spyOn(amsDataRestService, 'getAmsData').and.returnValue({
+            then: function () {
+                // do nothing
+            }
+        });
         $scope = $rootScope.$new();
         $controller('AmsManagementCntl', {
             $scope: $scope
@@ -75,5 +80,32 @@ describe('Ams management tests', function () {
             });
             expect($modal.open.calls.argsFor(0)[0].resolve.ams()).toEqual('some entry');
         }));
+
+        it('should call $modal.show when add ams function is called', inject(function ($modal, $q, amsDataRestService) {
+            // given
+            var modalDeferred = $q.defer(),
+                amsDataRestServiceDeferred = $q.defer();
+            spyOn($modal, 'open').and.returnValue({
+                result: modalDeferred.promise
+            });
+            spyOn(amsDataRestService, 'addAmsData').and.returnValue(amsDataRestServiceDeferred.promise);
+            // when
+            $scope.addAms();
+            modalDeferred.resolve('some modal response');
+            amsDataRestServiceDeferred.resolve({
+                data: 'added ams'
+            });
+            $scope.$digest();
+            // then
+            expect($modal.open).toHaveBeenCalledWith({
+                templateUrl: '/main/ams-add/ams-add.tpl.html',
+                controller: 'AddAmsCntl',
+                animation: true
+            });
+            expect(amsDataRestService.addAmsData).toHaveBeenCalledWith('some modal response');
+            expect($scope.amsModel.length).toEqual(1);
+            expect($scope.amsModel[0]).toEqual('added ams');
+        }));
+
     });
 });
