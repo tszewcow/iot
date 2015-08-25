@@ -9,8 +9,6 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
         getAmsRest();
     }, 1000);
 
-
-
     var getAmsRest = function () {
         amsDataRestService.getAmsData().then(function (response) {
             $scope.locationModel.length = 0;
@@ -19,7 +17,9 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
             });
         });
     };
-
+    
+    getAmsRest();
+    
     beaconDataRestService.getBeaconsData().then(function (response) {
         angular.forEach(response.data, function (elem) {
             this.push(transformToPointForBeacons(elem));
@@ -45,11 +45,11 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
     };
 
     var translateXCoordToMap = function (x) {
-        return x;
+        return Math.floor(x);
     };
 
     var translateYCoordToMap = function (y) {
-        return y;
+        return Math.floor(y);
     };
 
     $scope.showWarning = function () {

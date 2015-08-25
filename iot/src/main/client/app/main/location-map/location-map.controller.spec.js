@@ -6,11 +6,16 @@ describe('Location map tests', function () {
     
     beforeEach(module('app.main'));
     
-    beforeEach(inject(function($controller, $rootScope, amsDataRestService, $interval, $q){
+    beforeEach(inject(function($controller, $rootScope, amsDataRestService, beaconDataRestService, $interval, $q){
     	deferred = $q.defer();
     	$scope = $rootScope.$new();
     	
     	spyOn(amsDataRestService, 'getAmsData').and.returnValue(deferred.promise);
+    	spyOn(beaconDataRestService, 'getBeaconsData').and.returnValue({
+            then: function () {
+                // do nothing
+            }
+        });
         
     	$controller('LocationMapCntl', {$scope: $scope})
     }));
