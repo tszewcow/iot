@@ -30,7 +30,7 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
         var beaconPoint = {};
 
         beaconPoint.xPos = translateXCoordToMap(beacon.xBeacon);
-        beaconPoint.yPos = translateXCoordToMap(beacon.yBeacon);
+        beaconPoint.yPos = translateYCoordToMap(beacon.yBeacon);
         beaconPoint.beaconName = beacon.name;
         return beaconPoint;
     }
@@ -40,7 +40,7 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
         var point = {};
 
         point.xPos = translateXCoordToMap(ams.xAutomaticMobileSet);
-        point.yPos = translateXCoordToMap(ams.yAutomaticMobileSet);
+        point.yPos = translateYCoordToMap(ams.yAutomaticMobileSet);
         point.name = ams.project;
         return point;
     };
