@@ -14,12 +14,12 @@
         <image width="1837px" height="1298px" xlink:href="/main/image/7p.png"></image>
         <g data-ng-repeat="point in locationModel">
             <circle data-ng-attr-cx="{{point.xPos}}" data-ng-attr-cy="{{point.yPos}}" r="100" stroke="red" stroke-width="4" fill="white" fill-opacity="0.5" style></circle>
-            <text data-attr-x="{{point.xPos - 15}}" data-attr-y="{{point.yPos + 30}}" fill="red">{{point.name}}</text>
+            <text data-ng-attr-x="{{point.xPos - 15}}" data-ng-attr-y="{{point.yPos}}" fill="red">{{point.name}}</text>
         </g>
 
         <g data-ng-repeat="beaconPoint in beacons">
             <circle data-ng-attr-cx="{{beaconPoint.xPos}}" data-ng-attr-cy="{{beaconPoint.yPos}}" r="5" stroke="black" stroke-width="5" fill="black" fill-opacity="1"></circle>
-            <text data-attr-x="{{beaconPoint.xPos+15}}" data-attr-y="{{beaconPoint.yPos-30}" fill="black">{{beaconName}}</text>
+            <text data-ng-attr-x="{{beaconPoint.xPos-5}}" data-ng-attr-y="{{beaconPoint.yPos+20}}" fill="black">{{beaconPoint.beaconName}}</text>
         </g>
     </svg>
     <div data-ng-show="!showMap()"></div>

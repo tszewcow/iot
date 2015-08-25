@@ -31,6 +31,7 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
 
         beaconPoint.xPos = translateXCoordToMap(beacon.xBeacon);
         beaconPoint.yPos = translateXCoordToMap(beacon.yBeacon);
+        beaconPoint.beaconName = beacon.name;
         return beaconPoint;
     }
 
