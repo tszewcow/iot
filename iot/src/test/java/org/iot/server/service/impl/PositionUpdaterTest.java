@@ -17,7 +17,7 @@ public class PositionUpdaterTest {
 	@Before
 	public void setUp() {
 		PositionCalculator positionCalculator = new PositionCalculator();
-		positionUpdater = new PositionUpdater(positionCalculator);
+		positionUpdater = new PositionUpdater(positionCalculator, null, null);
 	}
 
 	@Ignore

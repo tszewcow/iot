@@ -1,0 +1,15 @@
+<title>Location map of AMS</title>
+
+<div class="container" data-ng-controller="LocationMapCntl">
+
+    <h1>Location map of AMS</h1>
+
+
+    <svg width="1837px" height="1298px" data-ng-controller="LocationMapCntl">
+        <image width="1837px" height="1298px" x="0" y="0" xlink:href="/main/img/7p.png" />
+        <g data-ng-repeat="point in locationModel">
+            <circle cx="100" cy="20" r="15" stroke="red" stroke-width="4" fill="white" fill-opacity="0.5"></circle>
+            <text data-ng-attr-x="{{point.xPos-15}}" data-ng-attr-y="{{point.yPos + 30}}" fill="red">{{point.name}}</text>
+        </g>
+    </svg>
+</div>

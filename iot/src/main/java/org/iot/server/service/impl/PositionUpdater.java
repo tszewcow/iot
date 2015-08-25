@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.iot.server.document.AutomaticMobileSet;
+import org.iot.server.mapper.AutomaticMobileSetMapper;
 import org.iot.server.repository.AutomaticMobileSetRepository;
 import org.iot.server.service.impl.PositionCalculator.Pair;
 import org.iot.server.to.AutomaticMobileSetTo;
@@ -19,12 +20,17 @@ import org.springframework.stereotype.Component;
 public class PositionUpdater {
 
 	private final PositionCalculator positionCalculator;
+	private final AutomaticMobileSetRepository automaticMobileSetRepository;
+	private final AutomaticMobileSetMapper automaticMobileSetMapper;
+
 
 	// FileWriter writer;
 
 	@Autowired
-	public PositionUpdater(PositionCalculator positionCalculator) {
+	public PositionUpdater(PositionCalculator positionCalculator, AutomaticMobileSetRepository automaticMobileSetRepository, AutomaticMobileSetMapper automaticMobileSetMapper) {
 		this.positionCalculator = positionCalculator;
+		this.automaticMobileSetRepository = automaticMobileSetRepository;
+		this.automaticMobileSetMapper = automaticMobileSetMapper;
 	}
 
 	public void updateAutomaticMobileSetPositions(List<BeaconTo> beacons, List<BeaconStatusTo> beaconStatuses,
@@ -40,9 +46,9 @@ public class PositionUpdater {
 			AutomaticMobileSetTo automaticMobileSetTo = getAutomaticMobileSetByMac(automaticMobileSets, mac);
 			PositionTo coordinates = calculateCoordinates(beaconToDistance, beacons);	
 			automaticMobileSetTo.setxAutomaticMobileSet(coordinates.getX());
-			automaticMobileSetTo.setyAutomaticMobileSet(coordinates.getY());
-			
-			//TODO update in database
+			automaticMobileSetTo.setyAutomaticMobileSet(coordinates.getY());	
+			AutomaticMobileSet automaticMobileSet = automaticMobileSetMapper.mapTo2Document(automaticMobileSetTo);
+			automaticMobileSetRepository.save(automaticMobileSet);
 		}		
 	}
 
