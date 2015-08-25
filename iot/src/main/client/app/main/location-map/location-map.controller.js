@@ -1,33 +1,59 @@
-angular.module('app.main').controller('LocationMapCntl', function ($scope, $modal, amsDataRestService, $interval) {
+angular.module('app.main').controller('LocationMapCntl', function ($scope, $interval, amsDataRestService, beaconDataRestService) {
     'use strict';
 
     $scope.locationModel = [];
+    $scope.beacons = [];
 
-    // call rest for coordinates in 5s interval
+
     $interval(function () {
-        // call rest here and on resolve assign response to the $scope
-    }, 5000);
+        getAmsRest();
+    }, 1000);
 
-    amsDataRestService.getAmsData().then(function (response) {
+
+
+    var getAmsRest = function () {
+        amsDataRestService.getAmsData().then(function (response) {
+            $scope.locationModel.length = 0;
+            angular.forEach(response.data, function (elem) {
+                $scope.locationModel.push(transformToPoint(elem));
+            });
+        });
+    };
+
+    beaconDataRestService.getBeaconsData().then(function (response) {
         angular.forEach(response.data, function (elem) {
-            this.push(transformToPoint(elem));
-        }, $scope.locationModel);
+            this.push(transformToPointForBeacons(elem));
+        }, $scope.beacons);
     });
 
-    function transformToPoint(ams) {
+    var transformToPointForBeacons = function (beacon) {
+        var beaconPoint = {};
+
+        beaconPoint.xPos = translateXCoordToMap(beacon.xBeacon);
+        beaconPoint.yPos = translateXCoordToMap(beacon.yBeacon);
+        return beaconPoint;
+    }
+
+
+    var transformToPoint = function (ams) {
         var point = {};
-        point.xPos = Math.floor(translateXCoordToMap(ams.xAutomaticMobileSet));
-        point.yPos = Math.floor(translateXCoordToMap(ams.yAutomaticMobileSet));
+
+        point.xPos = translateXCoordToMap(ams.xAutomaticMobileSet);
+        point.yPos = translateXCoordToMap(ams.yAutomaticMobileSet);
         point.name = ams.project;
         return point;
     };
 
-    function translateXCoordToMap(x) {
+    var translateXCoordToMap = function (x) {
         return x;
     };
 
-    function translateYCoordToMap(y) {
+    var translateYCoordToMap = function (y) {
         return y;
     };
+
+    $scope.showWarning = function () {
+        return true;
+    }
 
 });
