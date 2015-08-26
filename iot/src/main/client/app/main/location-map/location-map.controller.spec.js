@@ -38,13 +38,13 @@ describe('Location map tests', function () {
         	
         	// then
             expect($scope.locationModel.length).toEqual(3);
-            expect($scope.locationModel[0].name).toEqual('ams-1');
+            expect($scope.locationModel[0].project).toEqual('ams-1');
             expect($scope.locationModel[0].xPos).toEqual(100);
             expect($scope.locationModel[0].yPos).toEqual(350);
-            expect($scope.locationModel[1].name).toEqual('ams-2');
+            expect($scope.locationModel[1].project).toEqual('ams-2');
             expect($scope.locationModel[1].xPos).toEqual(5);
             expect($scope.locationModel[1].yPos).toEqual(202);
-            expect($scope.locationModel[2].name).toEqual('ams-3');
+            expect($scope.locationModel[2].project).toEqual('ams-3');
             expect($scope.locationModel[2].xPos).toEqual(1280);
             expect($scope.locationModel[2].yPos).toEqual(393);
         }));
@@ -62,10 +62,10 @@ describe('Location map tests', function () {
         	
         	// then
             expect($scope.beacons.length).toEqual(2);
-            expect($scope.beacons[0].beaconName).toEqual('beacon01');
+            expect($scope.beacons[0].name).toEqual('beacon01');
             expect($scope.beacons[0].xPos).toEqual(404);
             expect($scope.beacons[0].yPos).toEqual(124);
-            expect($scope.beacons[1].beaconName).toEqual('beacon02');
+            expect($scope.beacons[1].name).toEqual('beacon02');
             expect($scope.beacons[1].xPos).toEqual(405);
             expect($scope.beacons[1].yPos).toEqual(287);
         }));
@@ -84,7 +84,7 @@ describe('Location map tests', function () {
         	
         	// then
             expect($scope.locationModel.length).toEqual(1);
-            expect($scope.locationModel[0].name).toEqual('mobile_set');
+            expect($scope.locationModel[0].project).toEqual('mobile_set');
             expect($scope.locationModel[0].xPos).toEqual(850);
             expect($scope.locationModel[0].yPos).toEqual(1001);
         }));
@@ -103,7 +103,7 @@ describe('Location map tests', function () {
         	
         	// then
             expect($scope.beacons.length).toEqual(1);
-            expect($scope.beacons[0].beaconName).toEqual('BeaconTest001');
+            expect($scope.beacons[0].name).toEqual('BeaconTest001');
             expect($scope.beacons[0].xPos).toEqual(850);
             expect($scope.beacons[0].yPos).toEqual(1001);
         }));

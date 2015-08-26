@@ -31,7 +31,6 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
 
         beaconPoint.xPos = translateXCoordToMap(beacon.xBeacon);
         beaconPoint.yPos = translateYCoordToMap(beacon.yBeacon);
-        beaconPoint.beaconName = beacon.name;
         beaconPoint.name = beacon.name;
         return beaconPoint;
     };
@@ -57,10 +56,12 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
 
     $scope.showWarning = function () {
 
-        if ($scope.locationModel[0].isActual === true)
+        if ($scope.locationModel[0].isActual === true) {
             return false;
-        else
+        }
+        else {
             return true;
-    }
+        }
+    };
 
 });
