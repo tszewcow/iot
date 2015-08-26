@@ -23,11 +23,12 @@ public class PositionUpdater {
 	private final AutomaticMobileSetRepository automaticMobileSetRepository;
 	private final AutomaticMobileSetMapper automaticMobileSetMapper;
 
-
 	// FileWriter writer;
 
 	@Autowired
-	public PositionUpdater(PositionCalculator positionCalculator, AutomaticMobileSetRepository automaticMobileSetRepository, AutomaticMobileSetMapper automaticMobileSetMapper) {
+	public PositionUpdater(PositionCalculator positionCalculator,
+			AutomaticMobileSetRepository automaticMobileSetRepository,
+			AutomaticMobileSetMapper automaticMobileSetMapper) {
 		this.positionCalculator = positionCalculator;
 		this.automaticMobileSetRepository = automaticMobileSetRepository;
 		this.automaticMobileSetMapper = automaticMobileSetMapper;
@@ -44,12 +45,9 @@ public class PositionUpdater {
 			Map<String, Float> beaconToDistance = calculateDistance(beaconToBeaconStatuses);
 			String mac = entry.getKey();
 			AutomaticMobileSetTo automaticMobileSetTo = getAutomaticMobileSetByMac(automaticMobileSets, mac);
-			PositionTo coordinates = calculateCoordinates(beaconToDistance, beacons);	
-			automaticMobileSetTo.setxAutomaticMobileSet(coordinates.getX());
-			automaticMobileSetTo.setyAutomaticMobileSet(coordinates.getY());	
-			AutomaticMobileSet automaticMobileSet = automaticMobileSetMapper.mapTo2Document(automaticMobileSetTo);
-			automaticMobileSetRepository.save(automaticMobileSet);
-		}		
+			PositionTo coordinates = calculateCoordinates(beaconToDistance, beacons);
+			saveToDataBase(coordinates, automaticMobileSetTo);
+		}
 	}
 
 	private Map<String, List<BeaconStatusTo>> groupStatusesByAutomaticMobileSet(List<BeaconStatusTo> beaconStatuses) {
@@ -144,13 +142,24 @@ public class PositionUpdater {
 
 		System.out.println(automaticMobileSetPosition.getX());
 		System.out.println(automaticMobileSetPosition.getY());
-		
-		
 
 		// SaveDataPostitionToCsv(automaticMobileSetPosition.getX(),
 		// automaticMobileSetPosition.getY());
 
 		return automaticMobileSetPosition;
+	}
+
+	private void saveToDataBase(PositionTo coordinates, AutomaticMobileSetTo automaticMobileSetTo) {
+
+		if (Float.isNaN(coordinates.getX()) && Float.isNaN(coordinates.getY())) {
+			automaticMobileSetTo.setIsActual(false);
+		} else {
+			automaticMobileSetTo.setxAutomaticMobileSet(coordinates.getX());
+			automaticMobileSetTo.setyAutomaticMobileSet(coordinates.getY());
+			automaticMobileSetTo.setIsActual(true);
+		}
+		AutomaticMobileSet automaticMobileSet = automaticMobileSetMapper.mapTo2Document(automaticMobileSetTo);
+		automaticMobileSetRepository.save(automaticMobileSet);
 	}
 
 	/*

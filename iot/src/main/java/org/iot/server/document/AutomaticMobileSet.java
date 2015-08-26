@@ -13,7 +13,8 @@ public class AutomaticMobileSet {
 	private double room;
 	private float xAutomaticMobileSet;
 	private float yAutomaticMobileSet;
-	private String macAutomaticMobileSet;	
+	private String macAutomaticMobileSet;
+	private boolean isActual;
 
 	public String getMacAutomaticMobileSet() {
 		return macAutomaticMobileSet;
@@ -85,5 +86,13 @@ public class AutomaticMobileSet {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public boolean getIsActual() {
+		return isActual;
+	}
+
+	public void setIsActual(boolean isActual) {
+		this.isActual = isActual;
 	}
 }

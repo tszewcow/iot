@@ -23,6 +23,7 @@ public class AutomaticMobileSetMapper {
 		automaticMobileSetTo.setxAutomaticMobileSet(automaticMobileSet.getxAutomaticMobileSet());
 		automaticMobileSetTo.setyAutomaticMobileSet(automaticMobileSet.getyAutomaticMobileSet());
 		automaticMobileSetTo.setMacAutomaticMobileSet(automaticMobileSet.getMacAutomaticMobileSet());
+		automaticMobileSetTo.setIsActual(automaticMobileSet.getIsActual());
 
 		return automaticMobileSetTo;
 	}
@@ -45,6 +46,7 @@ public class AutomaticMobileSetMapper {
 		automaticMobileSet.setxAutomaticMobileSet(automaticMobileSetTo.getxAutomaticMobileSet());
 		automaticMobileSet.setyAutomaticMobileSet(automaticMobileSetTo.getyAutomaticMobileSet());
 		automaticMobileSet.setMacAutomaticMobileSet(automaticMobileSetTo.getMacAutomaticMobileSet());
+		automaticMobileSet.setIsActual(automaticMobileSetTo.getIsActual());
 
 		return automaticMobileSet;
 	}

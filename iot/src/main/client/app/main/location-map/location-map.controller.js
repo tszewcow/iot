@@ -22,8 +22,8 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
 
     beaconDataRestService.getBeaconsData().then(function (response) {
         angular.forEach(response.data, function (elem) {
-            this.push(transformToPointForBeacons(elem));
-        }, $scope.beacons);
+            $scope.beacons.push(transformToPointForBeacons(elem));
+        });
     });
 
     var transformToPointForBeacons = function (beacon) {
@@ -31,8 +31,9 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
 
         beaconPoint.xPos = translateXCoordToMap(beacon.xBeacon);
         beaconPoint.yPos = translateXCoordToMap(beacon.yBeacon);
+        beaconPoint.name = beacon.name;
         return beaconPoint;
-    }
+    };
 
 
     var transformToPoint = function (ams) {
@@ -40,7 +41,8 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
 
         point.xPos = translateXCoordToMap(ams.xAutomaticMobileSet);
         point.yPos = translateXCoordToMap(ams.yAutomaticMobileSet);
-        point.name = ams.project;
+        point.project = ams.project;
+        point.isActual = ams.isActual;
         return point;
     };
 
@@ -53,7 +55,11 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
     };
 
     $scope.showWarning = function () {
-        return true;
+
+        if ($scope.locationModel[0].isActual === true)
+            return false;
+        else
+            return true;
     }
 
 });
