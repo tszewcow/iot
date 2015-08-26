@@ -13,7 +13,10 @@ describe('Ams management tests', function () {
         });
         $scope = $rootScope.$new();
         $controller('AmsManagementCntl', {
-            $scope: $scope
+            $scope: $scope,
+            globalSpinner: {
+            	decorateCallOfFunctionReturningPromise: function(func) {func()}
+            }
         });
     }));
 

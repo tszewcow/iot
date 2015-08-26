@@ -24,7 +24,10 @@ describe('Beacons management tests', function () {
         });
         // when
         $controller('BeaconsManagementCntl', {
-            $scope: $scope
+            $scope: $scope,
+            globalSpinner: {
+            	decorateCallOfFunctionReturningPromise: function(func) {func()}
+            }
         });
         $scope.$digest();
     }));

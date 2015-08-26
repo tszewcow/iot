@@ -1,21 +1,26 @@
-angular.module('app.main').controller('AmsManagementCntl', function ($scope, $modal, amsDataRestService) {
+angular.module('app.main').controller('AmsManagementCntl', function ($scope, $modal, amsDataRestService, globalSpinner) {
     'use strict';
 
     $scope.amsModel = [];
 
-    amsDataRestService.getAmsData().then(function (response) {
-        $scope.amsModel = angular.copy(response.data);
+    globalSpinner.decorateCallOfFunctionReturningPromise(function() {
+    	return amsDataRestService.getAmsData().then(function (response) {
+    		$scope.amsModel = angular.copy(response.data);
+    	});
     });
-
+    
     $scope.mySelectedItems = [];
 
     $scope.deleteAms = function () {
-        amsDataRestService.deleteAmsData($scope.mySelectedItems[0].id);
-        for (var index = 0; index < $scope.amsModel.length; index = index + 1) {
-            if ($scope.mySelectedItems[0].id === $scope.amsModel[index].id) {
-                $scope.amsModel.splice(index, 1);
-            }
-        }
+    	globalSpinner.decorateCallOfFunctionReturningPromise(function() {
+	    	var callResult = amsDataRestService.deleteAmsData($scope.mySelectedItems[0].id);
+	        for (var index = 0; index < $scope.amsModel.length; index = index + 1) {
+	            if ($scope.mySelectedItems[0].id === $scope.amsModel[index].id) {
+	                $scope.amsModel.splice(index, 1);
+	            }
+	        }
+	        return  callResult;
+    	});
     };
 
     $scope.controlButtonDisabled = function () {
@@ -36,13 +41,15 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
         });
 
         modalInstance.result.then(function (ams) {
-            amsDataRestService.updateAmsData(ams).then(function (response) {
-                for (var index = 0; index < $scope.amsModel.length; index = index + 1) {
-                    if (response.data.id === $scope.amsModel[index].id) {
-                        $scope.amsModel[index] = response.data;
-                    }
-                }
-            });
+        	globalSpinner.decorateCallOfFunctionReturningPromise(function() {
+        		return amsDataRestService.updateAmsData(ams).then(function (response) {
+	                for (var index = 0; index < $scope.amsModel.length; index = index + 1) {
+	                    if (response.data.id === $scope.amsModel[index].id) {
+	                        $scope.amsModel[index] = response.data;
+	                    }
+	                }
+	            });
+	        }, ams);
         });
     };
 
@@ -55,9 +62,11 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
         });
 
         modalInstance.result.then(function (ams) {
-            amsDataRestService.addAmsData(ams).then(function (response) {
-                $scope.amsModel.push(response.data);
-            });
+        	globalSpinner.decorateCallOfFunctionReturningPromise(function() {
+	            return amsDataRestService.addAmsData(ams).then(function (response) {
+	                $scope.amsModel.push(response.data);
+	            });
+        	}, ams);
         });
     };
 });
