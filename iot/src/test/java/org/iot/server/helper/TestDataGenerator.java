@@ -1,4 +1,4 @@
-package org.iot.server.testHelp;
+package org.iot.server.helper;
 
 import java.math.BigDecimal;
 import java.util.Random;

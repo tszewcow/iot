@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.iot.server.document.AutomaticMobileSet;
-import org.iot.server.testHelp.TestDataGenerator;
+import org.iot.server.helper.EqualityChecker;
+import org.iot.server.helper.TestDataGenerator;
 import org.iot.server.to.AutomaticMobileSetTo;
 import org.junit.Test;
 
@@ -21,7 +22,7 @@ public class AutomaticMobileSetMapperTest {
 		
 		AutomaticMobileSetTo mappedSet = automaticMobileSetMapper.mapDocument2To(automaticMobileSet);
 		
-		assertEquals(true, checkEquality(automaticMobileSet, mappedSet));
+		assertEquals(true, EqualityChecker.checkEquality(automaticMobileSet, mappedSet));
 	}
 
 	@Test
@@ -33,7 +34,7 @@ public class AutomaticMobileSetMapperTest {
 		
 		mappedSet.setId(mappedSet.getId().concat("1"));
 		
-		assertEquals(false, checkEquality(automaticMobileSet, mappedSet));
+		assertEquals(false, EqualityChecker.checkEquality(automaticMobileSet, mappedSet));
 	}
 	
 	@Test
@@ -49,7 +50,7 @@ public class AutomaticMobileSetMapperTest {
 		List<AutomaticMobileSetTo> mappedList = automaticMobileSetMapper.mapDocuments2Tos(amsList);
 		
 		for(int x=0;x<listSize;x++)
-			assertEquals(true, checkEquality(amsList.get(x), mappedList.get(x)));
+			assertEquals(true, EqualityChecker.checkEquality(amsList.get(x), mappedList.get(x)));
 	}
 
 	@Test
@@ -59,24 +60,12 @@ public class AutomaticMobileSetMapperTest {
 		
 		AutomaticMobileSet demappedSet = automaticMobileSetMapper.mapTo2Document(automaticMobileSetTo);
 		
-		assertEquals(true, checkEquality(demappedSet, automaticMobileSetTo));	
+		assertEquals(true, EqualityChecker.checkEquality(demappedSet, automaticMobileSetTo));	
 	}
 	
 	
 	
 	
 	
-	private boolean checkEquality(AutomaticMobileSet ams, AutomaticMobileSetTo mappedAms)
-	{
-		return 	ams.getId().equals(mappedAms.getId()) &&
-				ams.getProject().equals(mappedAms.getProject()) &&
-				ams.getGuardian().equals(mappedAms.getGuardian()) &&
-				ams.getBuilding().equals(mappedAms.getBuilding()) &&
-				ams.getFloor() == mappedAms.getFloor() &&
-				ams.getRoom() == mappedAms.getRoom() &&
-				ams.getxAutomaticMobileSet() == mappedAms.getxAutomaticMobileSet() &&
-				ams.getyAutomaticMobileSet() == mappedAms.getyAutomaticMobileSet() &&
-				ams.getMacAutomaticMobileSet().equals(mappedAms.getMacAutomaticMobileSet()) &&
-				ams.getIsActual() == mappedAms.getIsActual();
-	}
+
 }

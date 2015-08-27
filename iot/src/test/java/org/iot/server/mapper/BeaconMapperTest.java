@@ -5,7 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 import org.iot.server.document.Beacon;
-import org.iot.server.testHelp.TestDataGenerator;
+import org.iot.server.helper.EqualityChecker;
+import org.iot.server.helper.TestDataGenerator;
 import org.iot.server.to.BeaconTo;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class BeaconMapperTest {
 		
 		BeaconTo mappedBeacon = beaconMapper.mapDocument2To(beacon);
 		
-		assertEquals(true, checkEquality(beacon, mappedBeacon));
+		assertEquals(true, EqualityChecker.checkEquality(beacon, mappedBeacon));
 	}
 
 	@Test
@@ -32,7 +33,7 @@ public class BeaconMapperTest {
 		
 		mappedBeacon.setId(mappedBeacon.getId().concat("1"));
 		
-		assertEquals(false, checkEquality(beacon, mappedBeacon));
+		assertEquals(false, EqualityChecker.checkEquality(beacon, mappedBeacon));
 	}
 	
 	@Test
@@ -48,7 +49,7 @@ public class BeaconMapperTest {
 		List<BeaconTo> mappedList = beaconMapper.mapDocuments2Tos(beaconList);
 		
 		for(int x=0;x<listSize;x++)
-			assertEquals(true, checkEquality(beaconList.get(x), mappedList.get(x)));
+			assertEquals(true, EqualityChecker.checkEquality(beaconList.get(x), mappedList.get(x)));
 	}
 
 	@Test
@@ -58,21 +59,6 @@ public class BeaconMapperTest {
 		
 		Beacon demappedBeacon = beaconMapper.mapTo2Document(beaconTo);
 		
-		assertEquals(true, checkEquality(demappedBeacon, beaconTo));	
-	}
-
-	private boolean checkEquality(Beacon beacon, BeaconTo mappedBeacon)
-	{
-		return 	beacon.getId().equals(mappedBeacon.getId()) &&
-				beacon.getName().equals(mappedBeacon.getName()) &&
-				beacon.getMac().equals(mappedBeacon.getMac()) &&
-				beacon.getUuidNormal().equals(mappedBeacon.getUuidNormal()) &&
-				beacon.getUuidSecure().equals(mappedBeacon.getUuidSecure()) &&
-				beacon.getUuidService().equals(mappedBeacon.getUuidService()) &&
-				beacon.getBuilding().equals(mappedBeacon.getBuilding()) &&
-				beacon.getFloor() == mappedBeacon.getFloor() &&
-				beacon.getRoom() == mappedBeacon.getRoom() &&
-				beacon.getxBeacon() == mappedBeacon.getxBeacon() &&
-				beacon.getyBeacon() == mappedBeacon.getyBeacon();
+		assertEquals(true, EqualityChecker.checkEquality(demappedBeacon, beaconTo));	
 	}
 }

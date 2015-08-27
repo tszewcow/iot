@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.iot.server.document.BeaconStatus;
-import org.iot.server.testHelp.TestDataGenerator;
+import org.iot.server.helper.EqualityChecker;
+import org.iot.server.helper.TestDataGenerator;
 import org.iot.server.to.BeaconStatusTo;
 import org.junit.Test;
 
@@ -21,7 +22,7 @@ public class BeaconStatusMapperTest {
 		
 		BeaconStatusTo mappedBeaconStatus = beaconStatusMapper.mapDocument2To(beaconStatus);
 		
-		assertEquals(true, checkEquality(beaconStatus, mappedBeaconStatus));
+		assertEquals(true, EqualityChecker.checkEquality(beaconStatus, mappedBeaconStatus));
 	}
 
 	@Test
@@ -33,7 +34,7 @@ public class BeaconStatusMapperTest {
 		
 		mappedBeaconStatus.setMac(mappedBeaconStatus.getMac().concat("1"));
 		
-		assertEquals(false, checkEquality(beaconStatus, mappedBeaconStatus));
+		assertEquals(false, EqualityChecker.checkEquality(beaconStatus, mappedBeaconStatus));
 	}
 	
 	@Test
@@ -49,7 +50,7 @@ public class BeaconStatusMapperTest {
 		List<BeaconStatusTo> mappedList = beaconStatusMapper.mapDocuments2Tos(beaconStatusList);
 		
 		for(int x=0;x<listSize;x++)
-			assertEquals(true, checkEquality(beaconStatusList.get(x), mappedList.get(x)));
+			assertEquals(true, EqualityChecker.checkEquality(beaconStatusList.get(x), mappedList.get(x)));
 	}
 
 	@Test
@@ -59,18 +60,6 @@ public class BeaconStatusMapperTest {
 		
 		BeaconStatus demappedBeaconStatus = beaconStatusMapper.mapTo2Document(beaconStatusTo);
 		
-		assertEquals(true, checkEquality(demappedBeaconStatus, beaconStatusTo));	
-	}
-
-	private boolean checkEquality(BeaconStatus beaconStatus, BeaconStatusTo mappedBeaconStatus)
-	{
-		return 	beaconStatus.getMac().equals(mappedBeaconStatus.getMac()) &&
-				beaconStatus.getMajor() == mappedBeaconStatus.getMajor() &&
-				beaconStatus.getMinor().equals(mappedBeaconStatus.getMinor()) &&
-				beaconStatus.getRssi() == mappedBeaconStatus.getRssi() &&
-				beaconStatus.getMeasuredStrenght() == mappedBeaconStatus.getMeasuredStrenght() &&
-				beaconStatus.getUuid().equals(mappedBeaconStatus.getUuid()) &&
-//				beaconStatus.getMacAutomaticMobileSet().equals(mappedBeaconStatus.getMacAutomaticMobileSet()) && //odkomentowac
-				beaconStatus.getDistance() == mappedBeaconStatus.getDistance();
+		assertEquals(true, EqualityChecker.checkEquality(demappedBeaconStatus, beaconStatusTo));	
 	}
 }
