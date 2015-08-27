@@ -53,26 +53,11 @@
             </div>
             <div class="row ">
                 <div class="form-group col-md-2 ">
-                    <label>Coordinate X</label>
-                </div>
-                <div class="form-group col-md-10 ">
-                    <input type="number " data-ng-model="data.xAutomaticMobileSet " data-ng-disabled="true" class="form-control " />
-                </div>
-            </div>
-            <div class="row ">
-                <div class="form-group col-md-2 ">
-                    <label>Coordinate Y</label>
-                </div>
-                <div class="form-group col-md-10 ">
-                    <input type="number " data-ng-model="data.yAutomaticMobileSet " data-ng-disabled="true" class="form-control " />
-                </div>
-            </div>
-            <div class="row ">
-                <div class="form-group col-md-2 ">
                     <label>MAC</label>
                 </div>
-                <div class="form-group col-md-10 ">
-                    <input type="text " data-ng-model="data.macAutomaticMobileSet " data-ng-disabled="true" class="form-control " />
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.macInput.$invalid,'has-success': amsEditForm.macInput.$valid}">
+                    <input type="text " name="macInput" data-ng-model="data.macAutomaticMobileSet " class="form-control data-ng-required=" true />
+                    <p ng-show="amsEditForm.macInput.$invalid" class="help-block">MAC is required.</p>
                 </div>
             </div>
         </div>

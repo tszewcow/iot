@@ -2,7 +2,9 @@ angular.module('app.main').controller('BeaconEditCntl', function ($scope, $modal
     'use strict';
 
     $scope.ok = function () {
-        $modalInstance.close($scope.data);
+        if ($scope.beaconEditForm.$valid) {
+            $modalInstance.close($scope.data);
+        }
     };
 
     $scope.cancel = function () {

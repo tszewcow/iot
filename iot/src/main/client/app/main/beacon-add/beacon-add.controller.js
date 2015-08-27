@@ -17,7 +17,9 @@ angular.module('app.main').controller('BeaconAddCntl', function ($scope, $modalI
 
 
     $scope.ok = function () {
-        $modalInstance.close($scope.newBeacon);
+        if ($scope.beaconAddForm.$valid) {
+            $modalInstance.close($scope.newBeacon);
+        }
     };
 
     $scope.cancel = function () {
