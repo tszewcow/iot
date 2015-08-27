@@ -8,8 +8,8 @@ angular.module('app.main').controller('AddAmsCntl', function ($scope, $modalInst
         building: '',
         floor: '',
         room: '',
-        xAutomaticMobileSet: '',
-        yAutomaticMobileSet: '',
+        xAutomaticMobileSet: -1000,
+        yAutomaticMobileSet: -1000,
         macAutomaticMobileSet: ''
     };
 

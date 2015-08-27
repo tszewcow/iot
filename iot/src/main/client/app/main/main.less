@@ -1,12 +1,22 @@
 @import "main/layout/variables";
 @import "main/layout/mixins";
 @import "bower_components/oasp/oasp/oasp-ui/css/components/spinner";
-
 body {
-  padding-top: 50px;
-  padding-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
+div.required label:after {
+    content: "*";
+    color: red;
+    display: inline-block;
 }

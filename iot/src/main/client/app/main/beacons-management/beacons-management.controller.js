@@ -3,24 +3,24 @@ angular.module('app.main').controller('BeaconsManagementCntl', function ($scope,
 
     $scope.beacons = [];
 
-    globalSpinner.decorateCallOfFunctionReturningPromise(function() {
-		return beaconDataRestService.getBeaconsData().then(function (response) {
-			$scope.beacons = angular.copy(response.data);
-		});
+    globalSpinner.decorateCallOfFunctionReturningPromise(function () {
+        return beaconDataRestService.getBeaconsData().then(function (response) {
+            $scope.beacons = angular.copy(response.data);
+        });
     });
 
     $scope.mySelectedItems = [];
 
     $scope.deleteBeacon = function () {
-    	globalSpinner.decorateCallOfFunctionReturningPromise(function() {
-    		var callResult = beaconDataRestService.deleteBeaconData($scope.mySelectedItems[0].id);
-	        for (var index = 0; index < $scope.beacons.length; index = index + 1) {
-	            if ($scope.mySelectedItems[0].id === $scope.beacons[index].id) {
-	                $scope.beacons.splice(index, 1);
-	            }
-	        }
-	        return  callResult;
-    	});
+        globalSpinner.decorateCallOfFunctionReturningPromise(function () {
+            var callResult = beaconDataRestService.deleteBeaconData($scope.mySelectedItems[0].id);
+            for (var index = 0; index < $scope.beacons.length; index = index + 1) {
+                if ($scope.mySelectedItems[0].id === $scope.beacons[index].id) {
+                    $scope.beacons.splice(index, 1);
+                }
+            }
+            return callResult;
+        });
     };
 
     $scope.controlButtonDisabled = function () {
@@ -33,6 +33,7 @@ angular.module('app.main').controller('BeaconsManagementCntl', function ($scope,
             templateUrl: '/main/beacon-edit/beacon-edit.tpl.html',
             controller: 'BeaconEditCntl',
             animation: true,
+            size: 'lg',
             resolve: {
                 beacon: function () {
                     return $scope.mySelectedItems[0];
@@ -41,15 +42,15 @@ angular.module('app.main').controller('BeaconsManagementCntl', function ($scope,
         });
 
         modalInstance.result.then(function (beacon) {
-        	globalSpinner.decorateCallOfFunctionReturningPromise(function() {
-        		return beaconDataRestService.updateBeaconData(beacon).then(function (response) {
-	                for (var index = 0; index < $scope.beacons.length; index = index + 1) {
-	                    if (response.data.id === $scope.beacons[index].id) {
-	                        $scope.beacons[index] = response.data;
-	                    }
-	                }
-        		});
-	        }, beacon);
+            globalSpinner.decorateCallOfFunctionReturningPromise(function () {
+                return beaconDataRestService.updateBeaconData(beacon).then(function (response) {
+                    for (var index = 0; index < $scope.beacons.length; index = index + 1) {
+                        if (response.data.id === $scope.beacons[index].id) {
+                            $scope.beacons[index] = response.data;
+                        }
+                    }
+                });
+            }, beacon);
         });
     };
 
@@ -58,15 +59,16 @@ angular.module('app.main').controller('BeaconsManagementCntl', function ($scope,
         var modalInstance = $modal.open({
             templateUrl: '/main/beacon-add/beacon-add.tpl.html',
             controller: 'BeaconAddCntl',
-            animation: true
+            animation: true,
+            size: 'lg'
         });
 
         modalInstance.result.then(function (beacon) {
-        	globalSpinner.decorateCallOfFunctionReturningPromise(function() {
-        		return beaconDataRestService.addBeaconData(beacon).then(function (response) {
-        			$scope.beacons.push(response.data);
-        		});
-        	}, beacon);
+            globalSpinner.decorateCallOfFunctionReturningPromise(function () {
+                return beaconDataRestService.addBeaconData(beacon).then(function (response) {
+                    $scope.beacons.push(response.data);
+                });
+            }, beacon);
         });
     };
 });

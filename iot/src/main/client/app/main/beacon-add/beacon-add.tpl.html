@@ -1,32 +1,22 @@
-<div class="modal-dialog">
-    <div class="modal-header">
-        <div class="modal-title">
-            <h3>Add beacon</h3>
+<form name="beaconAddForm">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <div class="modal-title">
+                <h3>Add beacon</h3>
+            </div>
         </div>
-    </div>
-
-    <form name="beaconAddForm">
         <div class="modal-body">
             <div class="row">
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-2 required">
                     <label>Name</label>
                 </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.nameInput.$invalid && beaconAddForm.nameInput.$dirty,'has-success': beaconAddForm.nameInput.$valid}">
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': beaconAddForm.nameInput.$invalid && beaconAddForm.nameInput.$dirty,'has-success': beaconAddForm.nameInput.$valid}">
                     <input name="nameInput" type="text" data-ng-model="newBeacon.name" class="form-control" ng-required="true" />
                     <p ng-show="beaconAddForm.nameInput.$invalid && beaconAddForm.nameInput.$dirty" class="help-block">Name is required.</p>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-2">
-                    <label>MAC</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.macInput.$invalid && beaconAddForm.macInput.$dirty,'has-success': beaconAddForm.macInput.$valid}">
-                    <input name="macInput" type="text" data-ng-model="newBeacon.mac" class="form-control" ng-required="true" />
-                    <p ng-show="beaconAddForm.macInput.$invalid && beaconAddForm.macInput.$dirty" class="help-block">Mac is required.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-2 ">
                     <label>Uuid Normal</label>
                 </div>
                 <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.uuidNormalInput.$invalid && beaconAddForm.uuidNormalInput.$dirty,'has-success': beaconAddForm.uuidNormalInput.$valid}">
@@ -44,7 +34,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-2 ">
                     <label>Uuid Service</label>
                 </div>
                 <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.uuidServiceInput.$invalid && beaconAddForm.uuidServiceInput.$dirty,'has-success': beaconAddForm.uuidServiceInput.$valid}">
@@ -53,46 +43,49 @@
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-2 required">
+                    <label>MAC</label>
+                </div>
+                <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.macInput.$invalid && beaconAddForm.macInput.$dirty,'has-success': beaconAddForm.macInput.$valid}">
+                    <input name="macInput" type="text" data-ng-model="newBeacon.mac" class="form-control" ng-required="true" />
+                    <p ng-show="beaconAddForm.macInput.$invalid && beaconAddForm.macInput.$dirty" class="help-block">Mac is required.</p>
+                </div>
+                <div class="form-group col-md-2 required">
                     <label>Building</label>
                 </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.buildingInput.$invalid && beaconAddForm.buildingInput.$dirty,'has-success': beaconAddForm.buildingInput.$valid}">
+                <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.buildingInput.$invalid && beaconAddForm.buildingInput.$dirty,'has-success': beaconAddForm.buildingInput.$valid}">
                     <input name="buildingInput" type="text" data-ng-model="newBeacon.building" class="form-control" ng-required="true" />
                     <p ng-show="beaconAddForm.buildingInput.$invalid && beaconAddForm.buildingInput.$dirty" class="help-block">Building is required.</p>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-2 required">
                     <label>Floor</label>
                 </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.floorInput.$invalid && beaconAddForm.floorInput.$dirty,'has-success': beaconAddForm.floorInput.$valid}">
+                <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.floorInput.$invalid && beaconAddForm.floorInput.$dirty,'has-success': beaconAddForm.floorInput.$valid}">
                     <input name="floorInput" type="number" data-ng-model="newBeacon.floor" class="form-control" ng-required="true" />
                     <p ng-show="beaconAddForm.floorInput.$invalid && beaconAddForm.floorInput.$dirty" class="help-block">Floor is required and it's in a number form.</p>
                 </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-2 required">
                     <label>Room</label>
                 </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.roomInput.$invalid && beaconAddForm.roomInput.$dirty,'has-success': beaconAddForm.roomInput.$valid}">
+                <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.roomInput.$invalid && beaconAddForm.roomInput.$dirty,'has-success': beaconAddForm.roomInput.$valid}">
                     <input name="roomInput" type="number" data-ng-model="newBeacon.room" class="form-control" ng-required="true" />
                     <p ng-show="beaconAddForm.roomInput.$invalid && beaconAddForm.roomInput.$dirty" class="help-block">Room is required and it's in a number form.</p>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-2">
-                    <label>Coordinate X</label>
+                    <label>Coordinate X <span class="required"></span></label>
                 </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.coordinateXInput.$invalid && beaconAddForm.coordinateXInput.$dirty,'has-success': beaconAddForm.coordinateXInput.$valid}">
+                <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.coordinateXInput.$invalid && beaconAddForm.coordinateXInput.$dirty,'has-success': beaconAddForm.coordinateXInput.$valid}">
                     <input name="coordinateXInput" type="number" data-ng-model="newBeacon.xBeacon" class="form-control" ng-required="true" />
                     <p ng-show="beaconAddForm.coordinateXInput.$invalid && beaconAddForm.coordinateXInput.$dirty" class="help-block">Coordinate X is required and it's in a number form.</p>
                 </div>
-            </div>
-            <div class="row">
                 <div class="form-group col-md-2">
-                    <label>Coordinate Y</label>
+                    <label>Coordinate Y <span class="required"></span></label>
                 </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.coordinateYInput.$invalid  && beaconAddForm.coordinateYInput.$dirty,'has-success': beaconAddForm.coordinateYInput.$valid}">
+                <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.coordinateYInput.$invalid  && beaconAddForm.coordinateYInput.$dirty,'has-success': beaconAddForm.coordinateYInput.$valid}">
                     <input name="coordinateYInput" type="number" data-ng-model="newBeacon.yBeacon" class="form-control" ng-required="true" />
                     <p ng-show="beaconAddForm.coordinateYInput.$invalid && beaconAddForm.coordinateYInput.$dirty" class="help-block">Coordinate Y is required and it's in a number form.</p>
                 </div>
@@ -101,6 +94,7 @@
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" ng-click="ok()" data-ng-disabled="beaconAddForm.$invalid">OK</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            <p class="col-md-2 text-danger">* required</p>
         </div>
-    </form>
-</div>
+    </div>
+</form>
