@@ -4,11 +4,6 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
     $scope.locationModel = [];
     $scope.beacons = [];
 
-
-    $interval(function () {
-        getAmsRest();
-    }, 1000);
-
     var getAmsRest = function () {
         amsDataRestService.getAmsData().then(function (response) {
             $scope.locationModel.length = 0;
@@ -18,7 +13,11 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
         });
     };
     
+    var intervalPromise = $interval(function () {
+        getAmsRest();
+    }, 1000);
     getAmsRest();
+    $scope.$on('$destroy', function () { $interval.cancel(intervalPromise); });
     
     beaconDataRestService.getBeaconsData().then(function (response) {
         angular.forEach(response.data, function (elem) {
