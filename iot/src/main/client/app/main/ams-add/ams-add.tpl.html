@@ -10,54 +10,54 @@
                 <div class="form-group col-md-2 ">
                     <label>Project</label>
                 </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': amsAddForm.projectInput.$invalid,'has-success': amsAddForm.projectInput.$valid}">
+                <div class="form-group col-md-10" data-ng-class="{'has-error': amsAddForm.projectInput.$invalid && amsAddForm.projectInput.$dirty,'has-success': amsAddForm.projectInput.$valid}">
                     <input name=" projectInput " class="form-control " type="text " data-ng-model="newAms.project " data-ng-required="true " />
-                    <p ng-show="amsAddForm.projectInput.$invalid" class="help-block">Name is required.</p>
+                    <p ng-show="amsAddForm.projectInput.$invalid && amsAddForm.projectInput.$dirty" class="help-block">Name is required.</p>
                 </div>
             </div>
             <div class="row ">
                 <div class="form-group col-md-2 ">
                     <label>Guardian</label>
                 </div>
-                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsAddForm.guardiaInput.$invalid,'has-success': amsAddForm.guardiaInput.$valid}">
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsAddForm.guardiaInput.$invalid && amsAddForm.guardiaInput.$dirty,'has-success': amsAddForm.guardiaInput.$valid}">
                     <input name="guardiaInput" type="text " data-ng-model="newAms.guardian " class="form-control " data-ng-required="true " />
-                    <p ng-show="amsAddForm.guardiaInput.$invalid" class="help-block">Guardian is required.</p>
+                    <p ng-show="amsAddForm.guardiaInput.$invalid && amsAddForm.guardiaInput.$dirty" class="help-block">Guardian is required.</p>
                 </div>
             </div>
             <div class="row ">
                 <div class="form-group col-md-2 ">
                     <label>Building</label>
                 </div>
-                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsAddForm.buildingInput.$invalid,'has-success': amsAddForm.buildingInput.$valid}">
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsAddForm.buildingInput.$invalid && amsAddForm.buildingInput.$dirty,'has-success': amsAddForm.buildingInput.$valid}">
                     <input name="buildingInput" type="text " data-ng-model="newAms.building " class="form-control " data-ng-required="true " />
-                    <p ng-show="amsAddForm.buildingInput.$invalid" class="help-block">Building is required.</p>
+                    <p ng-show="amsAddForm.buildingInput.$invalid  && amsAddForm.buildingInput.$dirty" class="help-block">Building is required.</p>
                 </div>
             </div>
             <div class="row ">
                 <div class="form-group col-md-2 ">
                     <label>Floor</label>
                 </div>
-                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsAddForm.floorInput.$invalid,'has-success': amsAddForm.floorInput.$valid}">
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsAddForm.floorInput.$invalid && amsAddForm.floorInput.$dirty,'has-success': amsAddForm.floorInput.$valid}">
                     <input name="floorInput" type="number " data-ng-model="newAms.floor " class="form-control " data-ng-required="true " />
-                    <p ng-show="amsAddForm.floorInput.$invalid" class="help-block">Floor is required and it's in a number form.</p>
+                    <p ng-show="amsAddForm.floorInput.$invalid  && amsAddForm.floorInput.$dirty" class="help-block">Floor is required and it's in a number form.</p>
                 </div>
             </div>
             <div class="row ">
                 <div class="form-group col-md-2 ">
                     <label>Room</label>
                 </div>
-                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsAddForm.roomInput.$invalid,'has-success': amsAddForm.roomInput.$valid}">
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsAddForm.roomInput.$invalid && amsAddForm.roomInput.$dirty,'has-success': amsAddForm.roomInput.$valid}">
                     <input name="roomInput" type="number " data-ng-model="newAms.room " class="form-control " data-ng-required="true " />
-                    <p ng-show="amsAddForm.roomInput.$invalid" class="help-block">Room is required and it's in a number form.</p>
+                    <p ng-show="amsAddForm.roomInput.$invalid  && amsAddForm.roomInput.$dirty" class="help-block">Room is required and it's in a number form.</p>
                 </div>
             </div>
             <div class="row ">
                 <div class="form-group col-md-2 ">
                     <label>MAC</label>
                 </div>
-                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsAddForm.macInput.$invalid,'has-success': amsAddForm.macInput.$valid}">
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsAddForm.macInput.$invalid && amsAddForm.macInput.$dirty,'has-success': amsAddForm.macInput.$valid}">
                     <input type="text " name="macInput" data-ng-model="newAms.macAutomaticMobileSet " data-ng-disabled="false" class="form-control " data-ng-required="true" />
-                    <p ng-show="amsAddForm.macInput.$invalid" class="help-block">MAC is required.</p>
+                    <p ng-show="amsAddForm.macInput.$invalid  && amsAddForm.macInput.$dirty" class="help-block">MAC is required.</p>
                 </div>
             </div>
         </div>
