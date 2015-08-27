@@ -1,4 +1,4 @@
-angular.module('app.main').controller('LocationMapCntl', function ($scope, $interval, amsDataRestService, beaconDataRestService) {
+angular.module('app.main').controller('LocationMapCntl', function ($scope, $interval, amsDataRestService, beaconDataRestService, $routeParams) {
     'use strict';
 
     $scope.locationModel = [];
@@ -18,6 +18,7 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
     }, 1000);
     getAmsRest();
     $scope.$on('$destroy', function () { $interval.cancel(intervalPromise); });
+    $scope.imageUrl = '/main/img/'+$routeParams['building']+'_' + $routeParams['floor'] + '.png';
     
     beaconDataRestService.getBeaconsData().then(function (response) {
         angular.forEach(response.data, function (elem) {

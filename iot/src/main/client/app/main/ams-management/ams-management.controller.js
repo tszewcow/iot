@@ -6,6 +6,9 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
     globalSpinner.decorateCallOfFunctionReturningPromise(function() {
     	return amsDataRestService.getAmsData().then(function (response) {
     		$scope.amsModel = angular.copy(response.data);
+//    		angular.forEach($scope.amsModel, function (ams) {
+//    			ams.link = '#/main/location-map?floor='+ams.floor;
+//            });
     	});
     });
     
