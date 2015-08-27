@@ -1,84 +1,84 @@
-<style>
-    input {
-        display: block;
-        width: 100%;
-    }
-</style>
-
 <div class="modal-dialog">
     <div class="modal-header">
         <div class="modal-title">
             <h3>Edit AMS</h3>
         </div>
     </div>
-    <div class="modal-body">
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Project</label>
+    <form name="amsEditForm">
+        <div class=" modal-body ">
+            <div class="row ">
+                <div class="form-group col-md-2 ">
+                    <label>Project</label>
+                </div>
+                <div class="form-group col-md-10" data-ng-class="{'has-error': amsEditForm.projectInput.$invalid,'has-success': amsEditForm.projectInput.$valid}">
+                    <input name=" projectInput " class="form-control " type="text " data-ng-model="data.project " data-ng-required="true " />
+                    <p ng-show="amsEditForm.projectInput.$invalid" class="help-block">Name is required.</p>
+                </div>
             </div>
-            <div class="form-group col-md-10">
-                <input data-ng-model="data.project" class="form-control" />
+            <div class="row ">
+                <div class="form-group col-md-2 ">
+                    <label>Guardian</label>
+                </div>
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.guardiaInput.$invalid,'has-success': amsEditForm.guardiaInput.$valid}">
+                    <input name="guardiaInput" type="text " data-ng-model="data.guardian " class="form-control " data-ng-required="true " />
+                    <p ng-show="amsEditForm.guardiaInput.$invalid" class="help-block">Guardian is required.</p>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="form-group col-md-2 ">
+                    <label>Building</label>
+                </div>
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.buildingInput.$invalid,'has-success': amsEditForm.buildingInput.$valid}">
+                    <input name="buildingInput" type="text " data-ng-model="data.building " class="form-control " data-ng-required="true " />
+                    <p ng-show="amsEditForm.buildingInput.$invalid" class="help-block">Building is required.</p>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="form-group col-md-2 ">
+                    <label>Floor</label>
+                </div>
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.floorInput.$invalid,'has-success': amsEditForm.floorInput.$valid}">
+                    <input name="floorInput" type="number " data-ng-model="data.floor " class="form-control " data-ng-required="true " />
+                    <p ng-show="amsEditForm.floorInput.$invalid" class="help-block">Floor is required and it's in a number form.</p>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="form-group col-md-2 ">
+                    <label>Room</label>
+                </div>
+                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.roomInput.$invalid,'has-success': amsEditForm.roomInput.$valid}">
+                    <input name="roomInput" type="number " data-ng-model="data.room " class="form-control " data-ng-required="true " />
+                    <p ng-show="amsEditForm.roomInput.$invalid" class="help-block">Room is required and it's in a number form.</p>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="form-group col-md-2 ">
+                    <label>Coordinate X</label>
+                </div>
+                <div class="form-group col-md-10 ">
+                    <input type="number " data-ng-model="data.xAutomaticMobileSet " data-ng-disabled="true" class="form-control " />
+                </div>
+            </div>
+            <div class="row ">
+                <div class="form-group col-md-2 ">
+                    <label>Coordinate Y</label>
+                </div>
+                <div class="form-group col-md-10 ">
+                    <input type="number " data-ng-model="data.yAutomaticMobileSet " data-ng-disabled="true" class="form-control " />
+                </div>
+            </div>
+            <div class="row ">
+                <div class="form-group col-md-2 ">
+                    <label>MAC</label>
+                </div>
+                <div class="form-group col-md-10 ">
+                    <input type="text " data-ng-model="data.macAutomaticMobileSet " data-ng-disabled="true" class="form-control " />
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Guardian</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input data-ng-model="data.guardian" class="form-control" />
-            </div>
+        <div class="modal-footer ">
+            <button type="submit " class="btn btn-primary " data-ng-click="ok()" data-ng-disabled="amsEditForm.$invalid">OK</button>
+            <button class="btn btn-warning " type="button " data-ng-click="cancel() ">Cancel</button>
         </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Building</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input data-ng-model="data.building" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Floor</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input type="number" data-ng-model="data.floor" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Room</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input type="number" data-ng-model="data.room" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Coordinate X</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input type="number" data-ng-model="data.xAutomaticMobileSet" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>Coordinate Y</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input type="number" data-ng-model="data.yAutomaticMobileSet" class="form-control" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label>MAC</label>
-            </div>
-            <div class="form-group col-md-10">
-                <input data-ng-model="data.macAutomaticMobileSet" class="form-control" />
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" type="button" data-ng-click="ok()">OK</button>
-        <button class="btn btn-warning" type="button" data-ng-click="cancel()">Cancel</button>
-    </div>
+    </form>
 </div>

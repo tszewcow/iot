@@ -15,7 +15,9 @@ angular.module('app.main').controller('AddAmsCntl', function ($scope, $modalInst
 
 
     $scope.ok = function () {
-        $modalInstance.close($scope.newAms);
+        if ($scope.amsAddForm.$valid) {
+            $modalInstance.close($scope.newAms);
+        }
     };
 
     $scope.cancel = function () {

@@ -40,7 +40,6 @@ public class PositionUpdater {
 		Map<String, List<BeaconStatusTo>> map = groupStatusesByAutomaticMobileSet(beaconStatuses);
 
 		for (Map.Entry<String, List<BeaconStatusTo>> entry : map.entrySet()) {
-			// List<BeaconStatusTo> automaticMobileSetBeaconStatuses =
 			entry.getValue();
 			Map<String, List<BeaconStatusTo>> beaconToBeaconStatuses = groupStatusesByBeacon(beaconStatuses);
 			Map<String, Float> beaconToDistance = calculateDistance(beaconToBeaconStatuses);

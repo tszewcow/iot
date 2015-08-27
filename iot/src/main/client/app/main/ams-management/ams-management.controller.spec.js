@@ -7,15 +7,15 @@ describe('Ams management tests', function () {
 
     beforeEach(inject(function ($controller, $rootScope, amsDataRestService) {
         spyOn(amsDataRestService, 'getAmsData').and.returnValue({
-            then: function () {
-                // do nothing
-            }
+            then: angular.noop
         });
         $scope = $rootScope.$new();
         $controller('AmsManagementCntl', {
             $scope: $scope,
             globalSpinner: {
-            	decorateCallOfFunctionReturningPromise: function(func) {func()}
+                decorateCallOfFunctionReturningPromise: function (func) {
+                    func()
+                }
             }
         });
     }));
@@ -32,14 +32,8 @@ describe('Ams management tests', function () {
     });
 
     describe('scope functions test', function () {
-        xit('should add new ams', function () {
-            // given when
-            $scope.addAms();
-            // then
-            expect($scope.amsModel.length).toEqual(3);
-            expect($scope.amsModel[2].number).toEqual(3);
-        });
 
+        // TODO: repair test
         xit('should delete selected ams', function () {
             // given
             $scope.mySelectedItems.push($scope.amsModel[0]);
