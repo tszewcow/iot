@@ -22,8 +22,11 @@ describe('Edit beacon tests', function () {
         yBeacon: 'y'
     };
 
-    beforeEach(inject(function ($controller, $rootScope) {
-        $scope = $rootScope.$new();
+    beforeEach(inject(function ($controller, $rootScope, $compile) {
+    	$scope = $rootScope.$new();
+        var element = angular.element('<form name="beaconEditForm" />');
+        $compile(element)($scope);
+        
         $controller('BeaconEditCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock,

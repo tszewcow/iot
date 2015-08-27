@@ -19,8 +19,11 @@ describe('Edit ams tests', function () {
         coordinateY: "2"
     };
 
-    beforeEach(inject(function ($controller, $rootScope) {
-        $scope = $rootScope.$new();
+    beforeEach(inject(function ($controller, $rootScope, $compile) {
+    	$scope = $rootScope.$new();
+        var element = angular.element('<form name="amsEditForm" />');
+        $compile(element)($scope);
+        
         $controller('EditAmsCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock,

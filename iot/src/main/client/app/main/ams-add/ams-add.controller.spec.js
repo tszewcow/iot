@@ -9,8 +9,11 @@ describe('Add ams tests', function () {
         dismiss: jasmine.createSpy()
     };
 
-    beforeEach(inject(function ($controller, $rootScope) {
-        $scope = $rootScope.$new();
+    beforeEach(inject(function ($controller, $rootScope, $compile) {
+    	$scope = $rootScope.$new();
+        var element = angular.element('<form name="amsAddForm" />');
+        $compile(element)($scope);
+    	
         $controller('AddAmsCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock

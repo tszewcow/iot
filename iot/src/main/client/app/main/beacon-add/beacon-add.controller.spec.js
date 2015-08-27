@@ -9,8 +9,11 @@ describe('Add beacon tests', function () {
         dismiss: jasmine.createSpy()
     };
 
-    beforeEach(inject(function ($controller, $rootScope) {
-        $scope = $rootScope.$new();
+    beforeEach(inject(function ($controller, $rootScope, $compile) {
+    	$scope = $rootScope.$new();
+        var element = angular.element('<form name="beaconAddForm"/>');
+        $compile(element)($scope);
+        
         $controller('BeaconAddCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock
