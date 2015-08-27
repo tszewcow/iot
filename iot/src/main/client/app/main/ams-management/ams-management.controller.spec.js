@@ -5,11 +5,22 @@ describe('Ams management tests', function () {
 
     var $scope;
 
-    beforeEach(inject(function ($controller, $rootScope, amsDataRestService) {
-        spyOn(amsDataRestService, 'getAmsData').and.returnValue({
-            then: angular.noop
-        });
+    beforeEach(inject(function ($controller, $rootScope, amsDataRestService, $q) {
+    	var deferred = $q.defer();
         $scope = $rootScope.$new();
+        spyOn(amsDataRestService, 'getAmsData').and.returnValue(deferred.promise);
+        deferred.resolve({
+            data: [
+                {
+                    project: 'test001',
+                    id: 1
+                },
+                {
+                	project: 'test002',
+                    id: 2
+                }
+            ]
+        });
         $controller('AmsManagementCntl', {
             $scope: $scope,
             globalSpinner: {
@@ -18,13 +29,14 @@ describe('Ams management tests', function () {
                 }
             }
         });
+        $scope.$digest();
     }));
 
 
     describe('scope model initialization', function () {
         it('should initialize model', function () {
             // given when then
-            expect($scope.amsModel.length).toEqual(0);
+            expect($scope.amsModel.length).toEqual(2);
             expect(angular.isDefined($scope.mySelectedItems)).toBeTruthy();
         });
 
@@ -33,15 +45,14 @@ describe('Ams management tests', function () {
 
     describe('scope functions test', function () {
 
-        // TODO: repair test
-        xit('should delete selected ams', function () {
+        it('should delete selected ams', function () {
             // given
             $scope.mySelectedItems.push($scope.amsModel[0]);
             // when
             $scope.deleteAms();
             // then
             expect($scope.amsModel.length).toEqual(1);
-            expect($scope.amsModel[0].number).toEqual(2);
+            expect($scope.amsModel[0].project).toEqual('test002');
         });
 
         it('should disable button controls when there are no items selected', function () {
@@ -80,6 +91,7 @@ describe('Ams management tests', function () {
 
         it('should call $modal.show when add ams function is called', inject(function ($modal, $q, amsDataRestService) {
             // given
+        	var initialModelSize = $scope.amsModel.length;
             var modalDeferred = $q.defer(),
                 amsDataRestServiceDeferred = $q.defer();
             spyOn($modal, 'open').and.returnValue({
@@ -100,8 +112,8 @@ describe('Ams management tests', function () {
                 animation: true
             });
             expect(amsDataRestService.addAmsData).toHaveBeenCalledWith('some modal response');
-            expect($scope.amsModel.length).toEqual(1);
-            expect($scope.amsModel[0]).toEqual('added ams');
+            expect($scope.amsModel.length).toEqual(initialModelSize+1);
+            expect($scope.amsModel[2]).toEqual('added ams');
         }));
 
     });
