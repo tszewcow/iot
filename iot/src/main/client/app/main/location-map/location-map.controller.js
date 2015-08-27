@@ -19,7 +19,7 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
     
     var intervalPromise = $interval(function () {
         getAmsRest();
-    }, 1000000);
+    }, 5000);
     getAmsRest();
     $scope.$on('$destroy', function () { $interval.cancel(intervalPromise); });
     

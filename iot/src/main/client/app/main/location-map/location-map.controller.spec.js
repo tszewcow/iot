@@ -7,20 +7,22 @@ describe('Location map tests', function () {
     
     beforeEach(module('app.main'));
     
-    beforeEach(inject(function($controller, $rootScope, amsDataRestService, beaconDataRestService, $interval, $q){
+    beforeEach(inject(function($controller, $rootScope, amsDataRestService, beaconDataRestService, $interval, $q, $routeParams){
     	deferredAms = $q.defer();
     	deferredBeacon = $q.defer();
     	$scope = $rootScope.$new();
+    	$routeParams.building = 'MTII';
+    	$routeParams.floor = 7;
     	
-    	spyOn(amsDataRestService, 'getAmsData').and.returnValue(deferredAms.promise);
-    	spyOn(beaconDataRestService, 'getBeaconsData').and.returnValue(deferredBeacon.promise);
+    	spyOn(amsDataRestService, 'getAmsDataOnGivenFloor').and.returnValue(deferredAms.promise);
+    	spyOn(beaconDataRestService, 'getBeaconsDataOnGivenFloor').and.returnValue(deferredBeacon.promise);
         
     	$controller('LocationMapCntl', {$scope: $scope})
     }));
 
-    afterEach(inject(function($controller, $rootScope, amsDataRestService, beaconDataRestService, $interval, $q){
-    	expect(amsDataRestService.getAmsData).toHaveBeenCalled();
-        expect(beaconDataRestService.getBeaconsData).toHaveBeenCalled();
+    afterEach(inject(function($controller, $rootScope, amsDataRestService, beaconDataRestService, $interval, $q, $routeParams){
+    	expect(amsDataRestService.getAmsDataOnGivenFloor).toHaveBeenCalledWith('MTII', 7);
+        expect(beaconDataRestService.getBeaconsDataOnGivenFloor).toHaveBeenCalledWith('MTII', 7);
     }));
 
     describe('scope model initialization', function () {
