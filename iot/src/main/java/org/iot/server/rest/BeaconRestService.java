@@ -1,8 +1,10 @@
 package org.iot.server.rest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.iot.server.service.BeaconService;
+import org.iot.server.to.AutomaticMobileSetTo;
 import org.iot.server.to.BeaconStatusTo;
 import org.iot.server.to.BeaconTo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,11 @@ public class BeaconRestService {
 	@RequestMapping(value = "/services/beacons", method = RequestMethod.GET)
 	public List<BeaconTo> getAllBeacons() {
 		return beaconService.getAllBeacons();
+	}
+	
+	@RequestMapping(value = "/services/beacons/{building}/{floor}", method = RequestMethod.GET)
+	public List<BeaconTo> getBeaconsOnFloor(@PathVariable("building") String building, @PathVariable("floor") int floor) {
+		return beaconService.getAllBeacons().stream().filter(beacon -> beacon.getBuilding().equals(building) && beacon.getFloor() == floor).collect(Collectors.toList());
 	}
 
 	@RequestMapping(value = "/beacon-status", method = RequestMethod.POST)
