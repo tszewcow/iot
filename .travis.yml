@@ -20,3 +20,4 @@ script:
   - npm install nodeunit jscoverage coveralls --save-dev
   - npm install
   - npm test
+  - make test-coveralls

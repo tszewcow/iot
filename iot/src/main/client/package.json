@@ -68,6 +68,10 @@
   "engine": "node >= 0.10.0",
   "scripts": {
     "postinstall": "bower install -F",
-    "test": "gulp test"
+    "test": "gulp test",
+    "testcoverall": "make test"
+  },
+  "bin": {
+    "coveralls": "./bin/coveralls.js"
   }
 }
