@@ -14,5 +14,4 @@ before_script:
   - npm install -g bower
 
 script: 
-cd iot\src\main\client
 npm test
