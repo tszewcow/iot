@@ -11,7 +11,8 @@ notifications:
 
 script:
   - cd iot/src/main/client
+  - npm install
   - npm install -g bower
-  - npm install gulp
-  - npm install glob
+  - npm install -g gulp
+  - npm install -g glob
   - npm test
