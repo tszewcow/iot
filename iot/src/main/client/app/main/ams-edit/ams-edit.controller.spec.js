@@ -49,8 +49,8 @@ describe('Edit ams tests', function () {
         it('should initialization floors table', function () {
             //given when then
             expect($scope.buildings).toEqual({
-                MTII: [5, 6, 7, 8, 9, 10, 11],
-                MTIV: [6, 7, 8, 9, 10, 11, 12]
+                MT2: [5, 6, 7, 8, 9, 10, 11],
+                MT4: [6, 7, 8, 9, 10, 11, 12]
             });
         });
 

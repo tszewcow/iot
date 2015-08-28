@@ -14,8 +14,8 @@ angular.module('app.main').controller('EditAmsCntl', function ($scope, $modalIns
     $scope.data = angular.copy(ams);
 
     $scope.buildings = {
-        MTII: [5, 6, 7, 8, 9, 10, 11],
-        MTIV: [6, 7, 8, 9, 10, 11, 12]
+        MT2: [5, 6, 7, 8, 9, 10, 11],
+        MT4: [6, 7, 8, 9, 10, 11, 12]
     };
 
     $scope.disableGuardianInput = function () {

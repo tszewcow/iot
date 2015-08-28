@@ -14,7 +14,7 @@ angular.module('app.main').controller('BeaconEditCntl', function ($scope, $modal
     $scope.data = angular.copy(beacon);
 
     $scope.buildings = {
-        MTII: [5, 6, 7, 8, 9, 10, 11],
-        MTIV: [6, 7, 8, 9, 10, 11, 12]
+        MT2: [5, 6, 7, 8, 9, 10, 11],
+        MT4: [6, 7, 8, 9, 10, 11, 12]
     };
 });
