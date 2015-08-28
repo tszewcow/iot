@@ -1,13 +1,8 @@
-angular.module('app.main').controller('AmsManagementCntl', function ($scope, $modal, amsDataRestService, floorLocationRestService, globalSpinner) {
+angular.module('app.main').controller('AmsManagementCntl', function ($scope, $modal, amsDataRestService, floorAvailabilityService, globalSpinner) {
     'use strict';
 
     $scope.amsModel = [];
 
-    var availableFloors = {};
-    floorLocationRestService.getFloorLocations().then(function (response) {
-    		availableFloors = angular.copy(response.data);
-	});
-    
     globalSpinner.decorateCallOfFunctionReturningPromise(function() {
     	return amsDataRestService.getAmsData().then(function (response) {
     		$scope.amsModel = angular.copy(response.data);
@@ -76,12 +71,7 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
     };
     
     $scope.checkAvailability  = function (building, floor) {
-    	for (var i = 0; i < availableFloors.length; i++) {
-            if (availableFloors[i].floor == floor && availableFloors[i].building == building) {
-                return true;
-            }
-        }
-        return false;
+    	return floorAvailabilityService.checkAvailability(building, floor);
     }
     
 });
