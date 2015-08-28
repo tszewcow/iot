@@ -21,7 +21,7 @@ script:
   - npm install karma-coveralls --save-dev
   - npm install
   - npm test
-  - - ./node_modules/.bin/istanbul cover --report lcov node_modules/.bin/_mocha test/
+  - ./node_modules/.bin/istanbul cover --report lcov node_modules/.bin/_mocha test/
 
 after_success:
     - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
