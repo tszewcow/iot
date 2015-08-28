@@ -18,10 +18,10 @@ script:
   - npm install gulp
   - npm install glob
   - npm install coveralls --save-dev
+  - npm install karma-coveralls --save-dev
   - npm install
   - npm test
-
-after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  - - ./node_modules/.bin/istanbul cover --report lcov node_modules/.bin/_mocha test/
 
 after_success:
-  - npm run coveralls
+    - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
