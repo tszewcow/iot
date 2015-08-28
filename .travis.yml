@@ -13,5 +13,4 @@ notifications:
 before_script:
   - npm install -g bower
 
-script: 
-npm test
+script: npm test
