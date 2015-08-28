@@ -9,11 +9,8 @@ notifications:
     on_success: [always|never|change] # default: change
     on_failure: [always|never|change] # default: always
 
-
-before_script:
+script:
   - cd iot/src/main/client
   - npm install -g bower
   - npm install -g gulp
-
-script:
   - npm test
