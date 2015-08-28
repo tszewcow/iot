@@ -13,9 +13,9 @@ notifications:
 
 script:
   - cd iot/src/main/client
-  - npm install coveralls --save-dev
+  - npm install nodeunit jscoverage coveralls --save-dev
   - npm install -g bower
   - npm install gulp
   - npm install glob
   - npm install
-  - make test-coveralls
+  - npm run coveralls
