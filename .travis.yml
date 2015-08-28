@@ -18,4 +18,5 @@ script:
   - npm install gulp
   - npm install glob
   - npm install
+  - npm install coveralls
   - npm run coveralls
