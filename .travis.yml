@@ -2,12 +2,14 @@ language: node_js
 node_js:
   - "iojs"
 
+
 notifications:
   email:
     recipients:
       - marcin.sokol@capgemini.com
     on_success: change
     on_failure: always
+
 
 script:
   - cd iot/src/main/client
