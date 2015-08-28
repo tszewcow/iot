@@ -18,4 +18,4 @@ script:
   - npm install gulp
   - npm install glob
   - npm install
-  - npm test-coveralls
+  - make test-coveralls
