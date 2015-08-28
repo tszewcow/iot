@@ -6,9 +6,6 @@ import static org.mockito.Mockito.verify;
 
 import java.util.List;
 
-import org.iot.server.document.AutomaticMobileSet;
-import org.iot.server.document.Beacon;
-import org.iot.server.document.BeaconStatus;
 import org.iot.server.repository.AutomaticMobileSetRepository;
 import org.iot.server.repository.BeaconRepository;
 import org.iot.server.repository.BeaconStatusRepository;
