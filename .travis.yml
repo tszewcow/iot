@@ -13,4 +13,6 @@ notifications:
 before_script:
   - npm install -g bower
 
-script: npm test
+script: 
+cd \iot\src\main\client
+npm test
