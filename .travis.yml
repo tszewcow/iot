@@ -17,6 +17,7 @@ script:
   - npm install -g bower
   - npm install gulp
   - npm install glob
-  - npm install
   - npm install coveralls
+  - npm install
   - npm run coveralls
+  - npm test
