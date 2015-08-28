@@ -13,6 +13,7 @@ notifications:
 
 script:
   - cd iot/src/main/client
+  - npm install coveralls --save-dev
   - npm install -g bower
   - npm install gulp
   - npm install glob
