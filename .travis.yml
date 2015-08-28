@@ -12,6 +12,7 @@ notifications:
 
 before_script:
   - npm install -g bower
+  - npm install -g gulp
 
 script:
   - cd iot/src/main/client
