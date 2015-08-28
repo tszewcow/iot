@@ -23,10 +23,10 @@ describe('Edit beacon tests', function () {
     };
 
     beforeEach(inject(function ($controller, $rootScope, $compile) {
-    	$scope = $rootScope.$new();
+        $scope = $rootScope.$new();
         var element = angular.element('<form name="beaconEditForm" />');
         $compile(element)($scope);
-        
+
         $controller('BeaconEditCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock,
@@ -47,6 +47,13 @@ describe('Edit beacon tests', function () {
             $scope.cancel();
             //then
             expect(modalInstanceMock.dismiss).toHaveBeenCalledWith('cancel');
+        });
+        it('should initialization floors table', function () {
+            //given when then
+            expect($scope.buildings).toEqual({
+                mt2: [5, 6, 7, 8, 9, 10, 11],
+                mt4: [6, 7, 8, 9, 10, 11, 12]
+            });
         });
     });
 

@@ -8,9 +8,10 @@ angular.module('app.main').controller('AddAmsCntl', function ($scope, $modalInst
         building: '',
         floor: '',
         room: '',
-        xAutomaticMobileSet: -1000,
-        yAutomaticMobileSet: -1000,
-        macAutomaticMobileSet: ''
+        xAutomaticMobileSet: '',
+        yAutomaticMobileSet: '',
+        macAutomaticMobileSet: '',
+        ipAutomaticMobileSet: ''
     };
 
 
@@ -24,4 +25,16 @@ angular.module('app.main').controller('AddAmsCntl', function ($scope, $modalInst
         $modalInstance.dismiss('cancel');
     };
 
+    $scope.buildings = {
+        mt2: [5, 6, 7, 8, 9, 10, 11],
+        mt4: [6, 7, 8, 9, 10, 11, 12]
+    };
+
+    $scope.disableGuardianInput = function () {
+        if ($scope.newAms.project === '<none>') {
+            return true;
+        } else {
+            return false;
+        }
+    };
 });

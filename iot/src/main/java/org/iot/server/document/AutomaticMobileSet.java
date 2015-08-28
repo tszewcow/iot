@@ -15,6 +15,15 @@ public class AutomaticMobileSet {
 	private float yAutomaticMobileSet;
 	private String macAutomaticMobileSet;
 	private boolean isActual;
+	private String ipAutomaticMobileSet;
+
+	public String getIpAutomaticMobileSet() {
+		return ipAutomaticMobileSet;
+	}
+
+	public void setIpAutomaticMobileSet(String ipAutomaticMobileSet) {
+		this.ipAutomaticMobileSet = ipAutomaticMobileSet;
+	}
 
 	public String getMacAutomaticMobileSet() {
 		return macAutomaticMobileSet;

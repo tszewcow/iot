@@ -1,106 +1,102 @@
-<div class="modal-dialog">
-    <div class="modal-header">
-        <div class="modal-title">
-            <h3>Edit beacon</h3>
-        </div>
+<div class="modal-header">
+    <div class="modal-title">
+        <h3>Edit beacon</h3>
     </div>
-
+</div>
+<div class="modal-body">
     <form name="beaconEditForm">
-        <div class="modal-body">
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label>Name</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.nameInput.$invalid,'has-success': beaconEditForm.nameInput.$valid}">
-                    <input name="nameInput" type="text" data-ng-model="data.name" class="form-control" ng-required="true" />
-                    <p ng-show="beaconEditForm.nameInput.$invalid" class="help-block">Name is required.</p>
-                </div>
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Name</label>
             </div>
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label>MAC</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.macInput.$invalid,'has-success': beaconEditForm.macInput.$valid}">
-                    <input name="macInput" type="text" data-ng-model="data.mac" class="form-control" ng-required="true" />
-                    <p ng-show="beaconEditForm.macInput.$invalid" class="help-block">Mac is required.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label>Uuid Normal</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.uuidNormalInput.$invalid,'has-success': beaconEditForm.uuidNormalInput.$valid}">
-                    <input name="uuidNormalInput" type="text" data-ng-model="data.uuidNormal" class="form-control" ng-required="true">
-                    <p ng-show="beaconEditForm.uuidNormalInput.$invalid" class="help-block">Uuid Normal is required.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label>Uuid Secure</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.uuidSecureInput.$invalid,'has-success': beaconEditForm.uuidSecureInput.$valid}">
-                    <input name="uuidSecureInput" type="text" data-ng-model="data.uuidSecure" class="form-control" ng-required="true" />
-                    <p ng-show="beaconEditForm.uuidSecureInput.$invalid" class="help-block">Uuid Secure is required.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label>Uuid Service</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.uuidServiceInput.$invalid,'has-success': beaconEditForm.uuidServiceInput.$valid}">
-                    <input name="uuidServiceInput" type="text" data-ng-model="data.uuidService" class="form-control" ng-required="true" />
-                    <p ng-show="beaconEditForm.uuidServiceInput.$invalid" class="help-block">Uuid Service is required.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label>Building</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.buildingInput.$invalid,'has-success': beaconEditForm.buildingInput.$valid}">
-                    <input name="buildingInput" type="text" data-ng-model="data.building" class="form-control" ng-required="true" />
-                    <p ng-show="beaconEditForm.buildingInput.$invalid" class="help-block">Building is required.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label>Floor</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.floorInput.$invalid,'has-success': beaconEditForm.floorInput.$valid}">
-                    <input name="floorInput" type="number" data-ng-model="data.floor" class="form-control" ng-required="true" />
-                    <p ng-show="beaconEditForm.floorInput.$invalid" class="help-block">Floor is required and it's in a number form.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label>Room</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.roomInput.$invalid,'has-success': beaconEditForm.roomInput.$valid}">
-                    <input name="roomInput" type="number" data-ng-model="data.room" class="form-control" ng-required="true" />
-                    <p ng-show="beaconEditForm.roomInput.$invalid" class="help-block">Room is required and it's in a number form.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label>Coordinate X</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.coordinateXInput.$invalid,'has-success': beaconEditForm.coordinateXInput.$valid}">
-                    <input name="coordinateXInput" type="number" data-ng-model="data.xBeacon" class="form-control" ng-required="true" />
-                    <p ng-show="beaconEditForm.coordinateXInput.$invalid" class="help-block">Coordinate X is required and it's in a number form.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label>Coordinate Y</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.coordinateYInput.$invalid,'has-success': beaconEditForm.coordinateYInput.$valid}">
-                    <input name="coordinateYInput" type="number" data-ng-model="data.yBeacon" class="form-control" ng-required="true" />
-                    <p ng-show="beaconEditForm.coordinateYInput.$invalid" class="help-block">Coordinate Y is required and it's in a number form.</p>
-                </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': beaconEditForm.nameInput.$invalid && beaconEditForm.nameInput.$dirty,'has-success': beaconEditForm.nameInput.$valid}">
+                <input name="nameInput" type="text" data-ng-model="data.name" class="form-control" ng-required="true" data-ng-minlength="1" data-ng-maxlength="64" />
+                <p ng-show="beaconEditForm.nameInput.$invalid && beaconEditForm.nameInput.$dirty" class="help-block">Name is required and max length is 64 characters.</p>
             </div>
         </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()" data-ng-disabled="beaconEditForm.$invalid">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Uuid Normal </label>
+            </div>
+            <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.uuidNormalInput.$invalid && beaconEditForm.uuidNormalInput.$dirty,'has-success': beaconEditForm.uuidNormalInput.$valid}">
+                <input name="uuidNormalInput" type="text" data-ng-model="data.uuidNormal" class="form-control" ng-required="true" data-ng-pattern="/^[a-f0-9]{8}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{12}$/" data-popover="Format of UUID is e.g.: 8ff254e6-4d6d-11e5-885d-feff819cdc9f ." data-popover-trigger="mouseenter">
+                <p ng-show="beaconEditForm.uuidNormalInput.$invalid && beaconEditForm.uuidNormalInput.$dirty" class="help-block">Uuid Normal is required and must be valid.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Uuid Secure</label>
+            </div>
+            <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.uuidSecureInput.$invalid && beaconEditForm.uuidSecureInput.$dirty,'has-success': beaconEditForm.uuidSecureInput.$valid}">
+                <input name="uuidSecureInput" type="text" data-ng-model="data.uuidSecure" class="form-control" ng-required="false" data-ng-pattern="/^[a-f0-9]{8}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{12}$/" data-popover="Format of UUID is e.g.: 8ff254e6-4d6d-11e5-885d-feff819cdc9f ." data-popover-trigger="mouseenter" />
+                <p ng-show="beaconEditForm.uuidSecureInput.$invalid && beaconEditForm.uuidSecureInput.$dirty" class="help-block">Uuid Secure and must be valid.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2 ">
+                <label>Uuid Service</label>
+            </div>
+            <div class="form-group col-md-10" data-ng-class="{'has-error': beaconEditForm.uuidServiceInput.$invalid && beaconEditForm.uuidServiceInput.$dirty,'has-success': beaconEditForm.uuidServiceInput.$valid}">
+                <input name="uuidServiceInput" type="text" data-ng-model="data.uuidService" class="form-control" ng-required="false" data-ng-pattern="/^[a-f0-9]{8}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{12}$/" data-popover="Format of UUID is e.g.: 8ff254e6-4d6d-11e5-885d-feff819cdc9f ." data-popover-trigger="mouseenter" />
+                <p ng-show="beaconEditForm.uuidServiceInput.$invalid && beaconEditForm.uuidServiceInput.$dirty" class="help-block">Uuid Service must be valid.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>MAC</label>
+            </div>
+            <div class="form-group col-md-4" data-ng-class="{'has-error': beaconEditForm.macInput.$invalid && beaconEditForm.macInput.$dirty,'has-success': beaconEditForm.macInput.$valid}">
+                <input name="macInput" type="text" data-ng-model="data.mac" class="form-control" ng-required="true" data-ng-pattern="/^[a-f0-9]{2}\:[a-f0-9]{2}\:[a-f0-9]{2}\:[a-f0-9]{2}\:[a-f0-9]{2}\:[a-f0-9]{2}$/" data-popover="Format of MAC address is e.g.: d2:sd:23:ds:23:sd ." data-popover-trigger="mouseenter" />
+                <p ng-show="beaconEditForm.macInput.$invalid && beaconEditForm.macInput.$dirty" class="help-block">Mac is required and must be valid.</p>
+            </div>
+            <div class="form-group col-md-2 required">
+                <label>Building</label>
+            </div>
+            <div class="form-group col-md-4" data-ng-class="{'has-error': beaconEditForm.buildingInput.$invalid && beaconEditForm.buildingInput.$dirty,'has-success': beaconEditForm.buildingInput.$valid}">
+                <select name="buildingInput" type="text" data-ng-model="data.building" class="form-control" ng-required="true">
+                    <option value="mt2">MT II</option>
+                    <option value="mt4">MT IV</option>
+                </select>
+                <p ng-show="beaconEditForm.buildingInput.$invalid && beaconEditForm.buildingInput.$dirty" class="help-block">Building is required.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Floor</label>
+            </div>
+            <div class="form-group col-md-4" data-ng-class="{'has-error': beaconEditForm.floorInput.$invalid && beaconEditForm.floorInput.$dirty,'has-success': beaconEditForm.floorInput.$valid}">
+                <select name="floorInput" type="text" data-ng-model="data.floor" class="form-control" ng-required="true" data-ng-options="floor for floor in buildings[data.building]">
+                </select>
+                <p ng-show="beaconEditForm.floorInput.$invalid && beaconEditForm.floorInput.$dirty" class="help-block">Floor is required and it's in a number form.</p>
+            </div>
+            <div class="form-group col-md-2 required">
+                <label>Room</label>
+            </div>
+            <div class="form-group col-md-4" data-ng-class="{'has-error': beaconEditForm.roomInput.$invalid && beaconEditForm.roomInput.$dirty,'has-success': beaconEditForm.roomInput.$valid}">
+                <input name="roomInput" type="number" data-ng-model="data.room" class="form-control" ng-required="true" data-ng-pattern="/^[0-9]{1,3}$/">
+                <p ng-show="beaconEditForm.roomInput.$invalid && beaconEditForm.roomInput.$dirty" class="help-block">Room is required and it's in a number form.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Coordinate X <span class="required"></span></label>
+            </div>
+            <div class="form-group col-md-4" data-ng-class="{'has-error': beaconEditForm.coordinateXInput.$invalid && beaconEditForm.coordinateXInput.$dirty,'has-success': beaconEditForm.coordinateXInput.$valid}">
+                <input name="coordinateXInput" type="number" data-ng-model="data.xBeacon" class="form-control" ng-required="true" data-ng-pattern="/^[0-9]{1,4}$/" />
+                <p ng-show="beaconEditForm.coordinateXInput.$invalid && beaconEditForm.coordinateXInput.$dirty" class="help-block">Coordinate X is required and it's in a number form.</p>
+            </div>
+            <div class="form-group col-md-2 required">
+                <label>Coordinate Y <span class="required"></span></label>
+            </div>
+            <div class="form-group col-md-4" data-ng-class="{'has-error': beaconEditForm.coordinateYInput.$invalid  && beaconEditForm.coordinateYInput.$dirty,'has-success': beaconEditForm.coordinateYInput.$valid}">
+                <input name="coordinateYInput" type="number" data-ng-model="data.yBeacon" class="form-control" ng-required="true" data-ng-pattern="/^[0-9]{1,4}$/" />
+                <p ng-show="beaconEditForm.coordinateYInput.$invalid && beaconEditForm.coordinateYInput.$dirty" class="help-block">Coordinate Y is required and it's in a number form.</p>
+            </div>
         </div>
     </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()" data-ng-disabled="beaconEditForm.$invalid">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <p class="col-md-2 text-danger">* required</p>
 </div>

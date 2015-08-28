@@ -20,7 +20,7 @@ public class BeaconStatusMapper {
 		beaconStatusTo.setRssi(beaconStatus.getRssi());
 		beaconStatusTo.setMeasuredStrenght(beaconStatus.getMeasuredStrenght());
 		beaconStatusTo.setUuid(beaconStatus.getUuid());
-		beaconStatusTo.setMacAutomaticMobileSet("CC:3D:82:76:55:66");
+		beaconStatusTo.setMacAutomaticMobileSet("cc:3d:82:76:55:66");
 		beaconStatusTo.setDistance(beaconStatus.getDistance());
 
 		return beaconStatusTo;
@@ -41,7 +41,7 @@ public class BeaconStatusMapper {
 		beaconStatus.setRssi(beaconStatusTo.getRssi());
 		beaconStatus.setMeasuredStrenght(beaconStatusTo.getMeasuredStrenght());
 		beaconStatus.setUuid(beaconStatusTo.getUuid());
-		beaconStatus.setMacAutomaticMobileSet("CC:3D:82:76:55:66");
+		beaconStatus.setMacAutomaticMobileSet("cc:3d:82:76:55:66");
 		beaconStatus.setDistance(beaconStatusTo.getDistance());
 
 		return beaconStatus;

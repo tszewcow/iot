@@ -80,7 +80,7 @@ public class PositionUpdateServiceImpl implements PositionUpdateService {
 		for (AutomaticMobileSet automaticMobileSet : automaticMobileSetsList) {
 
 			AutomaticMobileSetTo automaticMobileSetTo = new AutomaticMobileSetTo();
-			
+
 			automaticMobileSetTo.setId(automaticMobileSet.getId());
 			automaticMobileSetTo.setProject(automaticMobileSet.getProject());
 			automaticMobileSetTo.setGuardian(automaticMobileSet.getGuardian());
@@ -90,6 +90,7 @@ public class PositionUpdateServiceImpl implements PositionUpdateService {
 			automaticMobileSetTo.setxAutomaticMobileSet(automaticMobileSet.getxAutomaticMobileSet());
 			automaticMobileSetTo.setyAutomaticMobileSet(automaticMobileSet.getyAutomaticMobileSet());
 			automaticMobileSetTo.setMacAutomaticMobileSet(automaticMobileSet.getMacAutomaticMobileSet());
+			automaticMobileSetTo.setIpAutomaticMobileSet(automaticMobileSet.getIpAutomaticMobileSet());
 
 			AutomaticMobileSetToList.add(automaticMobileSetTo);
 		}

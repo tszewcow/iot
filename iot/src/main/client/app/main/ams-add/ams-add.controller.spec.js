@@ -10,10 +10,10 @@ describe('Add ams tests', function () {
     };
 
     beforeEach(inject(function ($controller, $rootScope, $compile) {
-    	$scope = $rootScope.$new();
+        $scope = $rootScope.$new();
         var element = angular.element('<form name="amsAddForm" />');
         $compile(element)($scope);
-    	
+
         $controller('AddAmsCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock
@@ -35,7 +35,8 @@ describe('Add ams tests', function () {
                 room: '',
                 xAutomaticMobileSet: '',
                 yAutomaticMobileSet: '',
-                macAutomaticMobileSet: ''
+                macAutomaticMobileSet: '',
+                ipAutomaticMobileSet: ''
             });
         });
 
@@ -44,6 +45,20 @@ describe('Add ams tests', function () {
             $scope.cancel();
             //then
             expect(modalInstanceMock.dismiss).toHaveBeenCalledWith('cancel');
+        });
+        it('should initialization floors table', function () {
+            //given when then
+            expect($scope.buildings).toEqual({
+                mt2: [5, 6, 7, 8, 9, 10, 11],
+                mt4: [6, 7, 8, 9, 10, 11, 12]
+            });
+        });
+
+        it('should disable guradian if project is <none>', function () {
+            // given
+            $scope.newAms.project = '<none>';
+            // when then
+            expect($scope.disableGuardianInput()).toBeTruthy();
         });
     });
 

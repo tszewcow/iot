@@ -10,47 +10,44 @@ import org.iot.server.to.AutomaticMobileSetTo;
 import org.iot.server.to.BeaconStatusTo;
 import org.iot.server.to.BeaconTo;
 
-public class TestDataGenerator 
-{
-	public static AutomaticMobileSet getAutomaticMobileSet()
-	{
+public class TestDataGenerator {
+	public static AutomaticMobileSet getAutomaticMobileSet() {
 		AutomaticMobileSet automaticMobileSet = new AutomaticMobileSet();
-		
+
 		automaticMobileSet.setId(randomString());
 		automaticMobileSet.setProject(randomString());
 		automaticMobileSet.setGuardian(randomString());
 		automaticMobileSet.setBuilding(randomString());
-		automaticMobileSet.setFloor(new Random().nextInt(11)+1);
+		automaticMobileSet.setFloor(new Random().nextInt(11) + 1);
 		automaticMobileSet.setRoom(randomDouble());
 		automaticMobileSet.setxAutomaticMobileSet(randomFloat());
 		automaticMobileSet.setyAutomaticMobileSet(randomFloat());
 		automaticMobileSet.setMacAutomaticMobileSet(randomString());
 		automaticMobileSet.setIsActual(randomBoolean());
-		
+		automaticMobileSet.setIpAutomaticMobileSet(randomString());
+
 		return automaticMobileSet;
-	}	
-	
-	public static AutomaticMobileSetTo getAutomaticMobileSetTo()
-	{
+	}
+
+	public static AutomaticMobileSetTo getAutomaticMobileSetTo() {
 		AutomaticMobileSetTo automaticMobileSetTo = new AutomaticMobileSetTo();
-		
+
 		automaticMobileSetTo.setId(randomString());
 		automaticMobileSetTo.setProject(randomString());
 		automaticMobileSetTo.setGuardian(randomString());
 		automaticMobileSetTo.setBuilding(randomString());
-		automaticMobileSetTo.setFloor(new Random().nextInt(11)+1);
+		automaticMobileSetTo.setFloor(new Random().nextInt(11) + 1);
 		automaticMobileSetTo.setRoom(randomDouble());
 		automaticMobileSetTo.setxAutomaticMobileSet(randomFloat());
 		automaticMobileSetTo.setyAutomaticMobileSet(randomFloat());
 		automaticMobileSetTo.setMacAutomaticMobileSet(randomString());
 		automaticMobileSetTo.setIsActual(randomBoolean());
-		
+		automaticMobileSetTo.setIpAutomaticMobileSet(randomString());
+
 		return automaticMobileSetTo;
 	}
-	
-	
-	public static Beacon getBeacon()
-	{
+
+	public static Beacon getBeacon() {
 		Beacon beacon = new Beacon();
 
 		beacon.setId(randomString());
@@ -60,16 +57,15 @@ public class TestDataGenerator
 		beacon.setUuidSecure(randomString());
 		beacon.setUuidService(randomString());
 		beacon.setBuilding(randomString());
-		beacon.setFloor(new Random().nextInt(11)+1);
+		beacon.setFloor(new Random().nextInt(11) + 1);
 		beacon.setRoom(randomDouble());
 		beacon.setxBeacon(randomFloat());
 		beacon.setyBeacon(randomFloat());
 
 		return beacon;
 	}
-	
-	public static BeaconTo getBeaconTo()
-	{
+
+	public static BeaconTo getBeaconTo() {
 		BeaconTo beaconTo = new BeaconTo();
 
 		beaconTo.setId(randomString());
@@ -79,20 +75,19 @@ public class TestDataGenerator
 		beaconTo.setUuidSecure(randomString());
 		beaconTo.setUuidService(randomString());
 		beaconTo.setBuilding(randomString());
-		beaconTo.setFloor(new Random().nextInt(11)+1);
+		beaconTo.setFloor(new Random().nextInt(11) + 1);
 		beaconTo.setRoom(randomDouble());
 		beaconTo.setxBeacon(randomFloat());
 		beaconTo.setyBeacon(randomFloat());
 
 		return beaconTo;
 	}
-	
-	public static BeaconStatus getBeaconStatus()
-	{
+
+	public static BeaconStatus getBeaconStatus() {
 		BeaconStatus beaconStatus = new BeaconStatus();
 
 		Random rand = new Random();
-		
+
 		beaconStatus.setMac(randomString());
 		beaconStatus.setMajor(rand.nextInt(1000));
 		beaconStatus.setMinor(randomString());
@@ -104,13 +99,12 @@ public class TestDataGenerator
 
 		return beaconStatus;
 	}
-	
-	public static BeaconStatusTo getBeaconStatusTo()
-	{
+
+	public static BeaconStatusTo getBeaconStatusTo() {
 		BeaconStatusTo beaconStatusTo = new BeaconStatusTo();
 
 		Random rand = new Random();
-		
+
 		beaconStatusTo.setMac(randomString());
 		beaconStatusTo.setMajor(rand.nextInt(1000));
 		beaconStatusTo.setMinor(randomString());
@@ -122,34 +116,28 @@ public class TestDataGenerator
 
 		return beaconStatusTo;
 	}
-	
-	public static String randomString()
-	{
+
+	public static String randomString() {
 		return String.valueOf(new Random().nextInt(1000000) + 1);
 	}
-	
-	public static float randomFloat()
-	{
-		return roundFloat(new Random().nextFloat()*100, 2);
+
+	public static float randomFloat() {
+		return roundFloat(new Random().nextFloat() * 100, 2);
 	}
-	
-	public static double randomDouble()
-	{
-		return roundDouble(new Random().nextDouble()*100, 2);
+
+	public static double randomDouble() {
+		return roundDouble(new Random().nextDouble() * 100, 2);
 	}
-	
-	public static boolean randomBoolean()
-	{
+
+	public static boolean randomBoolean() {
 		return new Random().nextFloat() > 0.5 ? true : false;
 	}
-	
-	private static float roundFloat(float d, int decimalPlace)
-	{
-		return BigDecimal.valueOf(d).setScale(decimalPlace,BigDecimal.ROUND_HALF_UP).floatValue();
+
+	private static float roundFloat(float d, int decimalPlace) {
+		return BigDecimal.valueOf(d).setScale(decimalPlace, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
-	
-	private static double roundDouble(double d, int decimalPlace)
-	{
-		return BigDecimal.valueOf(d).setScale(decimalPlace,BigDecimal.ROUND_HALF_UP).floatValue();
+
+	private static double roundDouble(double d, int decimalPlace) {
+		return BigDecimal.valueOf(d).setScale(decimalPlace, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
 }

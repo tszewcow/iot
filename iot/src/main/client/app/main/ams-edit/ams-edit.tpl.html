@@ -1,69 +1,78 @@
-<div class="modal-dialog">
-    <div class="modal-header">
-        <div class="modal-title">
-            <h3>Edit AMS</h3>
+<div class="modal-header">
+    <div class="modal-title">
+        <h3>Edit AMS</h3>
+    </div>
+</div>
+<form name="amsEditForm">
+    <div class=" modal-body ">
+        <div class="row ">
+            <div class="form-group col-md-2 required">
+                <label>Project</label>
+            </div>
+            <div class="form-group col-md-10" data-ng-class="{'has-error': amsEditForm.projectInput.$invalid && amsEditForm.projectInput.$dirty,'has-success': amsEditForm.projectInput.$valid}">
+                <input name=" projectInput " class="form-control " type="text " data-ng-model="data.project " data-ng-required="true " data-ng-maxlength="64" data-ng-minlength="1" data-popover-trigger="mouseenter" data-popover="If <none> then project and guardian will disabled." />
+                <p ng-show="amsEditForm.projectInput.$invalid && amsEditForm.projectInput.$dirty" class="help-block">Name is required and max length is 64 characters.</p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="form-group col-md-2 required">
+                <label>Guardian</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.guardiaInput.$invalid && amsEditForm.guardiaInput.$dirty,'has-success': amsEditForm.guardiaInput.$valid}">
+                <input data-ng-disabled="disableGuardianInput()" name="guardiaInput" type="text " data-ng-model="data.guardian " class="form-control " data-ng-required="!(disableGuardianInput) " maxlength="64" data-ng-minlength="1" data-popover="Name of the person responsible for the AMS." data-popover-trigger="mouseenter" />
+                <p ng-show="amsEditForm.guardiaInput.$invalid && amsEditForm.guardiaInput.$dirty" class="help-block">Guardian is required and max length is 64 characters.</p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="form-group col-md-2 required">
+                <label>Building</label>
+            </div>
+            <div class="form-group col-md-4 " data-ng-class="{'has-error': amsEditForm.buildingInput.$invalid && amsEditForm.buildingInput.$dirty,'has-success': amsEditForm.buildingInput.$valid}">
+                <select name="buildingInput" type="text" data-ng-model="data.building" class="form-control" ng-required="true">
+                    <option value="mt2">MT II</option>
+                    <option value="mt4">MT IV</option>
+                </select>
+                <p ng-show="amsEditForm.buildingInput.$invalid  && amsEditForm.buildingInput.$dirty" class="help-block">Building is required.</p>
+            </div>
+            <div class="form-group col-md-2 required">
+                <label>Floor</label>
+            </div>
+            <div class="form-group col-md-4 required" data-ng-class=" { 'has-error': amsEditForm.floorInput.$invalid && amsEditForm.floorInput.$dirty, 'has-success': amsEditForm.floorInput.$valid} ">
+                <select name="floorInput " type="text " data-ng-model="data.floor " class="form-control " ng-required="true " data-ng-options="floor for floor in buildings[data.building] " data-ng-disabled="!(buildings[data.building]) ">
+                </select>
+                <p ng-show="amsEditForm.floorInput.$invalid && amsEditForm.floorInput.$dirty " class="help-block ">Floor is required and it's in a number form.</p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="form-group col-md-2 required ">
+                <label>Room</label>
+            </div>
+            <div class="form-group col-md-4 " data-ng-class="{ 'has-error': amsEditForm.roomInput.$invalid && amsEditForm.roomInput.$dirty, 'has-success': amsEditForm.roomInput.$valid}">
+                <input name=" roomInput " type="number " data-ng-model="data.room " class="form-control " data-ng-required="true " data-ng-pattern=" /^[0-9]{1,3}$/" />
+                <p ng-show="amsEditForm.roomInput.$invalid && amsEditForm.roomInput.$dirty " class="help-block ">Room is required and it's in a number form.</p>
+            </div>
+            <div class="form-group col-md-2 required ">
+                <label>MAC</label>
+            </div>
+            <div class="form-group col-md-4 " data-ng-class="{ 'has-error': amsEditForm.macInput.$invalid && amsEditForm.macInput.$dirty, 'has-success': amsEditForm.macInput.$valid} ">
+                <input type="text " name="macInput " data-ng-model="data.macAutomaticMobileSet " data-ng-disabled="false " class="form-control " data-ng-required="true " data-ng-pattern="/^[a-f0-9]{2}\:[a-f0-9]{2}\:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}$/" data-popover="Format of MAC address is e.g.: d2:sd:23:ds:23:sd ." data-popover-trigger="mouseenter" />
+                <p ng-show="amsEditForm.macInput.$invalid && amsEditForm.macInput.$dirty " class="help-block ">MAC is required and must be valid.</p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="form-group col-md-2 required ">
+                <label>IP</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{ 'has-error': amsEditForm.ipInput.$invalid && amsEditForm.ipInput.$dirty, 'has-success': amsEditForm.ipInput.$valid} ">
+                <input type="text " name="ipInput " data-ng-model="data.ipAutomaticMobileSet " data-ng-disabled="false " class="form-control " data-ng-required="true " data-ng-pattern="/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/" data-popover="Format of IP address is e.g.:  198.16.5.5 ." data-popover-trigger="mouseenter" />
+                <p ng-show="amsEditForm.ipInput.$invalid && amsEditForm.ipInput.$dirty " class="help-block ">Ip is required and must be valid.</p>
+            </div>
         </div>
     </div>
-    <form name="amsEditForm">
-        <div class=" modal-body ">
-            <div class="row ">
-                <div class="form-group col-md-2 ">
-                    <label>Project</label>
-                </div>
-                <div class="form-group col-md-10" data-ng-class="{'has-error': amsEditForm.projectInput.$invalid,'has-success': amsEditForm.projectInput.$valid}">
-                    <input name=" projectInput " class="form-control " type="text " data-ng-model="data.project " data-ng-required="true " />
-                    <p ng-show="amsEditForm.projectInput.$invalid" class="help-block">Name is required.</p>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="form-group col-md-2 ">
-                    <label>Guardian</label>
-                </div>
-                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.guardiaInput.$invalid,'has-success': amsEditForm.guardiaInput.$valid}">
-                    <input name="guardiaInput" type="text " data-ng-model="data.guardian " class="form-control " data-ng-required="true " />
-                    <p ng-show="amsEditForm.guardiaInput.$invalid" class="help-block">Guardian is required.</p>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="form-group col-md-2 ">
-                    <label>Building</label>
-                </div>
-                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.buildingInput.$invalid,'has-success': amsEditForm.buildingInput.$valid}">
-                    <input name="buildingInput" type="text " data-ng-model="data.building " class="form-control " data-ng-required="true " />
-                    <p ng-show="amsEditForm.buildingInput.$invalid" class="help-block">Building is required.</p>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="form-group col-md-2 ">
-                    <label>Floor</label>
-                </div>
-                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.floorInput.$invalid,'has-success': amsEditForm.floorInput.$valid}">
-                    <input name="floorInput" type="number " data-ng-model="data.floor " class="form-control " data-ng-required="true " />
-                    <p ng-show="amsEditForm.floorInput.$invalid" class="help-block">Floor is required and it's in a number form.</p>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="form-group col-md-2 ">
-                    <label>Room</label>
-                </div>
-                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.roomInput.$invalid,'has-success': amsEditForm.roomInput.$valid}">
-                    <input name="roomInput" type="number " data-ng-model="data.room " class="form-control " data-ng-required="true " />
-                    <p ng-show="amsEditForm.roomInput.$invalid" class="help-block">Room is required and it's in a number form.</p>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="form-group col-md-2 ">
-                    <label>MAC</label>
-                </div>
-                <div class="form-group col-md-10 " data-ng-class="{'has-error': amsEditForm.macInput.$invalid,'has-success': amsEditForm.macInput.$valid}">
-                    <input type="text " name="macInput" data-ng-model="data.macAutomaticMobileSet " class="form-control data-ng-required=" true />
-                    <p ng-show="amsEditForm.macInput.$invalid" class="help-block">MAC is required.</p>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer ">
-            <button type="submit " class="btn btn-primary " data-ng-click="ok()" data-ng-disabled="amsEditForm.$invalid">OK</button>
-            <button class="btn btn-warning " type="button " data-ng-click="cancel() ">Cancel</button>
-        </div>
-    </form>
+</form>
+
+<div class="modal-footer ">
+    <button type="submit " class="btn btn-primary " data-ng-click="ok() " data-ng-disabled="amsEditForm.$invalid ">OK</button>
+    <button class="btn btn-warning " type="button " data-ng-click="cancel() ">Cancel</button>
+    <p class="col-md-2 text-danger">* required</p>
 </div>

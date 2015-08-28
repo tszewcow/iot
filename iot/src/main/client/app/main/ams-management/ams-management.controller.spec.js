@@ -6,7 +6,7 @@ describe('Ams management tests', function () {
     var $scope;
 
     beforeEach(inject(function ($controller, $rootScope, amsDataRestService, $q) {
-    	var deferred = $q.defer();
+        var deferred = $q.defer();
         $scope = $rootScope.$new();
         spyOn(amsDataRestService, 'getAmsData').and.returnValue(deferred.promise);
         deferred.resolve({
@@ -16,7 +16,7 @@ describe('Ams management tests', function () {
                     id: 1
                 },
                 {
-                	project: 'test002',
+                    project: 'test002',
                     id: 2
                 }
             ]
@@ -25,7 +25,7 @@ describe('Ams management tests', function () {
             $scope: $scope,
             globalSpinner: {
                 decorateCallOfFunctionReturningPromise: function (func) {
-                    func()
+                    func();
                 }
             }
         });
@@ -82,6 +82,7 @@ describe('Ams management tests', function () {
                 templateUrl: '/main/ams-edit/ams-edit.tpl.html',
                 controller: 'EditAmsCntl',
                 animation: true,
+                size: 'lg',
                 resolve: {
                     ams: jasmine.any(Function)
                 }
@@ -91,7 +92,7 @@ describe('Ams management tests', function () {
 
         it('should call $modal.show when add ams function is called', inject(function ($modal, $q, amsDataRestService) {
             // given
-        	var initialModelSize = $scope.amsModel.length;
+            var initialModelSize = $scope.amsModel.length;
             var modalDeferred = $q.defer(),
                 amsDataRestServiceDeferred = $q.defer();
             spyOn($modal, 'open').and.returnValue({
@@ -109,10 +110,11 @@ describe('Ams management tests', function () {
             expect($modal.open).toHaveBeenCalledWith({
                 templateUrl: '/main/ams-add/ams-add.tpl.html',
                 controller: 'AddAmsCntl',
-                animation: true
+                animation: true,
+                size: 'lg'
             });
             expect(amsDataRestService.addAmsData).toHaveBeenCalledWith('some modal response');
-            expect($scope.amsModel.length).toEqual(initialModelSize+1);
+            expect($scope.amsModel.length).toEqual(initialModelSize + 1);
             expect($scope.amsModel[2]).toEqual('added ams');
         }));
 

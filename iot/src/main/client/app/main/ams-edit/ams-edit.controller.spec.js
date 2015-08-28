@@ -16,14 +16,15 @@ describe('Edit ams tests', function () {
         floor: 'stock number 2',
         room: 'room number 2',
         coordinateX: '32',
-        coordinateY: "2"
+        coordinateY: '2',
+        ipAutomaticMobileSet: '125'
     };
 
     beforeEach(inject(function ($controller, $rootScope, $compile) {
-    	$scope = $rootScope.$new();
+        $scope = $rootScope.$new();
         var element = angular.element('<form name="amsEditForm" />');
         $compile(element)($scope);
-        
+
         $controller('EditAmsCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock,
@@ -44,6 +45,20 @@ describe('Edit ams tests', function () {
             $scope.cancel();
             //then
             expect(modalInstanceMock.dismiss).toHaveBeenCalledWith('cancel');
+        });
+        it('should initialization floors table', function () {
+            //given when then
+            expect($scope.buildings).toEqual({
+                mt2: [5, 6, 7, 8, 9, 10, 11],
+                mt4: [6, 7, 8, 9, 10, 11, 12]
+            });
+        });
+
+        it('should disable guradian if project is <none>', function () {
+            // given
+            $scope.data.project = '<none>';
+            // when then
+            expect($scope.disableGuardianInput()).toBeTruthy();
         });
     });
 
