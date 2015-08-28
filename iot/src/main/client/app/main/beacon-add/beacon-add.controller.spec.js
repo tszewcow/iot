@@ -50,8 +50,8 @@ describe('Add beacon tests', function () {
         it('should initialization floors table', function () {
             //given when then
             expect($scope.buildings).toEqual({
-                mt2: [5, 6, 7, 8, 9, 10, 11],
-                mt4: [6, 7, 8, 9, 10, 11, 12]
+                MTII: [5, 6, 7, 8, 9, 10, 11],
+                MTIV: [6, 7, 8, 9, 10, 11, 12]
             });
         });
 

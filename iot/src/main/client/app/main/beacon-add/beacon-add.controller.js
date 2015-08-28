@@ -27,8 +27,8 @@ angular.module('app.main').controller('BeaconAddCntl', function ($scope, $modalI
     };
 
     $scope.buildings = {
-        mt2: [5, 6, 7, 8, 9, 10, 11],
-        mt4: [6, 7, 8, 9, 10, 11, 12]
+        MTII: [5, 6, 7, 8, 9, 10, 11],
+        MTIV: [6, 7, 8, 9, 10, 11, 12]
     };
 
 });

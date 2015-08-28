@@ -54,8 +54,8 @@
             </div>
             <div class="form-group col-md-4" data-ng-class="{'has-error': beaconEditForm.buildingInput.$invalid && beaconEditForm.buildingInput.$dirty,'has-success': beaconEditForm.buildingInput.$valid}">
                 <select name="buildingInput" type="text" data-ng-model="data.building" class="form-control" ng-required="true">
-                    <option value="mt2">MT II</option>
-                    <option value="mt4">MT IV</option>
+                    <option value="MTII">MT II</option>
+                    <option value="MTIV">MT IV</option>
                 </select>
                 <p ng-show="beaconEditForm.buildingInput.$invalid && beaconEditForm.buildingInput.$dirty" class="help-block">Building is required.</p>
             </div>

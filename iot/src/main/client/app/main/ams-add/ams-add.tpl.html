@@ -30,8 +30,8 @@
             <div class="form-group col-md-4 " data-ng-class="{'has-error': amsAddForm.buildingInput.$invalid && amsAddForm.buildingInput.$dirty,'has-success': amsAddForm.buildingInput.$valid}">
                 <select name="buildingInput" type="text" data-ng-model="newAms.building" class="form-control" ng-required="true">
                     <option data-ng-hide="newAms.building" value="">Please select building</option>
-                    <option value="mt2">MT II</option>
-                    <option value="mt4">MT IV</option>
+                    <option value="MTII">MT II</option>
+                    <option value="MTIV">MT IV</option>
                 </select>
                 <p ng-show="amsAddForm.buildingInput.$invalid  && amsAddForm.buildingInput.$dirty" class="help-block">Building is required.</p>
             </div>
