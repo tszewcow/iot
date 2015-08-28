@@ -1,14 +1,16 @@
-angular.module('app.main').controller('AmsManagementCntl', function ($scope, $modal, amsDataRestService, globalSpinner) {
+angular.module('app.main').controller('AmsManagementCntl', function ($scope, $modal, amsDataRestService, floorLocationRestService, globalSpinner) {
     'use strict';
 
     $scope.amsModel = [];
 
+    var availableFloors = {};
+    floorLocationRestService.getFloorLocations().then(function (response) {
+    		availableFloors = angular.copy(response.data);
+	});
+    
     globalSpinner.decorateCallOfFunctionReturningPromise(function() {
     	return amsDataRestService.getAmsData().then(function (response) {
     		$scope.amsModel = angular.copy(response.data);
-//    		angular.forEach($scope.amsModel, function (ams) {
-//    			ams.link = '#/main/location-map?floor='+ams.floor;
-//            });
     	});
     });
     
@@ -72,4 +74,14 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
         	}, ams);
         });
     };
+    
+    $scope.checkAvailability  = function (building, floor) {
+    	for (var i = 0; i < availableFloors.length; i++) {
+            if (availableFloors[i].floor == floor && availableFloors[i].building == building) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 });
