@@ -17,7 +17,9 @@ script:
   - npm install -g bower
   - npm install gulp
   - npm install glob
-  - npm install coveralls --save
-  - npm install mocha-lcov-reporter --save-dev
+  - npm install coveralls --save-dev
   - npm install
   - npm test
+
+after_success:
+  - npm run coveralls
