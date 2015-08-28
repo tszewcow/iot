@@ -27,7 +27,7 @@
             <div class="form-group col-md-2">
                 <label>Uuid Secure</label>
             </div>
-            <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.uuidSecureInput.$invalid && beaconAddForm.uuidSecureInput.$dirty,'has-success': beaconAddForm.uuidSecureInput.$valid}">
+            <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.uuidSecureInput.$invalid && beaconAddForm.uuidSecureInput.$dirty,'has-success': beaconAddForm.uuidSecureInput.$valid && beaconAddForm.uuidSecureInput.$dirty}">
                 <input name="uuidSecureInput" type="text" data-ng-model="newBeacon.uuidSecure" class="form-control" ng-required="false" data-ng-pattern="/^[a-f0-9]{8}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{12}$/" data-popover="Format of UUID is e.g.: 8ff254e6-4d6d-11e5-885d-feff819cdc9f ." data-popover-trigger="mouseenter" />
                 <p ng-show="beaconAddForm.uuidSecureInput.$invalid && beaconAddForm.uuidSecureInput.$dirty" class="help-block">Uuid Secure and must be valid.</p>
             </div>
@@ -36,7 +36,7 @@
             <div class="form-group col-md-2 ">
                 <label>Uuid Service</label>
             </div>
-            <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.uuidServiceInput.$invalid && beaconAddForm.uuidServiceInput.$dirty,'has-success': beaconAddForm.uuidServiceInput.$valid}">
+            <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.uuidServiceInput.$invalid && beaconAddForm.uuidServiceInput.$dirty,'has-success': beaconAddForm.uuidServiceInput.$valid && beaconAddForm.uuidServiceInput.$dirty}">
                 <input name="uuidServiceInput" type="text" data-ng-model="newBeacon.uuidService" class="form-control" ng-required="false" data-ng-pattern="/^[a-f0-9]{8}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{12}$/" data-popover="Format of UUID is e.g.: 8ff254e6-4d6d-11e5-885d-feff819cdc9f ." data-popover-trigger="mouseenter" />
                 <p ng-show="beaconAddForm.uuidServiceInput.$invalid && beaconAddForm.uuidServiceInput.$dirty" class="help-block">Uuid Service must be valid.</p>
             </div>
@@ -45,7 +45,7 @@
             <div class="form-group col-md-2 required">
                 <label>MAC</label>
             </div>
-            <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.macInput.$invalid && beaconAddForm.macInput.$dirty,'has-success': beaconAddForm.macInput.$valid}">
+            <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.macInput.$invalid && beaconAddForm.macInput.$dirty,'has-success': beaconAddForm.macInput.$valid && beaconAddForm.macInput.$dirty}">
                 <input name="macInput" type="text" data-ng-model="newBeacon.mac" class="form-control" ng-required="true" data-ng-pattern="/^[a-f0-9]{2}\:[a-f0-9]{2}\:[a-f0-9]{2}\:[a-f0-9]{2}\:[a-f0-9]{2}\:[a-f0-9]{2}$/" data-popover="Format of MAC address is e.g.: d2:sd:23:ds:23:sd ." data-popover-trigger="mouseenter" />
                 <p ng-show="beaconAddForm.macInput.$invalid && beaconAddForm.macInput.$dirty" class="help-block">Mac is required and must be valid.</p>
             </div>
@@ -54,6 +54,7 @@
             </div>
             <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.buildingInput.$invalid && beaconAddForm.buildingInput.$dirty,'has-success': beaconAddForm.buildingInput.$valid}">
                 <select name="buildingInput" type="text" data-ng-model="newBeacon.building" class="form-control" ng-required="true">
+                    <option data-ng-hide="newBeacon.building" value="">Please select building</option>
                     <option value="mt2">MT II</option>
                     <option value="mt4">MT IV</option>
                 </select>
@@ -66,6 +67,7 @@
             </div>
             <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.floorInput.$invalid && beaconAddForm.floorInput.$dirty,'has-success': beaconAddForm.floorInput.$valid}">
                 <select name="floorInput" type="text" data-ng-model="newBeacon.floor" class="form-control" ng-required="true" data-ng-options="floor for floor in buildings[newBeacon.building]" data-ng-disabled="!(buildings[newBeacon.building])">
+                    <option data-ng-hide="data.floor" value="">Please select floor</option>
                 </select>
                 <p ng-show="beaconAddForm.floorInput.$invalid && beaconAddForm.floorInput.$dirty" class="help-block">Floor is required and it's in a number form.</p>
             </div>
