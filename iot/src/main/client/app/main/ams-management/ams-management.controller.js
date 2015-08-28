@@ -1,4 +1,4 @@
-angular.module('app.main').controller('AmsManagementCntl', function ($scope, $modal, amsDataRestService, globalSpinner) {
+angular.module('app.main').controller('AmsManagementCntl', function ($scope, $modal, amsDataRestService, floorAvailabilityService, globalSpinner) {
     'use strict';
 
     $scope.amsModel = [];
@@ -71,4 +71,9 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
             }, ams);
         });
     };
+    
+    $scope.checkAvailability  = function (building, floor) {
+    	return floorAvailabilityService.checkAvailability(building, floor);
+    }
+    
 });

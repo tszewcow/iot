@@ -5,7 +5,7 @@ describe('Ams management tests', function () {
 
     var $scope;
 
-    beforeEach(inject(function ($controller, $rootScope, amsDataRestService, $q) {
+    beforeEach(inject(function ($controller, $rootScope, amsDataRestService, floorLocationRestService, $q) {
         var deferred = $q.defer();
         $scope = $rootScope.$new();
         spyOn(amsDataRestService, 'getAmsData').and.returnValue(deferred.promise);
@@ -21,6 +21,9 @@ describe('Ams management tests', function () {
                 }
             ]
         });
+        var deferredFloors = $q.defer();
+        spyOn(floorLocationRestService, 'getFloorLocations').and.returnValue(deferredFloors.promise);
+        deferredFloors.resolve({data: []});
         $controller('AmsManagementCntl', {
             $scope: $scope,
             globalSpinner: {
