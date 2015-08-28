@@ -6,6 +6,9 @@ angular.module('app.main').factory('beaconDataRestService', function ($http, cur
             return $http.get(currentContextPath.get() + 'services/beacons');
 
         },
+        getBeaconsDataOnGivenFloor: function (building, floor) {
+            return $http.get(currentContextPath.get() + 'services/beacons/' + building + '/' + floor);
+        },
         addBeaconData: function (data) {
             return $http.post(currentContextPath.get() + 'services/beacon', data);
         },

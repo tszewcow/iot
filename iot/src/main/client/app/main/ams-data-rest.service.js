@@ -6,6 +6,9 @@ angular.module('app.main').factory('amsDataRestService', function ($http, curren
             return $http.get(currentContextPath.get() + 'services/automaticmobileset');
 
         },
+        getAmsDataOnGivenFloor: function (building, floor) {
+            return $http.get(currentContextPath.get() + 'services/automaticmobileset/' + building + '/' + floor);
+        },
         addAmsData: function (data) {
             return $http.post(currentContextPath.get() + 'services/automaticmobileset', data);
         },

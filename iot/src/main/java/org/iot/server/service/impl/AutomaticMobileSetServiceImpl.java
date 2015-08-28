@@ -1,6 +1,8 @@
 package org.iot.server.service.impl;
 
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.iot.server.document.AutomaticMobileSet;
 import org.iot.server.mapper.AutomaticMobileSetMapper;
@@ -29,6 +31,13 @@ public class AutomaticMobileSetServiceImpl implements AutomaticMobileSetService 
 		return automaticMobileSetMapper.mapDocuments2Tos(automaticMobileSetTo);
 	}
 
+	@Override
+	public List<AutomaticMobileSetTo> getAutomaticMobileSets(final String building, final int floor) {
+		final Predicate<AutomaticMobileSet> buildingFloorFilter = ams -> ams.getBuilding().equals(building) && ams.getFloor() == floor;  
+		final List<AutomaticMobileSet> automaticMobileSetTo = automaticMobileSetRepository.findAll().stream().filter(buildingFloorFilter).collect(Collectors.toList());
+		return automaticMobileSetMapper.mapDocuments2Tos(automaticMobileSetTo);
+	}
+	
 	@Override
 	public AutomaticMobileSetTo addAutomaticMobileSet(AutomaticMobileSetTo automaticMobileSetTo) {
 		AutomaticMobileSet automaticMobileSet = automaticMobileSetMapper.mapTo2Document(automaticMobileSetTo);

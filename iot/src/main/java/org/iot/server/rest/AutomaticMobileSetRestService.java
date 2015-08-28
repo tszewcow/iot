@@ -25,6 +25,11 @@ public class AutomaticMobileSetRestService {
 	public List<AutomaticMobileSetTo> getAllAutomaticMobileSets() {
 		return automaticMobileSetService.getAllAutomaticMobileSets();
 	}
+	
+	@RequestMapping(value = "/services/automaticmobileset/{building}/{floor}", method = RequestMethod.GET)
+	public List<AutomaticMobileSetTo> getAutomaticMobileSets(@PathVariable("building") String building, @PathVariable("floor") int floor) {
+		return automaticMobileSetService.getAutomaticMobileSets(building, floor);
+	}
 
 	@RequestMapping(value = "/services/automaticmobileset", method = RequestMethod.POST)
 	public AutomaticMobileSetTo addAutomaticMobileSet(@RequestBody AutomaticMobileSetTo request) {

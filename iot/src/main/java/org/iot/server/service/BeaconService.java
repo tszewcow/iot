@@ -18,4 +18,6 @@ public interface BeaconService {
 	void deleteBeacon(String id);
 
 	BeaconTo updateBeacon(BeaconTo request);
+
+	List<BeaconTo> getBeacons(String building, int floor);
 }

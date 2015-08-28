@@ -10,6 +10,9 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
             .when('/main/ams-management', {
                 templateUrl: 'main/ams-management/ams-management.html'
             })
+            .when('/main/locations', {
+                templateUrl: 'main/locations/locations.html'
+            })
             .when('/main/location-map', {
                 templateUrl: 'main/location-map/location-map.html'
             })

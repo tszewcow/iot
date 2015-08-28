@@ -29,6 +29,11 @@ public class BeaconRestService {
 	public List<BeaconTo> getAllBeacons() {
 		return beaconService.getAllBeacons();
 	}
+	
+	@RequestMapping(value = "/services/beacons/{building}/{floor}", method = RequestMethod.GET)
+	public List<BeaconTo> getBeaconsOnFloor(@PathVariable("building") String building, @PathVariable("floor") int floor) {
+		return beaconService.getBeacons(building, floor);
+	}
 
 	@RequestMapping(value = "/beacon-status", method = RequestMethod.POST)
 	public void reportStatus(@RequestBody String request) {

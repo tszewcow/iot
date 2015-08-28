@@ -11,7 +11,7 @@
     </div>
 
     <svg width="1837px" height="1298px" data-ng-controller="LocationMapCntl">
-        <image width="1837px" height="1298px" xlink:href="/main/img/7p.png"></image>
+        <image width="1837px" height="1298px" xlink:href={{imageUrl}}></image>
         <g data-ng-repeat="point in locationModel">
             <circle data-ng-attr-cx="{{point.xPos}}" data-ng-attr-cy="{{point.yPos}}" r="150" stroke="red" stroke-width="4" fill="white" fill-opacity="0.5" style></circle>
             <text data-ng-attr-x="{{point.xPos - 15}}" data-ng-attr-y="{{point.yPos + 30}}" fill="red">{{point.project}}</text>
