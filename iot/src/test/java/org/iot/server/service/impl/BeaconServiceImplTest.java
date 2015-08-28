@@ -201,13 +201,13 @@ public class BeaconServiceImplTest
 	@Test
 	public void shouldReturnFilteredBeacons() {
 		final List<Beacon> allBeacons = Stream.of(
-				createBeacon("id1", "MTII", 6),
+				createBeacon("id1", "MTII", 8),
 				createBeacon("id2", "MTII", 7),
 				createBeacon("id3", "MTIV", 7),
 				createBeacon("id4", "MTIV", 8),
 				createBeacon("id5", "MTIV", 9),
 				createBeacon("id6", "MTIV", 8),
-				createBeacon("id7", "MTII", 6)
+				createBeacon("id7", "MTII", 8)
 				).collect(Collectors.toList());
 		when(beaconRepository.findAll()).thenReturn(allBeacons);
 		
