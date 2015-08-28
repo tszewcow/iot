@@ -1,7 +1,6 @@
 package org.iot.server.rest;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.iot.server.service.AutomaticMobileSetService;
 import org.iot.server.to.AutomaticMobileSetTo;
@@ -28,8 +27,8 @@ public class AutomaticMobileSetRestService {
 	}
 	
 	@RequestMapping(value = "/services/automaticmobileset/{building}/{floor}", method = RequestMethod.GET)
-	public List<AutomaticMobileSetTo> getAllAutomaticMobileSets(@PathVariable("building") String building, @PathVariable("floor") int floor) {
-		return automaticMobileSetService.getAllAutomaticMobileSets().stream().filter(ams -> ams.getBuilding().equals(building) && ams.getFloor() == floor).collect(Collectors.toList());
+	public List<AutomaticMobileSetTo> getAutomaticMobileSets(@PathVariable("building") String building, @PathVariable("floor") int floor) {
+		return automaticMobileSetService.getAutomaticMobileSets(building, floor);
 	}
 
 	@RequestMapping(value = "/services/automaticmobileset", method = RequestMethod.POST)

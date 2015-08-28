@@ -13,4 +13,6 @@ public interface AutomaticMobileSetService {
 	void deleteAutomaticMobileSet(String id);
 
 	AutomaticMobileSetTo updateAutomaticMobileSet(AutomaticMobileSetTo request);
+
+	List<AutomaticMobileSetTo> getAutomaticMobileSets(String building, int floor);
 }

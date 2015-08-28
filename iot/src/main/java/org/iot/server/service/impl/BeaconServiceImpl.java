@@ -1,6 +1,8 @@
 package org.iot.server.service.impl;
 
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.iot.server.document.Beacon;
 import org.iot.server.document.BeaconStatus;
@@ -51,6 +53,13 @@ public class BeaconServiceImpl implements BeaconService {
 		return beaconMapper.mapDocuments2Tos(beaconTo);
 	}
 
+	@Override
+	public List<BeaconTo> getBeacons(final String building, final int floor) {
+		final Predicate<Beacon> buildingFloorFilter = beacon -> beacon.getBuilding().equals(building) && beacon.getFloor() == floor;
+		final List<Beacon> beaconTo = beaconRepository.findAll().stream().filter(buildingFloorFilter).collect(Collectors.toList());
+		return beaconMapper.mapDocuments2Tos(beaconTo);
+	}
+	
 	@Override
 	public BeaconTo addBeacon(BeaconTo beaconTo) {
 		Beacon beacon = beaconMapper.mapTo2Document(beaconTo);
