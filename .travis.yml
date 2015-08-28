@@ -13,4 +13,5 @@ script:
   - cd iot/src/main/client
   - npm install -g bower
   - npm install -g gulp
+  - npm install gulp
   - npm test
