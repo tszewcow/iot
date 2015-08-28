@@ -55,8 +55,8 @@
             <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.buildingInput.$invalid && beaconAddForm.buildingInput.$dirty,'has-success': beaconAddForm.buildingInput.$valid}">
                 <select name="buildingInput" type="text" data-ng-model="newBeacon.building" class="form-control" ng-required="true">
                     <option data-ng-hide="newBeacon.building" value="">Please select building</option>
-                    <option value="MTII">MT II</option>
-                    <option value="MTIV">MT IV</option>
+                    <option value="MT2">MT II</option>
+                    <option value="MT4">MT IV</option>
                 </select>
                 <p ng-show="beaconAddForm.buildingInput.$invalid && beaconAddForm.buildingInput.$dirty" class="help-block">Building is required.</p>
             </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="form-group col-md-4" data-ng-class="{'has-error': beaconAddForm.floorInput.$invalid && beaconAddForm.floorInput.$dirty,'has-success': beaconAddForm.floorInput.$valid}">
                 <select name="floorInput" type="text" data-ng-model="newBeacon.floor" class="form-control" ng-required="true" data-ng-options="floor for floor in buildings[newBeacon.building]" data-ng-disabled="!(buildings[newBeacon.building])">
-                    <option data-ng-hide="data.floor" value="">Please select floor</option>
+                    <option data-ng-hide="newBeacon.floor" value="">Please select floor</option>
                 </select>
                 <p ng-show="beaconAddForm.floorInput.$invalid && beaconAddForm.floorInput.$dirty" class="help-block">Floor is required and it's in a number form.</p>
             </div>
