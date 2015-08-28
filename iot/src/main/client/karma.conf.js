@@ -15,7 +15,7 @@ module.exports = function (config) {
             'karma-phantomjs-launcher', 'karma-chrome-launcher', 'karma-junit-reporter', 'karma-jasmine', 'karma-coverage'
         ],
         // coverage reporter generates the coverage
-        reporters: ['progress', 'coverage', 'junit'],
+        reporters: ['progress', 'coverage', 'junit', 'coveralls'], 
 
         preprocessors: {},
 
