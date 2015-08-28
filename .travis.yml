@@ -7,17 +7,15 @@ notifications:
   email:
     recipients:
       - marcin.sokol@capgemini.com
+      - mateusz.skawinski@capgemini.com
     on_success: change
     on_failure: always
 
 
 script:
   - cd iot/src/main/client
-  - npm install nodeunit jscoverage coveralls --save-dev
   - npm install -g bower
   - npm install gulp
   - npm install glob
-  - npm install coveralls
   - npm install
-  - npm run coveralls
   - npm test
