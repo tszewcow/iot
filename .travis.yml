@@ -13,6 +13,6 @@ script:
   - cd iot/src/main/client
   - npm install -g bower
   - npm install gulp
-  - npm install -g glob
+  - npm install glob
   - npm install -g
   - npm test
