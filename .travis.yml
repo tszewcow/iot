@@ -21,4 +21,3 @@ script:
   - npm install mocha-lcov-reporter --save-dev
   - npm install
   - npm test
-  - make test-coveralls
