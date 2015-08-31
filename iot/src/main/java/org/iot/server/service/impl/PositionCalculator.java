@@ -46,11 +46,7 @@ class PositionCalculator {
 					intersectionPoints.addAll(cirlesIntersectionPoints);
 				}
 			}
-		} /*
-			 * else { throw new IllegalArgumentException(
-			 * "Should more beacons than only one"); }
-			 */
-
+		}
 		return intersectionPoints;
 	}
 

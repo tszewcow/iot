@@ -6,8 +6,8 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
 
     var building = $routeParams['building'];
     var floor = $routeParams['floor'];
-    $scope.imageUrl = '/main/img/'+building+'_' + floor+ '.png';
-    
+    $scope.imageUrl = '/main/img/' + building + '_' + floor + '.png';
+
     var getAmsRest = function () {
         amsDataRestService.getAmsDataOnGivenFloor(building, floor).then(function (response) {
             $scope.locationModel.length = 0;
@@ -16,13 +16,15 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
             });
         });
     };
-    
+
     var intervalPromise = $interval(function () {
         getAmsRest();
     }, 5000);
     getAmsRest();
-    $scope.$on('$destroy', function () { $interval.cancel(intervalPromise); });
-    
+    $scope.$on('$destroy', function () {
+        $interval.cancel(intervalPromise);
+    });
+
     beaconDataRestService.getBeaconsDataOnGivenFloor(building, floor).then(function (response) {
         angular.forEach(response.data, function (elem) {
             $scope.beacons.push(transformToPointForBeacons(elem));
@@ -61,8 +63,7 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
 
         if ($scope.locationModel[0].isActual === true) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     };

@@ -8,6 +8,7 @@ notifications:
     recipients:
       - marcin.sokol@capgemini.com
       - mateusz.skawinski@capgemini.com
+      - tomasz.kepa@capgemini.com
     on_success: change
     on_failure: change
 

@@ -71,9 +71,9 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
             }, ams);
         });
     };
-    
-    $scope.checkAvailability  = function (building, floor) {
-    	return floorAvailabilityService.checkAvailability(building, floor);
-    }
-    
+
+    $scope.checkAvailability = function (building, floor) {
+        return floorAvailabilityService.checkAvailability(building, floor);
+    };
+
 });
