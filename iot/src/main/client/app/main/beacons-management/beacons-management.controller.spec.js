@@ -4,6 +4,7 @@ describe('Beacons management tests', function () {
     var $scope;
 
     beforeEach(module('app.main'));
+    beforeEach(module('oasp.oaspUi.spinner'));
 
     beforeEach(inject(function ($controller, $rootScope, beaconDataRestService, $q) {
         // given
@@ -27,13 +28,30 @@ describe('Beacons management tests', function () {
             $scope: $scope,
             globalSpinner: {
                 decorateCallOfFunctionReturningPromise: function (func) {
-                    func()
+                    func();
                 }
             }
         });
         $scope.$digest();
     }));
 
+
+    describe('data load on dialog start tests', function () {
+        it('should get beacons data on dialog lunch', inject(function (globalSpinner, beaconDataRestService, $controller) {
+            // given
+            // when
+            $controller('BeaconsManagementCntl', {
+                $scope: $scope,
+                globalSpinner: globalSpinner
+            });
+            $scope.$digest();
+
+            // then
+            expect(beaconDataRestService.getBeaconsData).toHaveBeenCalled();
+            expect($scope.beacons.length).toEqual(2);
+        }));
+
+    });
 
     describe('scope model initialization', function () {
         it('should initialize model', inject(function ($q, beaconDataRestService) {

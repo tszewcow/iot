@@ -2,6 +2,7 @@ describe('Ams management tests', function () {
     'use strict';
 
     beforeEach(module('app.main'));
+    beforeEach(module('oasp.oaspUi.spinner'));
 
     var $scope;
 
@@ -23,7 +24,9 @@ describe('Ams management tests', function () {
         });
         var deferredFloors = $q.defer();
         spyOn(floorLocationRestService, 'getFloorLocations').and.returnValue(deferredFloors.promise);
-        deferredFloors.resolve({data: []});
+        deferredFloors.resolve({
+            data: []
+        });
         $controller('AmsManagementCntl', {
             $scope: $scope,
             globalSpinner: {
@@ -35,6 +38,22 @@ describe('Ams management tests', function () {
         $scope.$digest();
     }));
 
+    describe('data load on dialog start tests', function () {
+        it('should get ams data on dialog lunch', inject(function (globalSpinner, amsDataRestService, $controller) {
+            // given
+            // when
+            $controller('AmsManagementCntl', {
+                $scope: $scope,
+                globalSpinner: globalSpinner
+            });
+            $scope.$digest();
+
+            // then
+            expect(amsDataRestService.getAmsData).toHaveBeenCalled();
+            expect($scope.amsModel.length).toEqual(2);
+        }));
+
+    });
 
     describe('scope model initialization', function () {
         it('should initialize model', function () {
@@ -118,28 +137,28 @@ describe('Ams management tests', function () {
             expect($scope.amsModel.length).toEqual(initialModelSize + 1);
             expect($scope.amsModel[2]).toEqual('added ams');
         }));
-        
+
         it('should call service checking NOT available floor', inject(function ($q, floorAvailabilityService) {
             // given
-        	var building = "MT2";
-        	var floor = 3;
-        	spyOn(floorAvailabilityService, 'checkAvailability').and.returnValue(false);
+            var building = 'MT2';
+            var floor = 3;
+            spyOn(floorAvailabilityService, 'checkAvailability').and.returnValue(false);
             // when
-        	expect($scope.checkAvailability(building, floor)).toBeFalsy();
+            expect($scope.checkAvailability(building, floor)).toBeFalsy();
             // then
-        	expect(floorAvailabilityService.checkAvailability).toHaveBeenCalledWith(building, floor);
+            expect(floorAvailabilityService.checkAvailability).toHaveBeenCalledWith(building, floor);
         }));
 
         it('should call service checking available floor', inject(function ($q, floorAvailabilityService) {
             // given
-        	var building = "MT2";
-        	var floor = 3;
-        	spyOn(floorAvailabilityService, 'checkAvailability').and.returnValue(true);
+            var building = 'MT2';
+            var floor = 3;
+            spyOn(floorAvailabilityService, 'checkAvailability').and.returnValue(true);
             // when
-        	expect($scope.checkAvailability(building, floor)).toBeTruthy();
+            expect($scope.checkAvailability(building, floor)).toBeTruthy();
             // then
-        	expect(floorAvailabilityService.checkAvailability).toHaveBeenCalledWith(building, floor);
+            expect(floorAvailabilityService.checkAvailability).toHaveBeenCalledWith(building, floor);
         }));
-        
+
     });
 });

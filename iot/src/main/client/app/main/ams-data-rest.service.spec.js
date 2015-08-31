@@ -6,7 +6,7 @@ describe('AMS data rest service tests', function () {
 
     beforeEach(module('app.main'));
     beforeEach(inject(function (_amsDataRestService_) {
-    	amsDataRestService = _amsDataRestService_;
+        amsDataRestService = _amsDataRestService_;
     }));
 
     describe('amsDataRestService tests', function () {
@@ -19,10 +19,25 @@ describe('AMS data rest service tests', function () {
             // then
             expect($http.get).toHaveBeenCalledWith(REST_URL);
         }));
-        
+
+        it('should call $http.get when retrieving ams data', inject(function ($http, currentContextPath) {
+            // given
+            var building = 'MT2';
+            var floor = '7';
+            spyOn(currentContextPath, 'get').and.returnValue('url-prefix/');
+            spyOn($http, 'get');
+            // when
+            amsDataRestService.getAmsDataOnGivenFloor(building, floor);
+            // then
+            expect($http.get).toHaveBeenCalledWith('url-prefix/services/automaticmobileset/' + building + '/' + floor);
+        }));
+
+
         it('should call $http.post when adding new ams', inject(function ($http, currentContextPath) {
             // given
-        	var ams = {project: 'test'};
+            var ams = {
+                project: 'test'
+            };
             spyOn(currentContextPath, 'get').and.returnValue('url-prefix/');
             spyOn($http, 'post');
             // when
@@ -30,21 +45,23 @@ describe('AMS data rest service tests', function () {
             // then
             expect($http.post).toHaveBeenCalledWith(REST_URL, ams);
         }));
-        
+
         it('should call $http.delete when deleting ams', inject(function ($http, currentContextPath) {
             // given
-        	var id = 40982;
+            var id = 40982;
             spyOn(currentContextPath, 'get').and.returnValue('url-prefix/');
             spyOn($http, 'delete');
             // when
             amsDataRestService.deleteAmsData(id);
             // then
-            expect($http.delete).toHaveBeenCalledWith(REST_URL +'/'+ id);
+            expect($http.delete).toHaveBeenCalledWith(REST_URL + '/' + id);
         }));
-        
+
         it('should call $http.put when updating new ams', inject(function ($http, currentContextPath) {
             // given
-        	var ams = {project: 'test'};
+            var ams = {
+                project: 'test'
+            };
             spyOn(currentContextPath, 'get').and.returnValue('url-prefix/');
             spyOn($http, 'put');
             // when
@@ -52,7 +69,7 @@ describe('AMS data rest service tests', function () {
             // then
             expect($http.put).toHaveBeenCalledWith(REST_URL, ams);
         }));
-        
+
     });
-    
+
 });

@@ -20,6 +20,19 @@ describe('Beacon data rest service tests', function () {
             expect($http.get).toHaveBeenCalledWith('url-prefix/services/beacons');
         }));
     });
+
+    it('should call $http.get when retrieving beacons data', inject(function ($http, currentContextPath) {
+        // given
+        var building = 'MT2';
+        var floor = '7';
+        spyOn(currentContextPath, 'get').and.returnValue('url-prefix/');
+        spyOn($http, 'get');
+        // when
+        beaconDataRestService.getBeaconsDataOnGivenFloor(building, floor);
+        // then
+        expect($http.get).toHaveBeenCalledWith('url-prefix/services/beacons/' + building + '/' + floor);
+    }));
+
     it('should call $http.post when adding new beacon', inject(function ($http, currentContextPath) {
         // given
         var beacon = {
