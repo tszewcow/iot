@@ -42,8 +42,6 @@ describe('Ams management tests', function () {
             expect($scope.amsModel.length).toEqual(2);
             expect(angular.isDefined($scope.mySelectedItems)).toBeTruthy();
         });
-
-
     });
 
     describe('scope functions test', function () {
@@ -120,6 +118,28 @@ describe('Ams management tests', function () {
             expect($scope.amsModel.length).toEqual(initialModelSize + 1);
             expect($scope.amsModel[2]).toEqual('added ams');
         }));
+        
+        it('should call service checking NOT available floor', inject(function ($q, floorAvailabilityService) {
+            // given
+        	var building = "MT2";
+        	var floor = 3;
+        	spyOn(floorAvailabilityService, 'checkAvailability').and.returnValue(false);
+            // when
+        	expect($scope.checkAvailability(building, floor)).toBeFalsy();
+            // then
+        	expect(floorAvailabilityService.checkAvailability).toHaveBeenCalledWith(building, floor);
+        }));
 
+        it('should call service checking available floor', inject(function ($q, floorAvailabilityService) {
+            // given
+        	var building = "MT2";
+        	var floor = 3;
+        	spyOn(floorAvailabilityService, 'checkAvailability').and.returnValue(true);
+            // when
+        	expect($scope.checkAvailability(building, floor)).toBeTruthy();
+            // then
+        	expect(floorAvailabilityService.checkAvailability).toHaveBeenCalledWith(building, floor);
+        }));
+        
     });
 });

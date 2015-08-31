@@ -19,6 +19,9 @@ public class LocationFloorTo {
 	 * @param floor
 	 */
 	public LocationFloorTo(final String building, final int floor) {
+		if (building == null) {
+			throw new IllegalArgumentException("building may not be null");
+		}
 		this.building = building;
 		this.floor = floor;
 	}
@@ -30,5 +33,32 @@ public class LocationFloorTo {
 	public int getFloor() {
 		return floor;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + building.hashCode();
+		result = prime * result + floor;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LocationFloorTo other = (LocationFloorTo) obj;
+		if (!building.equals(other.building))
+			return false;
+		if (floor != other.floor)
+			return false;
+		return true;
+	}
+	
+	
 	
 }
