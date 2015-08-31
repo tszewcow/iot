@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <div class="modal-title">
+        <h3>Add beacon</h3>
+    </div>
+</div>
+<div class="modal-body">
+    <form name="loginForm">
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Name</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': beaconAddForm.nameInput.$invalid && beaconAddForm.nameInput.$dirty,'has-success': beaconAddForm.nameInput.$valid}">
+                <input name="loginInput" type="text" data-ng-model="credentials.username" class="form-control" ng-required="true" data-ng-minlength="1" data-ng-maxlength="64" />
+                <p ng-show="credentials.username.$invalid && credentials.username.$dirty" class="help-block">Login is required and max length is 64 characters.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Password</label>
+            </div>
+            <div class="form-group col-md-10" data-ng-class="{'has-error': beaconAddForm.uuidNormalInput.$invalid && beaconAddForm.uuidNormalInput.$dirty,'has-success': beaconAddForm.uuidNormalInput.$valid}">
+                <input name="uuidNormalInput" type="password" data-ng-model="credentials.password" class="form-control" ng-required="true" data-ng-minlength="1" data-ng-maxlength="64">
+                <p ng-show="credentials.password.$invalid && credentials.password.$dirty" class="help-block">Password Normal is required.</p>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="authenticate()" data-ng-disabled="loginForm.$invalid">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <p class="col-md-2 text-danger">* required</p>
+</div>
