@@ -54,7 +54,5 @@ describe('Add beacon tests', function () {
                 MT4: [6, 7, 8, 9, 10, 11, 12]
             });
         });
-
     });
-
 });

@@ -60,6 +60,12 @@ describe('Add ams tests', function () {
             // when then
             expect($scope.disableGuardianInput()).toBeTruthy();
         });
+        it('should enable guradian if project is not <none>', function () {
+            // given
+            $scope.newAms.project = '';
+            // when then
+            expect($scope.disableGuardianInput()).toBeFalsy();
+        });
     });
 
 });

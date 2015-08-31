@@ -60,6 +60,13 @@ describe('Edit ams tests', function () {
             // when then
             expect($scope.disableGuardianInput()).toBeTruthy();
         });
+
+        it('should enable guradian if project is not <none>', function () {
+            // given
+            $scope.data.project = '';
+            // when then
+            expect($scope.disableGuardianInput()).toBeFalsy();
+        });
     });
 
 });
