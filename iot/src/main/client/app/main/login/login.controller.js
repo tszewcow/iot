@@ -1,51 +1,46 @@
-angular.module('app.main').controller('loginController', function($rootScope, $scope, $modal, $http, $location) {
-
-	$rootScope.test = true;
+angular.module('app.main').controller('loginController', function($rootScope, $scope, $modal, $http, $location, userDataRestService)
+{
+	  
+	$scope.loggedUser = new Object();
 	
-	  var authenticate = function(credentials, callback) {
+    $scope.initLogin = function () {
 
-	    var headers = credentials ? {authorization : "Basic "
-	        + btoa(credentials.username + ":" + credentials.password)
-	    } : {};
-
-	    $http.get('user', {headers : headers}).success(function(data) {
-	      if (data.name) {
-	        $rootScope.authenticated = true;
-	      } else {
-	        $rootScope.authenticated = false;
-	      }
-	      callback && callback();
-	    }).error(function() {
-	      $rootScope.authenticated = false;
-	      callback && callback();
-	    });
-
-	  }
-
-	  authenticate();
-	  $scope.credentials = {};
-	  $scope.login = function() {
-	      authenticate($scope.credentials, function() {
-	        if ($rootScope.authenticated) {
-	          $location.path("/");
-	          $scope.error = false;
-	        } else {
-	          $location.path("/login");
-	          $scope.error = true;
-	        }
-	      });
-	  }
-	  
-	  
-	  
-	    $scope.initLogin = function () {
-
-	        var modalInstance = $modal.open({
-	            templateUrl: '/main/login/login.tpl.html',
-	            animation: true,
-	            size: 'lg'
-	        });
-
-	    };
-	    
-	});
+        var modalInstance = $modal.open({
+            templateUrl: '/main/login/loginDialog.tpl.html',
+            animation: true,
+            controller: 'LoginDialogCntl',
+            size: 'sm'
+        });
+        
+        modalInstance.result.then(function (credentials)
+        {
+        	
+        	
+        	loggedUser = userDataRestService.getUser(credentials.username, credentials.password);
+        	
+        	if(loggedUser.firstName != 'qwertyuiop')
+        	{
+        		$rootScope.authenticated = true;
+        		redirect($rootScope.authenticated);
+        	}
+        });
+    };
+    
+    $scope.initLogout = function () {
+    	$rootScope.authenticated = false;
+    	
+    	redirect($rootScope.authenticated);
+    }
+    
+    function redirect(value)
+    {
+    	if (value)
+    	{
+			$location.path("/main/welcome");
+    	}
+    	else
+    	{
+    		$location.path("/main/hello");
+    	}
+    }
+});

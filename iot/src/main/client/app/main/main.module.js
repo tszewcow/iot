@@ -2,8 +2,9 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
     .config(function ($routeProvider) {
         'use strict';
         $routeProvider
-            .when('/', {redirectTo: '/main/welcome'})
-            .when('/main/welcome', {templateUrl: 'main/hello/hello.html'})
+            .when('/', {redirectTo: '/main/hello'})
+            .when('/main/hello', {templateUrl: 'main/hello/hello.html'})
+            .when('/main/welcome', {templateUrl: 'main/welcome/welcome.html'})
             .when('/main/beacons-management', {
                 templateUrl: 'main/beacons-management/beacons-management.html'
             })

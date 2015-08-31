@@ -17,9 +17,9 @@
                 <li ng-show="authenticated"><a href="#/main/ams-management">AMS management</a></li>
                 <li ng-show="authenticated"><a href="#/main/locations">Location map of AMS</a></li>
                 
-                <button ng-show="test" class="btn btn-default" data-ng-click="initLogin()">Login</button>
+                <button ng-show="!authenticated" class="btn btn-default" data-ng-click="initLogin()">Login</button>
 
-                <li ng-show="authenticated" style="align:right">Logout</li>
+                <button ng-show="authenticated" class="btn btn-default" data-ng-click="initLogout()">Logout</button>
             </ul>
         </div>
 
