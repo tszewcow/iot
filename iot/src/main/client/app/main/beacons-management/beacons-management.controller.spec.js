@@ -121,23 +121,16 @@ describe('Beacons management tests', function () {
             expect($scope.controlButtonDisabled()).toBeFalsy();
         });
 
-        it('should call $modal.show when edit beacon function is called', inject(function ($modal, $q, beaconDataRestService) {
+        it('should call $modal.show when edit beacon function is called', inject(function ($modal) {
             // given
-            var modalDeferred = $q.defer(),
-                beaconDataRestServiceDeferred = $q.defer();
             $scope.mySelectedItems.push('some entry');
             spyOn($modal, 'open').and.returnValue({
                 result: {
                     then: angular.noop
                 }
             });
-            spyOn(beaconDataRestService, 'updateBeaconData').and.returnValue(beaconDataRestServiceDeferred.promise);
-
             // when
             $scope.editBeacon();
-            modalDeferred.resolve('some modal response');
-            beaconDataRestServiceDeferred.resolve();
-            $scope.$digest();
             // then
             expect($modal.open).toHaveBeenCalledWith({
                 templateUrl: '/main/beacon-edit/beacon-edit.tpl.html',
