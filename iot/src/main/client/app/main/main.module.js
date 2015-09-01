@@ -3,7 +3,8 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
         'use strict';
         $routeProvider
             .when('/', {redirectTo: '/main/hello'})
-            .when('/main/hello', {templateUrl: 'main/hello/hello.html'})
+            .when('/main/hello', {templateUrl: 'main/hello/hello.html',
+            					controller :  'navigationCtrl'})
             .when('/main/welcome', {templateUrl: 'main/welcome/welcome.html'})
             .when('/main/beacons-management', {
                 templateUrl: 'main/beacons-management/beacons-management.html'

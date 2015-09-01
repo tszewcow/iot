@@ -1,7 +1,7 @@
 angular.module('app.main').controller('loginController', function($rootScope, $scope, $modal, $http, $location, userDataRestService)
 {
 	  
-	$scope.loggedUser = new Object();
+	$scope.loggedUser = {};
 	
     $scope.initLogin = function () {
 
@@ -14,8 +14,6 @@ angular.module('app.main').controller('loginController', function($rootScope, $s
         
         modalInstance.result.then(function (credentials)
         {
-        	
-        	
         	loggedUser = userDataRestService.getUser(credentials.username, credentials.password);
         	
         	if(loggedUser.firstName != 'qwertyuiop')

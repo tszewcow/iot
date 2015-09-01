@@ -6,23 +6,39 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebMvcSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-            .logout()
-                .permitAll();
+    	
+    	http.authorizeRequests()
+        .antMatchers("/services/getUser/**").permitAll()
+        .antMatchers("/css/**").permitAll()
+        .anyRequest().authenticated();
+
+    	http.formLogin()
+        .loginPage("/main/login").failureUrl("/main/login?error").permitAll()
+        .and()
+        .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll();
+
+    	
+//        http
+//            .authorizeRequests()
+//                .antMatchers("/services/getUser/**").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//            .formLogin()
+//            .authenticated()//;
+//            
+//            
+//                .loginPage("/services/beacons")
+//                .permitAll()
+//                .and()
+//            .logout()
+//                .permitAll();
     }
 
     @Autowired
