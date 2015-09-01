@@ -1,11 +1,12 @@
-angular.module('app.main').factory('floorAvailabilityService', ['floorLocationRestService', function (floorLocationRestService) {
+angular.module('app.main').factory('floorAvailabilityService', function (floorLocationRestService, $q) {
     'use strict';
     var availableFloors = {};
-    floorLocationRestService.getFloorLocations().then(function (response) {
+    var init = floorLocationRestService.getFloorLocations().then(function (response) {
         availableFloors = angular.copy(response.data);
     });
 
     return {
+    	init: init,
         checkAvailability: function (building, floor) {
             for (var i = 0; i < availableFloors.length; i++) {
                 if (availableFloors[i].floor === floor && availableFloors[i].building === building) {
@@ -14,6 +15,5 @@ angular.module('app.main').factory('floorAvailabilityService', ['floorLocationRe
             }
             return false;
         }
-
     };
-}]);
+});

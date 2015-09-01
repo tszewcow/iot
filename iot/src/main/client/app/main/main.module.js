@@ -8,7 +8,10 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
                 templateUrl: 'main/beacons-management/beacons-management.html'
             })
             .when('/main/ams-management', {
-                templateUrl: 'main/ams-management/ams-management.html'
+                templateUrl: 'main/ams-management/ams-management.html',
+                resolve:{'LocationFloorData': function(floorAvailabilityService){
+                    	return floorAvailabilityService.init;
+                    	}	}
             })
             .when('/main/locations', {
                 templateUrl: 'main/locations/locations.html'
