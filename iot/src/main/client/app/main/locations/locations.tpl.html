@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html>
+<title>Locations</title>
 
-<body>
-<div class="row">
-    <div class="col-md-12">
-        <h2>Select location:</h2>
-        <p><a href="#/main/location-map?building=MT2&floor=6">MT2 floor 6</a></p>
-        <p><a href="#/main/location-map?building=MT2&floor=7">MT2 floor 7</a></p>
-        <p><a href="#/main/location-map?building=MT2&floor=8">MT2 floor 8</a></p>
-        <p><a href="#/main/location-map?building=MT2&floor=9">MT2 floor 9</a></p>
-        <p><a href="#/main/location-map?building=MT2&floor=10">MT2 floor 10</a></p>
-        <p><a href="#/main/location-map?building=MT2&floor=11">MT2 floor 11</a></p>
-    </div>
+<div class="container" data-ng-controller="LocationsCntl">
+
+    <header>
+        <h1>Available location maps:</h1>
+    </header>
+
+	<div class="col-md-12" data-ng-repeat="link in locationLinks">
+  		<p><a data-ng-href="{{link.url}}">{{link.text}}</a></p>
+	</div>
+
 </div>
-</body>
-
-</html>
