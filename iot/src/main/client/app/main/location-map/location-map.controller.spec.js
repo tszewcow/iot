@@ -21,7 +21,7 @@ describe('Location map tests', function () {
 
             $controller('LocationMapCntl', {
                 $scope: $scope
-            })
+            });
         }));
 
         afterEach(inject(function (amsDataRestService, beaconDataRestService, $routeParams) {
@@ -181,6 +181,39 @@ describe('Location map tests', function () {
             expect($scope.beacons.length).toEqual(1);
         }));
 
+        it('should not show warning when isActual is true', inject(function () {
+            //given
+            deferredAms.resolve({
+                data: [{
+                    isActual: true
+                    }]
+            });
+            deferredBeacon.resolve({
+                data: []
+            });
+            $scope.$digest();
+            //when
+            $scope.showWarning();
+            //then
+            expect($scope.showWarning()).toBeFalsy();
+        }));
+
+        it('should show warning when isActual is false', inject(function () {
+            //given
+            deferredAms.resolve({
+                data: [{
+                    isActual: false
+                    }]
+            });
+            deferredBeacon.resolve({
+                data: []
+            });
+            $scope.$digest();
+            //when
+            $scope.showWarning();
+            //then
+            expect($scope.showWarning()).toBeTruthy();
+        }));
     });
 
     describe('calculating building and floor from params', function () {
@@ -200,7 +233,7 @@ describe('Location map tests', function () {
 
             $controller('LocationMapCntl', {
                 $scope: $scope
-            })
+            });
             $scope.$digest();
         }));
 
@@ -212,6 +245,5 @@ describe('Location map tests', function () {
             expect(amsDataRestService.getAmsDataOnGivenFloor).toHaveBeenCalledWith('TestBuildingIV', 129);
             expect(beaconDataRestService.getBeaconsDataOnGivenFloor).toHaveBeenCalledWith('TestBuildingIV', 129);
         }));
-
     });
 });
