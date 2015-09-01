@@ -7,6 +7,12 @@ angular.module('app.main').factory('userDataRestService', function ($http, curre
         },
         getUser: function (username, password) {
             return $http.get(currentContextPath.get() + 'services/getUser/' + username + '/' + password);
+        },
+        addUserData: function (data) {
+            return $http.post(currentContextPath.get() + 'services/addNewUser', data);
+        },
+        userTest: function (string) {
+            return $http.get(currentContextPath.get() + 'user/'+string);
         }
     };
 });

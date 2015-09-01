@@ -1,5 +1,8 @@
 package org.iot.server.service.impl;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -56,5 +59,19 @@ public class UserServiceImpl implements UserService {
 		test.setFirstName("qwertyuiop");
 		
 		return test;//new UserTo();
+	}
+
+	@Override
+	public UserTo addUser(UserTo userTo)
+	{
+		User user = userMapper.mapTo2Document(userTo);
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+
+		user.setCreatedOn(dateFormat.format(date));
+		userRepository.save(user);
+
+		return userMapper.mapDocument2To(user);
 	}
 }

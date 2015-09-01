@@ -1,0 +1,12 @@
+<title>Beacons Management</title>
+
+<div class="container" data-ng-controller="UsersManagementCntl">
+
+    <header>
+        <h1>Users Management</h1>
+    </header>
+
+    <table class="raw-table" data-tr-ng-grid data-items="users" data-enable-filtering="false" data-selected-items="mySelectedItems" data-selection-mode="SingleRow" data-fields="['firstName','lastName','userName','createdOn', 'lastLogin', 'active']"></table>
+
+    <button class="btn btn-default" data-ng-click="addUser()">Add user</button>
+</div>

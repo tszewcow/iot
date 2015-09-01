@@ -1,6 +1,5 @@
 package org.iot.server.to;
 
-import java.util.Date;
 
 public class UserTo
 {
@@ -10,8 +9,8 @@ public class UserTo
 	private String userName;
 	private String password;
 	private String salt;
-	private Date createdOn;
-	private Date lastLogin;
+	private String createdOn;
+	private String lastLogin;
 	private boolean active;
 	
 	
@@ -45,16 +44,16 @@ public class UserTo
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
-	public Date getCreatedOn() {
+	public String getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(Date createdOn) {
+	public void setCreatedOn(String createdOn) {
 		this.createdOn = createdOn;
 	}
-	public Date getLastLogin() {
+	public String getLastLogin() {
 		return lastLogin;
 	}
-	public void setLastLogin(Date lastLogin) {
+	public void setLastLogin(String lastLogin) {
 		this.lastLogin = lastLogin;
 	}
 	public boolean isActive() {

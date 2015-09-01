@@ -2,9 +2,8 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
     .config(function ($routeProvider) {
         'use strict';
         $routeProvider
-            .when('/', {redirectTo: '/main/hello'})
-            .when('/main/hello', {templateUrl: 'main/hello/hello.html',
-            					controller :  'navigationCtrl'})
+            .when('/', {redirectTo: '/main/welcome'})
+            
             .when('/main/welcome', {templateUrl: 'main/welcome/welcome.html'})
             .when('/main/beacons-management', {
                 templateUrl: 'main/beacons-management/beacons-management.html'
@@ -18,5 +17,14 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
             .when('/main/location-map', {
                 templateUrl: 'main/location-map/location-map.html'
             })
+            .when('/main/options', {
+                templateUrl: 'main/options/options.html'
+            })
+            .when('/main/users-management', {
+                templateUrl: 'main/users-management/users-management.html'
+            })
+            
+            
+            
             .otherwise({templateUrl: 'main/page-not-found/page-not-found.html'});
     });

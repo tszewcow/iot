@@ -4,10 +4,12 @@ import java.security.Principal;
 import java.util.List;
 
 import org.iot.server.service.UserService;
+import org.iot.server.to.BeaconTo;
 import org.iot.server.to.UserTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,8 +36,17 @@ public class UserRestService {
 		return userService.getUser(username, password);
 	}
 	
-	@RequestMapping(value = "/services/user", method = RequestMethod.GET)
-	  public Principal user(Principal user) {
-	    return user;
+	
+	@RequestMapping(value = "/services/addNewUser", method = RequestMethod.POST)
+	public UserTo addUser(@RequestBody UserTo request) {
+		return userService.addUser(request);
+	}
+	
+	
+	@RequestMapping(value = "user", method = RequestMethod.GET)
+	  public Principal user(@RequestBody Principal string) {
+		System.out.println("user");
+		
+	    return string;
 	  }
 }
