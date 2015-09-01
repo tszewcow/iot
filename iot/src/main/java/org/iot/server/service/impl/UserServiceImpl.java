@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
 	{
 		User user = userMapper.mapTo2Document(userTo);
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
 		Date date = new Date();
 
 		user.setCreatedOn(dateFormat.format(date));
