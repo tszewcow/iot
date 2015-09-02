@@ -52,9 +52,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	
     	auth.eraseCredentials(true);
     	
-    	auth.inMemoryAuthentication().withUser("usera").password("password1").roles("USER");
-    	auth.inMemoryAuthentication().withUser("userb").password("password2").roles("USER");
-    	auth.inMemoryAuthentication().withUser("userc").password("password3").roles("USER");
+    	auth.inMemoryAuthentication().withUser("usera1").password("password1").roles("USER");
+    	auth.inMemoryAuthentication().withUser("userb1").password("password2").roles("USER");
+    	auth.inMemoryAuthentication().withUser("userc1").password("password3").roles("USER");
     	
     	System.out.println("configure");
     	
