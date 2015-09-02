@@ -1,4 +1,4 @@
-angular.module('app.main').factory('floorAvailabilityService', function (floorLocationRestService, $q) {
+angular.module('app.main').factory('floorAvailabilityService', function (floorLocationRestService) {
     'use strict';
     var availableFloors = {};
     var init = floorLocationRestService.getFloorLocations().then(function (response) {
@@ -6,7 +6,7 @@ angular.module('app.main').factory('floorAvailabilityService', function (floorLo
     });
 
     return {
-    	init: init,
+        init: init,
         checkAvailability: function (building, floor) {
             for (var i = 0; i < availableFloors.length; i++) {
                 if (availableFloors[i].floor === floor && availableFloors[i].building === building) {

@@ -24,12 +24,12 @@ describe('Location map tests', function () {
             });
         }));
 
-        afterEach(inject(function (amsDataRestService, beaconDataRestService, $routeParams) {
+        afterEach(inject(function (amsDataRestService, beaconDataRestService) {
             expect(amsDataRestService.getAmsDataOnGivenFloor).toHaveBeenCalledWith('MTII', 7);
             expect(beaconDataRestService.getBeaconsDataOnGivenFloor).toHaveBeenCalledWith('MTII', 7);
         }));
 
-        it('should initialize all amses', inject(function ($q, amsDataRestService, beaconDataRestService) {
+        it('should initialize all amses', inject(function () {
             // given when 
             deferredAms.resolve({
                 data: [
@@ -68,7 +68,7 @@ describe('Location map tests', function () {
             expect($scope.locationModel[2].yPos).toEqual(393);
         }));
 
-        it('should initialize beacons', inject(function ($q, amsDataRestService, beaconDataRestService) {
+        it('should initialize beacons', inject(function () {
             // given when 
             deferredAms.resolve({
                 data: []
@@ -99,7 +99,7 @@ describe('Location map tests', function () {
             expect($scope.beacons[1].yPos).toEqual(287);
         }));
 
-        it('should floor ams floats to ints', inject(function ($q, amsDataRestService, beaconDataRestService) {
+        it('should floor ams floats to ints', inject(function () {
             // given when 
             deferredAms.resolve({
                 data: [{
@@ -120,7 +120,7 @@ describe('Location map tests', function () {
             expect($scope.locationModel[0].yPos).toEqual(1001);
         }));
 
-        it('should floor beacon floats to ints', inject(function ($q, amsDataRestService, beaconDataRestService) {
+        it('should floor beacon floats to ints', inject(function () {
             // given when 
             deferredAms.resolve({
                 data: []
@@ -141,7 +141,7 @@ describe('Location map tests', function () {
             expect($scope.beacons[0].yPos).toEqual(1001);
         }));
 
-        it('should work with no points', inject(function ($q, amsDataRestService, beaconDataRestService) {
+        it('should work with no points', inject(function () {
             // given when 
             deferredAms.resolve({
                 data: []
@@ -158,7 +158,7 @@ describe('Location map tests', function () {
             expect($scope.beacons.length).toEqual(0);
         }));
 
-        it('should initialize both amses and beacons', inject(function ($q, amsDataRestService, beaconDataRestService) {
+        it('should initialize both amses and beacons', inject(function () {
             // given when 
             deferredAms.resolve({
                 data: [{
@@ -224,9 +224,6 @@ describe('Location map tests', function () {
             $scope = $rootScope.$new();
             $routeParams.building = 'TestBuildingIV';
             $routeParams.floor = 129;
-            var emptyResult = {
-                data: []
-            };
 
             spyOn(amsDataRestService, 'getAmsDataOnGivenFloor').and.returnValue(deferredAms.promise);
             spyOn(beaconDataRestService, 'getBeaconsDataOnGivenFloor').and.returnValue(deferredBeacon.promise);
@@ -237,7 +234,7 @@ describe('Location map tests', function () {
             $scope.$digest();
         }));
 
-        it('should return proper image url', inject(function ($q, amsDataRestService, beaconDataRestService) {
+        it('should return proper image url', inject(function () {
             expect($scope.imageUrl).toEqual('/main/img/TestBuildingIV_129.png');
         }));
 

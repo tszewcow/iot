@@ -1,11 +1,10 @@
 describe('Ams management tests', function () {
     'use strict';
 
-    beforeEach(module('app.main'));
-    beforeEach(module('oasp.oaspUi.spinner'));
-
     var $scope;
 
+    beforeEach(module('app.main'));
+    beforeEach(module('oasp.oaspUi.spinner'));
     beforeEach(inject(function ($controller, $rootScope, amsDataRestService, floorLocationRestService, $q) {
         var deferred = $q.defer();
         $scope = $rootScope.$new();

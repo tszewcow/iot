@@ -5,6 +5,5 @@ angular.module('app.main').factory('floorLocationRestService', function ($http, 
         getFloorLocations: function () {
             return $http.get(currentContextPath.get() + 'services/locationfloor');
         }
-    
     };
 });

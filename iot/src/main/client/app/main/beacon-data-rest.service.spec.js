@@ -1,13 +1,13 @@
 describe('Beacon data rest service tests', function () {
     'use strict';
 
-    var beaconDataRestService;
-    var REST_URL = 'url-prefix/services/beacon';
-
     beforeEach(module('app.main'));
     beforeEach(inject(function (_beaconDataRestService_) {
         beaconDataRestService = _beaconDataRestService_;
     }));
+
+    var beaconDataRestService;
+    var REST_URL = 'url-prefix/services/beacon';
 
     describe('beaconDataRestService tests', function () {
         it('should call $http.get when retrieving beacons data', inject(function ($http, currentContextPath) {

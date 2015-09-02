@@ -5,7 +5,6 @@ describe('Beacons management tests', function () {
 
     beforeEach(module('app.main'));
     beforeEach(module('oasp.oaspUi.spinner'));
-
     beforeEach(inject(function ($controller, $rootScope, beaconDataRestService, $q) {
         // given
         var deferred = $q.defer();

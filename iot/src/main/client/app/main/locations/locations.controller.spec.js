@@ -9,23 +9,23 @@ describe('Locations tests', function () {
     describe('scope model initialization', function () {
 
         beforeEach(inject(function ($controller, $rootScope, floorLocationRestService, $q) {
-        	$scope = $rootScope.$new();
-            
-        	deferredLocations = $q.defer();
-            
+            $scope = $rootScope.$new();
+
+            deferredLocations = $q.defer();
+
             spyOn(floorLocationRestService, 'getFloorLocations').and.returnValue(deferredLocations.promise);
             deferredLocations.resolve({
                 data: [
-                       {
-                           building: 'MT2',
-                           floor: 6
+                    {
+                        building: 'MT2',
+                        floor: 6
                        },
-                       {
-                    	   building: 'MT4',
-                    	   floor: 7
+                    {
+                        building: 'MT4',
+                        floor: 7
                        }
                    ]
-               });
+            });
 
             $controller('LocationsCntl', {
                 $scope: $scope,

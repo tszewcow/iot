@@ -1,8 +1,8 @@
 angular.module('app.main').controller('LocationMapCntl', function ($scope, $interval, amsDataRestService, beaconDataRestService, $routeParams) {
     'use strict';
 
-    var building = $routeParams['building'];
-    var floor = $routeParams['floor'];
+    var building = $routeParams.building;
+    var floor = $routeParams.floor;
 
     var getAmsRest = function () {
         amsDataRestService.getAmsDataOnGivenFloor(building, floor).then(function (response) {
@@ -38,7 +38,7 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
     var translateYCoordToMap = function (y) {
         return Math.floor(y);
     };
-    
+
     $scope.locationModel = [];
     $scope.beacons = [];
     $scope.imageUrl = '/main/img/' + building + '_' + floor + '.png';
@@ -50,19 +50,20 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
             return true;
         }
     };
-    
+
     $scope.$on('$destroy', function () {
         $interval.cancel(intervalPromise);
     });
-    
+
 
     var intervalPromise = $interval(function () {
-        	getAmsRest();}, 5000);
+        getAmsRest();
+    }, 5000);
     getAmsRest();
     beaconDataRestService.getBeaconsDataOnGivenFloor(building, floor).then(function (response) {
         angular.forEach(response.data, function (elem) {
             $scope.beacons.push(transformToPointForBeacons(elem));
         });
     });
-    
+
 });

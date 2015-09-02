@@ -1,12 +1,12 @@
 describe('Floor location data rest service tests', function () {
     'use strict';
 
-    var floorLocationRestService;
-
     beforeEach(module('app.main'));
     beforeEach(inject(function (_floorLocationRestService_) {
-    	floorLocationRestService = _floorLocationRestService_;
+        floorLocationRestService = _floorLocationRestService_;
     }));
+
+    var floorLocationRestService;
 
     describe('floorLocationRestService tests', function () {
         it('should call $http.get when retrieving floors', inject(function ($http, currentContextPath) {
