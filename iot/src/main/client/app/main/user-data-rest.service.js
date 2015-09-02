@@ -11,8 +11,11 @@ angular.module('app.main').factory('userDataRestService', function ($http, curre
         addUserData: function (data) {
             return $http.post(currentContextPath.get() + 'services/addNewUser', data);
         },
-        userTest: function (data) {
-            return $http.get(currentContextPath.get() + 'services/user', data);
+        deleteUserData: function (id) {
+            return $http.delete(currentContextPath.get() + 'services/deleteUser/' + id);
+        },
+        updateUserData: function (data) {
+            return $http.put(currentContextPath.get() + 'services/updateUser', data);
         }
     };
 });

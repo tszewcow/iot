@@ -1,0 +1,54 @@
+<div class="modal-header">
+    <div class="modal-title">
+        <h3>Add user</h3>
+    </div>
+</div>
+<div class="modal-body">
+    <form name="userEditForm">
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>First Name</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': userEditForm.firstNameInput.$invalid && userEditForm.firstNameInput.$dirty,'has-success': userEditForm.firstNameInput.$valid}">
+                <input name="firstNameInput" type="text" data-ng-model="newUser.firstName" class="form-control" ng-required="true" data-ng-minlength="1" data-ng-maxlength="64" />
+                <p ng-show="userEditForm.firstNameInput.$invalid && userEditForm.firstNameInput.$dirty" class="help-block">First name is required and max length is 64 characters.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Last Name</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': userEditForm.lastNameInput.$invalid && userEditForm.lastNameInput.$dirty,'has-success': userEditForm.lastNameInput.$valid}">
+                <input name="lastNameInput" type="text" data-ng-model="newUser.lastName" class="form-control" ng-required="true" data-ng-minlength="1" data-ng-maxlength="64" />
+                <p ng-show="userEditForm.lastNameInput.$invalid && userEditForm.lastNameInput.$dirty" class="help-block">Last name is required and max length is 64 characters.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>User Name</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': userEditForm.userNameInput.$invalid && userEditForm.userNameInput.$dirty,'has-success': userEditForm.userNameInput.$valid}">
+                <input name="userNameInput" type="text" data-ng-model="newUser.userName" class="form-control" ng-required="true" data-ng-minlength="4" data-ng-maxlength="16" />
+                <p ng-show="userEditForm.userNameInput.$invalid && userEditForm.userNameInput.$dirty" class="help-block">User name is required and max length is 16 characters.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Password</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': userEditForm.passwordInput.$invalid && userEditForm.passwordInput.$dirty,'has-success': userEditForm.passwordInput.$valid}">
+                <input name="passwordInput" type="password" data-ng-model="newUser.password" class="form-control" ng-required="true" data-ng-minlength="4" data-ng-maxlength="16" />
+                <p ng-show="userEditForm.passwordInput.$invalid && userEditForm.passwordInput.$dirty" class="help-block">Password is required and max length is 16 characters.</p>
+            </div>
+        </div> 
+        
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()" data-ng-disabled="userEditForm.$invalid">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <p class="col-md-2 text-danger">* required</p>
+</div>

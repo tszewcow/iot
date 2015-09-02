@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
+import org.iot.server.document.Beacon;
 import org.iot.server.document.User;
 import org.iot.server.mapper.UserMapper;
 import org.iot.server.repository.UserRepository;
@@ -33,21 +35,18 @@ public class UserServiceImpl implements UserService {
 		return userMapper.mapDocuments2Tos(users);
 	}
 
-	//TODO zrobic zapytanie a nie pobieranie wszystkiego z bazy
+	
+	//TODO zorbic unique login na bazie!!!!
 	@Override
-	public UserTo getUser(String userName, String password) {
-		Predicate<User> userFilter = user -> user.getUserName().equals(userName) && user.getPassword().equals(password);
+	public User getUser(String userName) {
+		Predicate<User> userFilter = user -> user.getUserName().equals(userName);
 		
-//		List<User> users = userRepository.findAll().stream().filter(userFilter).collect(Collectors.toList());
-//		
-//		if(users != null && users.size() == 1)
-//			return userMapper.mapDocument2To(users.get(0));
+		List<User> users = userRepository.findAll().stream().filter(userFilter).collect(Collectors.toList());
 		
-		//TODO test
-		UserTo test = new UserTo();
-		test.setFirstName("qwertyuiop");
+		if(users != null && users.size() == 1)
+			return users.get(0);
 		
-		return test;//new UserTo();
+		return new User();
 	}
 
 	@Override
@@ -55,9 +54,21 @@ public class UserServiceImpl implements UserService {
 	{
 		User user = userMapper.mapTo2Document(userTo);
 
-		user.setCreatedOn(new SimpleDateFormat("yyyy-MM-dd HH:mm:SS").format(new Date()));
+		user.setCreatedOn(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 		userRepository.save(user);
 
+		return userMapper.mapDocument2To(user);
+	}
+
+	@Override
+	public void deleteUser(String id) {
+		userRepository.delete(id);
+	}
+
+	@Override
+	public UserTo updateUser(UserTo userTo) {
+		User user = userMapper.mapTo2Document(userTo);
+		userRepository.save(user);
 		return userMapper.mapDocument2To(user);
 	}
 }

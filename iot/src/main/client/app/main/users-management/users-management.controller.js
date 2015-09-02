@@ -29,4 +29,54 @@ angular.module('app.main').controller('UsersManagementCntl', function ($scope, $
             }, user);
         });
     };
+    
+    $scope.deleteUser = function () {
+        globalSpinner.decorateCallOfFunctionReturningPromise(function () {
+        	
+        	console.log($scope.mySelectedItems.length);
+        	console.log($scope.mySelectedItems[0].id);
+        	
+            var callResult = userDataRestService.deleteUserData($scope.mySelectedItems[0].id);
+            
+            for (var index = 0; index < $scope.users.length; index = index + 1) {
+                if ($scope.mySelectedItems[0].id === $scope.users[index].id) {
+                    $scope.users.splice(index, 1);
+                }
+            }
+            return callResult;
+        });
+    };
+
+    $scope.controlButtonDisabled = function () {
+        return $scope.mySelectedItems.length === 0;
+    };
+    
+    
+    
+    $scope.editUser = function () {
+
+        var modalInstance = $modal.open({
+            templateUrl: '/main/user-edit/user-edit.tpl.html',
+            controller: 'UserEditCntl',
+            animation: true,
+            size: 'md',
+            resolve: {
+                user: function () {
+                    return $scope.mySelectedItems[0];
+                }
+            }
+        });
+
+        modalInstance.result.then(function (user) {
+            globalSpinner.decorateCallOfFunctionReturningPromise(function () {
+                return userDataRestService.updateUserData(user).then(function (response) {
+                    for (var index = 0; index < $scope.users.length; index = index + 1) {
+                        if (response.data.id === $scope.users[index].id) {
+                            $scope.users[index] = response.data;
+                        }
+                    }
+                });
+            }, user);
+        });
+    };
 });
