@@ -1,8 +1,8 @@
 angular.module('app.main').controller('LocationMapCntl', function ($scope, $interval, amsDataRestService, beaconDataRestService, floorLocationRestService, globalSpinner, $location) {
     'use strict';
 
-    var building = $location.search()['building'];
-    var floor = $location.search()['floor'];
+    var building = $location.search().building;
+    var floor = $location.search().floor;
 
     var getAmsRest = function () {
         amsDataRestService.getAmsDataOnGivenFloor(building, floor).then(function (response) {
@@ -40,17 +40,20 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
     };
 
     var buildLink = function (loc) {
-    	var url = '/main/location-map?building=' + loc.building + '&floor=' + loc.floor;
-    	var text = loc.building + ' floor ' + loc.floor;
-    	return {url: url, text: text};
-    }
-    
+        var url = '/main/location-map?building=' + loc.building + '&floor=' + loc.floor;
+        var text = loc.building + ' floor ' + loc.floor;
+        return {
+            url: url,
+            text: text
+        };
+    };
+
     $scope.locationModel = [];
     $scope.beacons = [];
     $scope.imageUrl = '/main/img/' + building + '_' + floor + '.png';
     $scope.locations = [];
     $scope.newLocation = {};
-    
+
     $scope.showWarning = function () {
         if ($scope.locationModel[0].isActual === true) {
             return false;
@@ -62,15 +65,15 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
     $scope.$on('$destroy', function () {
         $interval.cancel(intervalPromise);
     });
-    $scope.navigate = function() {
-    	$location.url($scope.currentLocation.url);
-    }
-    
+    $scope.navigate = function () {
+        $location.url($scope.currentLocation.url);
+    };
+
 
 
     var intervalPromise = $interval(function () {
         getAmsRest();
-    }, 5000);
+    }, 1000);
     getAmsRest();
     beaconDataRestService.getBeaconsDataOnGivenFloor(building, floor).then(function (response) {
         angular.forEach(response.data, function (elem) {
@@ -78,12 +81,15 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
         });
     });
     globalSpinner.decorateCallOfFunctionReturningPromise(function () {
-    	return floorLocationRestService.getFloorLocations().then(function (response) {
-    		$scope.currentLocation = buildLink({building: building, floor: floor});
-    		angular.forEach(response.data, function (elem) {
+        return floorLocationRestService.getFloorLocations().then(function (response) {
+            $scope.currentLocation = buildLink({
+                building: building,
+                floor: floor
+            });
+            angular.forEach(response.data, function (elem) {
                 $scope.locations.push(buildLink(elem));
             });
         });
     });
-    
+
 });
