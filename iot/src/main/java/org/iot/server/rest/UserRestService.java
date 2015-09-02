@@ -43,10 +43,10 @@ public class UserRestService {
 	}
 	
 	
-	@RequestMapping(value = "user", method = RequestMethod.GET)
-	  public Principal user(@RequestBody Principal string) {
-		System.out.println("user");
-		
-	    return string;
-	  }
+//	@RequestMapping(value = "user", method = RequestMethod.GET)
+//	  public Principal user(@RequestBody Principal string) {
+//		System.out.println("user");
+//		
+//	    return string;
+//	  }
 }

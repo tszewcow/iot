@@ -1,25 +1,14 @@
 package org.iot.server.service.impl;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-import org.iot.server.document.Beacon;
-import org.iot.server.document.BeaconStatus;
 import org.iot.server.document.User;
-import org.iot.server.mapper.BeaconMapper;
-import org.iot.server.mapper.BeaconStatusMapper;
 import org.iot.server.mapper.UserMapper;
-import org.iot.server.repository.BeaconRepository;
-import org.iot.server.repository.BeaconStatusRepository;
 import org.iot.server.repository.UserRepository;
-import org.iot.server.service.BeaconService;
 import org.iot.server.service.UserService;
-import org.iot.server.to.BeaconStatusTo;
-import org.iot.server.to.BeaconTo;
 import org.iot.server.to.UserTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,10 +55,7 @@ public class UserServiceImpl implements UserService {
 	{
 		User user = userMapper.mapTo2Document(userTo);
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-		Date date = new Date();
-
-		user.setCreatedOn(dateFormat.format(date));
+		user.setCreatedOn(new SimpleDateFormat("yyyy-MM-dd HH:mm:SS").format(new Date()));
 		userRepository.save(user);
 
 		return userMapper.mapDocument2To(user);

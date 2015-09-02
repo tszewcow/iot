@@ -11,8 +11,8 @@ angular.module('app.main').factory('userDataRestService', function ($http, curre
         addUserData: function (data) {
             return $http.post(currentContextPath.get() + 'services/addNewUser', data);
         },
-        userTest: function (string) {
-            return $http.get(currentContextPath.get() + 'user/'+string);
+        userTest: function (data) {
+            return $http.get(currentContextPath.get() + 'services/user', data);
         }
     };
 });

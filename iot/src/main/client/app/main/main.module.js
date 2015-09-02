@@ -4,6 +4,16 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
         $routeProvider
             .when('/', {redirectTo: '/main/welcome'})
             
+            
+            .when('/main/login', {
+            	templateUrl : '/main/login/login.html',
+            	controller : 'navigation'
+            })
+            .when('/login', {
+            	templateUrl : '/main/login/login.html',
+            	controller : 'navigation'
+            })
+            
             .when('/main/welcome', {templateUrl: 'main/welcome/welcome.html'})
             .when('/main/beacons-management', {
                 templateUrl: 'main/beacons-management/beacons-management.html'
@@ -23,8 +33,7 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
             .when('/main/users-management', {
                 templateUrl: 'main/users-management/users-management.html'
             })
-            
-            
-            
             .otherwise({templateUrl: 'main/page-not-found/page-not-found.html'});
+
+
     });
