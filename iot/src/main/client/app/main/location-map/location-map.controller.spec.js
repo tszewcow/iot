@@ -9,18 +9,26 @@ describe('Location map tests', function () {
 
     describe('scope model initialization', function () {
 
-        beforeEach(inject(function ($controller, $rootScope, amsDataRestService, beaconDataRestService, $interval, $q, $routeParams) {
+        beforeEach(inject(function ($controller, $rootScope, amsDataRestService, beaconDataRestService, floorLocationRestService, $interval, $q, $location) {
             deferredAms = $q.defer();
             deferredBeacon = $q.defer();
             $scope = $rootScope.$new();
-            $routeParams.building = 'MTII';
-            $routeParams.floor = 7;
-
+            $location.search('building', 'MTII')
+            $location.search('floor', 7)
+            
             spyOn(amsDataRestService, 'getAmsDataOnGivenFloor').and.returnValue(deferredAms.promise);
             spyOn(beaconDataRestService, 'getBeaconsDataOnGivenFloor').and.returnValue(deferredBeacon.promise);
-
+            var deferredLocations = $q.defer();
+            spyOn(floorLocationRestService, 'getFloorLocations').and.returnValue(deferredLocations.promise);
+            deferredLocations.resolve({data: []});
+            
             $controller('LocationMapCntl', {
-                $scope: $scope
+                $scope: $scope,
+                globalSpinner: {
+                    decorateCallOfFunctionReturningPromise: function (func) {
+                        func();
+                    }
+                }
             });
         }));
 
@@ -218,18 +226,26 @@ describe('Location map tests', function () {
 
     describe('calculating building and floor from params', function () {
 
-        beforeEach(inject(function ($controller, $rootScope, amsDataRestService, beaconDataRestService, $interval, $q, $routeParams) {
+        beforeEach(inject(function ($controller, $rootScope, amsDataRestService, beaconDataRestService, floorLocationRestService, $interval, $location, $q) {
             deferredAms = $q.defer();
             deferredBeacon = $q.defer();
             $scope = $rootScope.$new();
-            $routeParams.building = 'TestBuildingIV';
-            $routeParams.floor = 129;
+            $location.search('building', 'TestBuildingIV')
+            $location.search('floor', 129)
 
             spyOn(amsDataRestService, 'getAmsDataOnGivenFloor').and.returnValue(deferredAms.promise);
             spyOn(beaconDataRestService, 'getBeaconsDataOnGivenFloor').and.returnValue(deferredBeacon.promise);
-
+            var deferredLocations = $q.defer();
+            spyOn(floorLocationRestService, 'getFloorLocations').and.returnValue(deferredLocations.promise);
+            deferredLocations.resolve({data: []});
+            
             $controller('LocationMapCntl', {
-                $scope: $scope
+                $scope: $scope,
+                globalSpinner: {
+                    decorateCallOfFunctionReturningPromise: function (func) {
+                        func();
+                    }
+                }
             });
             $scope.$digest();
         }));

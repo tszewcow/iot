@@ -2,15 +2,16 @@
 
 <div class="container" data-ng-controller="LocationMapCntl">
 
-    <h1>Location map of AMS</h1>
-
+    <div class="head-combobox">  
+		<select data-ng-model="currentLocation.url" data-ng-options="loc.url as loc.text for loc in locations" data-ng-change="navigate()"></select>
+	</div>
 
     <div data-ng-show="showWarning()">
         <alert type="danger">The exact position of the AMS can't be calculated - localization is not actual.</alert>
     </div>
     
 	<div id="map-area">
-	    <svg id="svg-location-area" width="800px" height="600px" data-ng-controller="LocationMapCntl" viewbox="0 0 800 600">
+	    <svg id="svg-location-area" width="800px" height="600px" data-ng-controller="LocationMapCntl" viewbox="350 320 800 600">
 	        <image width="1837px" height="1298px" xlink:href={{imageUrl}}></image>
 	        <g data-ng-repeat="point in locationModel">
 	            <circle data-ng-attr-cx="{{point.xPos}}" data-ng-attr-cy="{{point.yPos}}" r="150" stroke="red" stroke-width="4" fill="white" fill-opacity="0.5" style></circle>
@@ -24,6 +25,7 @@
 	    </svg>
 	    <script>
 		    var esvg = svgPanZoom('#svg-location-area');
+		    esvg.zoom(0.65);
 	    </script>
    	</div>
    	<div>
