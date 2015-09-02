@@ -1,12 +1,8 @@
 angular.module('app.main').controller('LocationMapCntl', function ($scope, $interval, amsDataRestService, beaconDataRestService, $routeParams) {
     'use strict';
 
-    $scope.locationModel = [];
-    $scope.beacons = [];
-
     var building = $routeParams['building'];
     var floor = $routeParams['floor'];
-    $scope.imageUrl = '/main/img/' + building + '_' + floor + '.png';
 
     var getAmsRest = function () {
         amsDataRestService.getAmsDataOnGivenFloor(building, floor).then(function (response) {
@@ -17,20 +13,6 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
         });
     };
 
-    var intervalPromise = $interval(function () {
-        getAmsRest();
-    }, 5000);
-    getAmsRest();
-    $scope.$on('$destroy', function () {
-        $interval.cancel(intervalPromise);
-    });
-
-    beaconDataRestService.getBeaconsDataOnGivenFloor(building, floor).then(function (response) {
-        angular.forEach(response.data, function (elem) {
-            $scope.beacons.push(transformToPointForBeacons(elem));
-        });
-    });
-
     var transformToPointForBeacons = function (beacon) {
         var beaconPoint = {};
 
@@ -40,10 +22,8 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
         return beaconPoint;
     };
 
-
     var transformToPoint = function (ams) {
         var point = {};
-
         point.xPos = translateXCoordToMap(ams.xAutomaticMobileSet);
         point.yPos = translateYCoordToMap(ams.yAutomaticMobileSet);
         point.project = ams.project;
@@ -58,14 +38,31 @@ angular.module('app.main').controller('LocationMapCntl', function ($scope, $inte
     var translateYCoordToMap = function (y) {
         return Math.floor(y);
     };
+    
+    $scope.locationModel = [];
+    $scope.beacons = [];
+    $scope.imageUrl = '/main/img/' + building + '_' + floor + '.png';
 
     $scope.showWarning = function () {
-
         if ($scope.locationModel[0].isActual === true) {
             return false;
         } else {
             return true;
         }
     };
+    
+    $scope.$on('$destroy', function () {
+        $interval.cancel(intervalPromise);
+    });
+    
 
+    var intervalPromise = $interval(function () {
+        	getAmsRest();}, 5000);
+    getAmsRest();
+    beaconDataRestService.getBeaconsDataOnGivenFloor(building, floor).then(function (response) {
+        angular.forEach(response.data, function (elem) {
+            $scope.beacons.push(transformToPointForBeacons(elem));
+        });
+    });
+    
 });
