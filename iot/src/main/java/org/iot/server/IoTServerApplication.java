@@ -26,7 +26,12 @@ public class IoTServerApplication extends WebMvcConfigurerAdapter {
 	
 	
 	
-	
+	@RequestMapping("services//login")
+    public String login() {
+		
+		System.out.println("login TTTTTTTTT");
+		return "resr";
+	}
 	
 	
 	
