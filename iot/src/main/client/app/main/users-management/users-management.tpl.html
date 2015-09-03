@@ -6,7 +6,7 @@
         <h1>Users Management</h1>
     </header>
 
-    <table class="raw-table" data-tr-ng-grid data-items="users" data-enable-filtering="false" data-selected-items="mySelectedItems" data-selection-mode="SingleRow" data-fields="['firstName','lastName','userName','createdOn', 'lastLogin', 'active']"></table>
+    <table class="raw-table" data-tr-ng-grid data-items="users" data-enable-filtering="false" data-selected-items="mySelectedItems" data-selection-mode="SingleRow" data-fields="['password', 'firstName','lastName','userName','createdOn', 'lastLogin', 'active']"></table>
 
     <button class="btn btn-default" data-ng-click="addUser()">Add user</button>
 	<button class="btn btn-default" data-ng-click="deleteUser()" data-ng-disabled="controlButtonDisabled()">Delete User</button>

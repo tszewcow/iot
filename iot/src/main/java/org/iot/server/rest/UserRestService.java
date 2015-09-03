@@ -3,7 +3,6 @@ package org.iot.server.rest;
 import java.util.List;
 
 import org.iot.server.service.UserService;
-import org.iot.server.to.BeaconTo;
 import org.iot.server.to.UserTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,4 +1,4 @@
-package org.iot.server;
+package org.iot.server.security;
 
 import java.util.List;
 
@@ -26,23 +26,21 @@ public class UserLoginService implements UserDetailsService
 	}
 	
 	@Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
 		
-		org.iot.server.document.User user = userDBService.getUser(userName);
+		org.iot.server.document.User user = userDBService.getUser(userEmail);
 		
 		if(!StringUtils.isEmpty(user.getId()))
-			return generateUser(user.getUserName(), user.getPassword());
+			return generateUser(user.getEmail(), user.getPassword());
 		
-		throw new UsernameNotFoundException("could not find the user '" + userName + "'");
+		throw new UsernameNotFoundException("could not find the user '" + userEmail + "'");
     }
 
-	//TODO mozliwe, ze trzeba bedzie to rozbudowac
 	private User generateUser(String name, String pswd)
 	{
 		return new User(name, pswd, true, true, true, true, userAuthority("USER"));
 	}
-	
-	//TODO mozliwe, ze trzeba bedzie to rozbudowac
+
 	private List<GrantedAuthority> userAuthority(String role)
 	{
 		return AuthorityUtils.createAuthorityList("USER");

@@ -6,9 +6,11 @@ import java.util.Random;
 import org.iot.server.document.AutomaticMobileSet;
 import org.iot.server.document.Beacon;
 import org.iot.server.document.BeaconStatus;
+import org.iot.server.document.User;
 import org.iot.server.to.AutomaticMobileSetTo;
 import org.iot.server.to.BeaconStatusTo;
 import org.iot.server.to.BeaconTo;
+import org.iot.server.to.UserTo;
 
 public class TestDataGenerator {
 	public static AutomaticMobileSet getAutomaticMobileSet() {
@@ -88,6 +90,7 @@ public class TestDataGenerator {
 
 		Random rand = new Random();
 
+		beaconStatus.setId(randomString());
 		beaconStatus.setMac(randomString());
 		beaconStatus.setMajor(rand.nextInt(1000));
 		beaconStatus.setMinor(randomString());
@@ -105,6 +108,7 @@ public class TestDataGenerator {
 
 		Random rand = new Random();
 
+		beaconStatusTo.setId(randomString());
 		beaconStatusTo.setMac(randomString());
 		beaconStatusTo.setMajor(rand.nextInt(1000));
 		beaconStatusTo.setMinor(randomString());
@@ -116,7 +120,39 @@ public class TestDataGenerator {
 
 		return beaconStatusTo;
 	}
+	
+	public static User getUser() {
+		User user = new User();
+		
+		user.setId(randomString());
+		user.setFirstName(randomString());
+		user.setLastName(randomString());
+		user.setEmail(randomString());
+		user.setPassword(randomString());
+		user.setSalt(randomString());
+		user.setCreatedOn(randomString());
+		user.setLastLogin(randomString());
+		user.setActive(true);
+		
+		return user;
+	}
 
+	public static UserTo getUserTo() {
+		UserTo userTo = new UserTo();
+		
+		userTo.setId(randomString());
+		userTo.setFirstName(randomString());
+		userTo.setLastName(randomString());
+		userTo.setEmail(randomString());
+		userTo.setPassword(randomString());
+		userTo.setSalt(randomString());
+		userTo.setCreatedOn(randomString());
+		userTo.setLastLogin(randomString());
+		userTo.setActive(true);
+		
+		return userTo;
+	}
+	
 	public static String randomString() {
 		return String.valueOf(new Random().nextInt(1000000) + 1);
 	}

@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
 	
 	//TODO zorbic unique login na bazie!!!!
 	@Override
-	public User getUser(String userName) {
-		Predicate<User> userFilter = user -> user.getUserName().equals(userName);
+	public User getUser(String userEmail) {
+		Predicate<User> userFilter = user -> user.getEmail().equals(userEmail);
 		
 		List<User> users = userRepository.findAll().stream().filter(userFilter).collect(Collectors.toList());
 		

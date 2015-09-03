@@ -9,7 +9,7 @@ public interface UserService {
 
 	List<UserTo> getAllUsers();
 
-	User getUser(String userName);
+	User getUser(String userEmail);
 	
 	UserTo addUser(UserTo userTo);
 

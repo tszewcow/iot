@@ -3,9 +3,11 @@ package org.iot.server.helper;
 import org.iot.server.document.AutomaticMobileSet;
 import org.iot.server.document.Beacon;
 import org.iot.server.document.BeaconStatus;
+import org.iot.server.document.User;
 import org.iot.server.to.AutomaticMobileSetTo;
 import org.iot.server.to.BeaconStatusTo;
 import org.iot.server.to.BeaconTo;
+import org.iot.server.to.UserTo;
 
 public class EqualityChecker
 {
@@ -107,7 +109,8 @@ public class EqualityChecker
 	
 	public static boolean checkEquality(BeaconStatus beaconStatus, BeaconStatusTo mappedBeaconStatus)
 	{
-		return 	beaconStatus.getMac().equals(mappedBeaconStatus.getMac()) &&
+		return 	beaconStatus.getId().equals(mappedBeaconStatus.getId()) &&
+				beaconStatus.getMac().equals(mappedBeaconStatus.getMac()) &&
 				beaconStatus.getMajor() == mappedBeaconStatus.getMajor() &&
 				beaconStatus.getMinor().equals(mappedBeaconStatus.getMinor()) &&
 				beaconStatus.getRssi() == mappedBeaconStatus.getRssi() &&
@@ -119,7 +122,8 @@ public class EqualityChecker
 	
 	public static boolean checkEquality(BeaconStatus beaconStatusOne, BeaconStatus beaconStatusTwo)
 	{
-		return 	beaconStatusOne.getMac().equals(beaconStatusTwo.getMac()) &&
+		return 	beaconStatusOne.getId().equals(beaconStatusTwo.getId()) &&
+				beaconStatusOne.getMac().equals(beaconStatusTwo.getMac()) &&
 				beaconStatusOne.getMajor() == beaconStatusTwo.getMajor() &&
 				beaconStatusOne.getMinor().equals(beaconStatusTwo.getMinor()) &&
 				beaconStatusOne.getRssi() == beaconStatusTwo.getRssi() &&
@@ -131,7 +135,8 @@ public class EqualityChecker
 	
 	public static boolean checkEquality(BeaconStatusTo beaconStatusToOne, BeaconStatusTo beaconStatusToTwo)
 	{
-		return 	beaconStatusToOne.getMac().equals(beaconStatusToTwo.getMac()) &&
+		return 	beaconStatusToOne.getId().equals(beaconStatusToTwo.getId()) &&
+				beaconStatusToOne.getMac().equals(beaconStatusToTwo.getMac()) &&
 				beaconStatusToOne.getMajor() == beaconStatusToTwo.getMajor() &&
 				beaconStatusToOne.getMinor().equals(beaconStatusToTwo.getMinor()) &&
 				beaconStatusToOne.getRssi() == beaconStatusToTwo.getRssi() &&
@@ -139,5 +144,44 @@ public class EqualityChecker
 				beaconStatusToOne.getUuid().equals(beaconStatusToTwo.getUuid()) &&
 //				beaconStatus.getMacAutomaticMobileSet().equals(mappedBeaconStatus.getMacAutomaticMobileSet()) && //odkomentowac
 				beaconStatusToOne.getDistance() == beaconStatusToTwo.getDistance();
+	}
+	
+	public static boolean checkEquality(User user, UserTo userTo)
+	{
+		return 	user.getId().equals(userTo.getId()) &&
+				user.getFirstName().equals(userTo.getFirstName()) &&
+				user.getLastName().equals(userTo.getLastName()) &&
+				user.getEmail().equals(userTo.getEmail()) &&
+				user.getPassword().equals(userTo.getPassword()) &&
+				user.getSalt().equals(userTo.getSalt()) &&
+				user.getCreatedOn().equals(userTo.getCreatedOn()) &&
+				user.getLastLogin().equals(userTo.getLastLogin()) &&
+				user.isActive() == userTo.isActive();
+	}
+
+	public static boolean checkEquality(User userOne, User userTwo)
+	{
+		return 	userOne.getId().equals(userTwo.getId()) &&
+				userOne.getFirstName().equals(userTwo.getFirstName()) &&
+				userOne.getLastName().equals(userTwo.getLastName()) &&
+				userOne.getEmail().equals(userTwo.getEmail()) &&
+				userOne.getPassword().equals(userTwo.getPassword()) &&
+				userOne.getSalt().equals(userTwo.getSalt()) &&
+				userOne.getCreatedOn().equals(userTwo.getCreatedOn()) &&
+				userOne.getLastLogin().equals(userTwo.getLastLogin()) &&
+				userOne.isActive() == userTwo.isActive();
+	}
+	
+	public static boolean checkEquality(UserTo userOne, UserTo userTwo)
+	{
+		return 	userOne.getId().equals(userTwo.getId()) &&
+				userOne.getFirstName().equals(userTwo.getFirstName()) &&
+				userOne.getLastName().equals(userTwo.getLastName()) &&
+				userOne.getEmail().equals(userTwo.getEmail()) &&
+				userOne.getPassword().equals(userTwo.getPassword()) &&
+				userOne.getSalt().equals(userTwo.getSalt()) &&
+				userOne.getCreatedOn().equals(userTwo.getCreatedOn()) &&
+				userOne.getLastLogin().equals(userTwo.getLastLogin()) &&
+				userOne.isActive() == userTwo.isActive();
 	}
 }

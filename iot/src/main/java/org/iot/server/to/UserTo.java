@@ -6,7 +6,7 @@ public class UserTo
 	private String id;
 	private String firstName;
 	private String lastName;
-	private String userName;
+	private String email;
 	private String password;
 	private String salt;
 	private String createdOn;
@@ -38,12 +38,6 @@ public class UserTo
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getSalt() {
-		return salt;
-	}
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
 	public String getCreatedOn() {
 		return createdOn;
 	}
@@ -62,10 +56,16 @@ public class UserTo
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 }

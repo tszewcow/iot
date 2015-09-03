@@ -30,7 +30,7 @@ describe('Add user tests', function () {
             	id: null,
                 firstName: '',
                 lastName: '',
-                userName: '',
+                email: '',
                 password: '',
                 passwordConfirmation: '',
             	salt: '',

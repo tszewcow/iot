@@ -1,0 +1,618 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'bcrypt' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose install initial load of C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\package.json
+5 warn package.json app@0.0.1 No repository field.
+6 warn package.json app@0.0.1 No README data
+7 warn package.json app@0.0.1 No license field.
+8 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt-nodejs\package.json
+9 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcryptjs\package.json
+10 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\browser-sync\package.json
+11 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\chai\package.json
+12 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\chalk\package.json
+13 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\connect\package.json
+14 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\coveralls\package.json
+15 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\del\package.json
+16 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\glob\package.json
+17 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp\package.json
+18 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-concat\package.json
+19 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-env\package.json
+20 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-filter\package.json
+21 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-flatten\package.json
+22 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-git\package.json
+23 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-if\package.json
+24 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-imagemin\package.json
+25 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-inject\package.json
+26 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-insert\package.json
+27 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-jshint\package.json
+28 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-karma\package.json
+29 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-less\package.json
+30 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-load-plugins\package.json
+31 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-minify-css\package.json
+32 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-minify-html\package.json
+33 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-newer\package.json
+34 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-ng-annotate\package.json
+35 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-ng-templates\package.json
+36 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-plumber\package.json
+37 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-processhtml\package.json
+38 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-protractor\package.json
+39 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-replace\package.json
+40 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-rev\package.json
+41 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-size\package.json
+42 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-sonar\package.json
+43 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-sourcemaps\package.json
+44 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-sync\package.json
+45 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-uglify\package.json
+46 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-usemin\package.json
+47 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp-util\package.json
+48 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\gulp.spritesmith\package.json
+49 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\http-proxy\package.json
+50 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\istanbul\package.json
+51 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\jasmine-core\package.json
+52 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\jscoverage\package.json
+53 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\jshint-stylish\package.json
+54 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\karma\package.json
+55 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\karma-chrome-launcher\package.json
+56 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\karma-coverage\package.json
+57 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\karma-coveralls\package.json
+58 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\karma-jasmine\package.json
+59 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\karma-junit-reporter\package.json
+60 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\karma-phantomjs-launcher\package.json
+61 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\lodash\package.json
+62 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\main-bower-files\package.json
+63 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\mocha\package.json
+64 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\ng-parse-module\package.json
+65 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\nodeunit\package.json
+66 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\phantomjs\package.json
+67 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\protractor\package.json
+68 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\proxyquire\package.json
+69 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\require-dir\package.json
+70 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\sinon\package.json
+71 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\string\package.json
+72 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\through2\package.json
+73 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\uglify-save-license\package.json
+74 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\wiredep\package.json
+75 verbose installManyTop reading scoped package data from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\yargs\package.json
+76 info package.json bcrypt-nodejs@0.0.3 No license field.
+77 info package.json coveralls@2.11.2 license should be a valid SPDX license expression
+78 info package.json gulp-if@1.2.5 No license field.
+79 info package.json gulp-inject@1.3.1 No license field.
+80 info package.json gulp-minify-html@1.0.3 No license field.
+81 info package.json gulp-ng-annotate@1.0.0 license should be a valid SPDX license expression
+82 info package.json gulp-protractor@1.0.0 No license field.
+83 info package.json gulp-sonar@1.0.3 No license field.
+84 info package.json nodeunit@0.9.1 No license field.
+85 info package.json phantomjs@1.9.17 No license field.
+86 info package.json uglify-save-license@0.4.1 No license field.
+87 info package.json wiredep@2.2.2 No license field.
+88 info package.json proxyquire@1.7.1 license should be a valid SPDX license expression
+89 verbose readDependencies loading dependencies from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\package.json
+90 silly cache add args [ 'bcrypt', null ]
+91 verbose cache add spec bcrypt
+92 silly cache add parsed spec { raw: 'bcrypt',
+92 silly cache add   scope: null,
+92 silly cache add   name: 'bcrypt',
+92 silly cache add   rawSpec: '',
+92 silly cache add   spec: '*',
+92 silly cache add   type: 'range' }
+93 silly addNamed bcrypt@*
+94 verbose addNamed "*" is a valid semver range for bcrypt
+95 silly addNameRange { name: 'bcrypt', range: '*', hasData: false }
+96 silly mapToRegistry name bcrypt
+97 silly mapToRegistry using default registry
+98 silly mapToRegistry registry https://registry.npmjs.org/
+99 silly mapToRegistry uri https://registry.npmjs.org/bcrypt
+100 verbose addNameRange registry:https://registry.npmjs.org/bcrypt not in flight; fetching
+101 verbose request uri https://registry.npmjs.org/bcrypt
+102 verbose request no auth needed
+103 info attempt registry request try #1 at 15:38:53
+104 verbose request id e1af48464df4f9f8
+105 verbose etag "2C7LDBBGIK4O4C33GJYZ76R8V"
+106 http request GET https://registry.npmjs.org/bcrypt
+107 http 304 https://registry.npmjs.org/bcrypt
+108 silly get cb [ 304,
+108 silly get   { date: 'Thu, 03 Sep 2015 13:38:53 GMT',
+108 silly get     via: '1.1 varnish',
+108 silly get     'cache-control': 'max-age=60',
+108 silly get     etag: '"2C7LDBBGIK4O4C33GJYZ76R8V"',
+108 silly get     age: '0',
+108 silly get     connection: 'keep-alive',
+108 silly get     'x-served-by': 'cache-lhr6323-LHR',
+108 silly get     'x-cache': 'HIT',
+108 silly get     'x-cache-hits': '1',
+108 silly get     'x-timer': 'S1441287533.925019,VS0,VE92',
+108 silly get     vary: 'Accept' } ]
+109 verbose etag https://registry.npmjs.org/bcrypt from cache
+110 verbose get saving bcrypt to C:\Users\masokol\AppData\Roaming\npm-cache\registry.npmjs.org\bcrypt\.cache.json
+111 silly addNameRange number 2 { name: 'bcrypt', range: '*', hasData: true }
+112 silly addNameRange versions [ 'bcrypt',
+112 silly addNameRange   [ '0.1.2',
+112 silly addNameRange     '0.2.0',
+112 silly addNameRange     '0.2.1',
+112 silly addNameRange     '0.1.3',
+112 silly addNameRange     '0.2.2',
+112 silly addNameRange     '0.2.3',
+112 silly addNameRange     '0.2.4',
+112 silly addNameRange     '0.3.0',
+112 silly addNameRange     '0.3.1',
+112 silly addNameRange     '0.3.2',
+112 silly addNameRange     '0.4.0',
+112 silly addNameRange     '0.4.1',
+112 silly addNameRange     '0.5.0',
+112 silly addNameRange     '0.6.0',
+112 silly addNameRange     '0.7.0',
+112 silly addNameRange     '0.7.1',
+112 silly addNameRange     '0.7.2',
+112 silly addNameRange     '0.7.3',
+112 silly addNameRange     '0.7.4',
+112 silly addNameRange     '0.7.5',
+112 silly addNameRange     '0.7.6',
+112 silly addNameRange     '0.7.7',
+112 silly addNameRange     '0.7.8',
+112 silly addNameRange     '0.8.0',
+112 silly addNameRange     '0.8.1',
+112 silly addNameRange     '0.8.2',
+112 silly addNameRange     '0.8.3',
+112 silly addNameRange     '0.8.4',
+112 silly addNameRange     '0.8.5' ] ]
+113 silly addNamed bcrypt@0.8.5
+114 verbose addNamed "0.8.5" is a plain semver version for bcrypt
+115 silly cache afterAdd bcrypt@0.8.5
+116 verbose afterAdd C:\Users\masokol\AppData\Roaming\npm-cache\bcrypt\0.8.5\package\package.json not in flight; writing
+117 verbose afterAdd C:\Users\masokol\AppData\Roaming\npm-cache\bcrypt\0.8.5\package\package.json written
+118 silly install resolved [ { name: 'bcrypt',
+118 silly install resolved     description: 'A bcrypt library for NodeJS.',
+118 silly install resolved     keywords:
+118 silly install resolved      [ 'bcrypt',
+118 silly install resolved        'password',
+118 silly install resolved        'auth',
+118 silly install resolved        'authentication',
+118 silly install resolved        'encryption',
+118 silly install resolved        'crypt',
+118 silly install resolved        'crypto' ],
+118 silly install resolved     main: './bcrypt',
+118 silly install resolved     version: '0.8.5',
+118 silly install resolved     author: { name: 'Nick Campbell', url: 'https://github.com/ncb000gt' },
+118 silly install resolved     engines: { node: '>= 0.6.0' },
+118 silly install resolved     repository:
+118 silly install resolved      { type: 'git',
+118 silly install resolved        url: 'git+https://github.com/ncb000gt/node.bcrypt.js.git' },
+118 silly install resolved     license: 'MIT',
+118 silly install resolved     bugs: { url: 'https://github.com/ncb000gt/node.bcrypt.js/issues' },
+118 silly install resolved     scripts:
+118 silly install resolved      { test: 'node-gyp configure build && nodeunit test',
+118 silly install resolved        install: 'node-gyp rebuild' },
+118 silly install resolved     dependencies: { bindings: '1.2.1', nan: '2.0.5' },
+118 silly install resolved     devDependencies: { nodeunit: '~0.9.1' },
+118 silly install resolved     contributors:
+118 silly install resolved      [ [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object],
+118 silly install resolved        [Object] ],
+118 silly install resolved     gypfile: true,
+118 silly install resolved     gitHead: '5d97708f06754d7d7989c67ba867002d10013615',
+118 silly install resolved     homepage: 'https://github.com/ncb000gt/node.bcrypt.js#readme',
+118 silly install resolved     _id: 'bcrypt@0.8.5',
+118 silly install resolved     _shasum: '8e5b81b4db80e944f440005979ca8d58a961861d',
+118 silly install resolved     _from: 'bcrypt@*',
+118 silly install resolved     _npmVersion: '2.13.3',
+118 silly install resolved     _nodeVersion: '3.0.0',
+118 silly install resolved     _npmUser: { name: 'defunctzombie', email: 'shtylman@gmail.com' },
+118 silly install resolved     dist:
+118 silly install resolved      { shasum: '8e5b81b4db80e944f440005979ca8d58a961861d',
+118 silly install resolved        tarball: 'http://registry.npmjs.org/bcrypt/-/bcrypt-0.8.5.tgz' },
+118 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object] ],
+118 silly install resolved     directories: {},
+118 silly install resolved     _resolved: 'https://registry.npmjs.org/bcrypt/-/bcrypt-0.8.5.tgz',
+118 silly install resolved     readme: 'ERROR: No README data found!' } ]
+119 info install bcrypt@0.8.5 into C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client
+120 info installOne bcrypt@0.8.5
+121 verbose installOne of bcrypt to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client not in flight; installing
+122 verbose lock using C:\Users\masokol\AppData\Roaming\npm-cache\_locks\bcrypt-0bbe756113620d06.lock for C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+123 silly install write writing bcrypt 0.8.5 to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+124 verbose unbuild node_modules\bcrypt
+125 silly gentlyRm C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt is being purged from base C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client
+126 verbose gentlyRm don't care about contents; nuking C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+127 verbose tar unpack C:\Users\masokol\AppData\Roaming\npm-cache\bcrypt\0.8.5\package.tgz
+128 verbose tar unpacking to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+129 silly gentlyRm C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt is being purged
+130 verbose gentlyRm don't care about contents; nuking C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+131 silly gunzTarPerm modes [ '777', '666' ]
+132 silly gunzTarPerm extractEntry package.json
+133 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+134 silly gunzTarPerm extractEntry .npmignore
+135 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+136 silly gunzTarPerm extractEntry README.md
+137 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+138 silly gunzTarPerm extractEntry LICENSE
+139 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+140 silly gunzTarPerm extractEntry bcrypt.js
+141 silly gunzTarPerm modified mode [ 'bcrypt.js', 420, 438 ]
+142 silly gunzTarPerm extractEntry binding.gyp
+143 silly gunzTarPerm modified mode [ 'binding.gyp', 420, 438 ]
+144 silly gunzTarPerm extractEntry .travis.yml
+145 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+146 silly gunzTarPerm extractEntry CHANGELOG.md
+147 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 420, 438 ]
+148 silly gunzTarPerm extractEntry examples/async_compare.js
+149 silly gunzTarPerm modified mode [ 'examples/async_compare.js', 420, 438 ]
+150 silly gunzTarPerm extractEntry examples/forever_gen_salt.js
+151 silly gunzTarPerm modified mode [ 'examples/forever_gen_salt.js', 420, 438 ]
+152 silly gunzTarPerm extractEntry test/async.js
+153 silly gunzTarPerm modified mode [ 'test/async.js', 420, 438 ]
+154 silly gunzTarPerm extractEntry test/repetitions.js
+155 silly gunzTarPerm modified mode [ 'test/repetitions.js', 420, 438 ]
+156 silly gunzTarPerm extractEntry test/sync.js
+157 silly gunzTarPerm modified mode [ 'test/sync.js', 420, 438 ]
+158 silly gunzTarPerm extractEntry Makefile
+159 silly gunzTarPerm modified mode [ 'Makefile', 420, 438 ]
+160 silly gunzTarPerm extractEntry src/bcrypt.cc
+161 silly gunzTarPerm modified mode [ 'src/bcrypt.cc', 420, 438 ]
+162 silly gunzTarPerm extractEntry src/bcrypt_node.cc
+163 silly gunzTarPerm modified mode [ 'src/bcrypt_node.cc', 420, 438 ]
+164 silly gunzTarPerm extractEntry src/blowfish.cc
+165 silly gunzTarPerm modified mode [ 'src/blowfish.cc', 420, 438 ]
+166 silly gunzTarPerm extractEntry src/node_blf.h
+167 silly gunzTarPerm modified mode [ 'src/node_blf.h', 420, 438 ]
+168 silly gunzTarPerm extractEntry werker.yml
+169 silly gunzTarPerm modified mode [ 'werker.yml', 420, 438 ]
+170 verbose write writing to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\package.json
+171 info preinstall bcrypt@0.8.5
+172 verbose readDependencies loading dependencies from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\package.json
+173 silly prepareForInstallMany adding bindings@1.2.1 from bcrypt dependencies
+174 silly prepareForInstallMany adding nan@2.0.5 from bcrypt dependencies
+175 verbose readDependencies loading dependencies from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\package.json
+176 silly cache add args [ 'nan@2.0.5', null ]
+177 verbose cache add spec nan@2.0.5
+178 silly cache add parsed spec { raw: 'nan@2.0.5',
+178 silly cache add   scope: null,
+178 silly cache add   name: 'nan',
+178 silly cache add   rawSpec: '2.0.5',
+178 silly cache add   spec: '2.0.5',
+178 silly cache add   type: 'version' }
+179 silly addNamed nan@2.0.5
+180 verbose addNamed "2.0.5" is a plain semver version for nan
+181 silly mapToRegistry name nan
+182 silly mapToRegistry using default registry
+183 silly mapToRegistry registry https://registry.npmjs.org/
+184 silly mapToRegistry uri https://registry.npmjs.org/nan
+185 verbose addNameVersion registry:https://registry.npmjs.org/nan not in flight; fetching
+186 silly cache add args [ 'bindings@1.2.1', null ]
+187 verbose cache add spec bindings@1.2.1
+188 silly cache add parsed spec { raw: 'bindings@1.2.1',
+188 silly cache add   scope: null,
+188 silly cache add   name: 'bindings',
+188 silly cache add   rawSpec: '1.2.1',
+188 silly cache add   spec: '1.2.1',
+188 silly cache add   type: 'version' }
+189 silly addNamed bindings@1.2.1
+190 verbose addNamed "1.2.1" is a plain semver version for bindings
+191 silly mapToRegistry name bindings
+192 silly mapToRegistry using default registry
+193 silly mapToRegistry registry https://registry.npmjs.org/
+194 silly mapToRegistry uri https://registry.npmjs.org/bindings
+195 verbose addNameVersion registry:https://registry.npmjs.org/bindings not in flight; fetching
+196 verbose request uri https://registry.npmjs.org/bindings
+197 verbose request no auth needed
+198 info attempt registry request try #1 at 15:38:54
+199 verbose etag "BCS5XYG9ISNJFNKEL5FLOI5HX"
+200 http request GET https://registry.npmjs.org/bindings
+201 verbose request uri https://registry.npmjs.org/nan
+202 verbose request no auth needed
+203 info attempt registry request try #1 at 15:38:54
+204 verbose etag "9NBRJS9FUTSYWL0Z7O1C3BM8C"
+205 http request GET https://registry.npmjs.org/nan
+206 http 304 https://registry.npmjs.org/bindings
+207 silly get cb [ 304,
+207 silly get   { date: 'Thu, 03 Sep 2015 13:38:54 GMT',
+207 silly get     via: '1.1 varnish',
+207 silly get     'cache-control': 'max-age=60',
+207 silly get     etag: '"BCS5XYG9ISNJFNKEL5FLOI5HX"',
+207 silly get     age: '13',
+207 silly get     connection: 'keep-alive',
+207 silly get     'x-served-by': 'cache-lhr6329-LHR',
+207 silly get     'x-cache': 'HIT',
+207 silly get     'x-cache-hits': '2',
+207 silly get     'x-timer': 'S1441287534.567829,VS0,VE0',
+207 silly get     vary: 'Accept' } ]
+208 verbose etag https://registry.npmjs.org/bindings from cache
+209 verbose get saving bindings to C:\Users\masokol\AppData\Roaming\npm-cache\registry.npmjs.org\bindings\.cache.json
+210 http 304 https://registry.npmjs.org/nan
+211 silly get cb [ 304,
+211 silly get   { date: 'Thu, 03 Sep 2015 13:38:54 GMT',
+211 silly get     via: '1.1 varnish',
+211 silly get     'cache-control': 'max-age=60',
+211 silly get     etag: '"9NBRJS9FUTSYWL0Z7O1C3BM8C"',
+211 silly get     age: '60',
+211 silly get     connection: 'keep-alive',
+211 silly get     'x-served-by': 'cache-lhr6327-LHR',
+211 silly get     'x-cache': 'HIT',
+211 silly get     'x-cache-hits': '3',
+211 silly get     'x-timer': 'S1441287534.572471,VS0,VE0',
+211 silly get     vary: 'Accept' } ]
+212 verbose etag https://registry.npmjs.org/nan from cache
+213 verbose get saving nan to C:\Users\masokol\AppData\Roaming\npm-cache\registry.npmjs.org\nan\.cache.json
+214 silly cache afterAdd bindings@1.2.1
+215 verbose afterAdd C:\Users\masokol\AppData\Roaming\npm-cache\bindings\1.2.1\package\package.json not in flight; writing
+216 silly cache afterAdd nan@2.0.5
+217 verbose afterAdd C:\Users\masokol\AppData\Roaming\npm-cache\nan\2.0.5\package\package.json not in flight; writing
+218 verbose afterAdd C:\Users\masokol\AppData\Roaming\npm-cache\bindings\1.2.1\package\package.json written
+219 verbose afterAdd C:\Users\masokol\AppData\Roaming\npm-cache\nan\2.0.5\package\package.json written
+220 silly install resolved [ { name: 'bindings',
+220 silly install resolved     description: 'Helper module for loading your native module\'s .node file',
+220 silly install resolved     keywords: [ 'native', 'addon', 'bindings', 'gyp', 'waf', 'c', 'c++' ],
+220 silly install resolved     version: '1.2.1',
+220 silly install resolved     author:
+220 silly install resolved      { name: 'Nathan Rajlich',
+220 silly install resolved        email: 'nathan@tootallnate.net',
+220 silly install resolved        url: 'http://tootallnate.net' },
+220 silly install resolved     repository:
+220 silly install resolved      { type: 'git',
+220 silly install resolved        url: 'git://github.com/TooTallNate/node-bindings.git' },
+220 silly install resolved     main: './bindings.js',
+220 silly install resolved     bugs: { url: 'https://github.com/TooTallNate/node-bindings/issues' },
+220 silly install resolved     homepage: 'https://github.com/TooTallNate/node-bindings',
+220 silly install resolved     license: 'MIT',
+220 silly install resolved     gitHead: 'e404152ee27f8478ccbc7122ee051246e8e5ec02',
+220 silly install resolved     _id: 'bindings@1.2.1',
+220 silly install resolved     scripts: {},
+220 silly install resolved     _shasum: '14ad6113812d2d37d72e67b4cacb4bb726505f11',
+220 silly install resolved     _from: 'bindings@1.2.1',
+220 silly install resolved     _npmVersion: '1.4.14',
+220 silly install resolved     _npmUser: { name: 'tootallnate', email: 'nathan@tootallnate.net' },
+220 silly install resolved     maintainers: [ [Object], [Object] ],
+220 silly install resolved     dist:
+220 silly install resolved      { shasum: '14ad6113812d2d37d72e67b4cacb4bb726505f11',
+220 silly install resolved        tarball: 'http://registry.npmjs.org/bindings/-/bindings-1.2.1.tgz' },
+220 silly install resolved     directories: {},
+220 silly install resolved     _resolved: 'https://registry.npmjs.org/bindings/-/bindings-1.2.1.tgz',
+220 silly install resolved     readme: 'ERROR: No README data found!' },
+220 silly install resolved   { name: 'nan',
+220 silly install resolved     version: '2.0.5',
+220 silly install resolved     description: 'Native Abstractions for Node.js: C++ header for Node 0.8->0.12 compatibility',
+220 silly install resolved     main: 'include_dirs.js',
+220 silly install resolved     repository: { type: 'git', url: 'git://github.com/nodejs/nan.git' },
+220 silly install resolved     scripts:
+220 silly install resolved      { test: 'tap --gc test/js/*-test.js',
+220 silly install resolved        'rebuild-tests': 'pangyp rebuild --msvs_version=2013 --directory test',
+220 silly install resolved        docs: 'doc/.build.sh' },
+220 silly install resolved     contributors:
+220 silly install resolved      [ [Object],
+220 silly install resolved        [Object],
+220 silly install resolved        [Object],
+220 silly install resolved        [Object],
+220 silly install resolved        [Object],
+220 silly install resolved        [Object],
+220 silly install resolved        [Object] ],
+220 silly install resolved     devDependencies:
+220 silly install resolved      { bindings: '~1.2.1',
+220 silly install resolved        'node-gyp': '~2.0.2',
+220 silly install resolved        pangyp: '~2.2.0',
+220 silly install resolved        tap: '~0.7.1',
+220 silly install resolved        xtend: '~4.0.0' },
+220 silly install resolved     license: 'MIT',
+220 silly install resolved     gitHead: 'd13a2e9ce762fd130877b53c71d35963fa2cf689',
+220 silly install resolved     bugs: { url: 'https://github.com/nodejs/nan/issues' },
+220 silly install resolved     homepage: 'https://github.com/nodejs/nan#readme',
+220 silly install resolved     _id: 'nan@2.0.5',
+220 silly install resolved     _shasum: '365888014be1fd178db0cbfa258edf7b0cb1c408',
+220 silly install resolved     _from: 'nan@2.0.5',
+220 silly install resolved     _npmVersion: '2.13.3',
+220 silly install resolved     _nodeVersion: '3.0.0',
+220 silly install resolved     _npmUser: { name: 'kkoopa', email: 'bbyholm@abo.fi' },
+220 silly install resolved     maintainers: [ [Object], [Object] ],
+220 silly install resolved     dist:
+220 silly install resolved      { shasum: '365888014be1fd178db0cbfa258edf7b0cb1c408',
+220 silly install resolved        tarball: 'http://registry.npmjs.org/nan/-/nan-2.0.5.tgz' },
+220 silly install resolved     directories: {},
+220 silly install resolved     _resolved: 'https://registry.npmjs.org/nan/-/nan-2.0.5.tgz',
+220 silly install resolved     readme: 'ERROR: No README data found!' } ]
+221 info install bindings@1.2.1 into C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+222 info install nan@2.0.5 into C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+223 info installOne bindings@1.2.1
+224 verbose installOne of bindings to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt not in flight; installing
+225 info installOne nan@2.0.5
+226 verbose installOne of nan to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt not in flight; installing
+227 verbose lock using C:\Users\masokol\AppData\Roaming\npm-cache\_locks\bindings-10596f5576a0f18d.lock for C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings
+228 silly install write writing bindings 1.2.1 to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings
+229 verbose lock using C:\Users\masokol\AppData\Roaming\npm-cache\_locks\nan-6296a59a1c089bfa.lock for C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan
+230 silly install write writing nan 2.0.5 to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan
+231 verbose unbuild node_modules\bcrypt\node_modules\bindings
+232 silly gentlyRm C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings is being purged from base C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client
+233 verbose gentlyRm don't care about contents; nuking C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings
+234 verbose unbuild node_modules\bcrypt\node_modules\nan
+235 verbose tar unpack C:\Users\masokol\AppData\Roaming\npm-cache\bindings\1.2.1\package.tgz
+236 verbose tar unpacking to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings
+237 silly gentlyRm C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings is being purged
+238 verbose gentlyRm don't care about contents; nuking C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings
+239 silly gunzTarPerm modes [ '777', '666' ]
+240 silly gentlyRm C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan is being purged from base C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client
+241 verbose gentlyRm don't care about contents; nuking C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan
+242 verbose tar unpack C:\Users\masokol\AppData\Roaming\npm-cache\nan\2.0.5\package.tgz
+243 verbose tar unpacking to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan
+244 silly gentlyRm C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan is being purged
+245 verbose gentlyRm don't care about contents; nuking C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan
+246 silly gunzTarPerm modes [ '777', '666' ]
+247 silly gunzTarPerm extractEntry package.json
+248 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+249 silly gunzTarPerm extractEntry README.md
+250 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+251 silly gunzTarPerm extractEntry bindings.js
+252 silly gunzTarPerm modified mode [ 'bindings.js', 420, 438 ]
+253 silly gunzTarPerm extractEntry package.json
+254 silly gunzTarPerm modified mode [ 'package.json', 436, 438 ]
+255 silly gunzTarPerm extractEntry README.md
+256 silly gunzTarPerm modified mode [ 'README.md', 436, 438 ]
+257 silly gunzTarPerm extractEntry include_dirs.js
+258 silly gunzTarPerm modified mode [ 'include_dirs.js', 436, 438 ]
+259 silly gunzTarPerm extractEntry nan_converters.h
+260 silly gunzTarPerm modified mode [ 'nan_converters.h', 436, 438 ]
+261 silly gunzTarPerm extractEntry LICENSE.md
+262 silly gunzTarPerm modified mode [ 'LICENSE.md', 436, 438 ]
+263 silly gunzTarPerm extractEntry .dntrc
+264 silly gunzTarPerm modified mode [ '.dntrc', 436, 438 ]
+265 silly gunzTarPerm extractEntry appveyor.yml
+266 silly gunzTarPerm modified mode [ 'appveyor.yml', 436, 438 ]
+267 verbose write writing to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings\package.json
+268 silly gunzTarPerm extractEntry doc/new.md
+269 silly gunzTarPerm modified mode [ 'doc/new.md', 436, 438 ]
+270 silly gunzTarPerm extractEntry doc/.build.sh
+271 silly gunzTarPerm modified mode [ 'doc/.build.sh', 509, 511 ]
+272 info preinstall bindings@1.2.1
+273 verbose readDependencies loading dependencies from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings\package.json
+274 silly gunzTarPerm extractEntry doc/buffers.md
+275 silly gunzTarPerm modified mode [ 'doc/buffers.md', 436, 438 ]
+276 silly gunzTarPerm extractEntry doc/callback.md
+277 silly gunzTarPerm modified mode [ 'doc/callback.md', 436, 438 ]
+278 verbose readDependencies loading dependencies from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings\package.json
+279 silly install resolved []
+280 verbose about to build C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings
+281 info build C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings
+282 silly gunzTarPerm extractEntry doc/converters.md
+283 silly gunzTarPerm modified mode [ 'doc/converters.md', 436, 438 ]
+284 silly gunzTarPerm extractEntry doc/errors.md
+285 silly gunzTarPerm modified mode [ 'doc/errors.md', 436, 438 ]
+286 info linkStuff bindings@1.2.1
+287 silly linkStuff bindings@1.2.1 has C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules as its parent node_modules
+288 verbose linkBins bindings@1.2.1
+289 verbose linkMans bindings@1.2.1
+290 verbose rebuildBundles bindings@1.2.1
+291 info install bindings@1.2.1
+292 info postinstall bindings@1.2.1
+293 silly gunzTarPerm extractEntry doc/maybe_types.md
+294 silly gunzTarPerm modified mode [ 'doc/maybe_types.md', 436, 438 ]
+295 silly gunzTarPerm extractEntry doc/methods.md
+296 silly gunzTarPerm modified mode [ 'doc/methods.md', 436, 438 ]
+297 verbose unlock done using C:\Users\masokol\AppData\Roaming\npm-cache\_locks\bindings-10596f5576a0f18d.lock for C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\bindings
+298 silly gunzTarPerm extractEntry doc/asyncworker.md
+299 silly gunzTarPerm modified mode [ 'doc/asyncworker.md', 436, 438 ]
+300 silly gunzTarPerm extractEntry doc/node_misc.md
+301 silly gunzTarPerm modified mode [ 'doc/node_misc.md', 436, 438 ]
+302 silly gunzTarPerm extractEntry doc/persistent.md
+303 silly gunzTarPerm modified mode [ 'doc/persistent.md', 436, 438 ]
+304 silly gunzTarPerm extractEntry doc/scopes.md
+305 silly gunzTarPerm modified mode [ 'doc/scopes.md', 436, 438 ]
+306 silly gunzTarPerm extractEntry doc/script.md
+307 silly gunzTarPerm modified mode [ 'doc/script.md', 436, 438 ]
+308 silly gunzTarPerm extractEntry doc/string_bytes.md
+309 silly gunzTarPerm modified mode [ 'doc/string_bytes.md', 436, 438 ]
+310 silly gunzTarPerm extractEntry doc/v8_internals.md
+311 silly gunzTarPerm modified mode [ 'doc/v8_internals.md', 436, 438 ]
+312 silly gunzTarPerm extractEntry doc/v8_misc.md
+313 silly gunzTarPerm modified mode [ 'doc/v8_misc.md', 436, 438 ]
+314 silly gunzTarPerm extractEntry nan.h
+315 silly gunzTarPerm modified mode [ 'nan.h', 436, 438 ]
+316 silly gunzTarPerm extractEntry nan_callbacks.h
+317 silly gunzTarPerm modified mode [ 'nan_callbacks.h', 436, 438 ]
+318 silly gunzTarPerm extractEntry nan_callbacks_12_inl.h
+319 silly gunzTarPerm modified mode [ 'nan_callbacks_12_inl.h', 436, 438 ]
+320 silly gunzTarPerm extractEntry nan_callbacks_pre_12_inl.h
+321 silly gunzTarPerm modified mode [ 'nan_callbacks_pre_12_inl.h', 436, 438 ]
+322 silly gunzTarPerm extractEntry nan_converters_43_inl.h
+323 silly gunzTarPerm modified mode [ 'nan_converters_43_inl.h', 436, 438 ]
+324 silly gunzTarPerm extractEntry nan_converters_pre_43_inl.h
+325 silly gunzTarPerm modified mode [ 'nan_converters_pre_43_inl.h', 436, 438 ]
+326 silly gunzTarPerm extractEntry nan_implementation_12_inl.h
+327 silly gunzTarPerm modified mode [ 'nan_implementation_12_inl.h', 436, 438 ]
+328 silly gunzTarPerm extractEntry nan_implementation_pre_12_inl.h
+329 silly gunzTarPerm modified mode [ 'nan_implementation_pre_12_inl.h', 436, 438 ]
+330 silly gunzTarPerm extractEntry nan_maybe_43_inl.h
+331 silly gunzTarPerm modified mode [ 'nan_maybe_43_inl.h', 436, 438 ]
+332 silly gunzTarPerm extractEntry nan_maybe_pre_43_inl.h
+333 silly gunzTarPerm modified mode [ 'nan_maybe_pre_43_inl.h', 436, 438 ]
+334 silly gunzTarPerm extractEntry nan_new.h
+335 silly gunzTarPerm modified mode [ 'nan_new.h', 436, 438 ]
+336 silly gunzTarPerm extractEntry nan_object_wrap.h
+337 silly gunzTarPerm modified mode [ 'nan_object_wrap.h', 436, 438 ]
+338 silly gunzTarPerm extractEntry nan_persistent_12_inl.h
+339 silly gunzTarPerm modified mode [ 'nan_persistent_12_inl.h', 436, 438 ]
+340 silly gunzTarPerm extractEntry nan_persistent_pre_12_inl.h
+341 silly gunzTarPerm modified mode [ 'nan_persistent_pre_12_inl.h', 436, 438 ]
+342 silly gunzTarPerm extractEntry nan_string_bytes.h
+343 silly gunzTarPerm modified mode [ 'nan_string_bytes.h', 436, 438 ]
+344 silly gunzTarPerm extractEntry nan_weak.h
+345 silly gunzTarPerm modified mode [ 'nan_weak.h', 436, 438 ]
+346 silly gunzTarPerm extractEntry CHANGELOG.md
+347 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 436, 438 ]
+348 silly gunzTarPerm extractEntry tools/package.json
+349 silly gunzTarPerm modified mode [ 'tools/package.json', 436, 438 ]
+350 silly gunzTarPerm extractEntry tools/README.md
+351 silly gunzTarPerm modified mode [ 'tools/README.md', 436, 438 ]
+352 silly gunzTarPerm extractEntry tools/1to2.js
+353 silly gunzTarPerm modified mode [ 'tools/1to2.js', 509, 511 ]
+354 verbose write writing to C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan\package.json
+355 info preinstall nan@2.0.5
+356 verbose readDependencies loading dependencies from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan\package.json
+357 verbose readDependencies loading dependencies from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan\package.json
+358 silly install resolved []
+359 verbose about to build C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan
+360 info build C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan
+361 info linkStuff nan@2.0.5
+362 silly linkStuff nan@2.0.5 has C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules as its parent node_modules
+363 verbose linkBins nan@2.0.5
+364 verbose linkMans nan@2.0.5
+365 verbose rebuildBundles nan@2.0.5
+366 info install nan@2.0.5
+367 info postinstall nan@2.0.5
+368 verbose unlock done using C:\Users\masokol\AppData\Roaming\npm-cache\_locks\nan-6296a59a1c089bfa.lock for C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt\node_modules\nan
+369 verbose about to build C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+370 info build C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+371 info linkStuff bcrypt@0.8.5
+372 silly linkStuff bcrypt@0.8.5 has C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules as its parent node_modules
+373 verbose linkBins bcrypt@0.8.5
+374 verbose linkMans bcrypt@0.8.5
+375 verbose rebuildBundles bcrypt@0.8.5
+376 verbose rebuildBundles [ 'bindings', 'nan' ]
+377 info install bcrypt@0.8.5
+378 verbose unsafe-perm in lifecycle true
+379 info bcrypt@0.8.5 Failed to exec install script
+380 verbose unlock done using C:\Users\masokol\AppData\Roaming\npm-cache\_locks\bcrypt-0bbe756113620d06.lock for C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+381 verbose stack Error: bcrypt@0.8.5 install: `node-gyp rebuild`
+381 verbose stack Exit status 1
+381 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:213:16)
+381 verbose stack     at EventEmitter.emit (events.js:110:17)
+381 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+381 verbose stack     at ChildProcess.emit (events.js:110:17)
+381 verbose stack     at maybeClose (child_process.js:1015:16)
+381 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
+382 verbose pkgid bcrypt@0.8.5
+383 verbose cwd C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client
+384 error Windows_NT 6.1.7601
+385 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "bcrypt"
+386 error node v0.12.7
+387 error npm  v2.11.3
+388 error code ELIFECYCLE
+389 error bcrypt@0.8.5 install: `node-gyp rebuild`
+389 error Exit status 1
+390 error Failed at the bcrypt@0.8.5 install script 'node-gyp rebuild'.
+390 error This is most likely a problem with the bcrypt package,
+390 error not with npm itself.
+390 error Tell the author that this fails on your system:
+390 error     node-gyp rebuild
+390 error You can get their info via:
+390 error     npm owner ls bcrypt
+390 error There is likely additional logging output above.
+391 verbose exit [ 1, true ]
+392 verbose unbuild node_modules\bcrypt
+393 info preuninstall bcrypt@0.8.5
+394 info uninstall bcrypt@0.8.5
+395 verbose unbuild rmStuff bcrypt@0.8.5 from C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules
+396 info postuninstall bcrypt@0.8.5
+397 silly gentlyRm C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt is being purged from base C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client
+398 verbose gentlyRm don't care about contents; nuking C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+399 silly vacuum-fs purging C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules\bcrypt
+400 silly vacuum-fs quitting because other entries in C:\Marcin\Workspaces\IoT\iot-master\iot\iot\src\main\client\node_modules

@@ -1,11 +1,23 @@
 angular.module('app.main').controller('UserAddCntl', function ($scope, $modalInstance) {
     'use strict';
 
+
+    $scope.$watch("newUser.passwordConfirmation", function() {
+        if ($scope.newUser.password == $scope.newUser.passwordConfirmation)
+        {
+        	$scope.userAddForm.passwordConfirmInput.$setValidity("passwordConfirmInput", true);
+        }
+        else
+        {
+        	$scope.userAddForm.passwordConfirmInput.$setValidity("passwordConfirmInput", false);
+        }
+      }); 
+    
     $scope.newUser = {
         id: null,
         firstName: '',
         lastName: '',
-        userName: '',
+        email: '',
         password: '',
         passwordConfirmation: '',
     	salt: '',

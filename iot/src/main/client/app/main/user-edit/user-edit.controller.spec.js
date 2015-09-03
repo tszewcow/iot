@@ -11,7 +11,7 @@ describe('Edit user tests', function () {
     var userMock = {
             firstName: 'Jan',
             lastName: 'Kowalski',
-            userName: 'jkow',
+            email: 'jkow',
             password: 'pswd',
             passwordConfirmation: 'pswd',
         	salt: 'salt',
