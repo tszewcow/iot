@@ -6,12 +6,7 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
             
             
             .when('/main/login', {
-            	templateUrl : '/main/login/login.html',
-            	controller : 'navigation'
-            })
-            .when('/login', {
-            	templateUrl : '/main/login/login.html',
-            	controller : 'navigation'
+            	templateUrl : '/main/login/login.html'
             })
             
             .when('/main/welcome', {templateUrl: 'main/welcome/welcome.html'})
