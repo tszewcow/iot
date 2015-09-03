@@ -23,14 +23,10 @@ public class IoTServerApplication extends WebMvcConfigurerAdapter {
 	}
 	
 	
-	
-	
-//	@RequestMapping(value = "/services/login", method = RequestMethod.POST)
-//	public String getAllBeacons(Principal user) {
-//		System.out.println("login");
-//		
-//		System.out.println(user == null ? "null" : "nie null");
-//		
-//		return "login";
-//	}
+	  @RequestMapping("/services/user")
+	  public Principal user(Principal user) {
+		  System.out.println(user);
+		  
+	    return user;
+	  }
 }

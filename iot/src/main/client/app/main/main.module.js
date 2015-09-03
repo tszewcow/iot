@@ -1,12 +1,13 @@
 angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.bootstrap'])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, $httpProvider) {
         'use strict';
         $routeProvider
             .when('/', {redirectTo: '/main/welcome'})
             
             
             .when('/main/login', {
-            	templateUrl : '/main/login/login.html'
+            	templateUrl : '/main/login/login.html',
+        		controller : 'navigation'
             })
             
             .when('/main/welcome', {templateUrl: 'main/welcome/welcome.html'})
@@ -30,5 +31,5 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
             })
             .otherwise({templateUrl: 'main/page-not-found/page-not-found.html'});
 
-
+        $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     });
