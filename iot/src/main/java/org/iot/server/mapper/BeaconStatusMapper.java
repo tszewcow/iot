@@ -14,15 +14,16 @@ public class BeaconStatusMapper {
 
 		BeaconStatusTo beaconStatusTo = new BeaconStatusTo();
 
+		beaconStatusTo.setId(beaconStatus.getId());
 		beaconStatusTo.setMac(beaconStatus.getMac());
 		beaconStatusTo.setMajor(beaconStatus.getMajor());
 		beaconStatusTo.setMinor(beaconStatus.getMinor());
 		beaconStatusTo.setRssi(beaconStatus.getRssi());
 		beaconStatusTo.setMeasuredStrenght(beaconStatus.getMeasuredStrenght());
 		beaconStatusTo.setUuid(beaconStatus.getUuid());
-		beaconStatusTo.setMacAutomaticMobileSet("cc:3d:82:76:55:66");
+		beaconStatusTo.setMacAutomaticMobileSet(beaconStatus.getMacAutomaticMobileSet());//"cc:3d:82:76:55:66");
 		beaconStatusTo.setDistance(beaconStatus.getDistance());
-
+		
 		return beaconStatusTo;
 	}
 
@@ -35,13 +36,14 @@ public class BeaconStatusMapper {
 
 		BeaconStatus beaconStatus = new BeaconStatus();
 
+		beaconStatus.setId(beaconStatusTo.getId());
 		beaconStatus.setMac(beaconStatusTo.getMac());
 		beaconStatus.setMajor(beaconStatusTo.getMajor());
 		beaconStatus.setMinor(beaconStatusTo.getMinor());
 		beaconStatus.setRssi(beaconStatusTo.getRssi());
 		beaconStatus.setMeasuredStrenght(beaconStatusTo.getMeasuredStrenght());
 		beaconStatus.setUuid(beaconStatusTo.getUuid());
-		beaconStatus.setMacAutomaticMobileSet("cc:3d:82:76:55:66");
+		beaconStatus.setMacAutomaticMobileSet(beaconStatusTo.getMacAutomaticMobileSet());//"cc:3d:82:76:55:66");
 		beaconStatus.setDistance(beaconStatusTo.getDistance());
 
 		return beaconStatus;

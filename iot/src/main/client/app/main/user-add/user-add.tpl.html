@@ -1,0 +1,80 @@
+<div class="modal-header">
+    <div class="modal-title">
+        <h3>Add user</h3>
+    </div>
+</div>
+<div class="modal-body">
+    <form name="userAddForm">
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>First Name</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': userAddForm.firstNameInput.$invalid && userAddForm.firstNameInput.$dirty,'has-success': userAddForm.firstNameInput.$valid}">
+                <input name="firstNameInput" type="text" data-ng-model="newUser.firstName" class="form-control" ng-required="true" data-ng-minlength="1" data-ng-maxlength="64" />
+                <p ng-show="userAddForm.firstNameInput.$invalid && userAddForm.firstNameInput.$dirty" class="help-block">First name is required and max length is 64 characters.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Last Name</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': userAddForm.lastNameInput.$invalid && userAddForm.lastNameInput.$dirty,'has-success': userAddForm.lastNameInput.$valid}">
+                <input name="lastNameInput" type="text" data-ng-model="newUser.lastName" class="form-control" ng-required="true" data-ng-minlength="1" data-ng-maxlength="64" />
+                <p ng-show="userAddForm.lastNameInput.$invalid && userAddForm.lastNameInput.$dirty" class="help-block">Last name is required and max length is 64 characters.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Email</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': userAddForm.userEmailInput.$invalid && userAddForm.userEmailInput.$dirty,'has-success': userAddForm.userEmailInput.$valid}">
+                <input name="userEmailInput" type="text" data-ng-model="newUser.email" class="form-control" ng-required="true" data-ng-minlength="7" data-ng-maxlength="64" 
+                	data-ng-pattern="/^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/" data-popover="Format of Emial is e.g.: some.name@where.com ." data-popover-trigger="mouseenter"/>
+                <p ng-show="userAddForm.userEmailInput.$invalid && userAddForm.userEmailInput.$dirty" class="help-block">Email is required and max length is 64 characters.</p>
+            </div>
+        </div>
+        
+        <div class="row ">
+            <div class="form-group col-md-2 required">
+                <label>Role</label>
+            </div>
+            <div class="form-group col-md-10" data-ng-class="{'has-error': userAddForm.roleInput.$invalid && userAddForm.roleInput.$dirty,'has-success': userAddForm.roleInput.$valid}">
+                <select name="roleInput" type="text" data-ng-model="newUser.userRole" class="form-control" ng-required="true">
+                    <option value="USER">USER</option>
+                    <option value="ADMIN">ADMIN</option>
+                </select>
+                <p ng-show="amsAddForm.buildingInput.$invalid  && amsAddForm.buildingInput.$dirty" class="help-block">Building is required.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Password</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': userAddForm.passwordInput.$invalid && userAddForm.passwordInput.$dirty,'has-success': userAddForm.passwordInput.$valid}">
+                <input name="passwordInput" type="password" data-ng-model="newUser.password" class="form-control" ng-required="true" data-ng-minlength="6" data-ng-maxlength="16" 
+                	data-ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" data-popover="At least one character, one digit and one special character e.g.: 123abc!" data-popover-trigger="mouseenter"/>
+                <p ng-show="userAddForm.passwordInput.$invalid && userAddForm.passwordInput.$dirty" class="help-block">Password is required and should match the pattern, max length is 16 characters.</p>
+            </div>
+        </div> 
+        
+        <div class="row">
+            <div class="form-group col-md-2 required">
+                <label>Confirm password</label>
+            </div>
+            <div class="form-group col-md-10 " data-ng-class="{'has-error': userAddForm.passwordConfirmInput.$invalid && userAddForm.passwordConfirmInput.$dirty,'has-success': userAddForm.passwordConfirmInput.$valid}">
+                <input name="passwordConfirmInput" type="password" data-ng-model="newUser.passwordConfirmation" class="form-control" ng-required="true" data-ng-minlength="6" data-ng-maxlength="16" 
+                data-ng-class="{'ng-invalid':userAddForm.passwordInp.$error.match}"/>
+                <p ng-show="userAddForm.passwordConfirmInput.$invalid && userAddForm.passwordConfirmInput.$dirty" class="help-block">Passwords differ.</p>
+            </div>
+        </div>
+        
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()" data-ng-disabled="userAddForm.$invalid">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <p class="col-md-2 text-danger">* required</p>
+</div>
