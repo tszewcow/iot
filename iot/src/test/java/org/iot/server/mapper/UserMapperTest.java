@@ -4,11 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.iot.server.document.Beacon;
 import org.iot.server.document.User;
 import org.iot.server.helper.EqualityChecker;
 import org.iot.server.helper.TestDataGenerator;
-import org.iot.server.to.BeaconTo;
 import org.iot.server.to.UserTo;
 import org.junit.Test;
 
@@ -19,7 +17,7 @@ public class UserMapperTest {
 	@Test
 	public void mapDocument2To_MappedValuesEqual()
 	{
-		User user = TestDataGenerator.getUser();
+		User user = TestDataGenerator.getUser(1);
 		
 		UserTo mappedUser = userMapper.mapDocument2To(user);
 		
@@ -29,7 +27,7 @@ public class UserMapperTest {
 	@Test
 	public void mapDocument2To_MappedValuesNotEqual()
 	{
-		User user = TestDataGenerator.getUser();
+		User user = TestDataGenerator.getUser(1);
 		
 		UserTo mappedUser = userMapper.mapDocument2To(user);
 		
@@ -46,7 +44,7 @@ public class UserMapperTest {
 		int listSize = 10;
 		
 		for(int x=0;x<listSize;x++)
-			userList.add(TestDataGenerator.getUser());
+			userList.add(TestDataGenerator.getUser(x));
 		
 		List<UserTo> mappedList = userMapper.mapDocuments2Tos(userList);
 		
@@ -57,7 +55,7 @@ public class UserMapperTest {
 	@Test
 	public void mapTo2Document_MappedValuesEqual()
 	{
-		UserTo userTo = TestDataGenerator.getUserTo();
+		UserTo userTo = TestDataGenerator.getUserTo(1);
 		
 		User demappedUser = userMapper.mapTo2Document(userTo);
 		

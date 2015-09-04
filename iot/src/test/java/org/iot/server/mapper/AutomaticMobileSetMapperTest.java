@@ -18,7 +18,7 @@ public class AutomaticMobileSetMapperTest {
 	@Test
 	public void mapDocument2To_MappedValuesEqual() {
 
-		AutomaticMobileSet automaticMobileSet = TestDataGenerator.getAutomaticMobileSet();
+		AutomaticMobileSet automaticMobileSet = TestDataGenerator.getAutomaticMobileSet(1);
 		
 		AutomaticMobileSetTo mappedSet = automaticMobileSetMapper.mapDocument2To(automaticMobileSet);
 		
@@ -28,7 +28,7 @@ public class AutomaticMobileSetMapperTest {
 	@Test
 	public void mapDocument2To_MappedValuesNotEqual() {
 
-		AutomaticMobileSet automaticMobileSet = TestDataGenerator.getAutomaticMobileSet();
+		AutomaticMobileSet automaticMobileSet = TestDataGenerator.getAutomaticMobileSet(1);
 		
 		AutomaticMobileSetTo mappedSet = automaticMobileSetMapper.mapDocument2To(automaticMobileSet);
 		
@@ -45,7 +45,7 @@ public class AutomaticMobileSetMapperTest {
 		int listSize = 10;
 		
 		for(int x=0;x<listSize;x++)
-			amsList.add(TestDataGenerator.getAutomaticMobileSet());
+			amsList.add(TestDataGenerator.getAutomaticMobileSet(x));
 		
 		List<AutomaticMobileSetTo> mappedList = automaticMobileSetMapper.mapDocuments2Tos(amsList);
 		
@@ -56,7 +56,7 @@ public class AutomaticMobileSetMapperTest {
 	@Test
 	public void mapTo2Document_MappedValuesEqual()
 	{
-		AutomaticMobileSetTo automaticMobileSetTo = TestDataGenerator.getAutomaticMobileSetTo();
+		AutomaticMobileSetTo automaticMobileSetTo = TestDataGenerator.getAutomaticMobileSetTo(1);
 		
 		AutomaticMobileSet demappedSet = automaticMobileSetMapper.mapTo2Document(automaticMobileSetTo);
 		

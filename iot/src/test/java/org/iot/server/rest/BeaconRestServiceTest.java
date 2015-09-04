@@ -74,7 +74,7 @@ public class BeaconRestServiceTest
 	@Test
 	public void testAddBeacon()
 	{
-		BeaconTo beaconTo = TestDataGenerator.getBeaconTo();
+		BeaconTo beaconTo = TestDataGenerator.getBeaconTo(1);
 		beaconRestService.addBeacon(beaconTo);
 		
 		ArgumentCaptor<BeaconTo> requestCaptor = ArgumentCaptor.forClass(BeaconTo.class);
@@ -99,7 +99,7 @@ public class BeaconRestServiceTest
 	@Test
 	public void testUpdateBeacon()
 	{
-		BeaconTo beaconTo = TestDataGenerator.getBeaconTo();
+		BeaconTo beaconTo = TestDataGenerator.getBeaconTo(1);
 		beaconRestService.updateBeacon(beaconTo);
 		
 		ArgumentCaptor<BeaconTo> requestCaptor = ArgumentCaptor.forClass(BeaconTo.class);

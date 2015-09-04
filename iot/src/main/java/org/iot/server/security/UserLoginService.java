@@ -1,8 +1,7 @@
-package org.iot.server;
+package org.iot.server.security;
 
 import java.util.List;
 
-import org.iot.server.service.AutomaticMobileSetService;
 import org.iot.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,19 +29,21 @@ public class UserLoginService implements UserDetailsService
 		
 		org.iot.server.document.User user = userDBService.getUser(userEmail);
 		
-		if(!StringUtils.isEmpty(user.getId()))
-			return generateUser(user.getEmail(), user.getPassword());
+		if(user != null && !StringUtils.isEmpty(user.getId()))
+			return generateUser(user.getEmail(), user.getPassword(), user.getUserRole());
 		
 		throw new UsernameNotFoundException("could not find the user '" + userEmail + "'");
     }
 
-	private User generateUser(String name, String pswd)
+	//TODO mozliwa rozbudowa
+	private User generateUser(String name, String pswd, String role)
 	{
-		return new User(name, pswd, true, true, true, true, userAuthority("USER"));
+		return new User(name, pswd, true, true, true, true, userAuthority(role));
 	}
 
+	//TODO mozliwa rozbudowa
 	private List<GrantedAuthority> userAuthority(String role)
 	{
-		return AuthorityUtils.createAuthorityList("USER");
+		return AuthorityUtils.createAuthorityList(role);
 	}
 }

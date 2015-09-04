@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.iot.server.document.Beacon;
 import org.iot.server.document.User;
 import org.iot.server.mapper.UserMapper;
 import org.iot.server.repository.UserRepository;

@@ -148,11 +148,14 @@ public class EqualityChecker
 	
 	public static boolean checkEquality(User user, UserTo userTo)
 	{
-		return 	user.getId().equals(userTo.getId()) &&
+		boolean passwordsEqual = (user.getPassword() != null && userTo.getPassword() != null && user.getPassword().equals(userTo.getPassword())) ||
+								(user.getPassword() == null && userTo.getPassword() == null);
+		
+		return 	user.getId().equals(userTo.getId()) && 
 				user.getFirstName().equals(userTo.getFirstName()) &&
 				user.getLastName().equals(userTo.getLastName()) &&
 				user.getEmail().equals(userTo.getEmail()) &&
-				user.getPassword().equals(userTo.getPassword()) &&
+				passwordsEqual &&									//we cant get pswd from database so the check i tricky
 				user.getSalt().equals(userTo.getSalt()) &&
 				user.getCreatedOn().equals(userTo.getCreatedOn()) &&
 				user.getLastLogin().equals(userTo.getLastLogin()) &&
@@ -162,11 +165,14 @@ public class EqualityChecker
 
 	public static boolean checkEquality(User userOne, User userTwo)
 	{
+		boolean passwordsEqual = (userOne.getPassword() != null && userTwo.getPassword() != null && userOne.getPassword().equals(userTwo.getPassword())) ||
+				(userOne.getPassword() == null && userTwo.getPassword() == null);
+
 		return 	userOne.getId().equals(userTwo.getId()) &&
 				userOne.getFirstName().equals(userTwo.getFirstName()) &&
 				userOne.getLastName().equals(userTwo.getLastName()) &&
 				userOne.getEmail().equals(userTwo.getEmail()) &&
-				userOne.getPassword().equals(userTwo.getPassword()) &&
+				passwordsEqual &&									//we cant get pswd from database so the check i tricky
 				userOne.getSalt().equals(userTwo.getSalt()) &&
 				userOne.getCreatedOn().equals(userTwo.getCreatedOn()) &&
 				userOne.getLastLogin().equals(userTwo.getLastLogin()) &&
@@ -176,11 +182,14 @@ public class EqualityChecker
 	
 	public static boolean checkEquality(UserTo userOne, UserTo userTwo)
 	{
+		boolean passwordsEqual = (userOne.getPassword() != null && userTwo.getPassword() != null && userOne.getPassword().equals(userTwo.getPassword())) ||
+				(userOne.getPassword() == null && userTwo.getPassword() == null);
+		
 		return 	userOne.getId().equals(userTwo.getId()) &&
 				userOne.getFirstName().equals(userTwo.getFirstName()) &&
 				userOne.getLastName().equals(userTwo.getLastName()) &&
 				userOne.getEmail().equals(userTwo.getEmail()) &&
-				userOne.getPassword().equals(userTwo.getPassword()) &&
+				passwordsEqual &&									//we cant get pswd from database so the check i tricky
 				userOne.getSalt().equals(userTwo.getSalt()) &&
 				userOne.getCreatedOn().equals(userTwo.getCreatedOn()) &&
 				userOne.getLastLogin().equals(userTwo.getLastLogin()) &&

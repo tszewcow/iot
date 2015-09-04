@@ -13,143 +13,139 @@ import org.iot.server.to.BeaconTo;
 import org.iot.server.to.UserTo;
 
 public class TestDataGenerator {
-	public static AutomaticMobileSet getAutomaticMobileSet() {
+	public static AutomaticMobileSet getAutomaticMobileSet(int number) {
 		AutomaticMobileSet automaticMobileSet = new AutomaticMobileSet();
 
-		automaticMobileSet.setId(randomString());
-		automaticMobileSet.setProject(randomString());
-		automaticMobileSet.setGuardian(randomString());
-		automaticMobileSet.setBuilding(randomString());
-		automaticMobileSet.setFloor(new Random().nextInt(11) + 1);
-		automaticMobileSet.setRoom(randomDouble());
-		automaticMobileSet.setxAutomaticMobileSet(randomFloat());
-		automaticMobileSet.setyAutomaticMobileSet(randomFloat());
-		automaticMobileSet.setMacAutomaticMobileSet(randomString());
+		automaticMobileSet.setId(String.valueOf(number));
+		automaticMobileSet.setProject("project".concat(String.valueOf(number)));
+		automaticMobileSet.setGuardian("guardian".concat(String.valueOf(number)));
+		automaticMobileSet.setBuilding("building".concat(String.valueOf(number)));
+		automaticMobileSet.setFloor(number);
+		automaticMobileSet.setRoom(number);
+		automaticMobileSet.setxAutomaticMobileSet(number);
+		automaticMobileSet.setyAutomaticMobileSet(number);
+		automaticMobileSet.setMacAutomaticMobileSet("mac".concat(String.valueOf(number)));
 		automaticMobileSet.setIsActual(randomBoolean());
-		automaticMobileSet.setIpAutomaticMobileSet(randomString());
+		automaticMobileSet.setIpAutomaticMobileSet("ip".concat(String.valueOf(number)));
 
 		return automaticMobileSet;
 	}
 
-	public static AutomaticMobileSetTo getAutomaticMobileSetTo() {
+	public static AutomaticMobileSetTo getAutomaticMobileSetTo(int number) {
 		AutomaticMobileSetTo automaticMobileSetTo = new AutomaticMobileSetTo();
 
-		automaticMobileSetTo.setId(randomString());
-		automaticMobileSetTo.setProject(randomString());
-		automaticMobileSetTo.setGuardian(randomString());
-		automaticMobileSetTo.setBuilding(randomString());
-		automaticMobileSetTo.setFloor(new Random().nextInt(11) + 1);
-		automaticMobileSetTo.setRoom(randomDouble());
-		automaticMobileSetTo.setxAutomaticMobileSet(randomFloat());
-		automaticMobileSetTo.setyAutomaticMobileSet(randomFloat());
-		automaticMobileSetTo.setMacAutomaticMobileSet(randomString());
+		automaticMobileSetTo.setId(String.valueOf(number));
+		automaticMobileSetTo.setProject("project".concat(String.valueOf(number)));
+		automaticMobileSetTo.setGuardian("guardian".concat(String.valueOf(number)));
+		automaticMobileSetTo.setBuilding("building".concat(String.valueOf(number)));
+		automaticMobileSetTo.setFloor(number);
+		automaticMobileSetTo.setRoom(number);
+		automaticMobileSetTo.setxAutomaticMobileSet(number);
+		automaticMobileSetTo.setyAutomaticMobileSet(number);
+		automaticMobileSetTo.setMacAutomaticMobileSet("mac".concat(String.valueOf(number)));
 		automaticMobileSetTo.setIsActual(randomBoolean());
-		automaticMobileSetTo.setIpAutomaticMobileSet(randomString());
+		automaticMobileSetTo.setIpAutomaticMobileSet("ip".concat(String.valueOf(number)));
 
 		return automaticMobileSetTo;
 	}
 
-	public static Beacon getBeacon() {
+	public static Beacon getBeacon(int number) {
 		Beacon beacon = new Beacon();
 
-		beacon.setId(randomString());
-		beacon.setName(randomString());
-		beacon.setMac(randomString());
-		beacon.setUuidNormal(randomString());
-		beacon.setUuidSecure(randomString());
-		beacon.setUuidService(randomString());
-		beacon.setBuilding(randomString());
-		beacon.setFloor(new Random().nextInt(11) + 1);
-		beacon.setRoom(randomDouble());
-		beacon.setxBeacon(randomFloat());
-		beacon.setyBeacon(randomFloat());
+		beacon.setId(String.valueOf(number));
+		beacon.setName("name".concat(String.valueOf(number)));
+		beacon.setMac("mac".concat(String.valueOf(number)));
+		beacon.setUuidNormal("uuidNormal".concat(String.valueOf(number)));
+		beacon.setUuidSecure("uuidSecure".concat(String.valueOf(number)));
+		beacon.setUuidService("uuidService".concat(String.valueOf(number)));
+		beacon.setBuilding("building".concat(String.valueOf(number)));
+		beacon.setFloor(number);
+		beacon.setRoom(number);
+		beacon.setxBeacon(number);
+		beacon.setyBeacon(number);
 
 		return beacon;
 	}
 
-	public static BeaconTo getBeaconTo() {
+	public static BeaconTo getBeaconTo(int number) {
 		BeaconTo beaconTo = new BeaconTo();
 
-		beaconTo.setId(randomString());
-		beaconTo.setName(randomString());
-		beaconTo.setMac(randomString());
-		beaconTo.setUuidNormal(randomString());
-		beaconTo.setUuidSecure(randomString());
-		beaconTo.setUuidService(randomString());
-		beaconTo.setBuilding(randomString());
-		beaconTo.setFloor(new Random().nextInt(11) + 1);
-		beaconTo.setRoom(randomDouble());
-		beaconTo.setxBeacon(randomFloat());
-		beaconTo.setyBeacon(randomFloat());
+		beaconTo.setId(String.valueOf(number));
+		beaconTo.setName("name".concat(String.valueOf(number)));
+		beaconTo.setMac("mac".concat(String.valueOf(number)));
+		beaconTo.setUuidNormal("uuidNormal".concat(String.valueOf(number)));
+		beaconTo.setUuidSecure("uuidSecure".concat(String.valueOf(number)));
+		beaconTo.setUuidService("uuidService".concat(String.valueOf(number)));
+		beaconTo.setBuilding("building".concat(String.valueOf(number)));
+		beaconTo.setFloor(number);
+		beaconTo.setRoom(number);
+		beaconTo.setxBeacon(number);
+		beaconTo.setyBeacon(number);
 
 		return beaconTo;
 	}
 
-	public static BeaconStatus getBeaconStatus() {
+	public static BeaconStatus getBeaconStatus(int number) {
 		BeaconStatus beaconStatus = new BeaconStatus();
 
-		Random rand = new Random();
-
-		beaconStatus.setId(randomString());
-		beaconStatus.setMac(randomString());
-		beaconStatus.setMajor(rand.nextInt(1000));
-		beaconStatus.setMinor(randomString());
-		beaconStatus.setRssi(rand.nextInt(1000));
-		beaconStatus.setMeasuredStrenght(rand.nextInt(1000));
-		beaconStatus.setUuid(randomString());
-		beaconStatus.setMacAutomaticMobileSet(randomString());
-		beaconStatus.setDistance(randomDouble());
+		beaconStatus.setId(String.valueOf(number));
+		beaconStatus.setMac("mac".concat(String.valueOf(number)));
+		beaconStatus.setMajor(number);
+		beaconStatus.setMinor("minor".concat(String.valueOf(number)));
+		beaconStatus.setRssi(number);
+		beaconStatus.setMeasuredStrenght(number);
+		beaconStatus.setUuid("uuid".concat(String.valueOf(number)));
+		beaconStatus.setMacAutomaticMobileSet("mac".concat(String.valueOf(number)));
+		beaconStatus.setDistance(number);
 
 		return beaconStatus;
 	}
 
-	public static BeaconStatusTo getBeaconStatusTo() {
+	public static BeaconStatusTo getBeaconStatusTo(int number) {
 		BeaconStatusTo beaconStatusTo = new BeaconStatusTo();
 
-		Random rand = new Random();
-
-		beaconStatusTo.setId(randomString());
-		beaconStatusTo.setMac(randomString());
-		beaconStatusTo.setMajor(rand.nextInt(1000));
-		beaconStatusTo.setMinor(randomString());
-		beaconStatusTo.setRssi(rand.nextInt(1000));
-		beaconStatusTo.setMeasuredStrenght(rand.nextInt(1000));
-		beaconStatusTo.setUuid(randomString());
-		beaconStatusTo.setMacAutomaticMobileSet(randomString());
-		beaconStatusTo.setDistance(randomDouble());
+		beaconStatusTo.setId(String.valueOf(number));
+		beaconStatusTo.setMac("mac".concat(String.valueOf(number)));
+		beaconStatusTo.setMajor(number);
+		beaconStatusTo.setMinor("minor".concat(String.valueOf(number)));
+		beaconStatusTo.setRssi(number);
+		beaconStatusTo.setMeasuredStrenght(number);
+		beaconStatusTo.setUuid("uuid".concat(String.valueOf(number)));
+		beaconStatusTo.setMacAutomaticMobileSet("mac".concat(String.valueOf(number)));
+		beaconStatusTo.setDistance(number);
 
 		return beaconStatusTo;
 	}
 	
-	public static User getUser() {
+	public static User getUser(int number) {
 		User user = new User();
 		
-		user.setId(randomString());
-		user.setFirstName(randomString());
-		user.setLastName(randomString());
-		user.setEmail(randomString());
-		user.setPassword(randomString());
-		user.setSalt(randomString());
-		user.setCreatedOn(randomString());
-		user.setLastLogin(randomString());
-		user.setUserRole(randomString());
+		user.setId(String.valueOf(number));
+		user.setFirstName("Jan ".concat(String.valueOf(number)));
+		user.setLastName("Kowalski ".concat(String.valueOf(number)));
+		user.setEmail("jan.kowalski".concat(String.valueOf(number)).concat("@wp.pl"));
+		user.setPassword("qwer1234!!".concat(String.valueOf(number)));
+		user.setSalt("qazx".concat(String.valueOf(number)));
+		user.setCreatedOn("123".concat(String.valueOf(number)));
+		user.setLastLogin("123".concat(String.valueOf(number)));
+		user.setUserRole("user".concat(String.valueOf(number)));
 		user.setActive(true);
 		
 		return user;
 	}
 
-	public static UserTo getUserTo() {
+	public static UserTo getUserTo(int number) {
 		UserTo userTo = new UserTo();
 		
-		userTo.setId(randomString());
-		userTo.setFirstName(randomString());
-		userTo.setLastName(randomString());
-		userTo.setEmail(randomString());
-		userTo.setPassword(randomString());
-		userTo.setSalt(randomString());
-		userTo.setCreatedOn(randomString());
-		userTo.setLastLogin(randomString());
-		userTo.setUserRole(randomString());
+		userTo.setId(String.valueOf(number));
+		userTo.setFirstName("Jan ".concat(String.valueOf(number)));
+		userTo.setLastName("Kowalski ".concat(String.valueOf(number)));
+		userTo.setEmail("jan.kowalski".concat(String.valueOf(number)).concat("@wp.pl"));
+		userTo.setPassword("qwer1234!!".concat(String.valueOf(number)));
+		userTo.setSalt("qazx".concat(String.valueOf(number)));
+		userTo.setCreatedOn("123".concat(String.valueOf(number)));
+		userTo.setLastLogin("123".concat(String.valueOf(number)));
+		userTo.setUserRole("user".concat(String.valueOf(number)));
 		userTo.setActive(true);
 		
 		return userTo;

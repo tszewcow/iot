@@ -11,13 +11,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.iot.server.document.AutomaticMobileSet;
-import org.iot.server.document.Beacon;
 import org.iot.server.helper.EqualityChecker;
 import org.iot.server.helper.TestDataGenerator;
 import org.iot.server.mapper.AutomaticMobileSetMapper;
 import org.iot.server.repository.AutomaticMobileSetRepository;
 import org.iot.server.to.AutomaticMobileSetTo;
-import org.iot.server.to.BeaconTo;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -54,7 +52,7 @@ public class AutomaticMobileSetServiceImplTest
 	@Test
 	public void testAddAutomaticMobileSet()
 	{
-		AutomaticMobileSetTo dataToSave = TestDataGenerator.getAutomaticMobileSetTo();
+		AutomaticMobileSetTo dataToSave = TestDataGenerator.getAutomaticMobileSetTo(1);
 		
 		AutomaticMobileSetTo savedData = automaticMobileSetServiceImpl.addAutomaticMobileSet(dataToSave);
 		
@@ -84,7 +82,7 @@ public class AutomaticMobileSetServiceImplTest
 	@Test
 	public void testDeleteAutomaticMobileSet()
 	{
-		AutomaticMobileSet ams = TestDataGenerator.getAutomaticMobileSet();
+		AutomaticMobileSet ams = TestDataGenerator.getAutomaticMobileSet(1);
 		
 		automaticMobileSetServiceImpl.deleteAutomaticMobileSet(ams.getId());
 		
@@ -98,7 +96,7 @@ public class AutomaticMobileSetServiceImplTest
 	@Test
 	public void testUpdateAutomaticMobileSet()
 	{
-		AutomaticMobileSetTo dataToSave = TestDataGenerator.getAutomaticMobileSetTo();
+		AutomaticMobileSetTo dataToSave = TestDataGenerator.getAutomaticMobileSetTo(1);
 		
 		AutomaticMobileSetTo savedData = automaticMobileSetServiceImpl.updateAutomaticMobileSet(dataToSave);
 		

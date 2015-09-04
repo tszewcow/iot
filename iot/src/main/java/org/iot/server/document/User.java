@@ -78,4 +78,20 @@ public class User {
 	public void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return new StringBuilder().append(id).append(", ").
+				append(firstName).append(", ").
+				append(lastName).append(", ").
+				append(email).append(", ").
+				append(password).append(", ").
+				append(salt).append(", ").
+				append(createdOn).append(", ").
+				append(lastLogin).append(", ").
+				append(userRole).append(", ").
+				append(active).
+				toString();
+	}
 }
