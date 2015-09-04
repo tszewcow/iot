@@ -86,4 +86,18 @@ public class BeaconStatus {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return new StringBuilder().append(id).append(", ").
+								append(major).append(", ").
+								append(minor).append(", ").
+								append(uuid).append(", ").
+								append(rssi).append(", ").
+								append(mac).append(", ").
+								append(measuredStrenght).append(", ").
+								append(distance).append(", ").
+								append(macAutomaticMobileSet).toString();
+	}
 }

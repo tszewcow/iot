@@ -22,9 +22,7 @@ describe('\'app.main\' module', function () {
     });
 
     it('defines the default route redirecting to the welcome dialog', function () {
-        expect(routeProvider.when).toHaveBeenCalledWith('/', {
-            redirectTo: '/main/welcome'
-        });
+        expect(routeProvider.when).toHaveBeenCalledWith('/', { redirectTo : '/main/login' });
     });
 
     it('defines the default route redirecting to the welcome dialog', function () {
