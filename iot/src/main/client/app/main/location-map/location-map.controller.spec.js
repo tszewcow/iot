@@ -259,4 +259,77 @@ describe('Location map tests', function () {
             expect(beaconDataRestService.getBeaconsDataOnGivenFloor).toHaveBeenCalledWith('TestBuildingIV', 129);
         }));
     });
+    
+    describe('list of available locations', function () {
+
+        beforeEach(inject(function ($controller, $rootScope, amsDataRestService, beaconDataRestService, floorLocationRestService, $location, $q) {
+        	deferredAms = $q.defer();
+            deferredBeacon = $q.defer();
+            $scope = $rootScope.$new();
+            $location.search('building', 'MTII');
+            $location.search('floor', 7);
+            
+            spyOn(amsDataRestService, 'getAmsDataOnGivenFloor').and.returnValue(deferredAms.promise);
+            deferredAms.resolve({data: []});
+            spyOn(beaconDataRestService, 'getBeaconsDataOnGivenFloor').and.returnValue(deferredBeacon.promise);
+            deferredBeacon.resolve({data: []});
+            var deferredLocations = $q.defer();
+            spyOn(floorLocationRestService, 'getFloorLocations').and.returnValue(deferredLocations.promise);
+            deferredLocations.resolve({
+                data: [
+                    {
+                        building: 'MTII',
+                        floor: 6
+                       },
+                    {
+                        building: 'MTII',
+                        floor: 7
+                       },
+                       {
+                        building: 'MTIV',
+                        floor: 9
+                     }
+                   ]
+            });
+            
+            $controller('LocationMapCntl', {
+                $scope: $scope,
+                globalSpinner: {
+                    decorateCallOfFunctionReturningPromise: function (func) {
+                        func();
+                    }
+                }
+            });
+        	
+        }));
+
+        it('should be created while initialization', inject(function (floorLocationRestService) {
+            // given when 
+            $scope.$digest();
+
+            // then
+            expect($scope.locations.length).toEqual(3);
+            expect($scope.locations[0].url).toEqual('/main/location-map?building=MTII&floor=6');
+            expect($scope.locations[0].text).toEqual('MTII floor 6');
+            expect($scope.locations[1].url).toEqual('/main/location-map?building=MTII&floor=7');
+            expect($scope.locations[1].text).toEqual('MTII floor 7');
+            expect($scope.locations[2].url).toEqual('/main/location-map?building=MTIV&floor=9');
+            expect($scope.locations[2].text).toEqual('MTIV floor 9');
+            expect($scope.currentLocation).toEqual($scope.locations[1]);
+            expect(floorLocationRestService.getFloorLocations).toHaveBeenCalled();
+        }));
+        
+        it('should change location after selection', inject(function (floorLocationRestService, $location) {
+            // given 
+        	spyOn($location, 'url');
+            $scope.$digest();
+            // when
+            $scope.currentLocation = $scope.locations[2]; 
+            $scope.navigate();
+            // then
+            expect(floorLocationRestService.getFloorLocations).toHaveBeenCalled();
+            expect($location.url).toHaveBeenCalledWith($scope.locations[2].url);
+        }));
+
+    });
 });
