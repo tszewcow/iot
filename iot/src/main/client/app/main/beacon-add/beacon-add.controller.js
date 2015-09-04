@@ -1,4 +1,4 @@
-angular.module('app.main').controller('BeaconAddCntl', function ($scope, $modalInstance) {
+angular.module('app.main').controller('BeaconAddCntl', function ($scope, $modalInstance, allBuildings) {
     'use strict';
 
     $scope.newBeacon = {
@@ -15,6 +15,10 @@ angular.module('app.main').controller('BeaconAddCntl', function ($scope, $modalI
         yBeacon: ''
     };
 
+    $scope.buildings = [{}];
+
+    $scope.buildings = angular.copy(allBuildings.data);
+
 
     $scope.ok = function () {
         if ($scope.beaconAddForm.$valid) {
@@ -26,9 +30,16 @@ angular.module('app.main').controller('BeaconAddCntl', function ($scope, $modalI
         $modalInstance.dismiss('cancel');
     };
 
-    $scope.buildings = {
-        MT2: [5, 6, 7, 8, 9, 10, 11],
-        MT4: [6, 7, 8, 9, 10, 11, 12]
+    $scope.getFloors = function () {
+        var building = _.findWhere($scope.buildings, {
+            buildingNumber: $scope.newBeacon.building
+        });
+        return building ? building.floors : undefined;
     };
+
+    $scope.floorSelectionDisabled = function () {
+        return !$scope.newBeacon.building;
+    };
+
 
 });

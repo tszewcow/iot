@@ -2,16 +2,22 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
     .config(function ($routeProvider) {
         'use strict';
         $routeProvider
-            .when('/', {redirectTo: '/main/welcome'})
-            .when('/main/welcome', {templateUrl: 'main/welcome/welcome.html'})
+            .when('/', {
+                redirectTo: '/main/welcome'
+            })
+            .when('/main/welcome', {
+                templateUrl: 'main/welcome/welcome.html'
+            })
             .when('/main/beacons-management', {
                 templateUrl: 'main/beacons-management/beacons-management.html'
             })
             .when('/main/ams-management', {
                 templateUrl: 'main/ams-management/ams-management.html',
-                resolve:{'LocationFloorData': function(floorAvailabilityService){
-                    	return floorAvailabilityService.init;
-                    	}	}
+                resolve: {
+                    'LocationFloorData': function (floorAvailabilityService) {
+                        return floorAvailabilityService.init;
+                    }
+                }
             })
             .when('/main/locations', {
                 templateUrl: 'main/locations/locations.html'
@@ -19,5 +25,7 @@ angular.module('app.main', ['ngRoute', 'app.main.templates', 'trNgGrid', 'ui.boo
             .when('/main/location-map', {
                 templateUrl: 'main/location-map/location-map.html'
             })
-            .otherwise({templateUrl: 'main/page-not-found/page-not-found.html'});
+            .otherwise({
+                templateUrl: 'main/page-not-found/page-not-found.html'
+            });
     });

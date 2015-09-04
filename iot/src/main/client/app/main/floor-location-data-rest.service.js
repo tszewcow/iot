@@ -4,6 +4,9 @@ angular.module('app.main').factory('floorLocationRestService', function ($http, 
     return {
         getFloorLocations: function () {
             return $http.get(currentContextPath.get() + 'services/locationfloor');
+        },
+        getAllBuildings: function () {
+            return $http.get(currentContextPath.get() + 'services/buildings');
         }
     };
 });

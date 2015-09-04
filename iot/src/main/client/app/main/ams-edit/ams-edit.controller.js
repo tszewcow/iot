@@ -1,5 +1,9 @@
-angular.module('app.main').controller('EditAmsCntl', function ($scope, $modalInstance, ams) {
+angular.module('app.main').controller('EditAmsCntl', function ($scope, $modalInstance, ams, allBuildings) {
     'use strict';
+
+    $scope.buildings = [{}];
+
+    $scope.buildings = angular.copy(allBuildings.data);
 
     $scope.ok = function () {
         if ($scope.amsEditForm.$valid) {
@@ -13,9 +17,15 @@ angular.module('app.main').controller('EditAmsCntl', function ($scope, $modalIns
 
     $scope.data = angular.copy(ams);
 
-    $scope.buildings = {
-        MT2: [5, 6, 7, 8, 9, 10, 11],
-        MT4: [6, 7, 8, 9, 10, 11, 12]
+    $scope.getFloors = function () {
+        var building = _.findWhere($scope.buildings, {
+            buildingNumber: $scope.data.building
+        });
+        return building ? building.floors : undefined;
+    };
+
+    $scope.floorSelectionDisabled = function () {
+        return !$scope.data.building;
     };
 
     $scope.disableGuardianInput = function () {

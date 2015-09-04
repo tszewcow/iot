@@ -1,4 +1,4 @@
-angular.module('app.main').controller('BeaconsManagementCntl', function ($scope, $modal, beaconDataRestService, globalSpinner) {
+angular.module('app.main').controller('BeaconsManagementCntl', function ($scope, $modal, beaconDataRestService, globalSpinner, floorLocationRestService) {
     'use strict';
 
     $scope.beacons = [];
@@ -37,6 +37,9 @@ angular.module('app.main').controller('BeaconsManagementCntl', function ($scope,
             resolve: {
                 beacon: function () {
                     return $scope.mySelectedItems[0];
+                },
+                allBuildings: function () {
+                    return floorLocationRestService.getAllBuildings();
                 }
             }
         });
@@ -60,7 +63,12 @@ angular.module('app.main').controller('BeaconsManagementCntl', function ($scope,
             templateUrl: '/main/beacon-add/beacon-add.tpl.html',
             controller: 'BeaconAddCntl',
             animation: true,
-            size: 'lg'
+            size: 'lg',
+            resolve: {
+                allBuildings: function () {
+                    return floorLocationRestService.getAllBuildings();
+                }
+            }
         });
 
         modalInstance.result.then(function (beacon) {

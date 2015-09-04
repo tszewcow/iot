@@ -1,5 +1,9 @@
-angular.module('app.main').controller('AddAmsCntl', function ($scope, $modalInstance) {
+angular.module('app.main').controller('AddAmsCntl', function ($scope, $modalInstance, allBuildings) {
     'use strict';
+
+    $scope.buildings = [{}];
+
+    $scope.buildings = angular.copy(allBuildings.data);
 
     $scope.newAms = {
         id: null,
@@ -25,9 +29,15 @@ angular.module('app.main').controller('AddAmsCntl', function ($scope, $modalInst
         $modalInstance.dismiss('cancel');
     };
 
-    $scope.buildings = {
-        MT2: [5, 6, 7, 8, 9, 10, 11],
-        MT4: [6, 7, 8, 9, 10, 11, 12]
+    $scope.getFloors = function () {
+        var building = _.findWhere($scope.buildings, {
+            buildingNumber: $scope.newAms.building
+        });
+        return building ? building.floors : undefined;
+    };
+
+    $scope.floorSelectionDisabled = function () {
+        return !$scope.newAms.building;
     };
 
     $scope.disableGuardianInput = function () {
@@ -37,4 +47,5 @@ angular.module('app.main').controller('AddAmsCntl', function ($scope, $modalInst
             return false;
         }
     };
+
 });

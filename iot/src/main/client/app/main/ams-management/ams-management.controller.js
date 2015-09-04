@@ -1,4 +1,4 @@
-angular.module('app.main').controller('AmsManagementCntl', function ($scope, $modal, amsDataRestService, floorAvailabilityService, globalSpinner) {
+angular.module('app.main').controller('AmsManagementCntl', function ($scope, $modal, amsDataRestService, floorAvailabilityService, globalSpinner, floorLocationRestService) {
     'use strict';
 
     $scope.amsModel = [];
@@ -37,6 +37,9 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
             resolve: {
                 ams: function () {
                     return $scope.mySelectedItems[0];
+                },
+                allBuildings: function () {
+                    return floorLocationRestService.getAllBuildings();
                 }
             }
         });
@@ -60,7 +63,12 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
             templateUrl: '/main/ams-add/ams-add.tpl.html',
             controller: 'AddAmsCntl',
             animation: true,
-            size: 'lg'
+            size: 'lg',
+            resolve: {
+                allBuildings: function () {
+                    return floorLocationRestService.getAllBuildings();
+                }
+            }
         });
 
         modalInstance.result.then(function (ams) {

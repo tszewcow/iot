@@ -1,4 +1,4 @@
-angular.module('app.main').controller('BeaconEditCntl', function ($scope, $modalInstance, beacon) {
+angular.module('app.main').controller('BeaconEditCntl', function ($scope, $modalInstance, beacon, allBuildings) {
     'use strict';
 
     $scope.ok = function () {
@@ -7,14 +7,24 @@ angular.module('app.main').controller('BeaconEditCntl', function ($scope, $modal
         }
     };
 
+    $scope.buildings = [{}];
+
+    $scope.buildings = angular.copy(allBuildings.data);
+
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
 
     $scope.data = angular.copy(beacon);
 
-    $scope.buildings = {
-        MT2: [5, 6, 7, 8, 9, 10, 11],
-        MT4: [6, 7, 8, 9, 10, 11, 12]
+    $scope.getFloors = function () {
+        var building = _.findWhere($scope.buildings, {
+            buildingNumber: $scope.newAms.building
+        });
+        return building ? building.floors : undefined;
+    };
+
+    $scope.floorSelectionDisabled = function () {
+        return !$scope.data.building;
     };
 });
