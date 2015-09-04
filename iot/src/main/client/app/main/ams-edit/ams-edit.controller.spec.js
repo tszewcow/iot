@@ -1,4 +1,4 @@
-describe('Edit ams tests', inject(function (allBuildings) {
+describe('Edit ams tests', function () {
     'use strict';
 
     var $scope;
@@ -35,7 +35,8 @@ describe('Edit ams tests', inject(function (allBuildings) {
         $controller('EditAmsCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock,
-            ams: amsMock
+            ams: amsMock,
+            allBuildings: allBuildingsMock
         });
     }));
 
@@ -79,7 +80,7 @@ describe('Edit ams tests', inject(function (allBuildings) {
             //given
             $scope.data.building = '';
             //when then
-            expect($scope.floorSelectionDisabled()).toBeFalsy();
+            expect($scope.floorSelectionDisabled()).toBeTruthy();
         });
     });
-}));
+});

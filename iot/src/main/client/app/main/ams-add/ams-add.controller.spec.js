@@ -6,6 +6,14 @@ describe('Add ams tests', function () {
         close: jasmine.createSpy(),
         dismiss: jasmine.createSpy()
     };
+    var allBuildingsMock = [
+        {
+            MT2: [1, 2, 3]
+        },
+        {
+            MT4: [2, 3, 4]
+        }
+    ];
 
     beforeEach(module('app.main'));
     beforeEach(inject(function ($controller, $rootScope, $compile) {
@@ -15,9 +23,11 @@ describe('Add ams tests', function () {
 
         $controller('AddAmsCntl', {
             $scope: $scope,
-            $modalInstance: modalInstanceMock
+            $modalInstance: modalInstanceMock,
+            allBuildings: allBuildingsMock
         });
     }));
+
 
 
     describe('testing modal controls', function () {
@@ -72,7 +82,7 @@ describe('Add ams tests', function () {
             //given
             $scope.newAms.building = '';
             //when then
-            expect($scope.floorSelectionDisabled()).toBeFalsy();
+            expect($scope.floorSelectionDisabled()).toBeTruthy();
         });
     });
 });

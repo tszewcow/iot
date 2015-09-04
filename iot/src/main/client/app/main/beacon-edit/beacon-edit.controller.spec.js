@@ -1,4 +1,4 @@
-describe('Edit beacon tests', inject(function (allBuildingsMock) {
+describe('Edit beacon tests', function (allBuildingsMock) {
     'use strict';
 
     var $scope;
@@ -37,7 +37,8 @@ describe('Edit beacon tests', inject(function (allBuildingsMock) {
         $controller('BeaconEditCntl', {
             $scope: $scope,
             $modalInstance: modalInstanceMock,
-            beacon: beaconMock
+            beacon: beaconMock,
+            allBuildings: allBuildingsMock
         });
     }));
 
@@ -67,8 +68,8 @@ describe('Edit beacon tests', inject(function (allBuildingsMock) {
             //given
             $scope.data.building = '';
             //when then
-            expect($scope.floorSelectionDisabled()).toBeFalsy();
+            expect($scope.floorSelectionDisabled()).toBeTruthy();
         });
     });
 
-}));
+});
