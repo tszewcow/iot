@@ -53,7 +53,7 @@ public class AutomaticMobileSetRestServiceTest
 	@Test
 	public void testAddAutomaticMobileSet()
 	{
-		AutomaticMobileSetTo amsTo = TestDataGenerator.getAutomaticMobileSetTo();
+		AutomaticMobileSetTo amsTo = TestDataGenerator.getAutomaticMobileSetTo(1);
 		automaticMobileSetRestService.addAutomaticMobileSet(amsTo);
 		
 		ArgumentCaptor<AutomaticMobileSetTo> argumentCaptor = ArgumentCaptor.forClass(AutomaticMobileSetTo.class);
@@ -64,7 +64,7 @@ public class AutomaticMobileSetRestServiceTest
 	@Test
 	public void testDeleteAutomaticMobileSet()
 	{
-		AutomaticMobileSet ams = TestDataGenerator.getAutomaticMobileSet();
+		AutomaticMobileSet ams = TestDataGenerator.getAutomaticMobileSet(1);
 		automaticMobileSetRestService.deleteAutomaticMobileSet(ams.getId());
 		
 		ArgumentCaptor<String> idCaptor = ArgumentCaptor.forClass(String.class);
@@ -75,7 +75,7 @@ public class AutomaticMobileSetRestServiceTest
 	@Test
 	public void testUpdateAutomaticMobileSet()
 	{
-		AutomaticMobileSetTo amsTo = TestDataGenerator.getAutomaticMobileSetTo();
+		AutomaticMobileSetTo amsTo = TestDataGenerator.getAutomaticMobileSetTo(1);
 		automaticMobileSetRestService.updateAutomaticMobileSet(amsTo);
 		
 		ArgumentCaptor<AutomaticMobileSetTo> argumentCaptor = ArgumentCaptor.forClass(AutomaticMobileSetTo.class);

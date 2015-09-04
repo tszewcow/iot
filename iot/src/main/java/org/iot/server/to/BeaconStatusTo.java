@@ -7,6 +7,7 @@ package org.iot.server.to;
  */
 public class BeaconStatusTo {
 
+	private String id;
 	private int major;
 	private String minor;
 	private String uuid;
@@ -78,5 +79,27 @@ public class BeaconStatusTo {
 
 	public void setMac(String mac) {
 		this.mac = mac;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return new StringBuilder().append(id).append(", ").
+								append(major).append(", ").
+								append(minor).append(", ").
+								append(uuid).append(", ").
+								append(rssi).append(", ").
+								append(mac).append(", ").
+								append(measuredStrenght).append(", ").
+								append(distance).append(", ").
+								append(macAutomaticMobileSet).toString();
 	}
 }

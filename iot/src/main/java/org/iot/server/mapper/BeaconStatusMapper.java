@@ -14,6 +14,7 @@ public class BeaconStatusMapper {
 
 		BeaconStatusTo beaconStatusTo = new BeaconStatusTo();
 
+		beaconStatusTo.setId(beaconStatus.getId());
 		beaconStatusTo.setMac(beaconStatus.getMac());
 		beaconStatusTo.setMajor(beaconStatus.getMajor());
 		beaconStatusTo.setMinor(beaconStatus.getMinor());
@@ -22,7 +23,7 @@ public class BeaconStatusMapper {
 		beaconStatusTo.setUuid(beaconStatus.getUuid());
 		beaconStatusTo.setMacAutomaticMobileSet("c4:e9:84:12:91:81");
 		beaconStatusTo.setDistance(beaconStatus.getDistance());
-
+		
 		return beaconStatusTo;
 	}
 
@@ -35,6 +36,7 @@ public class BeaconStatusMapper {
 
 		BeaconStatus beaconStatus = new BeaconStatus();
 
+		beaconStatus.setId(beaconStatusTo.getId());
 		beaconStatus.setMac(beaconStatusTo.getMac());
 		beaconStatus.setMajor(beaconStatusTo.getMajor());
 		beaconStatus.setMinor(beaconStatusTo.getMinor());
