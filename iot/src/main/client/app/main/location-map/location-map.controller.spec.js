@@ -13,8 +13,8 @@ describe('Location map tests', function () {
             deferredAms = $q.defer();
             deferredBeacon = $q.defer();
             $scope = $rootScope.$new();
-            $location.search('building', 'MTII')
-            $location.search('floor', 7)
+            $location.search('building', 'MTII');
+            $location.search('floor', 7);
             
             spyOn(amsDataRestService, 'getAmsDataOnGivenFloor').and.returnValue(deferredAms.promise);
             spyOn(beaconDataRestService, 'getBeaconsDataOnGivenFloor').and.returnValue(deferredBeacon.promise);
@@ -230,8 +230,8 @@ describe('Location map tests', function () {
             deferredAms = $q.defer();
             deferredBeacon = $q.defer();
             $scope = $rootScope.$new();
-            $location.search('building', 'TestBuildingIV')
-            $location.search('floor', 129)
+            $location.search('building', 'TestBuildingIV');
+            $location.search('floor', 129);
 
             spyOn(amsDataRestService, 'getAmsDataOnGivenFloor').and.returnValue(deferredAms.promise);
             spyOn(beaconDataRestService, 'getBeaconsDataOnGivenFloor').and.returnValue(deferredBeacon.promise);

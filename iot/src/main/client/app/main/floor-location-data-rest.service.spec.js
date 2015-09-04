@@ -18,5 +18,15 @@ describe('Floor location data rest service tests', function () {
             // then
             expect($http.get).toHaveBeenCalledWith('url-prefix/services/locationfloor');
         }));
+
+        it('should call $http.get when retrieving buildings', inject(function ($http, currentContextPath) {
+            // given
+            spyOn(currentContextPath, 'get').and.returnValue('url-prefix/');
+            spyOn($http, 'get');
+            // when
+            floorLocationRestService.getAllBuildings();
+            // then
+            expect($http.get).toHaveBeenCalledWith('url-prefix/services/buildings');
+        }));
     });
 });
