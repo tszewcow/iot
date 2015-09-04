@@ -12,7 +12,7 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
 	        + btoa($scope.credentials.username + ":" + $scope.credentials.password)
 	    } : {};
 	    
-	    $http.get('/services/user', {headers : headers}).success(function(data) {
+	    userDataRestService.getLoggedUser({headers : headers}).success(function(data) {
 	      
 		    if(data.name)
 		    {
