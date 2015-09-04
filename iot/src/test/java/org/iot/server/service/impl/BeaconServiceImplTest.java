@@ -81,7 +81,7 @@ public class BeaconServiceImplTest
 	@Test
 	public void testRegisterStatus()
 	{
-		BeaconStatusTo statusTo = TestDataGenerator.getBeaconStatusTo();
+		BeaconStatusTo statusTo = TestDataGenerator.getBeaconStatusTo(1);
 		
 		testedObject.registerStatus(statusTo);
 		
@@ -113,7 +113,7 @@ public class BeaconServiceImplTest
 	@Test
 	public void testAddBeacon()
 	{
-		BeaconTo beaconTo = TestDataGenerator.getBeaconTo();
+		BeaconTo beaconTo = TestDataGenerator.getBeaconTo(1);
 		BeaconTo addedData = testedObject.addBeacon(beaconTo);
 		assertEquals(true, EqualityChecker.checkEquality(beaconTo, addedData));
 		
@@ -133,7 +133,7 @@ public class BeaconServiceImplTest
 	@Test
 	public void testDeleteBeacon()
 	{
-		Beacon beacon = TestDataGenerator.getBeacon();
+		Beacon beacon = TestDataGenerator.getBeacon(1);
 		testedObject.deleteBeacon(beacon.getId());
 		
 		ArgumentCaptor<String> idCaptor = ArgumentCaptor.forClass(String.class);
@@ -145,7 +145,7 @@ public class BeaconServiceImplTest
 	@Test
 	public void testUpdateBeacon()
 	{
-		BeaconTo beaconTo = TestDataGenerator.getBeaconTo();
+		BeaconTo beaconTo = TestDataGenerator.getBeaconTo(1);
 		BeaconTo addedData = testedObject.updateBeacon(beaconTo);
 		assertEquals(true, EqualityChecker.checkEquality(beaconTo, addedData));
 		

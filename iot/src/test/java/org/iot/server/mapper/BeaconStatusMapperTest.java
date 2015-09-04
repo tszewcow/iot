@@ -18,7 +18,7 @@ public class BeaconStatusMapperTest {
 	@Test
 	public void mapDocument2To_MappedValuesEqual()
 	{
-		BeaconStatus beaconStatus = TestDataGenerator.getBeaconStatus();
+		BeaconStatus beaconStatus = TestDataGenerator.getBeaconStatus(1);
 		
 		BeaconStatusTo mappedBeaconStatus = beaconStatusMapper.mapDocument2To(beaconStatus);
 		
@@ -28,7 +28,7 @@ public class BeaconStatusMapperTest {
 	@Test
 	public void mapDocument2To_MappedValuesNotEqual()
 	{
-		BeaconStatus beaconStatus = TestDataGenerator.getBeaconStatus();
+		BeaconStatus beaconStatus = TestDataGenerator.getBeaconStatus(1);
 		
 		BeaconStatusTo mappedBeaconStatus = beaconStatusMapper.mapDocument2To(beaconStatus);
 		
@@ -45,7 +45,7 @@ public class BeaconStatusMapperTest {
 		int listSize = 10;
 		
 		for(int x=0;x<listSize;x++)
-			beaconStatusList.add(TestDataGenerator.getBeaconStatus());
+			beaconStatusList.add(TestDataGenerator.getBeaconStatus(x));
 		
 		List<BeaconStatusTo> mappedList = beaconStatusMapper.mapDocuments2Tos(beaconStatusList);
 		
@@ -56,7 +56,7 @@ public class BeaconStatusMapperTest {
 	@Test
 	public void mapTo2Document_MappedValuesEqual()
 	{
-		BeaconStatusTo beaconStatusTo = TestDataGenerator.getBeaconStatusTo();
+		BeaconStatusTo beaconStatusTo = TestDataGenerator.getBeaconStatusTo(1);
 		
 		BeaconStatus demappedBeaconStatus = beaconStatusMapper.mapTo2Document(beaconStatusTo);
 		
