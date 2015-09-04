@@ -5,17 +5,15 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
     checkIfUserIsLoggedIn();
     
 //  authenticate();
-  $scope.credentials = {};
-  $scope.login = function()
-  {
-	  var headers = $scope.credentials ? {authorization : "Basic "
+    $scope.credentials = {};
+    $scope.login = function()
+    {
+    	var headers = $scope.credentials ? {authorization : "Basic "
 	        + btoa($scope.credentials.username + ":" + $scope.credentials.password)
 	    } : {};
 	    
 	    $http.get('/services/user', {headers : headers}).success(function(data) {
 	      
-	    	console.log(data);
-	    	
 		    if(data.name)
 		    {
 		        $rootScope.authenticated = true;
@@ -27,12 +25,20 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
 		        $rootScope.authenticated = false;
 		        $rootScope.error = true;
 		    }
+		    resetCredentials();
 	    }).error(function() {
 	      $rootScope.authenticated = false;
 	      $rootScope.error = true;
+	      
+	      resetCredentials();
 	    });
   };
   
+  function resetCredentials()
+  {
+	  $scope.credentials.username = null;
+      $scope.credentials.password = null;
+  }
   
   //zrobic to ladniej
   function checkIfUserIsLoggedIn()
@@ -44,7 +50,20 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
 	  }
 	  else
 	  {
-		  $rootScope.authenticated = false;
+		  $http.get('/services/user').success(function(data) {
+		      		    	
+			  if(data.name)
+			  {
+				  $rootScope.authenticated = true;
+			      $location.path("/main/welcome");
+			  }
+			  else
+			  {
+			      $rootScope.authenticated = false;
+			  }
+		  }).error(function() {
+			  $rootScope.authenticated = false;
+		  });
 	  }
   }
 });
