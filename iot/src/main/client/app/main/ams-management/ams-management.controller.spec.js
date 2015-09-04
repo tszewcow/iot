@@ -2,7 +2,6 @@ describe('Ams management tests', function () {
     'use strict';
 
     var $scope;
-
     beforeEach(module('app.main'));
     beforeEach(module('oasp.oaspUi.spinner'));
     beforeEach(inject(function ($controller, $rootScope, amsDataRestService, floorLocationRestService, $q) {
@@ -103,7 +102,8 @@ describe('Ams management tests', function () {
                 animation: true,
                 size: 'lg',
                 resolve: {
-                    ams: jasmine.any(Function)
+                    ams: jasmine.any(Function),
+                    allBuildings: jasmine.any(Function)
                 }
             });
             expect($modal.open.calls.argsFor(0)[0].resolve.ams()).toEqual('some entry');
@@ -130,7 +130,10 @@ describe('Ams management tests', function () {
                 templateUrl: '/main/ams-add/ams-add.tpl.html',
                 controller: 'AddAmsCntl',
                 animation: true,
-                size: 'lg'
+                size: 'lg',
+                resolve: {
+                    allBuildings: jasmine.any(Function)
+                }
             });
             expect(amsDataRestService.addAmsData).toHaveBeenCalledWith('some modal response');
             expect($scope.amsModel.length).toEqual(initialModelSize + 1);

@@ -45,13 +45,7 @@ describe('Add ams tests', function () {
             //then
             expect(modalInstanceMock.dismiss).toHaveBeenCalledWith('cancel');
         });
-        it('should initialization floors table', function () {
-            //given when then
-            expect($scope.buildings).toEqual({
-                MT2: [5, 6, 7, 8, 9, 10, 11],
-                MT4: [6, 7, 8, 9, 10, 11, 12]
-            });
-        });
+
 
         it('should disable guradian if project is <none>', function () {
             // given
@@ -59,12 +53,26 @@ describe('Add ams tests', function () {
             // when then
             expect($scope.disableGuardianInput()).toBeTruthy();
         });
+
         it('should enable guradian if project is not <none>', function () {
             // given
             $scope.newAms.project = '';
             // when then
             expect($scope.disableGuardianInput()).toBeFalsy();
         });
-    });
 
+        it('should disable floors selection if builidng was selected', function () {
+            //given
+            $scope.newAms.building = 'MT2';
+            //when then
+            expect($scope.floorSelectionDisabled()).toBeFalsy();
+        });
+
+        it('should not disable floors selection if builiding is empty', function () {
+            //given
+            $scope.newAms.building = '';
+            //when then
+            expect($scope.floorSelectionDisabled()).toBeFalsy();
+        });
+    });
 });

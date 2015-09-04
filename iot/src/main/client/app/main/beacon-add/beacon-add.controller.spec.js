@@ -1,4 +1,4 @@
-describe('Add beacon tests', function () {
+describe('Add beacon tests', inject(function (allBuildings) {
     'use strict';
 
     var $scope;
@@ -6,6 +6,14 @@ describe('Add beacon tests', function () {
         close: jasmine.createSpy(),
         dismiss: jasmine.createSpy()
     };
+    var allBuildingsMock = [
+        {
+            MT2: [1, 2, 3]
+        },
+        {
+            MT4: [2, 3, 4]
+        }
+    ];
 
     beforeEach(module('app.main'));
     beforeEach(inject(function ($controller, $rootScope, $compile) {
@@ -15,7 +23,8 @@ describe('Add beacon tests', function () {
 
         $controller('BeaconAddCntl', {
             $scope: $scope,
-            $modalInstance: modalInstanceMock
+            $modalInstance: modalInstanceMock,
+            allBuildingsMock: allBuildingsMock
         });
     }));
 
@@ -46,12 +55,18 @@ describe('Add beacon tests', function () {
             //then
             expect(modalInstanceMock.dismiss).toHaveBeenCalledWith('cancel');
         });
-        it('should initialization floors table', function () {
-            //given when then
-            expect($scope.buildings).toEqual({
-                MT2: [5, 6, 7, 8, 9, 10, 11],
-                MT4: [6, 7, 8, 9, 10, 11, 12]
-            });
+        it('should disable floors selection if builidng was selected', function () {
+            //given
+            $scope.newBeacon.building = 'MT2';
+            //when then
+            expect($scope.floorSelectionDisabled()).toBeFalsy();
+        });
+
+        it('should not disable floors selection if builiding is empty', function () {
+            //given
+            $scope.newBeacon.building = '';
+            //when then
+            expect($scope.floorSelectionDisabled()).toBeFalsy();
         });
     });
-});
+}));

@@ -19,7 +19,7 @@ angular.module('app.main').controller('BeaconEditCntl', function ($scope, $modal
 
     $scope.getFloors = function () {
         var building = _.findWhere($scope.buildings, {
-            buildingNumber: $scope.newAms.building
+            buildingNumber: $scope.data.building
         });
         return building ? building.floors : undefined;
     };

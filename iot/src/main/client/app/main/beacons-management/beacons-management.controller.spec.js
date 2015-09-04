@@ -86,7 +86,10 @@ describe('Beacons management tests', function () {
                 templateUrl: '/main/beacon-add/beacon-add.tpl.html',
                 controller: 'BeaconAddCntl',
                 animation: true,
-                size: 'lg'
+                size: 'lg',
+                resolve: {
+                    allBuildings: jasmine.any(Function)
+                }
             });
             expect($scope.beacons.length).toEqual(3);
             expect($scope.beacons[2].name).toEqual('new beacon');
@@ -137,7 +140,8 @@ describe('Beacons management tests', function () {
                 animation: true,
                 size: 'lg',
                 resolve: {
-                    beacon: jasmine.any(Function)
+                    beacon: jasmine.any(Function),
+                    allBuildings: jasmine.any(Function)
                 }
             });
             expect($modal.open.calls.argsFor(0)[0].resolve.beacon()).toEqual('some entry');
@@ -163,7 +167,10 @@ describe('Beacons management tests', function () {
                 templateUrl: '/main/beacon-add/beacon-add.tpl.html',
                 controller: 'BeaconAddCntl',
                 animation: true,
-                size: 'lg'
+                size: 'lg',
+                resolve: {
+                    allBuildings: jasmine.any(Function)
+                }
             });
             expect(beaconDataRestService.addBeaconData).toHaveBeenCalledWith('some modal response');
             expect($scope.beacons.length).toEqual(3);
