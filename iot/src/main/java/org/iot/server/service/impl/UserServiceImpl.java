@@ -32,7 +32,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserTo> getAllUsers() {
 		List<User> users = userRepository.findAll();
-		return userMapper.mapDocuments2Tos(users);
+		
+		List<UserTo> result = userMapper.mapDocuments2Tos(users);
+		
+		//we dont send passwords
+		for(UserTo userTo : result)
+			userTo.setPassword(null);
+		
+		return result;
 	}
 
 	

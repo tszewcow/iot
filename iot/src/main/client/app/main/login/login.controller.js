@@ -14,6 +14,8 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
 	    
 	    $http.get('/services/user', {headers : headers}).success(function(data) {
 	      
+	    	console.log(data);
+	    	
 		    if(data.name)
 		    {
 		        $rootScope.authenticated = true;

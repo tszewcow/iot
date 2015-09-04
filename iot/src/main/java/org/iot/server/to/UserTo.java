@@ -11,6 +11,7 @@ public class UserTo
 	private String salt;
 	private String createdOn;
 	private String lastLogin;
+	private String userRole;
 	private boolean active;
 	
 	
@@ -67,5 +68,11 @@ public class UserTo
 	}
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+	public String getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
 	}
 }

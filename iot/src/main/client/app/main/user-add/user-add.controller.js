@@ -23,6 +23,7 @@ angular.module('app.main').controller('UserAddCntl', function ($scope, $modalIns
     	salt: '',
 		createdOn: null,
 		lastLogin: null,
+		userRole: null,
 		active: true
     };
 

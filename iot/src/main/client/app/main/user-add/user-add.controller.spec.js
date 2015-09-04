@@ -36,6 +36,7 @@ describe('Add user tests', function () {
             	salt: '',
         		createdOn: null,
         		lastLogin: null,
+        		userRole: null,
         		active: true
             });
         });

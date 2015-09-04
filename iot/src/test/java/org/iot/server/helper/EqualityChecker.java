@@ -156,6 +156,7 @@ public class EqualityChecker
 				user.getSalt().equals(userTo.getSalt()) &&
 				user.getCreatedOn().equals(userTo.getCreatedOn()) &&
 				user.getLastLogin().equals(userTo.getLastLogin()) &&
+				user.getUserRole().equals(userTo.getUserRole()) &&
 				user.isActive() == userTo.isActive();
 	}
 
@@ -169,6 +170,7 @@ public class EqualityChecker
 				userOne.getSalt().equals(userTwo.getSalt()) &&
 				userOne.getCreatedOn().equals(userTwo.getCreatedOn()) &&
 				userOne.getLastLogin().equals(userTwo.getLastLogin()) &&
+				userOne.getUserRole().equals(userTwo.getUserRole()) &&
 				userOne.isActive() == userTwo.isActive();
 	}
 	
@@ -182,6 +184,7 @@ public class EqualityChecker
 				userOne.getSalt().equals(userTwo.getSalt()) &&
 				userOne.getCreatedOn().equals(userTwo.getCreatedOn()) &&
 				userOne.getLastLogin().equals(userTwo.getLastLogin()) &&
+				userOne.getUserRole().equals(userTwo.getUserRole()) &&
 				userOne.isActive() == userTwo.isActive();
 	}
 }

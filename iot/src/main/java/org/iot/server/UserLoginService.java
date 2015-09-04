@@ -1,4 +1,4 @@
-package org.iot.server.security;
+package org.iot.server;
 
 import java.util.List;
 

@@ -132,6 +132,7 @@ public class TestDataGenerator {
 		user.setSalt(randomString());
 		user.setCreatedOn(randomString());
 		user.setLastLogin(randomString());
+		user.setUserRole(randomString());
 		user.setActive(true);
 		
 		return user;
@@ -148,6 +149,7 @@ public class TestDataGenerator {
 		userTo.setSalt(randomString());
 		userTo.setCreatedOn(randomString());
 		userTo.setLastLogin(randomString());
+		userTo.setUserRole(randomString());
 		userTo.setActive(true);
 		
 		return userTo;

@@ -14,6 +14,7 @@ public class User {
 	private String salt;
 	private String createdOn;
 	private String lastLogin;
+	private String userRole;
 	private boolean active;
 	
 	
@@ -70,5 +71,11 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
 	}
 }

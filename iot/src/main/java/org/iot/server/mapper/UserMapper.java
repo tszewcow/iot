@@ -22,6 +22,7 @@ public class UserMapper {
 		userTo.setSalt(user.getSalt());
 		userTo.setCreatedOn(user.getCreatedOn());
 		userTo.setLastLogin(user.getLastLogin());
+		userTo.setUserRole(user.getUserRole());
 		userTo.setActive(user.isActive());
 
 		return userTo;
@@ -44,6 +45,7 @@ public class UserMapper {
 		user.setSalt(userTo.getSalt());
 		user.setCreatedOn(userTo.getCreatedOn());
 		user.setLastLogin(userTo.getLastLogin());
+		user.setUserRole(userTo.getUserRole());
 		user.setActive(userTo.isActive());
 
 		return user;

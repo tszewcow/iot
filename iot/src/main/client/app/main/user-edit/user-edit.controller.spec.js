@@ -17,6 +17,7 @@ describe('Edit user tests', function () {
         	salt: 'salt',
     		createdOn: 'now',
     		lastLogin: 'never',
+    		userRole: 'user',
     		active: true
     };
 
