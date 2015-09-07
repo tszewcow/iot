@@ -67,5 +67,17 @@ describe('User data rest service tests', function () {
         userDataRestService.updateUserData(user);
         // then
         expect($http.put).toHaveBeenCalledWith('url-prefix/services/updateUser', user);
+    })); 
+    
+    it('should call $http.get when logging in and geting logged user data', inject(function ($http, currentContextPath) {
+        // given
+        var data = { authorization: 'test'};
+
+        spyOn(currentContextPath, 'get').and.returnValue('url-prefix/');
+        spyOn($http, 'get');
+        // when
+        userDataRestService.getLoggedUserWithLoggingIn(data);
+        // then
+        expect($http.get).toHaveBeenCalledWith('url-prefix/services/user', data);
     }));
 });

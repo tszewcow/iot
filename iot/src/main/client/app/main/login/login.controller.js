@@ -1,10 +1,10 @@
-angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope, $modal, $http, $location, userDataRestService, globalSpinner) {
+angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope, $modal, $http, $location, userDataRestService) {
     'use strict';
 
     
     checkIfUserIsLoggedIn();
     
-//  authenticate();
+
     $scope.credentials = {};
     $scope.login = function()
     {
@@ -12,7 +12,7 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
 	        + btoa($scope.credentials.username + ":" + $scope.credentials.password)
 	    } : {};
 	    
-	    userDataRestService.getLoggedUser({headers : headers}).success(function(data) {
+	    userDataRestService.getLoggedUserWithLoggingIn({headers : headers}).success(function(data) {
 	      
 		    if(data.name)
 		    {
