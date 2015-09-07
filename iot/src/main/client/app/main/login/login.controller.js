@@ -2,10 +2,11 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
     'use strict';
 
     
-//    checkIfUserIsLoggedIn();
+    checkIfUserIsLoggedIn();
     
 
     $scope.credentials = {};
+    
     $scope.login = function()
     {
     	var headers = $scope.credentials ? {authorization : "Basic "
@@ -18,6 +19,7 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
 		    {
 		        $rootScope.authenticated = true;
 			    $rootScope.error = false;
+			    $rootScope.loggedUserName = data.name;
 		        $location.path("/main/welcome");
 		    }
 		    else
@@ -48,6 +50,9 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
     	if($rootScope.authenticated)
     	{
     		$rootScope.authenticated = true;
+    		
+    		if($location.path() == '/main/login')
+    			$location.path("/main/welcome");
     	}
     	else
     	{
@@ -56,28 +61,28 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
     			if(data.name)
     			{
     				$rootScope.authenticated = true;
+    				$rootScope.loggedUserName = data.name;
+//    				$location.path("/main/welcome");
     			}
     			else
     			{
     				$rootScope.authenticated = false;
-    				$location.path("/");
     			}
     		}).error(function() {
     			$rootScope.authenticated = false;
-    			$location.path("/");
     		});
     	}
     }
 
     $scope.logout = function()
     {
-    	console.log("start");
-    	
     	$http.get('/services/logout', {}).success(function() {
     		$rootScope.authenticated = false;
+    		$rootScope.loggedUserName = null;
 			$location.path("/"); 
     	}).error(function(data) {
     		$rootScope.authenticated = false;
+    		$rootScope.loggedUserName = null;
 			$location.path("/");
     	});  
     }

@@ -36,9 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
             .anyRequest()
             .authenticated().and()
             .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class);
-    	
-//    	CsrfFilter l;
-    	
+    	    	
 		http
 			.formLogin()
 			.loginPage("/services/login")
@@ -51,7 +49,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 			.permitAll();
 
 	
-		http.csrf().csrfTokenRepository(csrfTokenRepository());
+		http
+			.csrf()
+			.csrfTokenRepository(csrfTokenRepository());
     }
 
     
