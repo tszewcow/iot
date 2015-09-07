@@ -16,26 +16,27 @@ class RequestToBeaconStatusToConverter {
 		String[] tokens = requestString.split("&");
 		tokens[0] = tokens[0].substring(7, 12); // major
 		tokens[1] = tokens[1].substring(5, 37); // uuid
-		tokens[2] = tokens[2].substring(4, 31); // mac
+		tokens[2] = tokens[2].substring(22, 49); // macAMS
 		tokens[2] = tokens[2].replace("%3A", ":");
-		tokens[3] = tokens[3].substring(5, 8); // rssi
-		tokens[4] = tokens[4].substring(6, 9); // minor
-		tokens[5] = tokens[5].substring(17, 20); // measuredstrenght
-		// tokens[6] = tokens[6].substring(22, 39); // macAMS
+		tokens[3] = tokens[3].substring(4, 31); // macBeacon,
+		tokens[3] = tokens[3].replace("%3A", ":");
+		tokens[4] = tokens[4].substring(5, 8); // rssi
+		tokens[5] = tokens[5].substring(6, 9); // minor
+		tokens[6] = tokens[6].substring(17, 20); // measuredstrenght
 
-		double measuredStrenght = Double.parseDouble(tokens[5]);
-		double rssi = Double.parseDouble(tokens[3]);
+		double measuredStrenght = Double.parseDouble(tokens[6]);
+		double rssi = Double.parseDouble(tokens[4]);
 
 		double distance = calculateDistance(measuredStrenght, rssi);
 
 		BeaconStatusTo beaconStatusTo = new BeaconStatusTo();
-		beaconStatusTo.setMac(tokens[2]);
+		beaconStatusTo.setMac(tokens[3]);
 		beaconStatusTo.setMajor(Integer.parseInt(tokens[0]));
-		beaconStatusTo.setMinor(tokens[4]);
+		beaconStatusTo.setMinor(tokens[5]);
 		beaconStatusTo.setUuid(tokens[1]);
-		beaconStatusTo.setRssi(Integer.parseInt(tokens[3]));
-		beaconStatusTo.setMeasuredStrenght(Integer.parseInt(tokens[5]));
-		beaconStatusTo.setMacAutomaticMobileSet("CC:3D:82:76:55:66");
+		beaconStatusTo.setRssi(Integer.parseInt(tokens[4]));
+		beaconStatusTo.setMeasuredStrenght(Integer.parseInt(tokens[6]));
+		beaconStatusTo.setMacAutomaticMobileSet(tokens[2]);
 		beaconStatusTo.setDistance(distance);
 
 		return beaconStatusTo;

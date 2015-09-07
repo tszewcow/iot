@@ -23,7 +23,7 @@ public class BeaconStatusMapper {
 		beaconStatusTo.setUuid(beaconStatus.getUuid());
 		beaconStatusTo.setMacAutomaticMobileSet(beaconStatus.getMacAutomaticMobileSet());
 		beaconStatusTo.setDistance(beaconStatus.getDistance());
-		
+
 		return beaconStatusTo;
 	}
 
