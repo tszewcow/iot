@@ -84,4 +84,12 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
         return floorAvailabilityService.checkAvailability(building, floor);
     };
 
+    $scope.fields = ['project', 'guardian', 'building', 'floor', 'room', 'xAutomaticMobileSet', 'yAutomaticMobileSet', 'macAutomaticMobileSet', 'ipAutomaticMobileSet', 'isActual', 'userAutomaticMobileSet'];
+
+    $scope.hidePass = function () {
+        $scope.fields = ['project', 'guardian', 'building', 'floor', 'room', 'xAutomaticMobileSet', 'yAutomaticMobileSet', 'macAutomaticMobileSet', 'ipAutomaticMobileSet', 'isActual', 'userAutomaticMobileSet'];
+    };
+    $scope.showPass = function () {
+        $scope.fields = ['project', 'guardian', 'building', 'floor', 'room', 'xAutomaticMobileSet', 'yAutomaticMobileSet', 'macAutomaticMobileSet', 'ipAutomaticMobileSet', 'isActual', 'userAutomaticMobileSet', 'passwordAutomaticMobileSet'];
+    };
 });

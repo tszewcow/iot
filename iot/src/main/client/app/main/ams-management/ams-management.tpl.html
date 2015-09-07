@@ -6,14 +6,18 @@
         <h1>AMS Management</h1>
     </header>
 
-    <table class="raw-table" data-tr-ng-grid data-items="amsModel" data-enable-filtering="false" data-selected-items="mySelectedItems" data-selection-mode="SingleRow" data-fields="['project','guardian', 'building', 'floor', 'room', 'xAutomaticMobileSet', 'yAutomaticMobileSet','macAutomaticMobileSet','ipAutomaticMobileSet','isActual', 'userAutomaticMobileSet', 'passwordAutomaticMobileSet']">
-    	<tbody>
-        	<tr>
-            	<td>
-                	<a class="{{checkAvailability(gridDisplayItem.building, gridDisplayItem.floor)  ? '' : 'link-anchor-disabled'}}" href="#/main/location-map?building={{gridDisplayItem.building}}&floor={{gridDisplayItem.floor}}">Show</a>
+    <table class="raw-table" data-tr-ng-grid data-items="amsModel" data-enable-filtering="false" data-selected-items="mySelectedItems" data-selection-mode="SingleRow" data-fields="fields">
+        <tbody>
+            <tr>
+                <td>
+                    <a class="{{checkAvailability(gridDisplayItem.building, gridDisplayItem.floor)  ? '' : 'link-anchor-disabled'}}" href="#/main/location-map?building={{gridDisplayItem.building}}&floor={{gridDisplayItem.floor}}">Show</a>
                 </td>
-			</tr>
-        </tbody> 
+                <td>
+                    <button data-ng-hide="fields.length === 12" data-ng-click="showPass()">Show passwords</button>
+                    <button data-ng-hide="fields.length === 11" data-ng-click="hidePass()">Hide passwords</button>
+                </td>
+            </tr>
+        </tbody>
     </table>
 
     <button class="btn btn-default" data-ng-click="addAms()">Add AMS</button>
