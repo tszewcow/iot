@@ -2,7 +2,7 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
     'use strict';
 
     
-    checkIfUserIsLoggedIn();
+//    checkIfUserIsLoggedIn();
     
 
     $scope.credentials = {};
@@ -11,7 +11,7 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
     	var headers = $scope.credentials ? {authorization : "Basic "
 	        + btoa($scope.credentials.username + ":" + $scope.credentials.password)
 	    } : {};
-	    
+	    	    
 	    userDataRestService.getLoggedUserWithLoggingIn({headers : headers}).success(function(data) {
 	      
 		    if(data.name)
@@ -30,40 +30,55 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
 	      $rootScope.authenticated = false;
 	      $rootScope.error = true;
 	      
+	      console.log(error);
+	      
 	      resetCredentials();
 	    });
-  };
+    };
   
-  function resetCredentials()
-  {
-	  $scope.credentials.username = null;
-      $scope.credentials.password = null;
-  }
+    function resetCredentials()
+    {
+		$scope.credentials.username = null;
+		$scope.credentials.password = null;
+    }
   
-  //zrobic to ladniej
-  function checkIfUserIsLoggedIn()
-  {
-	  if($rootScope.authenticated)
-	  {
-		  $rootScope.authenticated = true;
-		  $location.path("/main/welcome");
-	  }
-	  else
-	  {
-		  $http.get('/services/user').success(function(data) {
-		      		    	
-			  if(data.name)
-			  {
-				  $rootScope.authenticated = true;
-			      $location.path("/main/welcome");
-			  }
-			  else
-			  {
-			      $rootScope.authenticated = false;
-			  }
-		  }).error(function() {
-			  $rootScope.authenticated = false;
-		  });
-	  }
-  }
+
+    function checkIfUserIsLoggedIn()
+    {
+    	if($rootScope.authenticated)
+    	{
+    		$rootScope.authenticated = true;
+    	}
+    	else
+    	{
+    		$http.get('/services/user', {}).success(function(data) {
+  		    	
+    			if(data.name)
+    			{
+    				$rootScope.authenticated = true;
+    			}
+    			else
+    			{
+    				$rootScope.authenticated = false;
+    				$location.path("/");
+    			}
+    		}).error(function() {
+    			$rootScope.authenticated = false;
+    			$location.path("/");
+    		});
+    	}
+    }
+
+    $scope.logout = function()
+    {
+    	console.log("start");
+    	
+    	$http.get('/services/logout', {}).success(function() {
+    		$rootScope.authenticated = false;
+			$location.path("/"); 
+    	}).error(function(data) {
+    		$rootScope.authenticated = false;
+			$location.path("/");
+    	});  
+    }
 });

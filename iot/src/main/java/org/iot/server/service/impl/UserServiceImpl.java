@@ -12,6 +12,7 @@ import org.iot.server.repository.UserRepository;
 import org.iot.server.service.UserService;
 import org.iot.server.to.UserTo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,8 +36,7 @@ public class UserServiceImpl implements UserService {
 		List<UserTo> result = userMapper.mapDocuments2Tos(users);
 		
 		//we dont send passwords
-		for(UserTo userTo : result)
-			userTo.setPassword(null);
+		result.forEach(e -> e.setPassword(null));
 		
 		return result;
 	}
@@ -61,6 +61,10 @@ public class UserServiceImpl implements UserService {
 		User user = userMapper.mapTo2Document(userTo);
 
 		user.setCreatedOn(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+		
+		//store hashed password 
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		
 		userRepository.save(user);
 
 		return userMapper.mapDocument2To(user);
@@ -74,6 +78,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserTo updateUser(UserTo userTo) {
 		User user = userMapper.mapTo2Document(userTo);
+		
+		//store hashed password 
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		
 		userRepository.save(user);
 		return userMapper.mapDocument2To(user);
 	}

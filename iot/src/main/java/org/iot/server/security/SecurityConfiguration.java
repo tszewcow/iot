@@ -1,5 +1,6 @@
 package org.iot.server.security;
 
+import org.iot.server.properties.ApplicationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +10,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -30,7 +34,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
             .antMatchers()
             .permitAll()
             .anyRequest()
-            .authenticated();
+            .authenticated().and()
+            .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class);
+    	
+//    	CsrfFilter l;
     	
 		http
 			.formLogin()
@@ -40,32 +47,37 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 			.and()
 			.logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/services/logout"))
-			.logoutSuccessUrl("/services/login?logout")
+			.logoutSuccessUrl("/services/logout")
 			.permitAll();
 
 	
-		http
-			.csrf()
-			.disable();//bez tego nie da rady przslad danych do zapisu  TODO
-   	 					  // mozna wczytac i wyswietlic, ale nie ma mozliwosci zapisu
+		http.csrf().csrfTokenRepository(csrfTokenRepository());
     }
 
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
     {
-    	 auth.userDetailsService(userLoginService);
-//         .passwordEncoder(passwordEncoder()); //TODO zrobic!!!
-//    	
-    	
-    	 //tymczasowe rozwiazanie
-    	 //jak ktos nie ma userow w bazie to loguje sie tymi danymi
-    	 auth.inMemoryAuthentication().withUser("q").password("q").roles("USER");//properties tomek dodac do repo
+    	 auth.userDetailsService(userLoginService).passwordEncoder(passwordEncoder());
+	
+    	 auth.
+    	 	inMemoryAuthentication().
+    	 	withUser(ApplicationProperties.getProperty("user.name")).
+    	 	password(ApplicationProperties.getProperty("user.password")).
+    	 	roles(ApplicationProperties.getProperty("user.role"));
     }
     
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }   
+    }
+    
+    
+    private CsrfTokenRepository csrfTokenRepository()
+    {
+    	HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+    	repository.setHeaderName("X-XSRF-TOKEN");
+    	return repository;
+	}
 }
