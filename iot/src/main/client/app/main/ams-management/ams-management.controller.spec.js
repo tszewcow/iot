@@ -162,5 +162,25 @@ describe('Ams management tests', function () {
             expect(floorAvailabilityService.checkAvailability).toHaveBeenCalledWith(building, floor);
         }));
 
+        it('should show passwords column', inject(function () {
+            // given
+            $scope.fields = ['project', 'guardian', 'building', 'floor', 'room', 'xAutomaticMobileSet', 'yAutomaticMobileSet', 'macAutomaticMobileSet', 'ipAutomaticMobileSet', 'isActual', 'userAutomaticMobileSet'];
+            // when
+            $scope.showHidePass();
+            // then
+            expect($scope.showHidePass()).toEqual(['passwordAutomaticMobileSet']);
+
+        }));
+
+        it('should hide passwords column', inject(function () {
+            // given
+            $scope.fields = ['project', 'guardian', 'building', 'floor', 'room', 'xAutomaticMobileSet', 'yAutomaticMobileSet', 'macAutomaticMobileSet', 'ipAutomaticMobileSet', 'isActual', 'userAutomaticMobileSet', 'passwordAutomaticMobileSet'];
+            // when
+            $scope.showHidePass();
+            // then
+            expect($scope.showHidePass()).toEqual(12);
+        }));
+
+
     });
 });

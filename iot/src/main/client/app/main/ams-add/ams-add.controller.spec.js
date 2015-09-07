@@ -45,7 +45,9 @@ describe('Add ams tests', function () {
                 xAutomaticMobileSet: '',
                 yAutomaticMobileSet: '',
                 macAutomaticMobileSet: '',
-                ipAutomaticMobileSet: ''
+                ipAutomaticMobileSet: '',
+                userAutomaticMobileSet: '',
+                passwordAutomaticMobileSet: ''
             });
         });
 

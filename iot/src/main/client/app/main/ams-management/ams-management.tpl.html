@@ -13,8 +13,8 @@
                     <a class="{{checkAvailability(gridDisplayItem.building, gridDisplayItem.floor)  ? '' : 'link-anchor-disabled'}}" href="#/main/location-map?building={{gridDisplayItem.building}}&floor={{gridDisplayItem.floor}}">Show</a>
                 </td>
                 <td>
-                    <button data-ng-hide="fields.length === 12" data-ng-click="showPass()">Show passwords</button>
-                    <button data-ng-hide="fields.length === 11" data-ng-click="hidePass()">Hide passwords</button>
+                    <button data-ng-hide="fields.length === 12" data-ng-click="showHidePass()">Show passwords</button>
+                    <button data-ng-hide="fields.length === 11" data-ng-click="showHidePass()">Hide passwords</button>
                 </td>
             </tr>
         </tbody>

@@ -86,10 +86,11 @@ angular.module('app.main').controller('AmsManagementCntl', function ($scope, $mo
 
     $scope.fields = ['project', 'guardian', 'building', 'floor', 'room', 'xAutomaticMobileSet', 'yAutomaticMobileSet', 'macAutomaticMobileSet', 'ipAutomaticMobileSet', 'isActual', 'userAutomaticMobileSet'];
 
-    $scope.hidePass = function () {
-        $scope.fields = ['project', 'guardian', 'building', 'floor', 'room', 'xAutomaticMobileSet', 'yAutomaticMobileSet', 'macAutomaticMobileSet', 'ipAutomaticMobileSet', 'isActual', 'userAutomaticMobileSet'];
-    };
-    $scope.showPass = function () {
-        $scope.fields = ['project', 'guardian', 'building', 'floor', 'room', 'xAutomaticMobileSet', 'yAutomaticMobileSet', 'macAutomaticMobileSet', 'ipAutomaticMobileSet', 'isActual', 'userAutomaticMobileSet', 'passwordAutomaticMobileSet'];
+    $scope.showHidePass = function () {
+        if ($scope.fields.length === 12) {
+            return $scope.fields.splice($scope.fields.length - 1);
+        } else {
+            return $scope.fields.push('passwordAutomaticMobileSet');
+        }
     };
 });
