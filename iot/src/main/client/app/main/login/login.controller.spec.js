@@ -12,7 +12,7 @@ describe('LoginCntl', function() {
   
   describe('login', function() {
 	  
-    it('shpould login', inject(function(userDataRestService) {
+    it('should login', inject(function(userDataRestService) {
       var $scope = {};
       var controller = $controller('LoginCntl', { $scope: $scope, userDataRestService: userDataRestService });
       
@@ -24,5 +24,16 @@ describe('LoginCntl', function() {
       
       //TODO
     }));
+    
+    
+    it('should logout', inject(function(userDataRestService) {
+        var $scope = {};
+        var controller = $controller('LoginCntl', { $scope: $scope, userDataRestService: userDataRestService });
+        
+
+        $scope.logout();
+        
+        //TODO
+      }));
   });
 });
