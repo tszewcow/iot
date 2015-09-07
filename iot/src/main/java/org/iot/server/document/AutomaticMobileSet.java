@@ -16,6 +16,8 @@ public class AutomaticMobileSet {
 	private String macAutomaticMobileSet;
 	private boolean isActual;
 	private String ipAutomaticMobileSet;
+	private String userAutomaticMobileSet;
+	private String passwordAutomaticMobileSet;
 
 	public String getIpAutomaticMobileSet() {
 		return ipAutomaticMobileSet;
@@ -103,5 +105,21 @@ public class AutomaticMobileSet {
 
 	public void setIsActual(boolean isActual) {
 		this.isActual = isActual;
+	}
+
+	public String getUserAutomaticMobileSet() {
+		return userAutomaticMobileSet;
+	}
+
+	public void setUserAutomaticMobileSet(String userAutomaticMobileSet) {
+		this.userAutomaticMobileSet = userAutomaticMobileSet;
+	}
+
+	public String getPasswordAutomaticMobileSet() {
+		return passwordAutomaticMobileSet;
+	}
+
+	public void setPasswordAutomaticMobileSet(String passwordAutomaticMobileSet) {
+		this.passwordAutomaticMobileSet = passwordAutomaticMobileSet;
 	}
 }

@@ -74,6 +74,24 @@
                 </p>
             </div>
         </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>Asm user</label>
+            </div>
+            <div class="form-group col-md-4" data-ng-class="{ 'has-error': amsAddForm.roomInput.$invalid && amsAddForm.roomInput.$dirty, 'has-success': amsAddForm.roomInput.$valid}">
+                <input name="asmUserInput" type="text" data-ng-model="data.userAutomaticMobileSet" class="form-control" data-ng-required="false" />
+
+                <p data-ng-show="amsAddForm.roomInput.$invalid && amsAddForm.roomInput.$dirty" class="help-block">Asm user for remote login</p>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Asm password</label>
+            </div>
+            <div class="form-group col-md-4" data-ng-class="{ 'has-error': amsAddForm.macInput.$invalid && amsAddForm.macInput.$dirty, 'has-success': amsAddForm.macInput.$valid}">
+                <input type="password" name="asmPasswordInput" data-ng-model="data.passwordAutomaticMobileSet" data-ng-disabled="false" class="form-control" data-ng-required="false" data-popover="Asm password for remote login" data-popover-trigger="mouseenter" />
+
+                <p data-ng-show="amsAddForm.macInput.$invalid && amsAddForm.macInput.$dirty" class="help-block">Asm password for remote login</p>
+            </div>
+        </div>
     </div>
 </form>
 

@@ -15,7 +15,9 @@ angular.module('app.main').controller('AddAmsCntl', function ($scope, $modalInst
         xAutomaticMobileSet: '',
         yAutomaticMobileSet: '',
         macAutomaticMobileSet: '',
-        ipAutomaticMobileSet: ''
+        ipAutomaticMobileSet: '',
+        userAutomaticMobileSet: '',
+        passwordAutomaticMobileSet: ''
     };
 
 
