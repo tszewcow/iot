@@ -37,15 +37,20 @@ public class PositionUpdater {
 	public void updateAutomaticMobileSetPositions(List<BeaconTo> beacons, List<BeaconStatusTo> beaconStatuses,
 			List<AutomaticMobileSetTo> automaticMobileSets) {
 
-		Map<String, List<BeaconStatusTo>> map = groupStatusesByAutomaticMobileSet(beaconStatuses);
+		Map<String, List<BeaconStatusTo>> automaticMobileSetMacToBeaconStatusesMap = groupStatusesByAutomaticMobileSet(
+				beaconStatuses);
 
-		for (Map.Entry<String, List<BeaconStatusTo>> entry : map.entrySet()) {
-			entry.getValue();
-			Map<String, List<BeaconStatusTo>> beaconToBeaconStatuses = groupStatusesByBeacon(beaconStatuses);
-			Map<String, Float> beaconToDistance = calculateDistance(beaconToBeaconStatuses);
-			String mac = entry.getKey();
-			AutomaticMobileSetTo automaticMobileSetTo = getAutomaticMobileSetByMac(automaticMobileSets, mac);
-			PositionTo coordinates = calculateCoordinates(beaconToDistance, beacons);
+		for (Map.Entry<String, List<BeaconStatusTo>> entry : automaticMobileSetMacToBeaconStatusesMap.entrySet()) {
+			String automaticMobileSetMac = entry.getKey();
+			List<BeaconStatusTo> automaticMobileSetBeaconStatuses = entry.getValue();
+
+			Map<String, List<BeaconStatusTo>> beaconMacToBeaconStatusesMap = groupStatusesByBeacon(
+					automaticMobileSetBeaconStatuses);
+			Map<String, Float> beaconMacToDistanceMap = calculateDistance(beaconMacToBeaconStatusesMap);
+			AutomaticMobileSetTo automaticMobileSetTo = getAutomaticMobileSetByMac(automaticMobileSets,
+					automaticMobileSetMac);
+			PositionTo coordinates = calculateCoordinates(beaconMacToDistanceMap, beacons);
+
 			saveToDataBase(coordinates, automaticMobileSetTo);
 		}
 	}
