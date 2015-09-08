@@ -17,7 +17,6 @@ angular.module('app.main').factory('userDataRestService', function ($http, curre
         updateUserData: function (data) {
             return $http.put(currentContextPath.get() + 'services/updateUser', data);
         },
-        
         getLoggedUserWithLoggingIn: function (data) {
             return $http.get(currentContextPath.get() + 'services/user', data);
         }
