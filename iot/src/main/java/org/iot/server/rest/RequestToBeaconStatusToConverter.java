@@ -1,5 +1,8 @@
 package org.iot.server.rest;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.iot.server.to.BeaconStatusTo;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -13,32 +16,29 @@ class RequestToBeaconStatusToConverter {
 			throw new IllegalArgumentException("Request string should neither null nor empty.");
 		}
 
-		String[] tokens = requestString.split("&");
-		tokens[0] = tokens[0].substring(7, 12); // major
-		tokens[1] = tokens[1].substring(5, 37); // uuid
-		tokens[2] = tokens[2].substring(22, 49); // macAMS
-		tokens[2] = tokens[2].replace("%3A", ":");
-		tokens[3] = tokens[3].substring(4, 31); // macBeacon,
-		tokens[3] = tokens[3].replace("%3A", ":");
-		tokens[4] = tokens[4].substring(5, 8); // rssi
-		tokens[5] = tokens[5].substring(6, 9); // minor
-		tokens[6] = tokens[6].substring(17, 20); // measuredstrenght
+		String regexPattern = "Major=(\\d+)&UUDI=(\\w+)&MAC=([\\w%]+)&macAutomaticMobileSet=([\\w%]+)&RSSI=(-?\\d+)&Minor=(\\d+)&MeasuredStrenght=(-?\\d+)";
 
-		double measuredStrenght = Double.parseDouble(tokens[6]);
-		double rssi = Double.parseDouble(tokens[4]);
+		Matcher matcher = Pattern.compile(regexPattern).matcher(requestString);
 
-		double distance = calculateDistance(measuredStrenght, rssi);
+		if (!matcher.find()) {
+			throw new IllegalArgumentException("Request string doesn't match pattern");
+		}
+
+		String mac = matcher.group(3).replace("%3A", ":");
+		String macAutomaticMobileSet = matcher.group(4).replace("%3A", ":");
+		double rssi = Double.parseDouble(matcher.group(5));
+		double measuredStrength = Double.parseDouble(matcher.group(7));
+		double distance = calculateDistance(measuredStrength, rssi);
 
 		BeaconStatusTo beaconStatusTo = new BeaconStatusTo();
-		beaconStatusTo.setMac(tokens[3]);
-		beaconStatusTo.setMajor(Integer.parseInt(tokens[0]));
-		beaconStatusTo.setMinor(tokens[5]);
-		beaconStatusTo.setUuid(tokens[1]);
-		beaconStatusTo.setRssi(Integer.parseInt(tokens[4]));
-		beaconStatusTo.setMeasuredStrenght(Integer.parseInt(tokens[6]));
-		beaconStatusTo.setMacAutomaticMobileSet(tokens[2]);
+		beaconStatusTo.setMajor(Integer.parseInt(matcher.group(1)));
+		beaconStatusTo.setUuid(matcher.group(2));
+		beaconStatusTo.setMinor(matcher.group(6));
+		beaconStatusTo.setMac(mac);
+		beaconStatusTo.setMacAutomaticMobileSet(macAutomaticMobileSet);
+		beaconStatusTo.setRssi(Integer.parseInt(matcher.group(5)));
+		beaconStatusTo.setMeasuredStrenght(Integer.parseInt(matcher.group(7)));
 		beaconStatusTo.setDistance(distance);
-
 		return beaconStatusTo;
 
 	}
