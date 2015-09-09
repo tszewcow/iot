@@ -30,15 +30,15 @@ public class UserLoginService implements UserDetailsService
 		org.iot.server.document.User user = userDBService.getUser(userEmail);
 		
 		if(user != null && !StringUtils.isEmpty(user.getId()))
-			return generateUser(user.getEmail(), user.getPassword(), user.getUserRole());
+			return generateUser(user.getEmail(), user.getPassword(), user.isActive(), user.getUserRole());
 		
 		throw new UsernameNotFoundException("could not find the user '" + userEmail + "'");
     }
 
 	//TODO mozliwa rozbudowa
-	private User generateUser(String name, String pswd, String role)
+	private User generateUser(String name, String pswd, boolean isActive, String role)
 	{
-		return new User(name, pswd, true, true, true, true, userAuthority(role));
+		return new User(name, pswd, true, true, true, isActive, userAuthority(role));
 	}
 
 	//TODO mozliwa rozbudowa
