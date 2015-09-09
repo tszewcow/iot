@@ -15,11 +15,12 @@ public class RequestToBeaconStatusToConverterTest {
 		// given
 		String requestString = "\"Major=65535"
 				+ "&UUDI=7e1c699dd541dd5ee61ea67d9479c28c"
-				+ "&MAC=20%3Afa%3Abb%3A01%3A77%3Ae0"
 				+ "&macAutomaticMobileSet=12%3A12%3A12%3A12%3A12%3A12"
+				+ "&MAC=20%3Afa%3Abb%3A01%3A77%3Ae0"
 				+ "&RSSI=-50"
 				+ "&Minor=189"
 				+ "&MeasuredStrenght=-61\"";
+		
 		// when
 		BeaconStatusTo beaconStatusTo = converter.convert(requestString);
 		// then

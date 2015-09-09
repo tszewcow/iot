@@ -16,7 +16,13 @@ class RequestToBeaconStatusToConverter {
 			throw new IllegalArgumentException("Request string should neither null nor empty.");
 		}
 
-		String regexPattern = "Major=(\\d+)&UUDI=(\\w+)&MAC=([\\w%]+)&macAutomaticMobileSet=([\\w%]+)&RSSI=(-?\\d+)&Minor=(\\d+)&MeasuredStrenght=(-?\\d+)";
+		String regexPattern = "Major=(\\d+)"
+				+ "&UUDI=(\\w+)"
+				+ "&macAutomaticMobileSet=([\\w%]+)"
+				+ "&MAC=([\\w%]+)"
+				+ "&RSSI=(-?\\d+)"
+				+ "&Minor=(\\d+)"
+				+ "&MeasuredStrenght=(-?\\d+)";
 
 		Matcher matcher = Pattern.compile(regexPattern).matcher(requestString);
 
@@ -24,8 +30,8 @@ class RequestToBeaconStatusToConverter {
 			throw new IllegalArgumentException("Request string doesn't match pattern");
 		}
 
-		String mac = matcher.group(3).replace("%3A", ":");
-		String macAutomaticMobileSet = matcher.group(4).replace("%3A", ":");
+		String macAutomaticMobileSet = matcher.group(3).replace("%3A", ":");
+		String mac = matcher.group(4).replace("%3A", ":");
 		double rssi = Double.parseDouble(matcher.group(5));
 		double measuredStrength = Double.parseDouble(matcher.group(7));
 		double distance = calculateDistance(measuredStrength, rssi);
