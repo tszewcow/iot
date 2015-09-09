@@ -29,6 +29,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     @Autowired
     private RememberMeTokenRepository rememberMeTokenRepository;
 
+    @Autowired
+    private SavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler;
+    
     
 //    private TokenAuthenticationService tokenAuthenticationService = null;//new TokenAuthenticationService(secret, userService)
     
@@ -44,9 +47,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 	    	
     	http
 			.formLogin()
-			.successHandler(savedRequestAwareAuthenticationSuccessHandler())
-			.loginPage("/services/login")
+			.loginPage("/iot/main/login")
 			.failureUrl("/services/login")
+			.loginProcessingUrl("/services/login")
 			.permitAll()
 			.and()
 			.logout()
@@ -64,105 +67,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     	
 		
 		http
-			.rememberMe().authenticationSuccessHandler(savedRequestAwareAuthenticationSuccessHandler())
+			.rememberMe()
+			.authenticationSuccessHandler(authenticationSuccessHandler)
 			.tokenRepository(rememberMeTokenRepository)//persistentTokenRepository())
-			.tokenValiditySeconds(123);
-    	
-		    	
-    	//stateless
-//    	if(tokenAuthenticationService == null)
-//        	tokenAuthenticationService = new TokenAuthenticationService("tooManySecrets", userLoginService);
-//    	
-//    	
-//    	 http
-//         .exceptionHandling().and()
-//         .anonymous().and()
-//         .servletApi().and()
-//         .headers().cacheControl().and()
-//         .authorizeRequests()
-//
-//         // Allow anonymous resource requests
-//         .antMatchers("/", "/services/auth/**", "/services/login", "/services/user").permitAll()
-//         .antMatchers("/favicon.ico").permitAll()
-//         .antMatchers("**/*.html").permitAll()
-//         .antMatchers("**/*.css").permitAll()
-//         .antMatchers("**/*.js").permitAll()
-//
-//         // Allow anonymous logins
-//         .antMatchers("/services/auth/**", "/services/login", "/services/user").permitAll()
-//
-//         // All other request need to be authenticated
-//         .anyRequest().authenticated().and()
-//
-//         // Custom Token based authentication based on the header previously given to the client
-//         .addFilterBefore(new StatelessAuthenticationFilter(tokenAuthenticationService),
-//                 UsernamePasswordAuthenticationFilter.class);
-    	
-    	
-    	
-//    	http 
-//    		.httpBasic()
-//    		.and()
-//    		.authorizeRequests()
-//            .antMatchers()
-//            .permitAll()
-//            .anyRequest()
-//            .authenticated();
-//    	    	
-//		http
-//			.formLogin()
-//			.successHandler(savedRequestAwareAuthenticationSuccessHandler())
-//			.loginPage("/main/login")
-//			.failureUrl("/services/login?error")
-//			.permitAll()
-//			.and()
-//			.logout()
-//			.logoutRequestMatcher(new AntPathRequestMatcher("/services/logout"))
-//			.logoutSuccessUrl("/services/logout")
-//			.permitAll();
-//
-//	
-     ////			.csrfTokenRepository(csrfTokenRepository())
-////			.and()
-////            .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class);
-//		
-//		
-//		http
-//			.rememberMe().authenticationSuccessHandler(savedRequestAwareAuthenticationSuccessHandler())
-//			.tokenRepository(rememberMeTokenRepository)//persistentTokenRepository())
-//			.tokenValiditySeconds(123);
+			.tokenValiditySeconds(1230000);
     }
 
-    
-    
-    //zxc 
-//    @Bean
-//    @Override
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return super.authenticationManagerBean();
-//    }
- 
-//    @Bean
-//    @Override
-//    public UserService userDetailsService() {
-//        return userService;
-//    }
- 
-    
-    //zxc
-//    @Bean
-//    public TokenAuthenticationService tokenAuthenticationService() {
-//        if(tokenAuthenticationService == null)
-//        	tokenAuthenticationService = new TokenAuthenticationService("tooManySecrets", userLoginService);
-//        
-//        return tokenAuthenticationService;
-//    }
-    
-    
-    
-    
-    
-    
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
@@ -192,21 +102,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 	}
 
 
-
-
-    ///zxc
     @Bean
 	public SavedRequestAwareAuthenticationSuccessHandler savedRequestAwareAuthenticationSuccessHandler()
     {
     	SavedRequestAwareAuthenticationSuccessHandler auth = new SavedRequestAwareAuthenticationSuccessHandler();
-    	auth.setTargetUrlParameter("targetUrl");
+    	auth.setTargetUrlParameter("/");
     	auth.setAlwaysUseDefaultTargetUrl(true);
     	return auth;
 	}
-    
-//	@Bean
-//	public PersistentTokenRepository persistentTokenRepository()
-//	{
-//		return rememberMeTokenRepository;
-//	}
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.Ignore;
+//import org.junit.Ignore;
 import org.iot.server.document.User;
 import org.iot.server.helper.EqualityChecker;
 import org.iot.server.helper.TestDataGenerator;
@@ -74,19 +74,22 @@ public class UserServiceImplTest
 		assertEquals(userDataListSize, usersList.size());
 		assertEquals(userDataListSize, usersListCaptor.getValue().size());
 	}
-	
-	
 
-    // TODO MS: repair this test
-    @Ignore
+
 	@Test
 	public void testAdduser()
 	{
 		UserTo userTo = TestDataGenerator.getUserTo(1);
 		UserTo addedData = testedObject.addUser(userTo);
 		
+		assertEquals(false, EqualityChecker.checkEquality(userTo, addedData));
+		
 		//createdOn is added in the addUser() function- usetTo does not have the creation date
 		userTo.setCreatedOn(addedData.getCreatedOn());
+		
+		//password is encrypted before save/update
+		userTo.setPassword(addedData.getPassword());
+		
 		
 		assertEquals(true, EqualityChecker.checkEquality(userTo, addedData));
 		
@@ -114,13 +117,18 @@ public class UserServiceImplTest
 		assertEquals(user.getId(), idCaptor.getValue());
 	}
 
-    // TODO MS: repair this test
-    @Ignore
+
 	@Test
 	public void testUpdateUser()
 	{
 		UserTo userTo = TestDataGenerator.getUserTo(1);
 		UserTo addedData = testedObject.updateUser(userTo);
+		
+		assertEquals(false, EqualityChecker.checkEquality(userTo, addedData));
+		
+		//password is encrypted before save/update
+		userTo.setPassword(addedData.getPassword());
+		
 		assertEquals(true, EqualityChecker.checkEquality(userTo, addedData));
 		
 		ArgumentCaptor<UserTo> userToCaptor = ArgumentCaptor.forClass(UserTo.class);

@@ -18,11 +18,8 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
             console.log("OK");
         }).error(function(data) {
         	checkIfUserIsLoggedIn(true);
-//          $scope.error = true;
-//          $rootScope.authenticated = false;
-//          console.log("error2");
-//          console.log(data);
-          console.log("error2");
+        	console.log("error2");
+        	console.log(data);
         });
     };
     
@@ -63,17 +60,19 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
     $scope.logout = function()
     {
     	$http.get('/services/logout', {}).success(function() {
-    		$rootScope.authenticated = false;
-    		$rootScope.loggedUserName = null;
-			$location.path("/"); 
+    		resetValuesAfterLogout();
     	}).error(function(data) {
-    		$rootScope.authenticated = false;
-    		$rootScope.loggedUserName = null;
-			$location.path("/");
-			
+    		resetValuesAfterLogout();
 			
 			console.log(data);
     	});  
+    }
+    
+    function resetValuesAfterLogout()
+    {
+		$rootScope.authenticated = false;
+		$rootScope.loggedUserName = null;
+		$location.path("/"); 
     }
     
     function authenticateAndRedirect()
@@ -86,6 +85,8 @@ angular.module('app.main').controller('LoginCntl', function ($rootScope, $scope,
     
     function userNotLoggedIn(showError)
     {
+    	resetCredentials();
+    	
     	$rootScope.authenticated = false;
 		
 		if(showError)
