@@ -1,5 +1,8 @@
 package org.iot.server.security;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.iot.server.properties.ApplicationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +13,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CsrfFilter;
@@ -29,32 +35,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     @Autowired
     private RememberMeTokenRepository rememberMeTokenRepository;
 
-    @Autowired
-    private SavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler;
     
-    
-//    private TokenAuthenticationService tokenAuthenticationService = null;//new TokenAuthenticationService(secret, userService)
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
     	http
+//    		.httpBasic()
+//    		.and()
 			.authorizeRequests()
-			.antMatchers()
+			.antMatchers("/beacon-status", "/beacons-statuses")
 			.permitAll()
 			.anyRequest()
 			.authenticated();
 	    	
     	http
 			.formLogin()
-			.loginPage("/iot/main/login")
+			.loginPage("/services/login")
 			.failureUrl("/services/login")
 			.loginProcessingUrl("/services/login")
 			.permitAll()
 			.and()
 			.logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/services/logout"))
-			.logoutSuccessUrl("/services/logout")
+			.logoutSuccessUrl("/services/login")
 			.permitAll();
     	
     	http
@@ -65,12 +69,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 //			.addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class);
 
     	
-		
-		http
-			.rememberMe()
-			.authenticationSuccessHandler(authenticationSuccessHandler)
-			.tokenRepository(rememberMeTokenRepository)//persistentTokenRepository())
-			.tokenValiditySeconds(1230000);
+//		http
+//			.rememberMe()//.authenticationSuccessHandler(new CustomSavedRequestAwareAuthenticationSuccessHandler())
+//			.key("secretKey")
+////			.authenticationSuccessHandler(authenticationSuccessHandler)
+//			.tokenRepository(rememberMeTokenRepository)//persistentTokenRepository())
+//			.tokenValiditySeconds(1230000);
     }
 
     

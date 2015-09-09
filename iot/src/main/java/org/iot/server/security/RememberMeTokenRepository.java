@@ -69,6 +69,5 @@ public class RememberMeTokenRepository implements PersistentTokenRepository {
 		
 		if(tokens != null && tokens.size() == 1)
 			rememberMeTokenMongoRepository.delete(tokens.get(0));
-		
 	}
 }
