@@ -44,7 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 //    		.httpBasic()
 //    		.and()
 			.authorizeRequests()
-			.antMatchers("/beacon-status", "/beacons-statuses")
+			.antMatchers("/beacon-status", "/beacons-statuses", "services/login")
 			.permitAll()
 			.anyRequest()
 			.authenticated();
