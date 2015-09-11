@@ -55,14 +55,14 @@ describe('Add beacon tests', function () {
             //then
             expect(modalInstanceMock.dismiss).toHaveBeenCalledWith('cancel');
         });
-        it('should disable floors selection if builidng was selected', function () {
+        it('should disable floors selection if building was selected', function () {
             //given
             $scope.newBeacon.building = 'MT2';
             //when then
             expect($scope.floorSelectionDisabled()).toBeFalsy();
         });
 
-        it('should not disable floors selection if builiding is empty', function () {
+        it('should not disable floors selection if building is empty', function () {
             //given
             $scope.newBeacon.building = '';
             //when then

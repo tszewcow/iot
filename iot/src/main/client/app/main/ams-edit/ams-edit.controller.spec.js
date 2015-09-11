@@ -27,10 +27,8 @@ describe('Edit ams tests', function () {
     };
 
     beforeEach(module('app.main'));
-    beforeEach(inject(function ($controller, $rootScope, $compile) {
+    beforeEach(inject(function ($controller, $rootScope) {
         $scope = $rootScope.$new();
-        var element = angular.element('<form name="amsEditForm" />');
-        $compile(element)($scope);
 
         $controller('EditAmsCntl', {
             $scope: $scope,
@@ -42,7 +40,11 @@ describe('Edit ams tests', function () {
 
     describe('testing modal controls', function () {
         it('ok should close dialog and returned modified data', function () {
-            // given when
+            // given
+            $scope.amsEditForm = {
+                $valid: true
+            };
+            // when
             $scope.ok();
             // then
             expect(modalInstanceMock.close).toHaveBeenCalledWith(amsMock);
@@ -69,14 +71,14 @@ describe('Edit ams tests', function () {
             expect($scope.disableGuardianInput()).toBeFalsy();
         });
 
-        it('should disable floors selection if builidng was selected', function () {
+        it('should disable floors selection if building was selected', function () {
             //given
             $scope.data.building = 'MT2';
             //when then
             expect($scope.floorSelectionDisabled()).toBeFalsy();
         });
 
-        it('should not disable floors selection if builiding is empty', function () {
+        it('should not disable floors selection if building is empty', function () {
             //given
             $scope.data.building = '';
             //when then

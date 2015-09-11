@@ -43,11 +43,7 @@ angular.module('app.main').controller('AddAmsCntl', function ($scope, $modalInst
     };
 
     $scope.disableGuardianInput = function () {
-        if ($scope.newAms.project === '<none>') {
-            return true;
-        } else {
-            return false;
-        }
+        return $scope.newAms.project === '<none>';
     };
 
 });

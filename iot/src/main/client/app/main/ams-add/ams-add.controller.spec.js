@@ -73,14 +73,14 @@ describe('Add ams tests', function () {
             expect($scope.disableGuardianInput()).toBeFalsy();
         });
 
-        it('should disable floors selection if builidng was selected', function () {
+        it('should disable floors selection if building was selected', function () {
             //given
             $scope.newAms.building = 'MT2';
             //when then
             expect($scope.floorSelectionDisabled()).toBeFalsy();
         });
 
-        it('should not disable floors selection if builiding is empty', function () {
+        it('should not disable floors selection if building is empty', function () {
             //given
             $scope.newAms.building = '';
             //when then

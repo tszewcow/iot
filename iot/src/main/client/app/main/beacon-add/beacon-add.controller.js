@@ -40,6 +40,4 @@ angular.module('app.main').controller('BeaconAddCntl', function ($scope, $modalI
     $scope.floorSelectionDisabled = function () {
         return !$scope.newBeacon.building;
     };
-
-
 });

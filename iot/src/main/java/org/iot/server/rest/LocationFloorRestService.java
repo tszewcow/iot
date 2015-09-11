@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Rest service providing operations related to buildings and floors.
- * 
+ *
  * @author MSKAWINS
  */
 @RestController
@@ -20,22 +20,32 @@ public class LocationFloorRestService {
 
 	private final LocationFloorService locationFloorService;
 
-	@Autowired
+    /**
+     * Instantiates a new Location floor rest service.
+     *
+     * @param locationFloorService the location floor service
+     */
+    @Autowired
 	public LocationFloorRestService(final LocationFloorService locationFloorService) {
 		this.locationFloorService = locationFloorService;
 	}
 
-	/**
-	 * Provides available buildings and floors
-	 * 
-	 * @return unmodifiable list of available buildings and floors
-	 */
+    /**
+     * Provides available buildings and floors
+     *
+     * @return unmodifiable list of available buildings and floors
+     */
 	@RequestMapping(value = "/services/locationfloor", method = RequestMethod.GET)
 	public List<LocationFloorTo> getAvailableFloors() {
 		return locationFloorService.getAllAvailableFloors();
 	}
 
-	@RequestMapping(value = "/services/buildings", method = RequestMethod.GET)
+    /**
+     * Gets all buildings.
+     *
+     * @return the all buildings with floors
+     */
+    @RequestMapping(value = "/services/buildings", method = RequestMethod.GET)
 	public List<BuildingTo> getAllBuildings() {
 		return locationFloorService.getAllBuildings();
 	}

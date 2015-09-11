@@ -29,10 +29,6 @@ angular.module('app.main').controller('EditAmsCntl', function ($scope, $modalIns
     };
 
     $scope.disableGuardianInput = function () {
-        if ($scope.data.project === '<none>') {
-            return $scope.data.guardian = '', true;
-        } else {
-            return false;
-        }
+        return $scope.data.project === '<none>';
     };
 });

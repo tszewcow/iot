@@ -1,4 +1,4 @@
-describe('Edit beacon tests', function (allBuildingsMock) {
+describe('Edit beacon tests', function () {
     'use strict';
 
     var $scope;
@@ -29,10 +29,8 @@ describe('Edit beacon tests', function (allBuildingsMock) {
     ];
 
     beforeEach(module('app.main'));
-    beforeEach(inject(function ($controller, $rootScope, $compile) {
+    beforeEach(inject(function ($controller, $rootScope) {
         $scope = $rootScope.$new();
-        var element = angular.element('<form name="beaconEditForm" />');
-        $compile(element)($scope);
 
         $controller('BeaconEditCntl', {
             $scope: $scope,
@@ -44,7 +42,11 @@ describe('Edit beacon tests', function (allBuildingsMock) {
 
     describe('testing modal controls', function () {
         it('ok should close dialog and returned modified data', function () {
-            // given when
+            // given
+            $scope.beaconEditForm = {
+                $valid: true
+            };
+            // when
             $scope.ok();
             // then
             expect(modalInstanceMock.close).toHaveBeenCalledWith(beaconMock);
